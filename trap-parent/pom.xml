@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ericsson.research.trap</groupId>
+	<artifactId>trap-parent</artifactId>
+	<name>TrAP Parent</name>
+	<packaging>pom</packaging>
+	<version>1.3.0-SNAPSHOT</version>
+
+	<developers>
+		<developer>
+			<email>vladimir.katardjiev@ericsson.com</email>
+			<id>meledin</id>
+			<name>Vladimir Katardjiev</name>
+			<timezone>8</timezone>
+			<organization>Ericsson AB</organization>
+			<organizationUrl>https://www.ericsson.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>BSD 3-clause</name>
+			<distribution>repo</distribution>
+			<url>http://opensource.org/licenses/BSD-3-Clause</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Ericsson AB</name>
+		<url>https://www.ericsson.com</url>
+	</organization>
+	<url>https://github.com/EricssonResearch/trap</url>
+	<scm>
+		<url>git@github.com/EricssonResearch/trap.git</url>
+		<connection>scm:git:git@github.com/EricssonResearch/trap.git</connection>
+		<developerConnection>scm:git:git@github.com/EricssonResearch/trap.git</developerConnection>
+	</scm>
+	<inceptionYear>2014</inceptionYear>
+	<description>Parent pom for the Transport Abstraction Package. This defines all properties for the children.
+
+The Transport Abstraction Package, or trap, provides an overlaying socket api that can be used across multiple underlying transports, while supporting reconnects, wifi/cellular handover, compression and multiplexing.</description>
+
+	<repositories>
+		<repository>
+			<id>trap-releases</id>
+			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>trap-releases</id>
+			<url>${trap-releases-repo}</url>
+		</repository>
+		<snapshotRepository>
+			<id>trap-snapshots</id>
+			<url>${trap-snapshots-repo}</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<trap-releases-repo>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</trap-releases-repo>
+		<trap-snapshots-repo>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</trap-snapshots-repo>
+		<source-phase>package</source-phase>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>cc</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>../trap-utils-api</module>
+				<module>../trap-utils-15</module>
+				<module>../trap-network</module>
+				<module>../trap-api</module>
+				<module>../trap-core</module>
+				<module>../trap-js</module>
+				<module>../trap-transports</module>
+				<module>../trap-tests</module>
+				<module>../trap-packaging</module>
+				<module>../trap-android</module>
+				<module>../trap-index-maven-plugin</module>
+			</modules>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>bundle-sources</id>
+						<phase>${source-phase}</phase>
+						<goals>
+							<!-- produce source artifact for main project sources -->
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<pushChanges>false</pushChanges>
+					<localCheckout>true</localCheckout>
+				</configuration>
+			</plugin>
+			<!-- <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<version>2.8</version> <configuration> <docletArtifact> <groupId>com.google.doclava</groupId> 
+				<artifactId>doclava</artifactId> <version>1.0.5</version> </docletArtifact> 
+				<doclet>com.google.doclava.Doclava</doclet> <bootclasspath>${sun.boot.class.path}</bootclasspath> 
+				<additionalparam> -quiet -federate JDK http://download.oracle.com/javase/6/docs/api/index.html? 
+				-federationxml JDK http://doclava.googlecode.com/svn/static/api/openjdk-6.xml 
+				-hdf project.name "${project.name}" -d ${project.build.directory}/apidocs 
+				-warning 105 </additionalparam> <useStandardDocletOptions>false</useStandardDocletOptions> 
+				<additionalJOption>-J-Xmx1024m</additionalJOption> <includeDependencySources>true</includeDependencySources> 
+				<dependencySourceIncludes> <dependencySourceInclude>com.ericsson.research.trap:*</dependencySourceInclude> 
+				</dependencySourceIncludes> <dependencySourceExcludes> <dependencySourceExclude>com.ericsson.research.trap.impl:*</dependencySourceExclude> 
+				</dependencySourceExcludes> </configuration> </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.7</version>
+				<configuration>
+					<verbose>true</verbose>
+					<canUpdateCopyright>true</canUpdateCopyright>
+					<canUpdateDescription>true</canUpdateDescription>
+					<inceptionYear>2014</inceptionYear>
+					<licenseName>bsd_3</licenseName>
+					<clearAfterOperation>true</clearAfterOperation>
+					<processStartTag>##_BEGIN_LICENSE_##</processStartTag>
+					<processEndTag>##_END_LICENSE_##</processEndTag>
+					<sectionDelimiter>----------</sectionDelimiter>
+					<projectName>Transport Abstraction Package (trap)</projectName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>first</id>
+						<goals>
+							<goal>update-file-header</goal>
+						</goals>
+						<phase>process-sources</phase>
+						<configuration>
+							<roots>
+								<root>src/main/java</root>
+								<root>src/test</root>
+							</roots>
+							<excludes>
+								<exclude>**/package-info.java</exclude>
+								<exclude>**/*.xml</exclude> <!-- Dashes conflict with XML, so don't let it be there. -->
+							</excludes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>second</id>
+						<goals>
+							<goal>update-project-license</goal>
+						</goals>
+						<phase>process-sources</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											net.alchim31.maven
+										</groupId>
+										<artifactId>
+											yuicompressor-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.3.0,)
+										</versionRange>
+										<goals>
+											<goal>compress</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.owasp</groupId>
+					<artifactId>dependency-check-maven</artifactId>
+					<version>1.2.5</version>
+					<configuration>
+						<format>xml</format>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>3.0.0</version>
+					<configuration>
+						<failOnError>false</failOnError>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-jdk14</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.10</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

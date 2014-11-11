@@ -1,0 +1,9 @@
+target
+.project
+.classpath
+.DS_Store
+.settings
+*.swp
+build
+Products
+bin

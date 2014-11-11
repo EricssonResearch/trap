@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ericsson.research.trap</groupId>
+		<artifactId>trap-parent</artifactId>
+		<version>1.3.0-SNAPSHOT</version>
+		<relativePath>../trap-parent/pom.xml</relativePath>
+	</parent>
+	<artifactId>trap-network</artifactId>
+	<packaging>pom</packaging>
+	<name>Trap Networking Layer</name>
+		
+	<repositories>
+		<repository>
+			<id>trap-releases</id>
+			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	
+	<modules>
+		<module>trap-network-niomanager</module>
+		<module>trap-network-websockets-api</module>
+		<module>trap-network-websockets-nio</module>
+		<module>trap-network-websockets-sockets</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>com.ericsson.research.trap</groupId>
+			<artifactId>trap-network-niomanager</artifactId>
+			<version>1.3.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap</groupId>
+			<artifactId>trap-network-websockets-api</artifactId>
+			<version>1.3.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap</groupId>
+			<artifactId>trap-network-websockets-nio</artifactId>
+			<version>1.3.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap</groupId>
+			<artifactId>trap-network-websockets-sockets</artifactId>
+			<version>1.3.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

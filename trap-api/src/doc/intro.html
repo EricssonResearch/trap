@@ -1,0 +1,46 @@
+<html>
+<head></head>
+<body>
+	TrAP; the Transport Abstraction Package is a library that provides a
+	message-based point-to-point link between two nodes using one or more
+	transports, the exact type and implementation of which is abstracted
+	away from the application. The main usefulness of such an abstraction
+	level is that the application does not need to concern itself with
+	managing different transports, types, keepalives and protocols, but can
+	use an existing and tested codebase for it.
+	<p>TrAP provides a number of features to ease development of
+		applications, while keeping maximum flexibility:
+	<ul>
+		<li><b>Automatic Transport Detection</b>: TrAP will automatically
+			discover all potential transports, and select and use the most
+			applicable transport, based on a user-customisable priority order.
+		<li><b>Transport Handover</b>: TrAP can seamlessly hand over
+			between different transport types. It can use a common transport
+			(such as HTTP) to perform initial connection, while it discovers
+			others. The connection is <i>fully usable</i> while TrAP performs its
+			work!
+		<li><b>Transport Recovery</b>: If a transport fails for any
+			reason (network change, handover from mobile network to wifi), TrAP
+			can fall back to a common transport and reconnect. While connectivity
+			is briefly interrupted, no messages are lost.
+		<li><b>Liveness Checking &amp; Configuration</b>: The liveness status
+			of a TrAP connection can be inspected and changed at runtime. Fully
+			customisable keepalives means that applications can have infrequent
+			ones (for long lived connections) and frequent ones (when response
+			time is critical).
+		<li><b>Configurable Message Processing</b>: TrAP can operate in
+			synchronous and asynchronous modes, and allows full control over both
+			incoming and outgoing message buffers. Memory footprint and message
+			throughput can thus be tweaked depending on the application.
+		<li><b>Cross-Language</b>: TrAP supports Java, JavaScript, C++
+			and Objective-C, and goes as low as 32kb per connection (using a
+			linked message buffer, and only one live transport at a time).
+	</ul>
+	<p>Trap works on a client/server model, and the high level API is
+		generally based on sockets (albeit message-based, and not streaming).
+		A server opens up a Trap Endpoint for "listening". The client connects
+		to the server; by doing so, a new Endpoint object is generated on the
+		server to hold the other end of the connection. The pair of endpoints
+		can then communicate freely.
+</body>
+</html>

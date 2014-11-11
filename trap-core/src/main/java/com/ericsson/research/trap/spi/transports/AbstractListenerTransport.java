@@ -1,0 +1,69 @@
+package com.ericsson.research.trap.spi.transports;
+
+/*
+ * ##_BEGIN_LICENSE_##
+ * Transport Abstraction Package (trap)
+ * ----------
+ * Copyright (C) 2014 Ericsson AB
+ * ----------
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ * 
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ * 
+ * 3. Neither the name of the Ericsson AB nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software without
+ *    specific prior written permission.
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ * ##_END_LICENSE_##
+ */
+
+import com.ericsson.research.trap.TrapException;
+import com.ericsson.research.trap.spi.TrapMessage;
+import com.ericsson.research.trap.spi.TrapTransportException;
+import com.ericsson.research.trap.spi.TrapTransportState;
+
+public abstract class AbstractListenerTransport extends AbstractTransport
+{
+	
+	public boolean canListen()
+	{
+		return true;
+	}
+	
+	public synchronized void disconnect()
+	{
+		if ((this.state == TrapTransportState.DISCONNECTING) || (this.state == TrapTransportState.DISCONNECTED) || (this.state == TrapTransportState.ERROR))
+			return; // Cannot re-disconnect
+			
+		// Send directly to child.
+		this.internalDisconnect();
+		this.setState(TrapTransportState.DISCONNECTED);
+	}
+	
+	public void internalSend(TrapMessage message, boolean expectMore) throws TrapTransportException
+	{
+		throw new TrapTransportException((TrapMessage) null, this.getState());
+	}
+	
+	protected void internalConnect() throws TrapException
+	{
+		throw new TrapException("Cannot connect server transport.");
+	}
+	
+}
