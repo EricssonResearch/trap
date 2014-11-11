@@ -28,9 +28,9 @@ The easiest way to add Trap for Java is to include the full archive in one step.
 			<version>1.3.0-SNAPSHOT</version>
 		</dependency>
 
-The recommended way is to include the specific transports as needed. The full list of transports is available in the main repo <https://github.com/EricssonResearch/trap/tree/master/trap-transports>. Some transports, such as HTTP, have multiple providers. It is recommended to use the best provider available (e.g. Servlet) when applicable.
+The recommended way is to include the specific transports as needed. The full list of transports is available in the [main repo](https://github.com/EricssonResearch/trap/tree/master/trap-transports). Some transports, such as HTTP, have multiple providers. It is recommended to use the best provider available (e.g. Servlet) when applicable.
 
 # Getting Started
-Have a look at the examples <https://github.com/EricssonResearch/trap/tree/master/trap-api/src/main/java/com/ericsson/research/trap/examples>. They provide a good Java quickstart. JavaScript is coming soon™.
+Have a look at [the examples](https://github.com/EricssonResearch/trap/tree/master/trap-api/src/main/java/com/ericsson/research/trap/examples). They provide a good Java quickstart. JavaScript is coming soon™.
 
 # Documentation
