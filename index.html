@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Trap by EricssonResearch</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Trap</h1>
+        <p>Transport Abstraction Package</p>
+
+        <p class="view"><a href="https://github.com/EricssonResearch/trap">View the Project on GitHub <small>EricssonResearch/trap</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/EricssonResearch/trap/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/EricssonResearch/trap/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/EricssonResearch/trap">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="transport-abstraction-package-trap" class="anchor" href="#transport-abstraction-package-trap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transport Abstraction Package (trap)</h1>
+
+<p>This library provides a socket-based interface that abstracts a set of underlying transports (socket, websocket, http, functioncall), while allowing reconnects, network connection changes, compression and multiplexing. Trap can utilise one or more underlying connections to improve performance, is a fully binary protocol, and is designed to handle failures.</p>
+
+<h1>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h1>
+
+<p>Trap provides</p>
+
+<ul>
+<li>Transport independent data transfer using a message paradigm.</li>
+<li>Optional, reliable, in-order hop-to-hop transfer, regardless of underlying medium.</li>
+<li>Connection re-establishment, when applicable. This recovers from a network connection change (e.g. wifi to cellular data)</li>
+<li>Multiplexing of up to 255 application streams, at configurable priority levels that allow pre-emption of bulk data.</li>
+<li>Support for Java and JavaScript clients and servers (node.js required for servers).</li>
+</ul>
+
+<p>As an abstraction, Trap applies the following overheads (measured in Java, as of 2014)</p>
+
+<ul>
+<li>16 bytes of protocol data per message (excluding transport overhead such as TCP/HTTP)</li>
+<li>Approximately 50 kilobytes of RAM per connection (configurable usage for active connections)</li>
+<li>A minimum of 200 kilobytes to load class files.</li>
+<li>Two threads for network &amp; timing. Additional threads as required by the application.</li>
+<li>About 500 kilobytes .jar file (if using all features, including slf4j which Trap depends on)</li>
+</ul>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>The easiest way to add Trap for Java is to include the full archive in one step. The following code will include Trap as well as the four default, built-in transports. These transports are not suitable in all contexts, but can serve as a quickstart </p>
+
+<pre><code>    &lt;dependency&gt;
+        &lt;groupId&gt;com.ericsson.research.trap.packaging&lt;/groupId&gt;
+        &lt;artifactId&gt;trap-full&lt;/artifactId&gt;
+        &lt;version&gt;1.3.0-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<p>The recommended way is to include the specific transports as needed. The full list of transports is available in the main repo <a href="https://github.com/EricssonResearch/trap/tree/master/trap-transports">https://github.com/EricssonResearch/trap/tree/master/trap-transports</a>. Some transports, such as HTTP, have multiple providers. It is recommended to use the best provider available (e.g. Servlet) when applicable.</p>
+
+<h1>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h1>
+
+<p>Have a look at the examples <a href="https://github.com/EricssonResearch/trap/tree/master/trap-api/src/main/java/com/ericsson/research/trap/examples">https://github.com/EricssonResearch/trap/tree/master/trap-api/src/main/java/com/ericsson/research/trap/examples</a>. They provide a good Java quickstart. JavaScript is coming soon™.</p>
+
+<h1>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h1>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/EricssonResearch">EricssonResearch</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
