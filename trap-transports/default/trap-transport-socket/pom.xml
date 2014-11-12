@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>com.ericsson.research.trap</groupId>
 	<artifactId>trap-transport-socket</artifactId>
-	<name>TrAP Default Socket Transport</name>
+	<name>Default Socket Transport</name>
 		
 	<repositories>
 		<repository>
@@ -59,4 +59,5 @@
 		</dependency>
 	</dependencies>
 	
+	<description>Shorthand to include the default (java.nio-based) socket transport implementation. Includes both server and client transports.</description>
 </project>

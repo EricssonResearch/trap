@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>com.ericsson.research.trap</groupId>
 	<artifactId>trap-transport-http</artifactId>
-	<name>TrAP Default HTTP Transport</name>
+	<name>Default HTTP Transport Package</name>
 		
 	<repositories>
 		<repository>
@@ -59,4 +59,5 @@
 		</dependency>
 	</dependencies>
 	
+	<description>Shorthand dependency to include the Trap Sun HTTP transport</description>
 </project>

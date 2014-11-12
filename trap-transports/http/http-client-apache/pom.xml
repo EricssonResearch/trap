@@ -78,4 +78,5 @@
 			<version>4.2.5</version>
 		</dependency>
 	</dependencies>
+	<description>HTTP transport, client-side, powered by apache's HTTP implemetation</description>
 </project>

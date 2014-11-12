@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>com.ericsson.research.trap</groupId>
 	<artifactId>trap-transport-websocket</artifactId>
-	<name>TrAP Default WebSocket Transport</name>
+	<name>Default WebSocket Transport</name>
 		
 	<repositories>
 		<repository>
@@ -54,4 +54,5 @@
 		</dependency>
 	</dependencies>
 	
+	<description>Shorthand to include the default (java.nio-based) websocket transport implementation. Includes both server and client transports.</description>
 </project>

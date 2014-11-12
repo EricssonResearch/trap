@@ -85,4 +85,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>Test for HTTP using sun provider</description>
 </project>

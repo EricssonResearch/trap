@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>com.ericsson.research.trap</groupId>
 	<artifactId>trap-transport-loopback</artifactId>
-	<name>TrAP Default Loopback Transport</name>
+	<name>Default Loopback Transport</name>
 		
 	<repositories>
 		<repository>
@@ -54,4 +54,5 @@
 		</dependency>
 	</dependencies>
 	
+	<description>Alias to include the loopback transport.</description>
 </project>

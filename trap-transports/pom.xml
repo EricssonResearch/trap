@@ -4,7 +4,7 @@
 		<groupId>com.ericsson.research.trap</groupId>
         <artifactId>trap-parent</artifactId>
 		<version>1.3.0-SNAPSHOT</version>
-		<relativePath>../trap-parent/pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>transports</artifactId>
 	<name>TrAP Transports</name>
@@ -56,4 +56,5 @@
 		<module>default/trap-transport-socket</module>
 		<module>default/trap-transport-websocket</module>
 	</modules>
+	<description>Container project for Trap's transport implementations.</description>
 </project>

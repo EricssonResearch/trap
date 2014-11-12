@@ -77,7 +77,7 @@ public class ConfiguredClient implements OnOpen, OnData
         // Create a new Trap Client to the specified host.
         // The second parameter of true tells the client to attempt to autodiscover other transports.
         // If it was set to false, the client can only ever use the manually configured transports.
-        this.client = TrapFactory.createClient("http://trap.example.com", true);
+        this.client = TrapFactory.createClient("http://trap.example.com:4000", true);
         
         // While the above would work if we had a server at trap.example.com, we don't have that luxury.
         // For testing purposes, we'll use the provided trapCfg.

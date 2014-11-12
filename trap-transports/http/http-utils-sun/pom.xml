@@ -73,4 +73,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>This library contains shared code between the Sun HTTP server and client transports.</description>
 </project>

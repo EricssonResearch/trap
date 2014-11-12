@@ -4,7 +4,7 @@
 		<groupId>com.ericsson.research.trap</groupId>
 		<artifactId>trap-parent</artifactId>
 		<version>1.3.0-SNAPSHOT</version>
-		<relativePath>../../trap-parent/pom.xml</relativePath>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-network-websockets-sockets</artifactId>
 	<name>TrAP Networking: Websockets using Sockets</name>
@@ -92,4 +92,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>Synchronous socket-based implementation for WebSockets</description>
 </project>

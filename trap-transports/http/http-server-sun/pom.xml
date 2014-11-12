@@ -7,7 +7,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>http-server-sun</artifactId>
-	<name>Trap HTTP Client using Sun HTTP server</name>
+	<name>Trap HTTP Server using Sun HTTP server</name>
 		
 	<repositories>
 		<repository>
@@ -78,4 +78,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>HTTP Transport, server side, using com.sun HTTPServer.</description>
 </project>

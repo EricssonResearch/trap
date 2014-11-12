@@ -89,4 +89,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>Tests for the Servlet transport</description>
 </project>

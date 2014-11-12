@@ -4,7 +4,7 @@
 		<groupId>com.ericsson.research.trap</groupId>
         <artifactId>trap-parent</artifactId>
 		<version>1.3.0-SNAPSHOT</version>
-		<relativePath>../trap-parent/pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>com.ericsson.research.trap.packaging</groupId>
 	<artifactId>package-parent</artifactId>
@@ -50,4 +50,5 @@
 	<modules>
 		<module>trap-full</module>
 	</modules>
+	<description>Container for trap's packaging. Packages have finished dependency configurations</description>
 </project>
