@@ -1,4 +1,4 @@
-/**
+/*
  * The server trap endpoint does not really need to care about a lot of
  * things... So let's not have it do so
  * 

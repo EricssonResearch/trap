@@ -1,5 +1,52 @@
 //< needs(compat)
 
+/**
+ * Do not instantiate an endpoint directly. Instead, use Trap.ClientEndpoint or Trap.ListenerEndpoint.
+ * 
+ * @classdesc
+ * The main interface to Trap, a TrapEndpoint is the shared interface between servers and clients. It provides most of
+ * the methods that should be necessary to configure and use a Trap connection.
+ * <p>
+ * In general, a TrapEndpoint should be configured either when it has just been created.Reconfiguring a TrapEndpoint
+ * while it is in use can have unintended consequences.
+ * <p>
+ * Common tasks on a TrapEndpoint are:
+ * <h3>Configuring Transports</h3>
+ * <p>
+ * Enabling and disabling transports, as well as configuring each transport, is possible from TrapEndpoint. Adding new
+ * transports to an existing endpoint is not possible.
+ * <h3>Sending and Receiving Messages</h3>
+ * <p>
+ * To send messages, simply use {@link Trap.Endpoint#send} to send data. When data is received, it will be received in the onmessage listener.
+ * <h3>Checking Liveness</h3>
+ * <p>
+ * Trap provides a simple facility to check if the other endpoint is alive, that is, communication is active and the
+ * other application layer is responding. The {@link Trap.Endpoint#isAlive} method can be used to check if the
+ * endpoint has been alive recently, or a combination of the two.
+ * <h3>Configuring Keepalives</h3>
+ * <p>
+ * By default, Trap will attempt to use a per-transport keepalive policy that strikes a moderate balance between
+ * liveness and chattiness. It will take into account traffic only on the current TrapTransport, and without using
+ * device integration. This simple implementation can be tweaked to use a static keepalive interval instead (every X
+ * milliseconds), or disabled, using the {@link #setKeepaliveInterval(int)} method. More advanced keepalives can be
+ * user-supplied on a transport basis using {@link TrapTransport#setKeepalivePredictor(TrapKeepalivePredictor)}.
+ * <h3>Customizing the Message Queue</h3>
+ * <p>
+ * Trap has a number of buffers it uses, and some (such as the message queue) can impact performance significantly under
+ * different usage patterns. The message queue is the first front-end that feeds Trap, and plays a large role. An
+ * endpoint can be instructed to either choose the "best" buffer available of a given type (see constants) using
+ * {@link #setQueueType(String)}, or it can be told to explicitly use a specific queue using
+ * {@link #setQueue(MessageQueue)}. User-supplied queues can be use, as long as they fulfil the requirements.
+
+
+ * @constructor
+ * @property {Trap.Endpoint.State} state The current Trap.Endpoint.State
+ * @property {Trap.Endpoint.Queue} queueType The message queue type
+ * @property {Integer} maxActiveTransports The maximum number of active transports. Default is 1.
+ * @property {Trap.Authentication} authentication The current authentication provider 
+ * @property {Trap.Endpoint.Format} format The message format used. Default is 8-bit.
+ * 
+ */
 Trap.Endpoint = function()
 {
 	Trap.EventObject.constructor.call(this);
@@ -43,7 +90,7 @@ Trap.Endpoint = function()
 	 * unless all transports have disconnected.
 	 * <li>The application specifically queries. In this.case, the TrapEndpoint
 	 * will specifically ensure that lastActivity has the most recent value.
-	 * </ul>>
+	 * </ul>
 	 */
 	this._lastAlive = 0;
 	
@@ -196,6 +243,9 @@ Trap.Endpoint = function()
 Trap.Endpoint.prototype = new Trap.EventObject;
 Trap.Endpoint.prototype.constructor = Trap.Endpoint;
 
+/**
+ * @namespace
+ */
 Trap.Endpoint.State = {
 	CLOSED : "Trap.Endpoint.State.CLOSED",
 	OPENING : "Trap.Endpoint.State.OPENING",
@@ -205,19 +255,45 @@ Trap.Endpoint.State = {
 	CLOSING : "Trap.Endpoint.State.CLOSING"
 };
 
+	/**
+	 * @namespace
+	 */
 Trap.Endpoint.Queue = {
 	REGULAR : "Trap.Endpoint.Queue.REGULAR"
 };
 
 /* Settings methods */
-
+  /**
+     * Enables a transport with a given name. Enabling a transport merely switches the enabled flag of the transport in
+     * the resident Trap configuration. It does not necessarily connect it.
+     * <p>
+     * Enabling a transport after a client endpoint has been asked to connect will cause the transport to be ignored
+     * until the reconnect procedure is triggered. For this reason, it is recommended that enabling/disabling transports
+     * is done before an endpoint is connected.
+     * 
+     * @param {String} transportName
+     *            The transport to enable.
+     * @throws TrapException
+     *             If the transport does not exist. This exception is thrown to prevent applications that rely on a
+     *             certain transport from being surprised when the transport never connects. A typical case is a client
+     *             disabling the http transport when websockets is not available.
+     */
 Trap.Endpoint.prototype.enableTransport = function(transportName)
 {
 	if (this.isTransportEnabled(transportName)) return;
 	
 	this.getTransport(transportName).enable();
 };
+    
 
+    /**
+	 * Disables a transport. Unlike {@link #enableTransport(String)}, this
+	 * method will always succeed, even if the transport does not exist. This
+	 * allows applications to safely remove transports they do not wish to use
+	 * – if the transport does not exist, it will not be used.
+	 * 
+	 * @param {String} transportName The transport to disable
+	 */
 Trap.Endpoint.prototype.disableTransport = function(transportName)
 {
 	if (!this.isTransportEnabled(transportName)) return;
@@ -225,12 +301,27 @@ Trap.Endpoint.prototype.disableTransport = function(transportName)
 	this.getTransport(transportName).disable();
 };
 
+    /**
+	 * Convenience method to disable all transports at a given configurable
+	 * object. This is primarily used to create controlled-environment Trap
+	 * connections, where the available transports are not automatically set.
+	 * Primarily targeted towards tests or other controlled environments, or
+	 * when all transports need to be clamped down.
+	 */
 Trap.Endpoint.prototype.disableAllTransports = function()
 {
 	for ( var i = 0; i < this.transports.size(); i++)
 		this.transports.get(i).disable();
 };
 
+    /**
+     * Queries if a transport is enabled. Preferable to calling {@link #getTransport(String)} and
+     * {@link TrapTransport#isEnabled()} as this method will not throw if a transport does not exist.
+     * 
+     * @param transportName
+     *            The transport whose state to query.
+     * @return <i>true</i> if a transport exists, and is enabled, <i>false</i> otherwise.
+     */
 Trap.Endpoint.prototype.isTransportEnabled = function(transportName)
 {
 	try
@@ -243,6 +334,13 @@ Trap.Endpoint.prototype.isTransportEnabled = function(transportName)
 	}
 };
 
+    /**
+     * Gets the configuration of this endpoint. This is the configuration as it applies for this node; it does not
+     * represent the configuration another endpoint needs to have to connect here. See
+     * {@link TrapListener#getClientConfiguration()} for that. This method is useful for debugging.
+     * 
+     * @return {String} A string representing the current configuration of this TrapEndpoint.
+     */
 Trap.Endpoint.prototype.getConfiguration = function()
 {
 	return this.config.toString();
@@ -252,7 +350,16 @@ Trap.Endpoint.prototype.parseConfiguration = function(configuration)
 {
 	return new Trap.Configuration(configuration);
 };
-
+    /**
+	 * Configures this TrapEndpoint, overwriting any previous configuration, and
+	 * setting the new string to the new configuration. This will also
+	 * reconfigure any constituent transports. This method should be used before
+	 * using any of the programmatic configuration methods, as it may override
+	 * them.
+	 * 
+	 * @param {String} configuration A string representing the new
+	 *            configuration.
+	 */
 Trap.Endpoint.prototype.configure = function(configuration)
 {
 	this.config = this.parseConfiguration(configuration);
@@ -270,16 +377,53 @@ Trap.Endpoint.prototype.configure = function(configuration)
 	this.compressionEnabled = this.config.getBooleanOption(Trap.Constants.OPTION_ENABLE_COMPRESSION, this.compressionEnabled);
 };
 
+    /**
+	 * Changes the configuration of a given transport. This is an alias to
+	 * accessing the transport and configuring it directly. After configuration,
+	 * the transport settings will be updated.
+	 * <p>
+	 * Care should be taken when using this method to not conflict with Trap's
+	 * general management. In most cases, an endpoint will manage transport
+	 * settings automatically, although some tweaks can be done on a
+	 * per-transport basis.
+	 * <p>
+	 * General configuration keys can be found as static properties in
+	 * {@link TrapTransport}. Specific options are relevant only to the given
+	 * transport.
+	 * 
+	 * @param transportName The name of the transport to configure.
+	 * @param configurationKey The <i>unprefixed</i> configuration key
+	 * @param configurationValue The new value of the key.
+	 * @throws TrapException If the transport does not exist (and thus cannot be
+	 *             configured).
+	 */
 Trap.Endpoint.prototype.configureTransport = function(transportName, configurationKey, configurationValue)
 {
 	this.getTransport(transportName).configure(configurationKey, configurationValue);
 };
-
+    /**
+	 * Gets the current set of transports associated with this TrapEndpoint.
+	 * These transports represent all the instances available to the endpoint,
+	 * not necessarily the ones that are currently in use. Each transport has an
+	 * individual state that determines if it is connected or not.
+	 * 
+	 * @return A collection of transports associated with this endpoint.
+	 */
 Trap.Endpoint.prototype.getTransports = function()
 {
 	return this.transports;
 };
 
+    /**
+     * Accesses a single transport by name. This is useful for advanced configuration of transports, debugging or highly
+     * specialised tweaking.
+     * 
+     * @param transportName
+     *            The name of the transport.
+     * @return The {@link TrapTransport} instance representing the transport
+     * @throws TrapException
+     *             If the transport does not exist.
+     */
 Trap.Endpoint.prototype.getTransport = function(transportName)
 {
 	
@@ -403,9 +547,10 @@ Trap.Endpoint.prototype.removeTransport = function(t)
 	this.transports.remove(t);
 };
 
-/**
- * Closes this.Trap endpoint, terminating any outstanding Trap transports.
- */
+    /**
+     * Closes this Trap endpoint, terminating any outstanding Trap transports. Does nothing if the endpoint is already
+     * closed, is closing, or is in an error state.
+     */
 Trap.Endpoint.prototype.close = function()
 {
 	if (this.getState() != Trap.Endpoint.State.OPEN)
@@ -475,7 +620,7 @@ Trap.Endpoint.prototype.close = function()
  * deployed, the TrapObject will never be serialized, thus saving on large
  * amounts of processing power.
  * 
- * @param data
+ * @param {Object|String} data The data to send. If an object, is serialised as JSON automatically.
  * @param {Number}
  *            channel The channel to send on
  * @param {Boolean}
@@ -658,8 +803,10 @@ Trap.Endpoint.prototype.reconnect = function(timeout, callback)
  * this.method executes in a Trap thread, so it should only perform minimal
  * operations before returning, in order to allow for maximum throughput.
  * 
- * @param evt.data
- *            The data received.
+ * @param {ArrayBuffer} evt.buffer The bytes received
+ * @param {String} evt.string A string constructed by parsing the bytes received as UTF-8
+ * @param {Object} evt.object An object formed by parsing the string as JSON.
+ * @param {Integer} evt.channel The Trap Channel the event was received on.
  */
 Trap.Endpoint.prototype.onmessage = function(evt)
 {
@@ -923,7 +1070,7 @@ Trap.Endpoint.prototype.onEnd = function(message, transport)
 	
 };
 
-/**
+/*
  * @param {Trap.Message} message
  * @param {Trap.Transport} transport
  */
@@ -931,7 +1078,7 @@ Trap.Endpoint.prototype.onClose = function(message, transport)
 {
 };
 
-/**
+/*
  * @param {Trap.Message} message
  * @param {Trap.Transport} transport
  */
@@ -1008,14 +1155,13 @@ Trap.Endpoint.prototype.setState = function(newState)
 	if (newState == Trap.Endpoint.State.CLOSED || newState == Trap.Endpoint.State.CLOSING || newState == Trap.Endpoint.State.ERROR) if (this.keepaliveTask) clearTimeout(this.keepaliveTask);
 };
 
-/**
+/*
  * @param {Trap.Message} message
  * @param {Trap.Transport} transport
  */
 Trap.Endpoint.prototype.onOpen = function(message, transport)
 {
 	
-	console.log("Endpoint ONOPEN");
 	if (this.getState() == Trap.Endpoint.State.CLOSED || this.getState() == Trap.Endpoint.State.CLOSING || this.getState() == Trap.Endpoint.State.ERROR)
 	{
 		this.logger.debug("Connection Error: Received OPEN message on {}. Returning with END", this);
@@ -1051,7 +1197,7 @@ Trap.Endpoint.prototype.createOnOpenedMessage = function(message)
 	return this.createMessage().setOp(Trap.Message.Operation.OPENED);
 };
 
-/**
+/*
  * @param {Array} messages
  * @param {Trap.Transport} transport
  */
@@ -1226,7 +1372,27 @@ Trap.Endpoint.prototype.getKeepaliveInterval = function()
 {
 	return this.keepaliveInterval;
 };
-
+    /**
+	 * Sets a new keepalive interval for the trap endpoint. The keepalive
+	 * interval has one of three possible meanings:
+	 * <ul>
+	 * <li>A value of {@link TrapKeepalivePolicy#DISABLED} will disable the
+	 * keepalives.
+	 * <li>A value of {@link TrapKeepalivePolicy#DEFAULT} will cause each
+	 * transport to use its internal estimate of what a good keepalive is.
+	 * <li>A value of 1 &lt;= n &lt;= 999999 will specify the number of seconds
+	 * between keepalive messages.
+	 * </ul>
+	 * Any change on the TrapEndpoint level will affect all transports
+	 * associated with this endpoint, overwriting any individual configuration
+	 * the transports may have had. The inverse does not apply.
+	 * <p>
+	 * See <a href=
+	 * "http://www.cf.ericsson.net/confluence/display/warp/Trap+Keepalives">the
+	 * Trap Keepalive documentation</a> for details on the keepalives.
+	 * 
+	 * @param newInterval The new keepalive interval or policy.
+	 */
 Trap.Endpoint.prototype.setKeepaliveInterval = function(newInterval)
 {
 	this.keepaliveInterval = newInterval;
@@ -1308,7 +1474,14 @@ Trap.Endpoint.prototype._keepaliveFun = function()
 		mt._keepaliveFun();
 	}, mTimer * 1000);
 };
-
+    /**
+	 * Sets the keepalive expiry timeout. Alias for
+	 * {@link TrapKeepalivePredictor#setKeepaliveExpiry(long)} on the currently
+	 * set predictor.
+	 * 
+	 * @param newExpiry The new keepalive expiry time.
+	 * @see TrapKeepalivePredictor#setKeepaliveExpiry(long)
+	 */
 Trap.Endpoint.prototype.setKeepaliveExpiry = function(newExpiry)
 {
 	this.keepaliveExpiry = newExpiry;
@@ -1317,9 +1490,11 @@ Trap.Endpoint.prototype.setKeepaliveExpiry = function(newExpiry)
 };
 
 /**
+ * Fetches the channel object associated with the given channel ID. If the
+ * channel was not created, creates it, allocating all required buffers.
  * 
- * @param {Number} channelID
- * @returns {Trap.Channel}
+ * @param {Number} channelID The channel object to retrieve
+ * @returns {Trap.Channel} A new or existing channel object
  */
 Trap.Endpoint.prototype.getChannel = function(channelID)
 {
@@ -1349,12 +1524,6 @@ Trap.Endpoint.prototype.getMaxChunkSize = function()
 	return this.config.getIntOption("trap." + Trap.Constants.OPTION_MAX_CHUNK_SIZE, 64*1024);
 };
 
-/**
- * @param {Trap.Message} message
- * @param {Trap.Transport} transport
- * @param {any} context
- * @returns void
- */
 Trap.Endpoint.prototype.ttMessageSent = function(message, transport, context)
 {
 	this.getChannel(message.getChannel()).messageSent(message);

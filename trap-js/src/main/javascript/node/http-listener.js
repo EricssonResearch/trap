@@ -1,6 +1,6 @@
-/**
+/*
  * @constructor
- * @returns {Trap.HTTPListenerTransport}
+ * @returns {Trap.Transports.HTTPListenerTransport}
  */
 Trap.Transports.HTTPListenerTransport = function() {
 	

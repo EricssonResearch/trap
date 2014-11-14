@@ -14,10 +14,8 @@
 	
 		<menu name="Trap ${project.version}" inherit="top">
 			<item name="Introduction" href="./index.html" />
-			<item name="Download / Install" href="./download.html" />
 			<item name="Java Quickstart" href="./trap-api/quickstart.html" />
-			<item name="JavaScript Quickstart" href="./trap-js/quickstart.html" />
-			<item name="Configuration" href="./configuration.html" />
+			<item name="JavaScript Quickstart" href="./trap-js/index.html" />
 			<item name="Channels" href="./channels.html" />
 		</menu>
 		

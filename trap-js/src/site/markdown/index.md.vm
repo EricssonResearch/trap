@@ -1,78 +1,61 @@
-Transport Abstraction Package (trap)
+Trap JavaScript
 ====
 
-This library provides a socket-based interface that abstracts a set of underlying transports (socket, websocket, http, functioncall), while allowing reconnects, network connection changes, compression and multiplexing. Trap can utilise one or more underlying connections to improve performance, is a fully binary protocol, and is designed to handle failures.
+The JavaScript library provides a fully-fledged stack for JS execution environments. It supports all major browsers and also node.js. 
 
-# Features
-Trap provides
+Installation
+====
 
-* Transport independent data transfer using a message paradigm.
-* Optional, reliable, in-order hop-to-hop transfer, regardless of underlying medium.
-* Connection re-establishment, when applicable. This recovers from a network connection change (e.g. wifi to cellular data)
-* Multiplexing of up to 255 application streams, at configurable priority levels that allow pre-emption of bulk data.
-* Support for Java and JavaScript clients and servers (node.js required for servers).
+The JS library comes pre-built with a debug and minified version. You can download them here:
 
-As an abstraction, Trap applies the following overheads (measured in Java, as of 2014)
+* https://repo1.maven.org/maven2/com/ericsson/research/trap/trap-js/
 
-* 16 bytes of protocol data per message (excluding transport overhead such as TCP/HTTP)
-* Approximately 50 kilobytes of RAM per connection (configurable usage for active connections)
-* A minimum of 200 kilobytes of RAM to load class files.
-* Two threads for network & timing. Additional threads as required by the application.
-* About 500 kilobytes .jar file (if packaging all features, including slf4j which Trap depends on)
+Once downloaded, add it as a script tag
 
-# Installation
-The easiest way to add Trap for Java is to include the full archive in one step. The following code will include Trap as well as the four default, built-in transports. These transports are not suitable in all contexts, but can serve as an entry point. 
-
-		<dependency>
-			<groupId>com.ericsson.research.trap.packaging</groupId>
-			<artifactId>trap-full</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-The recommended way is to include the specific transports as needed. The full list of transports is available in the [main repo](https://github.com/EricssonResearch/trap/tree/master/trap-transports). Some transports, such as HTTP, have multiple providers. It is recommended to use the best provider available (e.g. Servlet) when applicable.
-
-# Getting Started
-For more detailed information, see the dedicated getting started guide for [Java](./javaquickstart.html) or [JavaScript](./jsquickstart.html), or check out the [Java examples](./apidocs/reference/com/ericsson/research/trap/examples/package-summary.html). The rest of this guide assumes Java for clients and servers.
-
-Listening for incoming connections
----
-
-After you have included the Trap dependency, you can create a listener, which is the equivalent to a server socket.
-
-	listener = TrapFactory.createListener("http://0.0.0.0:8888");
+	<script src="trap.js"></script>
 	
-This will create and configure a listener with a fixed transport (http) to listen on any IP and port 8888. When the port is unspecified, Trap will automatically allocate available ports. The full list of ports can be accessed via <code>listener.getClientConfiguration()</code>.
+Usage
+====
 
-The listener, while allocated, is not listening to the sockets yet. In order to start listening, you need to call
+Once loaded, Trap puts everything under the Trap namespace and can be instantiated from there. Creating a client will automatically connect it, so make sure to set the handlers properly.
 
-	listener.listen(delegate);
-	
-where _delegate_ is an object that implements at least the [OnAccept](./apidocs/reference/com/ericsson/research/trap/delegates/OnAccept.html) interface from the [Trap Delegate Interfaces](./apidocs/reference/com/ericsson/research/trap/delegates/package-summary.html). This delegate will be called by the listener whenever a new Trap connection is established. 
-
-Whenever an incoming connection is received, the onAccept method will be called with a _TrapEndpoint_ object. The following code exemplifies how this is handled:
-
-	void incomingTrapConnection(TrapEndpoint endpoint, TrapListener listener, Object context) {
-		endpoint.setDelegate(myConnectionDelegate);
-		myEndpointCollection.put(endpointKey, endpoint);
+	client = new Trap.ClientEndpoint("http://trapserver.com:8888");
+	client.onopen = function() {
+		console.log("I am now open!");
 	}
-
-Connecting to a server
----
-
-Connect to a listener using a TrapClient.
-
-	client = TrapFactory.createClient("http://127.0.0.1:8888");
-	client.setDelegate(myDelegate);
-	client.open();
 	
-This will create a client to connect using http to localhost, port 8888. The delegate should implement at least the [OnOpen](./apidocs/reference/com/ericsson/research/trap/delegates/OnOpen.html) interface to be notified when the connection is open. The _trapOpen()_ function will be called when the connection is established.
+	client.onmessage = function(evt) {
+		console.log("Received from server: " + evt.string);
+	}
+	
+You can send messages any time after _onopen_ has been called, including inside the onopen call itself.
 
-Sending data
----
+	client.onopen = function() {
+		client.send("Hello, server");
+	}
+	
+Sending Different Datatypes
+----
 
-Sending data is as simple as calling TrapEndpoint.send().
+Trap supports three basic data types natively: ArrayBuffers, Objects and Strings. You can send any of them natively.
 
-# Documentation
-* [Home Page at Github](https://ericssonresearch.github.io/trap)
-* [Javadoc](./apidocs)
-* JSDoc
+	client.send(myArrayBuffer);
+	
+	client.send({foo: "bar"});
+	
+	client.send("foobar");
+
+Receiving Different Datatypes
+----
+
+Likewise, the different types can be retrieved at any time. Suppose an incoming message contains the string `{"foo":"bar"}`. We can read it out as follows:
+
+	client.onmessage = function(evt) {
+	
+		evt.bytes; // Returns an ArrayBuffer containing the bytes ['{', '"', 'f', 'o', 'o', '"', ':', '"', 'b', 'a', 'r', '}']
+		evt.string; // Returns the string '{"foo":"bar"}'
+		evt.object // Returns the object {foo:"bar"}
+	
+	}
+	
+Not all of these parameters are applicable to all datatypes. For example, data sent as binary (image) will not translate well to a string. Likewise, if the string does not represent an object, it will not parse well into JSON. It is up to the developer to separate between the types. Data will not be attempted to be parsed until the appropriate field is read.

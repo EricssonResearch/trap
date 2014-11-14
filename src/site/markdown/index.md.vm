@@ -32,7 +32,7 @@ The easiest way to add Trap for Java is to include the full archive in one step.
 The recommended way is to include the specific transports as needed. The full list of transports is available in the [main repo](https://github.com/EricssonResearch/trap/tree/master/trap-transports). Some transports, such as HTTP, have multiple providers. It is recommended to use the best provider available (e.g. Servlet) when applicable.
 
 # Getting Started
-For more detailed information, see the dedicated getting started guide for [Java](./javaquickstart.html) or [JavaScript](./jsquickstart.html), or check out the [Java examples](./apidocs/reference/com/ericsson/research/trap/examples/package-summary.html). The rest of this guide assumes Java for clients and servers.
+For more detailed information, see the dedicated getting started guide for [Java](./trap-api/quickstart.html) or [JavaScript](./trap-js/index.html), or check out the [Java examples](./apidocs/reference/com/ericsson/research/trap/examples/package-summary.html). The rest of this guide assumes Java for clients and servers.
 
 Listening for incoming connections
 ---
@@ -72,7 +72,8 @@ Sending data
 
 Sending data is as simple as calling TrapEndpoint.send().
 
-# Documentation
-* [Home Page at Github](https://ericssonresearch.github.io/trap)
-* [Javadoc](./apidocs)
-* JSDoc
+# Links
+* [Home Page](https://ericssonresearch.github.io/trap)
+* [Source Code](https://github.com/ericssonresearch/trap)
+* [Javadoc](./trap-api/apidocs/index.html)
+* [JSDoc](./trap-js/jsdoc/index.html)

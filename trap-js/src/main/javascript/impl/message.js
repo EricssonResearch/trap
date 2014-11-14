@@ -1,15 +1,12 @@
-	/**
-	 * This subclass defines the possible message operations of a TrapMessage.
-	 * For Trap, this is the complete subset of operations supported, for this
-	 * version, and may not be extended without requiring a clean break. That
-	 * is, Trap endpoints should never silently ignore invalid operations, so
-	 * remote Trap endpoints MUST ensure they do not send commands that are
-	 * invalid.
+	/*
+	 * 
 	 * 
 	 * @author Vladimir Katardjiev
-	 * @param {String|Uint8Array} inData
+	 * @param {String|Uint8Array} inData A string or bytearray containing a full message.
 	 * 
 	 * @property {any[]} data
+	 * @property 
+	 * @constructor
 	 */
 
 Trap.Message = function(inData)

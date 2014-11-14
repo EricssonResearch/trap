@@ -1,4 +1,4 @@
-/**
+/*
  * @constructor
  * @returns {Trap.WebsocketListenerTransport}
  */

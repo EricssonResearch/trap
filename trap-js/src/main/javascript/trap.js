@@ -3,11 +3,19 @@
 
 /**
  * Array of classes for Trap transports.
+ * @namespace
  */
 Trap.Transports = {};
 
+/**
+ * Enables/disables binary support
+ * @property
+ */
 Trap.supportsBinary = typeof(Uint8Array) != "undefined";
 
+/**
+ * @namespace
+ */
 Trap.Constants = {};
 Trap.Constants.OPTION_MAX_CHUNK_SIZE = "trap.maxchunksize";
 Trap.Constants.OPTION_ENABLE_COMPRESSION = "trap.enablecompression";

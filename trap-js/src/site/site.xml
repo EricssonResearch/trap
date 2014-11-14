@@ -9,10 +9,9 @@
 	<body>
 		
 		<menu name="Trap JavaScript API">
-			<item name="About" href="index.html" />
+			<item name="Quickstart" href="index.html" />
 			<item name="API Model" href="model.html" />
-			<item name="Quickstart" href="quickstart.html" />
-			<item name="JSDoc" href="./apidocs/index.html" />
+			<item name="JSDoc" href="./jsdoc/index.html" />
 		</menu>
 
 	</body>
