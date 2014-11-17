@@ -33,7 +33,7 @@ The easiest way to add Trap for Java is to include the full archive in one step.
 The recommended way is to include the specific transports as needed. The full list of transports is available in the [main repo](https://github.com/EricssonResearch/trap/tree/master/trap-transports). Some transports, such as HTTP, have multiple providers. It is recommended to use the best provider available (e.g. Servlet) when applicable.
 
 # Getting Started
-For more detailed information, see the dedicated getting started guide for [Java](./trap-api/quickstart.html) or [JavaScript](./trap-js/index.html), or check out the [Java examples](./apidocs/reference/com/ericsson/research/trap/examples/package-summary.html). The rest of this guide assumes Java for clients and servers.
+For more detailed information, see the dedicated getting started guide for [Java](https://ericssonresearch.github.io/trap/trap-api/quickstart.html) or [JavaScript](https://ericssonresearch.github.io/trap/trap-js/index.html), or check out the [Java examples](https://ericssonresearch.github.io/trap/trap-api/apidocs/reference/com/ericsson/research/trap/examples/package-summary.html). The rest of this guide assumes Java for clients and servers.
 
 Listening for incoming connections
 ---
@@ -48,7 +48,7 @@ The listener, while allocated, is not listening to the sockets yet. In order to 
 
 	listener.listen(delegate);
 	
-where _delegate_ is an object that implements at least the [OnAccept](./apidocs/reference/com/ericsson/research/trap/delegates/OnAccept.html) interface from the [Trap Delegate Interfaces](./apidocs/reference/com/ericsson/research/trap/delegates/package-summary.html). This delegate will be called by the listener whenever a new Trap connection is established. 
+where _delegate_ is an object that implements at least the [OnAccept](https://ericssonresearch.github.io/trap/trap-api/apidocs/reference/com/ericsson/research/trap/delegates/OnAccept.html) interface from the [Trap Delegate Interfaces](https://ericssonresearch.github.io/trap/trap-api/apidocs/reference/com/ericsson/research/trap/delegates/package-summary.html). This delegate will be called by the listener whenever a new Trap connection is established. 
 
 Whenever an incoming connection is received, the onAccept method will be called with a _TrapEndpoint_ object. The following code exemplifies how this is handled:
 
@@ -66,7 +66,7 @@ Connect to a listener using a TrapClient.
 	client.setDelegate(myDelegate);
 	client.open();
 	
-This will create a client to connect using http to localhost, port 8888. The delegate should implement at least the [OnOpen](./apidocs/reference/com/ericsson/research/trap/delegates/OnOpen.html) interface to be notified when the connection is open. The _trapOpen()_ function will be called when the connection is established.
+This will create a client to connect using http to localhost, port 8888. The delegate should implement at least the [OnOpen](https://ericssonresearch.github.io/trap/trap-api/apidocs/reference/com/ericsson/research/trap/delegates/OnOpen.html) interface to be notified when the connection is open. The _trapOpen()_ function will be called when the connection is established.
 
 Sending data
 ---
