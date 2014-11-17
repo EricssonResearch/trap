@@ -86,7 +86,7 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 		<site>
 			<id>github</id>
 			<name>Github</name>
-			<url>https://ericssonresearch.github.io/trap</url>
+			<url>scm:git:ssh://git@github.com/ericssonresearch/trap.git</url>
 		</site>
 	</distributionManagement>
 
@@ -96,6 +96,7 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 		<trap-releases-repo>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</trap-releases-repo>
 		<trap-snapshots-repo>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</trap-snapshots-repo>
 		<source-phase>package</source-phase>
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<modules>
@@ -295,6 +296,38 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 					<configuration>
 						<failOnError>false</failOnError>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.3</version>
+					<executions>
+						<execution>
+							<id>stage-for-scm-publish</id>
+							<phase>post-site</phase>
+							<goals>
+								<goal>stage</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-publish-plugin</artifactId>
+					<version>1.1</version>
+					<configuration>
+						<pubScmUrl>scm:git:ssh://git@github.com/ericssonresearch/trap.git</pubScmUrl>
+						<scmBranch>gh-pages</scmBranch>
+					</configuration>
+					<executions>
+						<execution>
+							<id>scm-publish</id>
+							<phase>site-deploy</phase>
+							<goals>
+								<goal>publish-scm</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
