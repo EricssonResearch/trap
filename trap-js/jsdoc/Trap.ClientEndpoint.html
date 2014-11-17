@@ -1,0 +1,3333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: ClientEndpoint</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Class: ClientEndpoint</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    ClientEndpoint
+    </h2>
+    
+        <div class="class-description">A Trap.ClientEndpoint is a Trap.Endpoint capable of opening an
+           outgoing connection, commonly to a TrapListener. It is able to
+           reconnect transports at will, unlike a ServerTrapEndpoint. This is
+           the main entry point for JavaScript. Create a Trap.ClientEndpoint
+           like so
+           <p>
+
+<pre>
+client = new Trap.ClientEndpoint(&quot;http://trapserver.com:8888&quot;);
+client.onopen = function() {
+};
+client.onmessage = function(evt) {
+};
+</pre>
+
+<p>
+The client will open automatically once instantiated. Assign at least the
+<b>onopen</b> and <b>onmessage</b> callbacks (and preferably <b>onerror</b>)
+in order to get a working client.</div>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <h4 class="name" id="ClientEndpoint"><span class="type-signature"></span>new ClientEndpoint<span class="signature">(configuration)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Instantiates a new Trap Client.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>configuration.useBinary</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Enables (default) or disables binary
+           support.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>configuration.autoConfigure</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Enables (default) or disables
+           automatic configuration</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>configuration.remote</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A URI or TrapConfiguration to the remote
+           host.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>configuration</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The alternate means to instantiate a
+           ClientEndpoint is to supply it with a single string constituting a
+           complete configuration.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="client-endpoint.js.html">impl/client-endpoint.js</a>, <a href="client-endpoint.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li><a href="Trap.Endpoint.html">Trap.Endpoint</a></li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="_lastAlive"><span class="type-signature"></span>_lastAlive<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Last known activity of the connection. Activity is defined as any form of
+message FROM the client. In general, the TrapEndpoint will not concern
+itself with ensuring this.value is continually updated, as that is mostly
+unnecessary overhead. It will update it during the following conditions:
+<p>
+<ul>
+<li>A transport disconnects. Even in this.case, the lastActivity field
+will only represent some most recent communication with the remote side,
+unless all transports have disconnected.
+<li>The application specifically queries. In this.case, the TrapEndpoint
+will specifically ensure that lastActivity has the most recent value.
+</ul>
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#_lastAlive">Trap.Endpoint#_lastAlive</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line95">line 95</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="canReconnectUntil"><span class="type-signature"></span>canReconnectUntil<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The last permitted timestamp for the client to re-establish connectivity.
+this.must be equal to or greater than canWakeupUntil, in order to
+maintain the same promise to the application.
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#canReconnectUntil">Trap.Endpoint#canReconnectUntil</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line111">line 111</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="canWakeupUntil"><span class="type-signature"></span>canWakeupUntil<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The last known timestamp where we can reliably wake up the underlying
+transports. If we have a wakeup mechanism, this.will be a non-negative
+value, and represents when we can unilaterally tell the application the
+connection is permanently dead (unless we can extend the wakeup
+mechanism).
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#canWakeupUntil">Trap.Endpoint#canWakeupUntil</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="failedTransports"><span class="type-signature"></span>failedTransports<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The transports that have failed in some non-fatal way. There will be an
+attempt taken in the future to recover them.
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="client-endpoint.js.html">impl/client-endpoint.js</a>, <a href="client-endpoint.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="keepaliveExpiry"><span class="type-signature"></span>keepaliveExpiry<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The number of milliseconds that the endpoint should wait for a response
+(and/or attempt to reconnect/resend) to do an orderly close. After this
+time, the transport will simply deallocate all of its resources and
+vanish.
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#keepaliveExpiry">Trap.Endpoint#keepaliveExpiry</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line119">line 119</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="transportsToConnect"><span class="type-signature"></span>transportsToConnect<span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The list of transports that have not been tried before or after all
+transports failed and being tried again.
+    </div>
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="client-endpoint.js.html">impl/client-endpoint.js</a>, <a href="client-endpoint.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="close"><span class="type-signature"></span>close<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Closes this Trap endpoint, terminating any outstanding Trap transports. Does nothing if the endpoint is already
+closed, is closing, or is in an error state.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#close">Trap.Endpoint#close</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line554">line 554</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="configure"><span class="type-signature"></span>configure<span class="signature">(configuration)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Configures this TrapEndpoint, overwriting any previous configuration, and
+setting the new string to the new configuration. This will also
+reconfigure any constituent transports. This method should be used before
+using any of the programmatic configuration methods, as it may override
+them.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>configuration</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A string representing the new
+           configuration.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#configure">Trap.Endpoint#configure</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line363">line 363</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="configureTransport"><span class="type-signature"></span>configureTransport<span class="signature">(transportName, configurationKey, configurationValue)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Changes the configuration of a given transport. This is an alias to
+accessing the transport and configuring it directly. After configuration,
+the transport settings will be updated.
+<p>
+Care should be taken when using this method to not conflict with Trap's
+general management. In most cases, an endpoint will manage transport
+settings automatically, although some tweaks can be done on a
+per-transport basis.
+<p>
+General configuration keys can be found as static properties in
+<code>TrapTransport</code>. Specific options are relevant only to the given
+transport.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>transportName</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the transport to configure.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>configurationKey</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The <i>unprefixed</i> configuration key</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>configurationValue</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The new value of the key.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#configureTransport">Trap.Endpoint#configureTransport</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line400">line 400</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        TrapException If the transport does not exist (and thus cannot be
+            configured).
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="disableAllTransports"><span class="type-signature"></span>disableAllTransports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Convenience method to disable all transports at a given configurable
+object. This is primarily used to create controlled-environment Trap
+connections, where the available transports are not automatically set.
+Primarily targeted towards tests or other controlled environments, or
+when all transports need to be clamped down.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#disableAllTransports">Trap.Endpoint#disableAllTransports</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line311">line 311</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="disableTransport"><span class="type-signature"></span>disableTransport<span class="signature">(transportName)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Disables a transport. Unlike , this
+method will always succeed, even if the transport does not exist. This
+allows applications to safely remove transports they do not wish to use
+– if the transport does not exist, it will not be used.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>transportName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The transport to disable</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#disableTransport">Trap.Endpoint#disableTransport</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line297">line 297</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="enableTransport"><span class="type-signature"></span>enableTransport<span class="signature">(transportName)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Enables a transport with a given name. Enabling a transport merely switches the enabled flag of the transport in
+the resident Trap configuration. It does not necessarily connect it.
+<p>
+Enabling a transport after a client endpoint has been asked to connect will cause the transport to be ignored
+until the reconnect procedure is triggered. For this reason, it is recommended that enabling/disabling transports
+is done before an endpoint is connected.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>transportName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The transport to enable.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#enableTransport">Trap.Endpoint#enableTransport</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line281">line 281</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        TrapException
+            If the transport does not exist. This exception is thrown to prevent applications that rely on a
+            certain transport from being surprised when the transport never connects. A typical case is a client
+            disabling the http transport when websockets is not available.
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getChannel"><span class="type-signature"></span>getChannel<span class="signature">(channelID)</span><span class="type-signature"> &rarr; {<a href="Trap.Channel.html">Trap.Channel</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches the channel object associated with the given channel ID. If the
+channel was not created, creates it, allocating all required buffers.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>channelID</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The channel object to retrieve</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#getChannel">Trap.Endpoint#getChannel</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line1499">line 1499</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A new or existing channel object
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="Trap.Channel.html">Trap.Channel</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getConfiguration"><span class="type-signature"></span>getConfiguration<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the configuration of this endpoint. This is the configuration as it applies for this node; it does not
+represent the configuration another endpoint needs to have to connect here. See
+TrapListener#getClientConfiguration() for that. This method is useful for debugging.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#getConfiguration">Trap.Endpoint#getConfiguration</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line344">line 344</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A string representing the current configuration of this TrapEndpoint.
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">String</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getMaxChunkSize"><span class="type-signature"></span>getMaxChunkSize<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#getMaxChunkSize">Trap.Endpoint#getMaxChunkSize</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line1522">line 1522</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Number</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getTransport"><span class="type-signature"></span>getTransport<span class="signature">(transportName)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Accesses a single transport by name. This is useful for advanced configuration of transports, debugging or highly
+specialised tweaking.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>transportName</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the transport.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#getTransport">Trap.Endpoint#getTransport</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line427">line 427</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        TrapException
+            If the transport does not exist.
+    
+    </div>
+
+
+        
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The <code>TrapTransport</code> instance representing the transport
+</div>
+
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getTransports"><span class="type-signature"></span>getTransports<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Gets the current set of transports associated with this TrapEndpoint.
+These transports represent all the instances available to the endpoint,
+not necessarily the ones that are currently in use. Each transport has an
+individual state that determines if it is connected or not.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#getTransports">Trap.Endpoint#getTransports</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line412">line 412</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    A collection of transports associated with this endpoint.
+</div>
+
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="isAlive"><span class="type-signature"></span>isAlive<span class="signature">(within, check, reconnect, timeout, callback)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Attempts to verify if the endpoint is alive, or has been alive within a
+certain number of milliseconds. Effectively, this.can be used to trigger a
+keepalive check of the endpoint if used with a <i>within</i> parameter of 0
+and a <i>check</i> parameter of true.
+<p>
+this.function has a two-part purpose. The first is for the application to be
+able to check the last known liveness of the endpoint, to reduce the
+discovery time of a dead connection. The second is to trigger a check for a
+dead endpoint, when the application needs to know that it has active
+connectivity.
+<p>
+Note that in normal operation, the endpoint itself will report when it has
+disconnected; the application does not need to concern itself with
+this.detail unless it specifically needs to know that it has connectivity
+right now.
+<p>
+<b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when
+none of the transports can perform the open() function) may cause a client to
+lose its connectivity. The client may not have discovered the underlying
+transport is dead yet, and may require more time to reconnect. A wakeup
+mechanism can be used to establish liveness, but the server's <i>timeout</i>
+value should be significantly more generous in order to accommodate the
+client's reconnect and/or wakeup procedure!
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>within</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">long</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Within how many milliseconds the last activity of the endpoint
+           should have occurred before the endpoint should question whether
+           it is alive.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>check</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether the endpoint should attempt to check for liveness, or
+           simply return false if the last known activity of the endpoint is
+           not later than within.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>reconnect</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to attempt to force reconnection if the transports are not
+           available within the given timeout. this.will ensure available
+           liveness value reflects what is possible right now, although it
+           may mean disconnecting transports that still may recover.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>timeout</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">long</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">If check is true, how many milliseconds at most the liveness check
+           should take before returning false anyway. The application can use
+           this.value if it has a time constraint on it.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><i>true</i> if the connection is currently alive (including if
+          this.function successfully re-established the connection), <i>false</i>
+          otherwise.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#isAlive">Trap.Endpoint#isAlive</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line1294">line 1294</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="isTransportEnabled"><span class="type-signature"></span>isTransportEnabled<span class="signature">(transportName)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Queries if a transport is enabled. Preferable to calling  and
+{@link TrapTransport#isEnabled()} as this method will not throw if a transport does not exist.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>transportName</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The transport whose state to query.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#isTransportEnabled">Trap.Endpoint#isTransportEnabled</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line325">line 325</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <i>true</i> if a transport exists, and is enabled, <i>false</i> otherwise.
+</div>
+
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="lastAlive"><span class="type-signature"></span>lastAlive<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches the last known liveness timestamp of the endpoint. this.is the last
+time it received a message from the other end. this.includes all messages
+(i.e. also Trap messages such as keepalives, configuration, etc) so must not
+be confused with the last known activity of the other application. For
+example, in the case of a JavaScript remote endpoint, this.does not guarantee
+an evaluation error has not rendered the JSApp's main run loop as inoperable.
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#lastAlive">Trap.Endpoint#lastAlive</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line1233">line 1233</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li></li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The timestamp of the last message received from the remote side.
+</div>
+
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="onfailedsending"><span class="type-signature"></span>onfailedsending<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Called when a Trap Endpoint knows it has failed to send some messages.
+this.can occur when the Trap Endpoint is killed forcibly, loses all its
+transports while still having an outgoing buffer, or fails to wake up a
+client that has disconnected all its transports normally.
+<p>
+Note that there are conditions when Trap may unwittingly lose data (such as
+data sent during a switch from unauthenticated -> authenticated session, when
+the authentication is triggered from the remote side), so the sum of data
+received by the other end, and called on this.method, may be different.
+Nevertheless, any data returned by this.method definitely failed to send.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.datas</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A collection of transportable objects that failed sending. Usually
+           byte arrays, but may contain TrapObject instances.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#onfailedsending">Trap.Endpoint#onfailedsending</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line844">line 844</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="onmessage"><span class="type-signature"></span>onmessage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Called when the Trap endpoint has received byte data from the other end.
+this.method executes in a Trap thread, so it should only perform minimal
+operations before returning, in order to allow for maximum throughput.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.buffer</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">ArrayBuffer</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The bytes received</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.string</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A string constructed by parsing the bytes received as UTF-8</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.object</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">An object formed by parsing the string as JSON.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.channel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Integer</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The Trap Channel the event was received on.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#onmessage">Trap.Endpoint#onmessage</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line811">line 811</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="onstatechange"><span class="type-signature"></span>onstatechange<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Called when Trap changes state. Includes both the new state, and the previous
+one.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.newState</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The state Trap changed to.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>evt.oldState</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The previous state.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#onstatechange">Trap.Endpoint#onstatechange</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line824">line 824</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(data, channel, useCompression)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Attempts to queue data for sending. If the queue length is exceeded, it may
+block or throw an exception, as per the queue type.
+<p>
+Please note that while send will accurately send the data over to the other
+endpoint, it is advisable to instead use  if the
+data being sent is a serialized object. If the other endpoint is locally
+deployed, the TrapObject will never be serialized, thus saving on large
+amounts of processing power.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The data to send. If an object, is serialised as JSON automatically.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>channel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The channel to send on</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>useCompression</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Whether to use compression for this message or not.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#send">Trap.Endpoint#send</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line632">line 632</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    <h5>Throws:</h5>
+    
+            
+
+    <div class="param-desc">
+    
+        TrapException
+            if the queue length is exceeded, or a timeout occurs on a
+            blocking queue
+    
+    </div>
+
+
+        
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setKeepaliveExpiry"><span class="type-signature"></span>setKeepaliveExpiry<span class="signature">(newExpiry)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets the keepalive expiry timeout. Alias for
+TrapKeepalivePredictor#setKeepaliveExpiry(long) on the currently
+set predictor.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>newExpiry</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The new keepalive expiry time.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#setKeepaliveExpiry">Trap.Endpoint#setKeepaliveExpiry</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line1485">line 1485</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>TrapKeepalivePredictor#setKeepaliveExpiry(long)</li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="setKeepaliveInterval"><span class="type-signature"></span>setKeepaliveInterval<span class="signature">(newInterval)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sets a new keepalive interval for the trap endpoint. The keepalive
+interval has one of three possible meanings:
+<ul>
+<li>A value of <code>TrapKeepalivePolicy#DISABLED</code> will disable the
+keepalives.
+<li>A value of <code>TrapKeepalivePolicy#DEFAULT</code> will cause each
+transport to use its internal estimate of what a good keepalive is.
+<li>A value of 1 &lt;= n &lt;= 999999 will specify the number of seconds
+between keepalive messages.
+</ul>
+Any change on the TrapEndpoint level will affect all transports
+associated with this endpoint, overwriting any individual configuration
+the transports may have had. The inverse does not apply.
+<p>
+See <a href=
+"http://www.cf.ericsson.net/confluence/display/warp/Trap+Keepalives">the
+Trap Keepalive documentation</a> for details on the keepalives.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>newInterval</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The new keepalive interval or policy.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Trap.Endpoint.html#setKeepaliveInterval">Trap.Endpoint#setKeepaliveInterval</a>
+    </li></dd>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="endpoint.js.html">impl/endpoint.js</a>, <a href="endpoint.js.html#line1396">line 1396</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Trap.Channel.html">Channel</a></li><li><a href="Trap.ClientEndpoint.html">ClientEndpoint</a></li><li><a href="Trap.Endpoint.html">Endpoint</a></li><li><a href="Trap.ListenerEndpoint.html">ListenerEndpoint</a></li></ul><h3>Namespaces</h3><ul><li><a href="Trap.Constants.html">Constants</a></li><li><a href="Trap.Endpoint.Queue.html">Queue</a></li><li><a href="Trap.Endpoint.State.html">State</a></li><li><a href="Trap.Transports.html">Transports</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.3-dev</a> on Mon Nov 17 2014 11:09:14 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

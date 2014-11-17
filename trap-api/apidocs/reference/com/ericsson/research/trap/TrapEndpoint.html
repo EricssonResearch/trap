@@ -1,0 +1,3205 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for TrAP API." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>
+
+  TrapEndpoint
+
+
+| TrAP API
+
+</title>
+<link href="../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../", "../../../../../assets/");
+</script>
+<script src="../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">TrAP API</span>
+    
+    </div>
+    <div id="headerRight">
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../packages.html"  >Package Index</a> | 
+                <a href="../../../../classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="selected api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/package-summary.html">com.ericsson.research.trap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/auth/package-summary.html">com.ericsson.research.trap.auth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/delegates/package-summary.html">com.ericsson.research.trap.delegates</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/examples/package-summary.html">com.ericsson.research.trap.examples</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/utils/package-summary.html">com.ericsson.research.trap.utils</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapChannel.html">TrapChannel</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a></li>
+          <li class="selected api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapListenerDelegate.html">TrapListenerDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapPeer.TrapPeerChannel.html">TrapPeer.TrapPeerChannel</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapSettings.html">TrapSettings</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapFactory.html">TrapFactory</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapKeepalivePolicy.html">TrapKeepalivePolicy</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapTransports.html">TrapTransports</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+  <a href="#constants">Constants</a>
+  
+
+
+
+
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1>TrapEndpoint</h1>
+
+
+
+  
+  
+      implements 
+      
+        <a href="../../../../com/ericsson/research/trap/TrapSettings.html">TrapSettings</a> 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">com.ericsson.research.trap.TrapEndpoint</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a></td>
+              <td class="jd-descrcol" width="100%">A TrapClient is a TrapEndpoint capable of opening an outgoing connection, commonly to a TrapListener.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a></td>
+              <td class="jd-descrcol" width="100%">Interface used to maintain peer to peer Trap connections.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>The main interface to Trap, a TrapEndpoint is the shared interface between servers and clients. It provides most of
+ the methods that should be necessary to configure and use a Trap connection.
+ <p>
+ In general, a TrapEndpoint should be configured either when it has just been created, using a <code><a href="../../../../com/ericsson/research/trap/TrapFactory.html">TrapFactory</a></code>, or
+ when it has just been provided to a <code><a href="../../../../com/ericsson/research/trap/TrapListenerDelegate.html">TrapListenerDelegate</a></code> using the callback. Reconfiguring a TrapEndpoint
+ while it is in use can have unintended consequences.
+ <p>
+ Common tasks on a TrapEndpoint are:
+ <h3>Configuring Transports</h3>
+ <p>
+ Enabling and disabling transports, as well as configuring each transport, is possible from TrapEndpoint. Adding new
+ transports to an existing endpoint is not possible; for that, instead use
+ <code><a href="../../../../com/ericsson/research/trap/TrapTransports.html#addTransportClass(java.lang.Class<? extends com.ericsson.research.trap.spi.TrapTransport>)">addTransportClass(Class)</a></code> before instantiating an endpoint.
+ <h3>Sending and Receiving Messages</h3>
+ <p>
+ To send messages, simply use <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send(byte[])</a></code> to send binary data, or <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject)">send(TrapObject)</a></code> to use deferred
+ serialization. When data is received, the appropriate delegate that implements <code><a href="../../../../com/ericsson/research/trap/delegates/OnData.html">OnData</a></code> or <code><a href="../../../../com/ericsson/research/trap/delegates/OnObject.html">OnObject</a></code> is
+ called.
+ <h3>Checking Liveness</h3>
+ <p>
+ Trap provides a simple facility to check if the other endpoint is alive, that is, communication is active and the
+ other application layer is responding. The <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive(long)</a></code> method will perform an active check, that is, ping
+ immediately. The <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive(long, boolean, boolean, long)</a></code> method on the other hand can be used to check if the
+ endpoint has been alive recently, or a combination of the two.
+ <h3>Configuring Keepalives</h3>
+ <p>
+ By default, Trap will attempt to use a per-transport keepalive policy that strikes a moderate balance between
+ liveness and chattiness. It will take into account traffic only on the current TrapTransport, and without using
+ device integration. This simple implementation can be tweaked to use a static keepalive interval instead (every X
+ milliseconds), or disabled, using the <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setKeepaliveInterval(int)">setKeepaliveInterval(int)</a></code> method. More advanced keepalives can be
+ user-supplied on a transport basis using <code><a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html#setKeepalivePredictor(com.ericsson.research.trap.spi.TrapKeepalivePredictor)">setKeepalivePredictor(TrapKeepalivePredictor)</a></code>.
+ <h3>Customizing the Message Queue</h3>
+ <p>
+ Trap has a number of buffers it uses, and some (such as the message queue) can impact performance significantly under
+ different usage patterns. The message queue is the first front-end that feeds Trap, and plays a large role. An
+ endpoint can be instructed to either choose the "best" buffer available of a given type (see constants) using
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueueType(java.lang.String)">setQueueType(String)</a></code>, or it can be told to explicitly use a specific queue using
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueue(com.ericsson.research.trap.spi.queues.MessageQueue)">setQueue(MessageQueue)</a></code>. User-supplied queues can be use, as long as they fulfil the requirements.</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#BLOCKING_BYTE_QUEUE">BLOCKING_BYTE_QUEUE</a></td>
+        <td class="jd-descrcol" width="100%">Constant representing a blocking byte queue.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#BLOCKING_MESSAGE_QUEUE">BLOCKING_MESSAGE_QUEUE</a></td>
+        <td class="jd-descrcol" width="100%">Constant representing a blocking message queue.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#OPTION_AUTO_HOSTNAME">OPTION_AUTO_HOSTNAME</a></td>
+        <td class="jd-descrcol" width="100%">Hostname for automatic configuration.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#OPTION_ENABLE_COMPRESSION">OPTION_ENABLE_COMPRESSION</a></td>
+        <td class="jd-descrcol" width="100%">Configuration parameter to enable/disable compression.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#OPTION_LOGGERPREFIX">OPTION_LOGGERPREFIX</a></td>
+        <td class="jd-descrcol" width="100%">Configuration parameter representing the prefix to be prepended to all logging out of this endpoint.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#OPTION_MAX_CHUNK_SIZE">OPTION_MAX_CHUNK_SIZE</a></td>
+        <td class="jd-descrcol" width="100%">Configuration parameter for the maximum chunk size.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#REGULAR_BYTE_QUEUE">REGULAR_BYTE_QUEUE</a></td>
+        <td class="jd-descrcol" width="100%">Constant representing a non-blocking byte queue.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#REGULAR_MESSAGE_QUEUE">REGULAR_MESSAGE_QUEUE</a></td>
+        <td class="jd-descrcol" width="100%">Constant representing a regular message queue.</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#close()">close</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Closes this Trap endpoint, terminating any outstanding Trap transports.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/auth/TrapAuthentication.html">TrapAuthentication</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getAuthentication()">getAuthentication</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the authentication instance for this Trap endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getBlockingTimeout()">getBlockingTimeout</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Accessor for the current blocking timeout</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/TrapChannel.html">TrapChannel</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getChannel(int)">getChannel</a></span>(int channelID)</nobr>
+        
+        <div class="jd-descrdiv">Fetches the channel object associated with the given channel ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getKeepaliveInterval()">getKeepaliveInterval</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retreives the current value of <i>keepaliveInterval</i>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getMaxActiveTransports()">getMaxActiveTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the amount of maximum simultaneously active transports.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getReconnectTimeout()">getReconnectTimeout</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the reconnect timeout.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getState()">getState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Accessor for the current endpoint state.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getTransportAuthenticationContexts()">getTransportAuthenticationContexts</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches all the available authentication context, for all transports; including, where available, IP numbers,
+ ports, etc.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getTrapFormat()">getTrapFormat</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the current message serialization format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAsync()">isAsync</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Checks whether this endpoint works in async mode.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#lastAlive()">lastAlive</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the last known liveness timestamp of the endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject)">send</a></span>(<a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a> object)</nobr>
+        
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject, int, boolean)">send(TrapObject, int, boolean)</a></code>, with the channel ID set to 1.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
+        
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject, int, boolean)">send</a></span>(<a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a> object, int channel, boolean useCompression)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to queue an object for sending.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setAsync(boolean)">setAsync</a></span>(boolean async)</nobr>
+        
+        <div class="jd-descrdiv">In async mode, the endpoint will automatically schedule incoming messages on a separate thread than the one on
+ which they are received.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setAuthentication(com.ericsson.research.trap.auth.TrapAuthentication)">setAuthentication</a></span>(<a href="../../../../com/ericsson/research/trap/auth/TrapAuthentication.html">TrapAuthentication</a> authentication)</nobr>
+        
+        <div class="jd-descrdiv">Assigns an authentication instance to this TrapEndpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setBlockingTimeout(long)">setBlockingTimeout</a></span>(long timeout)</nobr>
+        
+        <div class="jd-descrdiv">Sets the blocking timeout, when using a blocking queue.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)">setDelegate</a></span>(<a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        
+        <div class="jd-descrdiv">
+      <em>
+  This method is deprecated.
+      Since 1.1, the preferred signature is <code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate(TrapDelegate, boolean)</a></code>. If a context is
+             required, use the explicit <code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegateContext(java.lang.Object)">setDelegateContext(Object)</a></code> method.
+</em></div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setKeepaliveExpiry(long)">setKeepaliveExpiry</a></span>(long newExpiry)</nobr>
+        
+        <div class="jd-descrdiv">Sets the keepalive expiry timeout.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setKeepaliveInterval(int)">setKeepaliveInterval</a></span>(int newInterval)</nobr>
+        
+        <div class="jd-descrdiv">Sets a new keepalive interval for the trap endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setMaxActiveTransports(int)">setMaxActiveTransports</a></span>(int newMax)</nobr>
+        
+        <div class="jd-descrdiv">Sets the maximum allowed simultaneous transports.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueue(com.ericsson.research.trap.spi.queues.MessageQueue)">setQueue</a></span>(<a href="../../../../com/ericsson/research/trap/spi/queues/MessageQueue.html">MessageQueue</a> newQueue)</nobr>
+        
+        <div class="jd-descrdiv">Assigns a new queue implementation for the outgoing message queue.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueueType(java.lang.String)">setQueueType</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> type)</nobr>
+        
+        <div class="jd-descrdiv">Like <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueue(com.ericsson.research.trap.spi.queues.MessageQueue)">setQueue(MessageQueue)</a></code>, except it instantiates one of the built-in queues based on default
+ parameters.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setReconnectTimeout(long)">setReconnectTimeout</a></span>(long reconnectTimeout)</nobr>
+        
+        <div class="jd-descrdiv">Sets the reconnect timeout.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setTrapFormat(com.ericsson.research.trap.spi.TrapMessage.Format)">setTrapFormat</a></span>(<a href="../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a> trapFormat)</nobr>
+        
+        <div class="jd-descrdiv">Sets the Trap message format for this endpoint.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.ericsson.research.trap.TrapSettings" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.ericsson.research.trap.TrapSettings-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../com/ericsson/research/trap/TrapSettings.html">com.ericsson.research.trap.TrapSettings</a>
+
+<div id="inherited-methods-com.ericsson.research.trap.TrapSettings">
+  <div id="inherited-methods-com.ericsson.research.trap.TrapSettings-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.ericsson.research.trap.TrapSettings-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#configure(java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configuration)</nobr>
+        
+        <div class="jd-descrdiv">Configures this TrapEndpoint, overwriting any previous configuration, and setting the new string to the new
+ configuration.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#configureTransport(java.lang.String, java.lang.String, java.lang.String)">configureTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
+        
+        <div class="jd-descrdiv">Changes the configuration of a given transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#disableAllTransports()">disableAllTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Convenience method to disable all transports at a given configurable object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#disableTransport(java.lang.String)">disableTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Disables a transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#enableTransport(java.lang.String)">enableTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Enables a transport with a given name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getConfiguration()">getConfiguration</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the configuration of this endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getHostingTransport(java.lang.String)">getHostingTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> protocol)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to fetch a <code><a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></code> instance for the specific protocol.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getHostingTransports()">getHostingTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Ask the endpoint to make a list of the currently available <code><a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></code>s associated with it.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getTransport(java.lang.String)">getTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Accesses a single transport by name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getTransports()">getTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the current set of transports associated with this TrapEndpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#isTransportEnabled(java.lang.String)">isTransportEnabled</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Queries if a transport is enabled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate</a></span>(<a href="../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</nobr>
+        
+        <div class="jd-descrdiv">Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegateContext(java.lang.Object)">setDelegateContext</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> delegateContext)</nobr>
+        
+        <div class="jd-descrdiv">Trap delegates may have an additional context object provided at callback time.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setOption(java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> optionName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets a configuration option.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="BLOCKING_BYTE_QUEUE"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        BLOCKING_BYTE_QUEUE
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constant representing a blocking byte queue. Properties follow:
+ <ul>
+ <li>Low memory overhead
+ <li>Moderate CPU overhead to calculate the bytes in/out
+ <li>Upper limit on the RAM usage.
+ </ul>
+ The regular message queue is good for a generic traffic pattern, that does not have a more specific property, on
+ desktop machines.
+ <p>
+ When supplied to <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueueType(java.lang.String)">setQueueType(String)</a></code>, allows Trap to automatically select the specific queue
+ implementation from the built-in ones.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "BLOCKING_BYTE_QUEUE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="BLOCKING_MESSAGE_QUEUE"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        BLOCKING_MESSAGE_QUEUE
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constant representing a blocking message queue. Properties follow:
+ <ul>
+ <li>Low memory overhead
+ <li>Upper limit on number of messages; provides rough prevention against out of memory / buffer overruns.
+ <li>No view on how much memory is used by the queue.
+ </ul>
+ The blocking message queue type is a reasonably low-overhead queue that can prevent rudimentary memory issues. It
+ still provides no explicit checks, but is better than nothing.
+ <p>
+ When supplied to <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueueType(java.lang.String)">setQueueType(String)</a></code>, allows Trap to automatically select the specific queue
+ implementation from the built-in ones.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "BLOCKING_MESSAGE_QUEUE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="OPTION_AUTO_HOSTNAME"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        OPTION_AUTO_HOSTNAME
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Hostname for automatic configuration. This option is used by the client to format its Open message, and for the
+ server to ensure the client has the correct transports configured
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "trap.auto_hostname"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="OPTION_ENABLE_COMPRESSION"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        OPTION_ENABLE_COMPRESSION
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Configuration parameter to enable/disable compression. Set to <i>false</i> to disable compression support on the
+ endpoint.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "trap.enablecompression"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="OPTION_LOGGERPREFIX"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        OPTION_LOGGERPREFIX
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Configuration parameter representing the prefix to be prepended to all logging out of this endpoint. This option
+ is useful for integrating this Trap endpoint's logging into a greater structure.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "trap.loggerprefix"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="OPTION_MAX_CHUNK_SIZE"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        OPTION_MAX_CHUNK_SIZE
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Configuration parameter for the maximum chunk size. Set to [1,Integer.MAX_VALUE] to alter the maximum chunk size
+ of the endpoint. Set to 0 or less to disable chunking entirely.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "trap.maxchunksize"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="REGULAR_BYTE_QUEUE"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        REGULAR_BYTE_QUEUE
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constant representing a non-blocking byte queue. Properties follow:
+ <ul>
+ <li>Low memory overhead
+ <li>Moderate CPU overhead to calculate the bytes in/out
+ <li>No upper limit on number of messages.
+ <li>Can inspect how much memory is used
+ </ul>
+ The regular message queue is good for a generic traffic pattern, that does not have a more specific property, on
+ desktop machines.
+ <p>
+ When supplied to <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueueType(java.lang.String)">setQueueType(String)</a></code>, allows Trap to automatically select the specific queue
+ implementation from the built-in ones.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "REGULAR_BYTE_QUEUE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="REGULAR_MESSAGE_QUEUE"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+        REGULAR_MESSAGE_QUEUE
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constant representing a regular message queue. Properties follow:
+ <ul>
+ <li>Lowest memory overhead of any kind of queue.
+ <li>No upper limit on number of messages.
+ <li>No view on how much memory is used by the queue.
+ </ul>
+ The regular message queue is good for a generic traffic pattern, that does not have a more specific property, on
+ desktop machines.
+ <p>
+ When supplied to <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueueType(java.lang.String)">setQueueType(String)</a></code>, allows Trap to automatically select the specific queue
+ implementation from the built-in ones.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "REGULAR_MESSAGE_QUEUE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="close()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">close</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Closes this Trap endpoint, terminating any outstanding Trap transports. Does nothing if the endpoint is already
+ closed, is closing, or is in an error state.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getAuthentication()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/auth/TrapAuthentication.html">TrapAuthentication</a>
+      </span>
+      <span class="sympad">getAuthentication</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the authentication instance for this Trap endpoint. Can be used by individual transports to challenge
+ and/or authenticate incoming messages, if the transport requires more authentication than the default Trap
+ security policy.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The TrapAuthentication instance used by the endpoint.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getBlockingTimeout()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        long
+      </span>
+      <span class="sympad">getBlockingTimeout</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Accessor for the current blocking timeout</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The current blocking timeout.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getChannel(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/TrapChannel.html">TrapChannel</a>
+      </span>
+      <span class="sympad">getChannel</span>
+      <span class="normal">(int channelID)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the channel object associated with the given channel ID. If the channel was not created, creates it,
+ allocating all required buffers.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>channelID</td>
+          <td>The channel ID to get the object for.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The object responsible for maintaining the channel's state.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getKeepaliveInterval()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getKeepaliveInterval</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retreives the current value of <i>keepaliveInterval</i>. See <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setKeepaliveInterval(int)">setKeepaliveInterval(int)</a></code> for information
+ about what the different values mean.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The number of seconds between keepalives.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getMaxActiveTransports()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getMaxActiveTransports</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the amount of maximum simultaneously active transports.
+ <p>
+ The number of max simultaneously active transports governs the behaviour of Trap Endpoints (both client and
+ server). If the number of active transports equals the number of maximum simultaneous transports, recovery will
+ only take place for transports with higher priority than the currently active transport.
+ <p>
+ If the number of active transports exceeds the maximum, transports will be closed, starting with the lowest
+ priority (largest integer). Note that this is a <i>soft limit</i>. The Trap implementation may exceed the maximum
+ number of transports for a transitional period, in order to ensure a smooth handover.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The current maximum simultaneously active transports
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getReconnectTimeout()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        long
+      </span>
+      <span class="sympad">getReconnectTimeout</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the reconnect timeout. See <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setReconnectTimeout(long)">setReconnectTimeout(long)</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The current reconnect timeout, in milliseconds
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getState()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a>
+      </span>
+      <span class="sympad">getState</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Accessor for the current endpoint state.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The state the endpoint is in.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTransportAuthenticationContexts()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;&gt;
+      </span>
+      <span class="sympad">getTransportAuthenticationContexts</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches all the available authentication context, for all transports; including, where available, IP numbers,
+ ports, etc. This context will be based on <code><a href="../../../../com/ericsson/research/trap/auth/TrapContextKeys.html">TrapContextKeys</a></code>, among other detail information, and consist of
+ a map for each transport, indexed by transport name. This information will provide detail level information on
+ the connection for each transport.
+ <p>
+ Typical output for a single-transport scenario may look as follows:
+ 
+ <pre>
+ {
+  socket= {
+      LastAlive=1407198698446,
+      Format=REGULAR, 
+      State=AVAILABLE, 
+      Transport=socket/1/AVAILABLE/704f459c, 
+      LocalIP=127.0.0.1, 
+      LocalPort=59277, 
+      Configuration=trap.enablecompression = true
+      RemotePort=59278, 
+      Protocol=tcp, 
+      RemoteIP=127.0.0.1, 
+      Priority=-100
+      }
+  }
+ </pre>
+ 
+ From this information, we can gather all pertinent information about the transport's internal state. This is a
+ socket transport that is not configured to connect, so was provided by a server endpoint. The state is AVAILABLE,
+ and lastAlive specifies when there was traffic seen. We have the TCP 5-tuple information, which can be used to
+ identify a connection that has not changed.
+ <p>
+ This information is generally available to a <code><a href="../../../../com/ericsson/research/trap/auth/TrapAuthentication.html">TrapAuthentication</a></code> instance assigned to the endpoint and/or
+ transports. The authentication will be automatically invoked whenever any changes may occur on the underlying
+ connection, such as a new TCP session, unsecure packet, new HTTP request, transport switchover, or a new
+ transport being introduced. <b>If this information is needed to provide <i>security</i>, TrapAuthentication
+ should be used</b>.
+ <p>
+ This method is intended for <i>informational</i> purposes. The returned values are immediately polled, will
+ include all possible values, and will be requested synchronously; the CPU cost of using this method often is
+ non-negligible. The method is thread safe with no need for synchronization.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A map of all authentication context available.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTrapFormat()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a>
+      </span>
+      <span class="sympad">getTrapFormat</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the current message serialization format.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the current message serialization format.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAlive(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;
+      </span>
+      <span class="sympad">isAlive</span>
+      <span class="normal">(long timeout)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.
+ This function is primarily intended for when an application requires to know it has connectivity <i>right this
+ instant</i>, and should be used sparingly on power-constrained devices.
+ <p>
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive(long)</a></code> is synonymous to calling <i>isAlive(timeout, true, true, timeout)</i>.
+ <p>
+ Note that isAlive is intended to be used in an asynchronous mode. The callback may be used to request a
+ synchronous answer, but this is strongly discouraged. Further note that isAlive will take longer time to execute
+ than <i>timeout</i> as it will both try to verify transport liveness, and then reconnect the transport if
+ verification fails. Transport reconnection uses a timer longer than <i>timeout</i>, to allow for additional
+ round-trips used when connecting.
+ <p>
+ <b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when none of the transports can perform
+ the open() function) may cause an endpoint to close on the server, while the client considers it open. The client
+ may not have discovered the underlying transport is dead yet, and may require more time to reconnect. A wakeup
+ mechanism can be used to establish liveness, but the server's <i>timeout</i> value should be significantly more
+ generous in order to accommodate the client's reconnect and/or wakeup procedure!</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>timeout</td>
+          <td>The timeout (in milliseconds) for the round-trip between the server.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A callback for <i>true</i> if the connection is currently alive (including if this function successfully
+         re-established the connection), <i>false</i> otherwise.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAlive(long, boolean, boolean, long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;
+      </span>
+      <span class="sympad">isAlive</span>
+      <span class="normal">(long within, boolean check, boolean force, long timeout)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.
+ Effectively, this can be used to trigger a keepalive check of the endpoint if used with a <i>within</i> parameter
+ of 0 and a <i>check</i> parameter of true.
+ <p>
+ This function has a two-part purpose. The first is for the application to be able to check the last known
+ liveness of the endpoint, to reduce the discovery time of a dead connection. The second is to trigger a check for
+ a dead endpoint, when the application needs to know that it has active connectivity.
+ <p>
+ Note that in normal operation, the endpoint itself will report when it has disconnected; the application does not
+ need to concern itself with this detail unless it specifically needs to know that it has connectivity right now.
+ <p>
+ <b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when none of the transports can perform
+ the open() function) may cause a client to lose its connectivity. The client may not have discovered the
+ underlying transport is dead yet, and may require more time to reconnect. A wakeup mechanism can be used to
+ establish liveness, but the server's <i>timeout</i> value should be significantly more generous in order to
+ accommodate the client's reconnect and/or wakeup procedure!</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>within</td>
+          <td>Within how many milliseconds the last activity of the endpoint should have occurred before the
+            endpoint should question whether it is alive.</td>
+        </tr>
+        <tr>
+          <th>check</td>
+          <td>Whether the endpoint should attempt to check for liveness, or simply return false if the last known
+            activity of the endpoint is not later than within.</td>
+        </tr>
+        <tr>
+          <th>force</td>
+          <td>Whether to attempt to force reconnection if the transports are not available within the given timeout.
+            This will ensure available liveness value reflects what is possible right now, although it may mean
+            disconnecting transports that still may recover.</td>
+        </tr>
+        <tr>
+          <th>timeout</td>
+          <td>If check is true, how many milliseconds at most the liveness check should take before returning false
+            anyway. The application can use this value if it has a time constraint on it.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A callback for <i>true</i> if the connection is currently alive (including if this function successfully
+         re-established the connection), <i>false</i> otherwise.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAsync()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isAsync</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Checks whether this endpoint works in async mode. In async mode, the transport thread is disconnected from the
+ Trap thread. Trap ensures only one thread has concurrent calls from trapData, although it may receive data from
+ several.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><i>true</i> if async mode is enabled, <i>false</i> otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="lastAlive()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        long
+      </span>
+      <span class="sympad">lastAlive</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the last known liveness timestamp of the endpoint. This is the last time it received a message from the
+ other end. This includes all messages (i.e. also Trap messages such as keepalives, configuration, etc) so must
+ not be confused with the last known activity of the other application. For example, in the case of a JavaScript
+ remote endpoint, this does not guarantee an evaluation error has not rendered the JSApp's main run loop as
+ inoperable.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The timestamp of the last message received from the remote side.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">if what is needed is an evaluation of the liveness status.</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="send(com.ericsson.research.trap.TrapObject)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">send</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a> object)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject, int, boolean)">send(TrapObject, int, boolean)</a></code>, with the channel ID set to 1.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>object</td>
+          <td>The object to send</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>if the queue length is exceeded, or a timeout occurs on a blocking queue
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="send(byte[])"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">send</span>
+      <span class="normal">(byte[] data)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>data</td>
+          <td>The data to send</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>if the queue length is exceeded, or a timeout occurs on a blocking queue
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="send(com.ericsson.research.trap.TrapObject, int, boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">send</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a> object, int channel, boolean useCompression)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to queue an object for sending. If the queue length is exceeded, it may block or throw an exception, as
+ per the queue type.
+ <p>
+ Sending a TrapObject will serialize it as late as possible, or never. If the object is sent locally, it will
+ never be serialized. If it is to be sent remotely, it will be serialized when needed. Trap may serialize multiple
+ TrapObjects in parallel, so implementations should not assume any order between eventual
+ <code><a href="../../../../com/ericsson/research/trap/TrapObject.html#getSerializedData()">getSerializedData()</a></code> calls.
+ <p>
+ Note that, since the TrapObject is not necessarily serialized in the caller's thread, exceptions caused by object
+ serialization will most probably not be seen in this way. They will be logged, however.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>object</td>
+          <td>The object to send.</td>
+        </tr>
+        <tr>
+          <th>channel</td>
+          <td>The channel to send the data on. Recommended in the range [1-63], but will accept ID zero as well.</td>
+        </tr>
+        <tr>
+          <th>useCompression</td>
+          <td><i>True</i> if Trap should apply compression algorithm to this message, <i>false</i> otherwise.
+            Compression will be applied in the event that the object has to be serialized.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>If the object could not be queued for sending, either due to user configuration or because of an
+             invalid state of the endpoint.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="send(byte[], int, boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">send</span>
+      <span class="normal">(byte[] data, int channel, boolean useCompression)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to queue data for sending. If the queue length is exceeded, it may block or throw an exception, as per
+ the queue type.
+ <p>
+ Please note that while send will accurately send the data over to the other endpoint, it is advisable to instead
+ use <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject)">send(TrapObject)</a></code> if the data being sent is a serialized object. If the other endpoint is locally
+ deployed, the TrapObject will never be serialized, thus saving on large amounts of processing power.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>data</td>
+          <td>The data to send. This should be UTF-8 readable if it is aimed at a browser, for maximum
+            compatibility. If the remote endpoint is a Java or C client or server, can be any arbitrary data of
+            less than 2^28-1 bytes length (7-bit encoding) or 2^32-1 bytes (8-bit encoding)</td>
+        </tr>
+        <tr>
+          <th>channel</td>
+          <td>The channel to send the data on. Recommended in the range [1-63], but will accept ID zero as well.</td>
+        </tr>
+        <tr>
+          <th>useCompression</td>
+          <td><i>True</i> if Trap should apply compression algorithm to this message, <i>false</i> otherwise.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>if the queue length is exceeded, or a timeout occurs on a blocking queue
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAsync(boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setAsync</span>
+      <span class="normal">(boolean async)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>In async mode, the endpoint will automatically schedule incoming messages on a separate thread than the one on
+ which they are received. Note that this does not imply there will be multiple threads receiving messages from the
+ TrapEndpoint, only that there is a break in the thread.
+ <p>
+ Async mode is generally preferred over synchronous mode, as it decouples the network layer from the request
+ processing layer. If the application using Trap provides its own thread dispatching with little overhead
+ (computational time) after receiving a message from Trap, it may experience a performance gain from switching off
+ async mode.
+ <p>
+ <b>Note that Asynchronous mode is required for reordering messages</b>! Specifically, messages in Trap may be
+ reordered by the transports due to race- or network conditions. Reordering these messages – and redispatching
+ them – may cause dropped or disconnected network connections, so Trap will NOT reorder incoming messages if in
+ synchronous mode.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>async</td>
+          <td>The new mode. True makes the endpoint asynchronous, while false disables it.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAuthentication(com.ericsson.research.trap.auth.TrapAuthentication)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setAuthentication</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/auth/TrapAuthentication.html">TrapAuthentication</a> authentication)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Assigns an authentication instance to this TrapEndpoint. Implicitly, requires that this transport is
+ authenticated from now on, on any incoming connection.
+ <p>
+ Some transports may require more fine-grained authentication than is afforded (i.e. authenticate every message,
+ outgoing or incoming), and so they must individually access the TrapAuthentication instance using the getter.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>authentication</td>
+          <td>An instance capable of fulfilling the TrapAuthentication contract.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>If the authentication was not compatible with the transports.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setBlockingTimeout(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setBlockingTimeout</span>
+      <span class="normal">(long timeout)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the blocking timeout, when using a blocking queue. This determines the amount of time <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send(byte[])</a></code>
+ will wait for queue space to open up before throwing an exception.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>timeout</td>
+          <td>The new timeout, in milliseconds.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setDelegate</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      <p>
+  <p class="caution">
+      <strong>
+  This method is deprecated.</strong><br/> Since 1.1, the preferred signature is <code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate(TrapDelegate, boolean)</a></code>. If a context is
+             required, use the explicit <code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegateContext(java.lang.Object)">setDelegateContext(Object)</a></code> method.
+
+  </p>
+  <div class="jd-tagdata jd-tagdescr"><p>Registers an object as a delegate to this endpoint. This delegate MUST implement TrapEndpointDelegate to receive
+ callbacks. Optionally, this delegate may also implement <code><a href="../../../../com/ericsson/research/trap/delegates/OnObject.html">OnObject</a></code> to receive TrapObjects.
+ <p>
+ In some cases, Trap can transfer a Java object faster than the serial representation, e.g. when both endpoints
+ are running in the same JVM. In those cases, registering a TrapEndpointObjectDelegate will yield a substantial
+ performance improvement. Note that, depending on how the other side sent the message, there is no guarantee that
+ the object will not be serialised, although if both support TrapObjects (i.e. remote uses .send(TrapObject) and
+ local has a TrapEndpointObjectDelegate), no serialisation will occur.
+ <p>
+ If the remote endpoint sends a TrapObject, but this delegate is not set on the local endpoint, the TrapObject
+ will be serialised on this end and sent to the TrapEndpointDelegate as usual.
+ <p>
+ This delegate is redundant for applications that will never run on the same JVM, as Trap cannot deserialise Java
+ objects.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>delegate</td>
+          <td>The delegate object.</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>An optional object that will be supplied to the listener on every callback.</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setKeepaliveExpiry(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setKeepaliveExpiry</span>
+      <span class="normal">(long newExpiry)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the keepalive expiry timeout. Alias for <code><a href="../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setKeepaliveExpiry(long)">setKeepaliveExpiry(long)</a></code> on the
+ currently set predictor.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newExpiry</td>
+          <td>The new keepalive expiry time.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setKeepaliveExpiry(long)">setKeepaliveExpiry(long)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setKeepaliveInterval(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setKeepaliveInterval</span>
+      <span class="normal">(int newInterval)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets a new keepalive interval for the trap endpoint. The keepalive interval has one of three possible meanings:
+ <ul>
+ <li>A value of <code><a href="../../../../com/ericsson/research/trap/TrapKeepalivePolicy.html#DISABLED">DISABLED</a></code> will disable the keepalives.
+ <li>A value of <code><a href="../../../../com/ericsson/research/trap/TrapKeepalivePolicy.html#DEFAULT">DEFAULT</a></code> will cause each transport to use its internal estimate of what
+ a good keepalive is.
+ <li>A value of 1 &lt;= n &lt;= 999999 will specify the number of seconds between keepalive messages.
+ </ul>
+ Any change on the TrapEndpoint level will affect all transports associated with this endpoint, overwriting any
+ individual configuration the transports may have had. The inverse does not apply.
+ <p>
+ See <a href= "http://www.cf.ericsson.net/confluence/display/warp/Trap+Keepalives">the Trap Keepalive
+ documentation</a> for details on the keepalives.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newInterval</td>
+          <td>The new keepalive interval or policy.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaxActiveTransports(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setMaxActiveTransports</span>
+      <span class="normal">(int newMax)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the maximum allowed simultaneous transports. See <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getMaxActiveTransports()">getMaxActiveTransports()</a></code> for more information.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newMax</td>
+          <td>The new maximum number of transports.
+            <p>
+            Note that 0 (zero) is a permitted value for maximum number of transports. This will not close the Trap
+            connection, but cause a non-deterministic sequence of transport opening and closings, causing an
+            abnormal load on client, server and network, but making it difficult to predict which transport (and
+            thus connection) will be used at any given point in time. This can be used to mitigate suspected MITM
+            attacks, but is not recommended otherwise. This connection sequence is not guaranteed secure. <i>This
+            (zero) functionality is for experimental purposes, and may be removed at any time!</i>
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setQueue(com.ericsson.research.trap.spi.queues.MessageQueue)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setQueue</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/spi/queues/MessageQueue.html">MessageQueue</a> newQueue)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Assigns a new queue implementation for the outgoing message queue. This method allows the fine-tuning of outgoing
+ message performance. See <code><a href="../../../../com/ericsson/research/trap/spi/queues/MessageQueue.html">MessageQueue</a></code> for a discussion on what the queues affect.
+ <p>
+ Setting a queue on the TrapEndpoint will only affect channels that have not been created yet. It will not replace
+ the message queue of channels that have been created (i.e. accessed using <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#getChannel(int)">getChannel(int)</a></code> or
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newQueue</td>
+          <td>The new queue instance to use
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setQueueType(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setQueueType</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> type)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Like <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#setQueue(com.ericsson.research.trap.spi.queues.MessageQueue)">setQueue(MessageQueue)</a></code>, except it instantiates one of the built-in queues based on default
+ parameters. Accepted arguments are <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#BLOCKING_BYTE_QUEUE">BLOCKING_BYTE_QUEUE</a></code>,
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#BLOCKING_MESSAGE_QUEUE">BLOCKING_MESSAGE_QUEUE</a></code>, <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#REGULAR_BYTE_QUEUE">REGULAR_BYTE_QUEUE</a></code> or
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#REGULAR_MESSAGE_QUEUE">REGULAR_MESSAGE_QUEUE</a></code>.
+ <p>
+ If a specific queue class is not required, this method is recommended, as it will pick up the most efficient
+ built-in queue from the classpath based on the hosting JVM.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>type</td>
+          <td>The new queue type to instantiate.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setReconnectTimeout(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setReconnectTimeout</span>
+      <span class="normal">(long reconnectTimeout)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the reconnect timeout. This timeout is the time that an endpoint is allowed to reside in the SLEEPING state
+ without any transports or way to contact the other endpoint. After this time, the endpoint will be forcibly
+ closed, if no transport or wakeup mechanism is present.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>reconnectTimeout</td>
+          <td>The max number of milliseconds to sleep for.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setTrapFormat(com.ericsson.research.trap.spi.TrapMessage.Format)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setTrapFormat</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a> trapFormat)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the Trap message format for this endpoint. This method <i>should only be called on clients</i>, as the
+ server will automatically match the format with the client format.
+ <p>
+ Trap has two message formats available; the regular one, using 8-bit serialization, and a 7-bit safe
+ representation. The 7-bit one is recommended only for usage with pure JS clients that cannot otherwise handle
+ binary data.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>trapFormat</td>
+          <td>The new message format for this endpoint.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize doclava-developer-docs.js */
+</script>
+
+</body>
+</html>

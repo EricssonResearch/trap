@@ -1,0 +1,7225 @@
+<api>
+<package name="com.ericsson.research.trap"
+>
+<interface name="TrapChannel"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getChunkSize"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getInFlightBytes"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getIncomingMessageBuffer"
+ return="com.ericsson.research.trap.spi.TrapMessageBuffer"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getOutgoingMessageQueue"
+ return="com.ericsson.research.trap.spi.queues.MessageQueue"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getPriority"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getStreamingMode"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setChunkSize"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="numBytes" type="int">
+</parameter>
+</method>
+<method name="setInFlightBytes"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bytes" type="int">
+</parameter>
+</method>
+<method name="setIncomingMessageBuffer"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="buffer" type="com.ericsson.research.trap.spi.TrapMessageBuffer">
+</parameter>
+</method>
+<method name="setOutgoingMessageQueue"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="queue" type="com.ericsson.research.trap.spi.queues.MessageQueue">
+</parameter>
+</method>
+<method name="setPriority"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newPriority" type="int">
+</parameter>
+</method>
+<method name="setStreamingMode"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="streamingEnabled" type="boolean">
+</parameter>
+</method>
+<field name="ID_MAX"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="255"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ID_MIN"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="0"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</interface>
+<interface name="TrapClient"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.TrapEndpoint">
+</implements>
+<method name="open"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+</interface>
+<interface name="TrapEndpoint"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.TrapSettings">
+</implements>
+<method name="close"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getAuthentication"
+ return="com.ericsson.research.trap.auth.TrapAuthentication"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getBlockingTimeout"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getChannel"
+ return="com.ericsson.research.trap.TrapChannel"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="channelID" type="int">
+</parameter>
+</method>
+<method name="getKeepaliveInterval"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMaxActiveTransports"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getReconnectTimeout"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getState"
+ return="com.ericsson.research.trap.TrapState"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTransportAuthenticationContexts"
+ return="java.util.Map&lt;java.lang.String, java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTrapFormat"
+ return="com.ericsson.research.trap.spi.TrapMessage.Format"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isAlive"
+ return="com.ericsson.research.trap.utils.Callback&lt;java.lang.Boolean&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeout" type="long">
+</parameter>
+</method>
+<method name="isAlive"
+ return="com.ericsson.research.trap.utils.Callback&lt;java.lang.Boolean&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="within" type="long">
+</parameter>
+<parameter name="check" type="boolean">
+</parameter>
+<parameter name="force" type="boolean">
+</parameter>
+<parameter name="timeout" type="long">
+</parameter>
+</method>
+<method name="isAsync"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="lastAlive"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="send"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="send"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="useCompression" type="boolean">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="send"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="object" type="com.ericsson.research.trap.TrapObject">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="send"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="object" type="com.ericsson.research.trap.TrapObject">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="useCompression" type="boolean">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="setAsync"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="async" type="boolean">
+</parameter>
+</method>
+<method name="setAuthentication"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="authentication" type="com.ericsson.research.trap.auth.TrapAuthentication">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="setBlockingTimeout"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeout" type="long">
+</parameter>
+</method>
+<method name="setDelegate"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="deprecated"
+ visibility="public"
+>
+<parameter name="delegate" type="com.ericsson.research.trap.TrapEndpointDelegate">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setKeepaliveExpiry"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newExpiry" type="long">
+</parameter>
+</method>
+<method name="setKeepaliveInterval"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newInterval" type="int">
+</parameter>
+</method>
+<method name="setMaxActiveTransports"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newMax" type="int">
+</parameter>
+</method>
+<method name="setQueue"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newQueue" type="com.ericsson.research.trap.spi.queues.MessageQueue">
+</parameter>
+</method>
+<method name="setQueueType"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="type" type="java.lang.String">
+</parameter>
+</method>
+<method name="setReconnectTimeout"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="reconnectTimeout" type="long">
+</parameter>
+</method>
+<method name="setTrapFormat"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapFormat" type="com.ericsson.research.trap.spi.TrapMessage.Format">
+</parameter>
+</method>
+<field name="BLOCKING_BYTE_QUEUE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;BLOCKING_BYTE_QUEUE&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="BLOCKING_MESSAGE_QUEUE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;BLOCKING_MESSAGE_QUEUE&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_AUTO_HOSTNAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;trap.auto_hostname&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_ENABLE_COMPRESSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;trap.enablecompression&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_LOGGERPREFIX"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;trap.loggerprefix&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_MAX_CHUNK_SIZE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;trap.maxchunksize&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="REGULAR_BYTE_QUEUE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;REGULAR_BYTE_QUEUE&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="REGULAR_MESSAGE_QUEUE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;REGULAR_MESSAGE_QUEUE&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</interface>
+<interface name="TrapEndpointDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="deprecated"
+ visibility="public"
+>
+<method name="trapData"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapFailedSending"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="datas" type="java.util.Collection&lt;?&gt;">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapStateChange"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newState" type="com.ericsson.research.trap.TrapState">
+</parameter>
+<parameter name="oldState" type="com.ericsson.research.trap.TrapState">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<class name="TrapException"
+ extends="java.lang.Exception"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapException"
+ type="com.ericsson.research.trap.TrapException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor name="TrapException"
+ type="com.ericsson.research.trap.TrapException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="e" type="java.lang.Exception">
+</parameter>
+</constructor>
+<constructor name="TrapException"
+ type="com.ericsson.research.trap.TrapException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="string" type="java.lang.String">
+</parameter>
+<parameter name="e" type="java.lang.Exception">
+</parameter>
+</constructor>
+</class>
+<class name="TrapFactory"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="createClient"
+ return="com.ericsson.research.trap.TrapClient"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configuration" type="java.lang.String">
+</parameter>
+<parameter name="autoConfigure" type="boolean">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="createListener"
+ return="com.ericsson.research.trap.TrapListener"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="createListener"
+ return="com.ericsson.research.trap.TrapListener"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configuration" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="getVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="resolveConfiguration"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+<parameter name="config" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+</class>
+<class name="TrapKeepalivePolicy"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<field name="DEFAULT"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="0"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="DISABLED"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="-1"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<interface name="TrapListener"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.TrapSettings">
+</implements>
+<method name="close"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getClientConfiguration"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getClientConfiguration"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="delegate" type="com.ericsson.research.trap.delegates.OnAccept">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="deprecated"
+ visibility="public"
+>
+<parameter name="delegate" type="com.ericsson.research.trap.delegates.OnAccept">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="setAuthentication"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="authenticator" type="com.ericsson.research.trap.auth.TrapAuthentication">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+</interface>
+<interface name="TrapListenerDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+</interface>
+<interface name="TrapObject"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getSerializedData"
+ return="byte[]"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<interface name="TrapPeer"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.TrapEndpoint">
+</implements>
+<method name="open"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="channel" type="com.ericsson.research.trap.TrapPeer.TrapPeerChannel">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="receive"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+</method>
+</interface>
+<interface name="TrapPeer.TrapPeerChannel"
+ abstract="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="sendToRemote"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+</method>
+</interface>
+<interface name="TrapSettings"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="configure"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configuration" type="java.lang.String">
+</parameter>
+</method>
+<method name="configureTransport"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="transportName" type="java.lang.String">
+</parameter>
+<parameter name="configurationKey" type="java.lang.String">
+</parameter>
+<parameter name="configurationValue" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="disableAllTransports"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="disableTransport"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="transportName" type="java.lang.String">
+</parameter>
+</method>
+<method name="enableTransport"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="transportName" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="getConfiguration"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getHostingTransport"
+ return="com.ericsson.research.trap.spi.TrapHostingTransport"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="protocol" type="java.lang.String">
+</parameter>
+</method>
+<method name="getHostingTransports"
+ return="java.util.Collection&lt;com.ericsson.research.trap.spi.TrapHostingTransport&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTransport"
+ return="com.ericsson.research.trap.spi.TrapTransport"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="transportName" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="getTransports"
+ return="java.util.Collection&lt;com.ericsson.research.trap.spi.TrapTransport&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isTransportEnabled"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="transportName" type="java.lang.String">
+</parameter>
+</method>
+<method name="setDelegate"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="delegate" type="com.ericsson.research.trap.delegates.TrapDelegate">
+</parameter>
+<parameter name="replaceAllExisting" type="boolean">
+</parameter>
+</method>
+<method name="setDelegateContext"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="delegateContext" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setOption"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="optionName" type="java.lang.String">
+</parameter>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+</interface>
+<class name="TrapState"
+ extends="java.lang.Enum"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="valueOf"
+ return="com.ericsson.research.trap.TrapState"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="values"
+ return="com.ericsson.research.trap.TrapState[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="TrapTransports"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="addTransportClass"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="transportClass" type="java.lang.Class&lt;? extends com.ericsson.research.trap.spi.TrapTransport&gt;">
+</parameter>
+</method>
+<method name="getTransportClasses"
+ return="java.lang.Class&lt;com.ericsson.research.trap.spi.TrapTransport&gt;[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="cl" type="java.lang.ClassLoader">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="removeTransportClass"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="removedClass" type="java.lang.Class&lt;?&gt;">
+</parameter>
+</method>
+<method name="setUseAutodiscoveredTransports"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="useAutodiscover" type="boolean">
+</parameter>
+</method>
+</class>
+</package>
+<package name="com.ericsson.research.trap.auth"
+>
+<interface name="TrapAuthentication"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="createAuthenticationChallenge"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="context" type="java.util.Map&lt;java.lang.String, java.lang.Object&gt;">
+</parameter>
+</method>
+<method name="createAuthenticationResponse"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="challenge" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="outgoing" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="headers" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="context" type="java.util.Map&lt;java.lang.String, java.lang.Object&gt;">
+</parameter>
+</method>
+<method name="getContextKeys"
+ return="java.util.Collection&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="availableKeys" type="java.util.Collection&lt;java.lang.String&gt;">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="verifyAuthentication"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="headers" type="java.util.Map&lt;java.lang.String, java.lang.String&gt;">
+</parameter>
+<parameter name="context" type="java.util.Map&lt;java.lang.String, java.lang.Object&gt;">
+</parameter>
+<exception name="TrapAuthenticationException" type="com.ericsson.research.trap.auth.TrapAuthenticationException">
+</exception>
+</method>
+</interface>
+<class name="TrapAuthenticationException"
+ extends="com.ericsson.research.trap.TrapException"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapAuthenticationException"
+ type="com.ericsson.research.trap.auth.TrapAuthenticationException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+</constructor>
+<constructor name="TrapAuthenticationException"
+ type="com.ericsson.research.trap.auth.TrapAuthenticationException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="e" type="java.lang.Exception">
+</parameter>
+</constructor>
+<constructor name="TrapAuthenticationException"
+ type="com.ericsson.research.trap.auth.TrapAuthenticationException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="string" type="java.lang.String">
+</parameter>
+<parameter name="e" type="java.lang.Exception">
+</parameter>
+</constructor>
+</class>
+<class name="TrapContextKeys"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapContextKeys"
+ type="com.ericsson.research.trap.auth.TrapContextKeys"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<field name="Configuration"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;Configuration&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="Format"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;Format&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LastAlive"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;LastAlive&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LastMessageAuthenticationFailed"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;LastMessageAuthenticationFailed&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LastMessageWasAuthenticated"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;LastMessageWasAuthenticated&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LocalIP"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;LocalIP&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LocalPort"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;LocalPort&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="Priority"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;Priority&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="Protocol"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;Protocol&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="RemoteIP"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;RemoteIP&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="RemotePort"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;RemotePort&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="State"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;State&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="Transport"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;Transport&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+</package>
+<package name="com.ericsson.research.trap.delegates"
+>
+<interface name="OnAccept"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnClose"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapClose"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnData"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapData"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnError"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapError"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnFailedSending"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapFailedSending"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="datas" type="java.util.Collection&lt;?&gt;">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnObject"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapObject"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="object" type="com.ericsson.research.trap.TrapObject">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnOpen"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapOpen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnSleep"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapSleep"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnStateChange"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapStateChange"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newState" type="com.ericsson.research.trap.TrapState">
+</parameter>
+<parameter name="oldState" type="com.ericsson.research.trap.TrapState">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="OnWakeup"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.TrapDelegate">
+</implements>
+<method name="trapWakeup"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="TrapDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</interface>
+<interface name="TrapEndpointDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnFailedSending">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnStateChange">
+</implements>
+</interface>
+</package>
+<package name="com.ericsson.research.trap.examples"
+>
+<class name="AuthenticatedEchoClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnOpen">
+</implements>
+<constructor name="AuthenticatedEchoClient"
+ type="com.ericsson.research.trap.examples.AuthenticatedEchoClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapCfg" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</constructor>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="sendMessage"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapOpen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<field name="client"
+ type="com.ericsson.research.trap.TrapClient"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="counter"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="echoClient"
+ type="com.ericsson.research.trap.examples.AuthenticatedEchoClient"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="AuthenticatedEchoServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="AuthenticatedEchoServer"
+ type="com.ericsson.research.trap.examples.AuthenticatedEchoServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="AutoConfiguredServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="AutoConfiguredServer"
+ type="com.ericsson.research.trap.examples.AutoConfiguredServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="ConfiguredClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnOpen">
+</implements>
+<constructor name="ConfiguredClient"
+ type="com.ericsson.research.trap.examples.ConfiguredClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapCfg" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</constructor>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapOpen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<field name="client"
+ type="com.ericsson.research.trap.TrapClient"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="counter"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="ConfiguredServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="ConfiguredServer"
+ type="com.ericsson.research.trap.examples.ConfiguredServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="DelegateEchoClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DelegateEchoClient"
+ type="com.ericsson.research.trap.examples.DelegateEchoClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapCfg" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</constructor>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<field name="client"
+ type="com.ericsson.research.trap.TrapClient"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="counter"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="echoClient"
+ type="com.ericsson.research.trap.examples.DelegateEchoClient"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="EchoClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnOpen">
+</implements>
+<constructor name="EchoClient"
+ type="com.ericsson.research.trap.examples.EchoClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapCfg" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</constructor>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapOpen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<field name="client"
+ type="com.ericsson.research.trap.TrapClient"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="counter"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="EchoServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="EchoServer"
+ type="com.ericsson.research.trap.examples.EchoServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="MultiplexedClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnOpen">
+</implements>
+<constructor name="MultiplexedClient"
+ type="com.ericsson.research.trap.examples.MultiplexedClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapCfg" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</constructor>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapOpen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<field name="DATA_CHANNEL"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="1"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="HIGH_PRIO_CHANNEL"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="10"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="STREAM_CHANNEL"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="2"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="allDone"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="client"
+ type="com.ericsson.research.trap.TrapClient"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="multiplexedClient"
+ type="com.ericsson.research.trap.examples.MultiplexedClient"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="MultiplexedServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="MultiplexedServer"
+ type="com.ericsson.research.trap.examples.MultiplexedServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="TLSEchoServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="TLSEchoServer"
+ type="com.ericsson.research.trap.examples.TLSEchoServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+<class name="TLSInsecureEchoClient"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnOpen">
+</implements>
+<constructor name="TLSInsecureEchoClient"
+ type="com.ericsson.research.trap.examples.TLSInsecureEchoClient"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trapCfg" type="java.lang.String">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</constructor>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapOpen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<field name="client"
+ type="com.ericsson.research.trap.TrapClient"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="counter"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TLSInsecureEchoServer"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.delegates.OnAccept">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnClose">
+</implements>
+<implements name="com.ericsson.research.trap.delegates.OnData">
+</implements>
+<constructor name="TLSInsecureEchoServer"
+ type="com.ericsson.research.trap.examples.TLSInsecureEchoServer"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="incomingTrapConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="listener" type="com.ericsson.research.trap.TrapListener">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="main"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="args" type="java.lang.String[]">
+</parameter>
+<exception name="Throwable" type="java.lang.Throwable">
+</exception>
+</method>
+<method name="trapClose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="trapData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="channel" type="int">
+</parameter>
+<parameter name="endpoint" type="com.ericsson.research.trap.TrapEndpoint">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</class>
+</package>
+<package name="com.ericsson.research.trap.spi"
+>
+<interface name="ListenerTrapTransport"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.spi.TrapTransport">
+</implements>
+<method name="getClientConfiguration"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="destination" type="com.ericsson.research.trap.spi.TrapConfiguration">
+</parameter>
+<parameter name="hostname" type="java.lang.String">
+</parameter>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="listener" type="com.ericsson.research.trap.spi.ListenerTrapTransportDelegate">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+</interface>
+<interface name="ListenerTrapTransportDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="ttsIncomingConnection"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="connection" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<parameter name="server" type="com.ericsson.research.trap.spi.ListenerTrapTransport">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<interface name="TrapConfiguration"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.utils.Configuration">
+</implements>
+</interface>
+<class name="TrapConstants"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<field name="COMPRESSION_ENABLED_DEFAULT"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CONNECTION_TOKEN"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="DEFAULT_CHUNK_SIZE"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ENDPOINT_ID"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;trap.endpoint-id&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ENDPOINT_ID_CLIENT"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;NEW&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ENDPOINT_ID_UNDEFINED"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;UNDEFINED&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ENDPOINT_QUEUE_DEFAULT"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="MESSAGE_FORMAT_DEFAULT"
+ type="com.ericsson.research.trap.spi.TrapMessage.Format"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="TRANSPORT_ENABLED_DEFAULT"
+ type="boolean"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TrapEndpointMessage"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapEndpointMessage"
+ type="com.ericsson.research.trap.spi.TrapEndpointMessage"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getMessage"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setMessage"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="m" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+</method>
+<field name="t"
+ type="com.ericsson.research.trap.spi.TrapTransport"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<interface name="TrapHostingTransport"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.spi.TrapTransport">
+</implements>
+<method name="addHostedObject"
+ return="java.net.URI"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="hosted" type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable">
+</parameter>
+<parameter name="preferredName" type="java.lang.String">
+</parameter>
+</method>
+<method name="getProtocolName"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<class name="TrapHostingTransport.TrapHostable"
+ extends="java.lang.Object"
+ abstract="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapHostingTransport.TrapHostable"
+ type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<constructor name="TrapHostingTransport.TrapHostable"
+ type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mimeType" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="getBytes"
+ return="byte[]"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getContentType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="notifyRemoved"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setURI"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="uri" type="java.net.URI">
+</parameter>
+</method>
+<method name="uri"
+ return="java.net.URI"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="mimeType"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+</class>
+<interface name="TrapKeepaliveDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="predictedKeepaliveExpired"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="predictor" type="com.ericsson.research.trap.spi.TrapKeepalivePredictor">
+</parameter>
+<parameter name="msec" type="long">
+</parameter>
+</method>
+<method name="shouldSendKeepalive"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="isPing" type="boolean">
+</parameter>
+<parameter name="type" type="char">
+</parameter>
+<parameter name="timer" type="int">
+</parameter>
+<parameter name="data" type="byte[]">
+</parameter>
+</method>
+</interface>
+<interface name="TrapKeepalivePredictor"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="dataReceived"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="dataSent"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeepaliveExpiry"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeepaliveInterval"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getNextKeepaliveSend"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="keepaliveReceived"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="isPing" type="boolean">
+</parameter>
+<parameter name="pingType" type="char">
+</parameter>
+<parameter name="remoteTimer" type="int">
+</parameter>
+<parameter name="data" type="byte[]">
+</parameter>
+</method>
+<method name="nextKeepaliveReceivedDelta"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setDelegate"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="delegate" type="com.ericsson.research.trap.spi.TrapKeepaliveDelegate">
+</parameter>
+</method>
+<method name="setKeepaliveExpiry"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newExpiry" type="long">
+</parameter>
+</method>
+<method name="setKeepaliveInterval"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="interval" type="int">
+</parameter>
+</method>
+<method name="setMaxAutoKeepalive"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="max" type="int">
+</parameter>
+</method>
+<method name="setMaxKeepalive"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="max" type="int">
+</parameter>
+</method>
+<method name="setMinAutoKeepalive"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="min" type="int">
+</parameter>
+</method>
+<method name="setMinKeepalive"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="min" type="int">
+</parameter>
+</method>
+<method name="start"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="stop"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<interface name="TrapMessage"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="deserialize"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="rawData" type="byte[]">
+</parameter>
+<parameter name="offset" type="int">
+</parameter>
+<parameter name="length" type="int">
+</parameter>
+<exception name="UnsupportedEncodingException" type="java.io.UnsupportedEncodingException">
+</exception>
+</method>
+<method name="getAuthData"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getChannel"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getCompressedData"
+ return="byte[]"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getData"
+ return="byte[]"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFormat"
+ return="com.ericsson.research.trap.spi.TrapMessage.Format"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMessageId"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getOp"
+ return="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isCompressed"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="length"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="serialize"
+ return="byte[]"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="setAuthData"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="authData" type="java.lang.String">
+</parameter>
+</method>
+<method name="setChannel"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="channelID" type="int">
+</parameter>
+</method>
+<method name="setCompressed"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="isCompressed" type="boolean">
+</parameter>
+</method>
+<method name="setData"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+</method>
+<method name="setFormat"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="format" type="com.ericsson.research.trap.spi.TrapMessage.Format">
+</parameter>
+</method>
+<method name="setMessageId"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newMessageId" type="int">
+</parameter>
+</method>
+<method name="setOp"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="op" type="com.ericsson.research.trap.spi.TrapMessage.Operation">
+</parameter>
+</method>
+<method name="toString"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<class name="TrapMessage.Format"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<field name="REGULAR"
+ type="com.ericsson.research.trap.spi.TrapMessage.Format"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="SEVEN_BIT_SAFE"
+ type="com.ericsson.research.trap.spi.TrapMessage.Format"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TrapMessage.Operation"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getOp"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getType"
+ return="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="op" type="int">
+</parameter>
+</method>
+<field name="ACK"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CHALLENGE"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CLOSE"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="END"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ERROR"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="FRAGMENT_END"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="FRAGMENT_START"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="MESSAGE"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OK"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPEN"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPENED"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="PING"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="PONG"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="TRANSPORT"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TrapMessage.Operation.Value"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapMessage.Operation.Value"
+ type="com.ericsson.research.trap.spi.TrapMessage.Operation.Value"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<field name="ACK"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="9"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CHALLENGE"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="5"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CLOSE"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="3"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="END"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="4"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ERROR"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="6"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="FRAGMENT_END"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="11"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="FRAGMENT_START"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="10"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="MESSAGE"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="8"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OK"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="16"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPEN"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="1"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPENED"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="2"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="PING"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="17"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="PONG"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="18"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="TRANSPORT"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="19"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<interface name="TrapMessageBuffer"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="available"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="fetch"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="target" type="com.ericsson.research.trap.spi.TrapEndpointMessage">
+</parameter>
+</method>
+<method name="put"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="m" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="t" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<exception name="IllegalArgumentException" type="java.lang.IllegalArgumentException">
+</exception>
+</method>
+</interface>
+<interface name="TrapTransport"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="canConnect"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="canListen"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="configure"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configurationKey" type="java.lang.String">
+</parameter>
+<parameter name="configurationValue" type="java.lang.String">
+</parameter>
+</method>
+<method name="configure"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configurationKey" type="java.lang.String">
+</parameter>
+<parameter name="configurationValue" type="int">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="connect"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="disable"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="disconnect"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="enable"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="flushTransport"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="forceError"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getAuthenticationContext"
+ return="java.util.Map&lt;java.lang.String, java.lang.Object&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getAuthenticationContext"
+ return="java.util.Map&lt;java.lang.String, java.lang.Object&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="authenticationKeys" type="java.util.Collection&lt;java.lang.String&gt;">
+</parameter>
+</method>
+<method name="getAuthenticationKeys"
+ return="java.util.Collection&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getConfiguration"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getContext"
+ return="java.lang.Object"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getFormat"
+ return="com.ericsson.research.trap.spi.TrapMessage.Format"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeepaliveInterval"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeepalivePredictor"
+ return="com.ericsson.research.trap.spi.TrapKeepalivePredictor"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getState"
+ return="com.ericsson.research.trap.spi.TrapTransportState"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTransportName"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTransportPriority"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="init"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isAlive"
+ return="com.ericsson.research.trap.utils.Callback&lt;java.lang.Boolean&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="within" type="long">
+</parameter>
+<parameter name="check" type="boolean">
+</parameter>
+<parameter name="timeout" type="long">
+</parameter>
+</method>
+<method name="isAvailable"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isConfigured"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="client" type="boolean">
+</parameter>
+<parameter name="server" type="boolean">
+</parameter>
+</method>
+<method name="isConnected"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isEnabled"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isObjectTransport"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="lastAlive"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="receiveTransportedMessage"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="msg" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+</method>
+<method name="send"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="expectMore" type="boolean">
+</parameter>
+<exception name="TrapTransportException" type="com.ericsson.research.trap.spi.TrapTransportException">
+</exception>
+</method>
+<method name="sendTransportSpecific"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+</method>
+<method name="setAuthentication"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="authentication" type="com.ericsson.research.trap.auth.TrapAuthentication">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="setConfiguration"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="configuration" type="com.ericsson.research.trap.spi.TrapConfiguration">
+</parameter>
+</method>
+<method name="setFormat"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="format" type="com.ericsson.research.trap.spi.TrapMessage.Format">
+</parameter>
+</method>
+<method name="setKeepaliveExpiry"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newExpiry" type="long">
+</parameter>
+</method>
+<method name="setKeepaliveInterval"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newInterval" type="int">
+</parameter>
+</method>
+<method name="setKeepalivePredictor"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newPredictor" type="com.ericsson.research.trap.spi.TrapKeepalivePredictor">
+</parameter>
+</method>
+<method name="setTransportDelegate"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="delegate" type="com.ericsson.research.trap.spi.TrapTransportDelegate">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setTransportPriority"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="priority" type="int">
+</parameter>
+</method>
+<field name="CERT_IGNORE_INVALID"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certIgnoreInvalid&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_KEYSTORE_NAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certKeystoreName&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_KEYSTORE_PASS"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certKeystorePass&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_KEYSTORE_TYPE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certKeystoreType&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_TRUSTSTORE_NAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certTruststoreName&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_TRUSTSTORE_PASS"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certTruststorePass&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_TRUSTSTORE_TYPE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certTruststoreType&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CERT_USE_INSECURE_TEST"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;certInsecureDefault&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_ENABLED"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;enabled&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_LOGGERPREFIX"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;loggerprefix&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_PRIORITY"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;priority&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="OPTION_WARN_ADDRESS"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;warnAddressConfiguration&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="TRAP_TRANSPORT_PACKAGE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;com.ericsson.research.trap.spi.transports&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</interface>
+<interface name="TrapTransportDelegate"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="ttMessageReceived"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="transport" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="ttMessageSent"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="transport" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="ttMessagesFailedSending"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="messages" type="java.util.Collection&lt;com.ericsson.research.trap.spi.TrapMessage&gt;">
+</parameter>
+<parameter name="transport" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="ttNeedTransport"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="transport" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+<method name="ttStateChanged"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newState" type="com.ericsson.research.trap.spi.TrapTransportState">
+</parameter>
+<parameter name="oldState" type="com.ericsson.research.trap.spi.TrapTransportState">
+</parameter>
+<parameter name="transport" type="com.ericsson.research.trap.spi.TrapTransport">
+</parameter>
+<parameter name="context" type="java.lang.Object">
+</parameter>
+</method>
+</interface>
+<class name="TrapTransportException"
+ extends="com.ericsson.research.trap.TrapException"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapTransportException"
+ type="com.ericsson.research.trap.spi.TrapTransportException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<parameter name="state" type="com.ericsson.research.trap.spi.TrapTransportState">
+</parameter>
+</constructor>
+<constructor name="TrapTransportException"
+ type="com.ericsson.research.trap.spi.TrapTransportException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="failedMessages" type="java.util.Collection&lt;com.ericsson.research.trap.spi.TrapMessage&gt;">
+</parameter>
+<parameter name="state" type="com.ericsson.research.trap.spi.TrapTransportState">
+</parameter>
+</constructor>
+<field name="failedMessages"
+ type="java.util.Collection"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="state"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TrapTransportPriority"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TrapTransportPriority"
+ type="com.ericsson.research.trap.spi.TrapTransportPriority"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<field name="ASYNCLOOPBACK"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="-1100"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="HTTP"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="1100"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="HTTP_SERVLET"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="1110"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="HTTP_SUN"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="1120"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="LOOPBACK"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="-1000"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="SOCKET"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="-100"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="SOCKET_ERNIO"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="-90"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="WEBSOCKET"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="0"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="WEBSOCKET_ERNIO"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="10"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="WEBSOCKET_NETTY"
+ type="int"
+ transient="false"
+ volatile="false"
+ value="20"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TrapTransportProtocol"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<field name="FUNCTION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;function&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="HTTP"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;http&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="HTTPS"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;https&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="TCP"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;tcp&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="UDP"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;udp&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="WEBSOCKET"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;ws&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="WEBSOCKET_SECURE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;wss&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="TrapTransportState"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="toString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="AVAILABLE"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CONNECTED"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="CONNECTING"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="DISCONNECTED"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="DISCONNECTING"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="ERROR"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="UNAVAILABLE"
+ type="com.ericsson.research.trap.spi.TrapTransportState"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+</package>
+<package name="com.ericsson.research.trap.spi.queues"
+>
+<interface name="BlockingMessageQueue"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.spi.queues.MessageQueue">
+</implements>
+<method name="blockingTimeout"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setBlockingTimeout"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newTimeout" type="long">
+</parameter>
+</method>
+</interface>
+<interface name="MessageQueue"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="createNewQueue"
+ return="com.ericsson.research.trap.spi.queues.MessageQueue"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getQueueType"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="hasMoreThanOne"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="length"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="peek"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="pop"
+ return="com.ericsson.research.trap.spi.TrapMessage"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="put"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="m" type="com.ericsson.research.trap.spi.TrapMessage">
+</parameter>
+<exception name="TrapException" type="com.ericsson.research.trap.TrapException">
+</exception>
+</method>
+<method name="size"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<interface name="ResizableMessageQueue"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.spi.queues.MessageQueue">
+</implements>
+<method name="resize"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="newSize" type="long">
+</parameter>
+</method>
+</interface>
+</package>
+<package name="com.ericsson.research.trap.utils"
+>
+<class name="Base64"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="decode"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="decode"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="char[]">
+</parameter>
+</method>
+<method name="decode"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="char[]">
+</parameter>
+<parameter name="iOff" type="int">
+</parameter>
+<parameter name="iLen" type="int">
+</parameter>
+</method>
+<method name="decodeLines"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="decodeString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="encode"
+ return="char[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="byte[]">
+</parameter>
+</method>
+<method name="encode"
+ return="char[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="byte[]">
+</parameter>
+<parameter name="iLen" type="int">
+</parameter>
+</method>
+<method name="encode"
+ return="char[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="byte[]">
+</parameter>
+<parameter name="iOff" type="int">
+</parameter>
+<parameter name="iLen" type="int">
+</parameter>
+</method>
+<method name="encodeLines"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="byte[]">
+</parameter>
+</method>
+<method name="encodeLines"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="byte[]">
+</parameter>
+<parameter name="iOff" type="int">
+</parameter>
+<parameter name="iLen" type="int">
+</parameter>
+<parameter name="lineLen" type="int">
+</parameter>
+<parameter name="lineSeparator" type="java.lang.String">
+</parameter>
+</method>
+<method name="encodeString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="encodeToByteArray"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="in" type="byte[]">
+</parameter>
+<parameter name="iOff" type="int">
+</parameter>
+<parameter name="iLen" type="int">
+</parameter>
+</method>
+</class>
+<class name="Block"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="block"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="create"
+ return="com.ericsson.research.trap.utils.Block"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="create"
+ return="com.ericsson.research.trap.utils.Block"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+<parameter name="timeout" type="long">
+</parameter>
+</method>
+<method name="reset"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="unblock"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="ByteConverter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="fromBigEndian"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="arr" type="byte[]">
+</parameter>
+<parameter name="offset" type="int">
+</parameter>
+</method>
+<method name="fromBigEndian7"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="arr" type="byte[]">
+</parameter>
+<parameter name="offset" type="int">
+</parameter>
+</method>
+<method name="getBits"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="int">
+</parameter>
+<parameter name="startBit" type="int">
+</parameter>
+<parameter name="endBit" type="int">
+</parameter>
+</method>
+<method name="toBigEndian"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="i" type="int">
+</parameter>
+</method>
+<method name="toBigEndian"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="int">
+</parameter>
+<parameter name="arr" type="byte[]">
+</parameter>
+<parameter name="off" type="int">
+</parameter>
+</method>
+<method name="toBigEndian7"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="int">
+</parameter>
+</method>
+</class>
+<interface name="Callback"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="get"
+ return="T"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
+<method name="get"
+ return="T"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeout" type="long">
+</parameter>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
+<method name="setCallback"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="callback" type="com.ericsson.research.trap.utils.Callback.SingleArgumentCallback&lt;T&gt;">
+</parameter>
+</method>
+</interface>
+<interface name="Callback.SingleArgumentCallback"
+ abstract="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="receiveSingleArgumentCallback"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="result" type="T">
+</parameter>
+</method>
+</interface>
+<class name="ConditionalBlock"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="block"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="condition" type="byte[]">
+</parameter>
+</method>
+<method name="create"
+ return="com.ericsson.research.trap.utils.ConditionalBlock"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="getTimeout"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="reset"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setCondition"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="condition" type="byte[]">
+</parameter>
+</method>
+<method name="setTimeout"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="timeout" type="long">
+</parameter>
+</method>
+<method name="unblock"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="condition" type="byte[]">
+</parameter>
+</method>
+</class>
+<interface name="Configuration"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getBooleanOption"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="option" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="boolean">
+</parameter>
+</method>
+<method name="getChildOptions"
+ return="com.ericsson.research.trap.utils.Configuration"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="optionsPrefix" type="java.lang.String">
+</parameter>
+<parameter name="cutPrefixes" type="boolean">
+</parameter>
+<parameter name="updateParent" type="boolean">
+</parameter>
+</method>
+<method name="getDoubleOption"
+ return="double"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="option" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="double">
+</parameter>
+</method>
+<method name="getIntOption"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="string" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="int">
+</parameter>
+</method>
+<method name="getKeys"
+ return="java.util.Set&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeys"
+ return="java.util.Set&lt;java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyDepth" type="int">
+</parameter>
+</method>
+<method name="getLongOption"
+ return="long"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="option" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="long">
+</parameter>
+</method>
+<method name="getOption"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="option" type="java.lang.String">
+</parameter>
+</method>
+<method name="getOption"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="prefix" type="java.lang.String">
+</parameter>
+<parameter name="option" type="java.lang.String">
+</parameter>
+</method>
+<method name="getOptions"
+ return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="optionsPrefix" type="java.lang.String">
+</parameter>
+</method>
+<method name="getOptions"
+ return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="optionsPrefix" type="java.lang.String">
+</parameter>
+<parameter name="cutPrefixes" type="boolean">
+</parameter>
+</method>
+<method name="getStringOption"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="option" type="java.lang.String">
+</parameter>
+<parameter name="defaultValue" type="java.lang.String">
+</parameter>
+</method>
+<method name="initFromString"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="config" type="java.lang.String">
+</parameter>
+</method>
+<method name="setOption"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="option" type="java.lang.String">
+</parameter>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="setOption"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="prefix" type="java.lang.String">
+</parameter>
+<parameter name="option" type="java.lang.String">
+</parameter>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="toString"
+ return="java.lang.String"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<interface name="Future"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="cancel"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="cancel"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="mayInterruptIfRunning" type="boolean">
+</parameter>
+</method>
+<method name="isCancelled"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isDone"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+<class name="HexConverter"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="toByteArray"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="toString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bs" type="byte[]">
+</parameter>
+</method>
+</class>
+<class name="HexDump"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="makeStringifyable"
+ return="java.lang.Object"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bytes" type="byte[]">
+</parameter>
+<parameter name="start" type="int">
+</parameter>
+<parameter name="width" type="int">
+</parameter>
+</method>
+<method name="printBytes"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bytes" type="byte[]">
+</parameter>
+<parameter name="start" type="int">
+</parameter>
+<parameter name="width" type="int">
+</parameter>
+</method>
+<method name="printBytes"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bytes" type="byte[]">
+</parameter>
+<parameter name="start" type="int">
+</parameter>
+<parameter name="width" type="int">
+</parameter>
+<parameter name="ps" type="java.io.PrintStream">
+</parameter>
+</method>
+</class>
+<class name="IPUtil"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getAddressForURI"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="address" type="java.net.InetAddress">
+</parameter>
+</method>
+<method name="getPublicAddresses"
+ return="java.net.InetAddress[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isLocal"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="address" type="java.net.InetAddress">
+</parameter>
+</method>
+</class>
+<class name="LRUCache"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="LRUCache"
+ type="com.ericsson.research.trap.utils.LRUCache"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</constructor>
+<method name="createCache"
+ return="com.ericsson.research.trap.utils.LRUCache&lt;K, V&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="get"
+ return="V"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="K">
+</parameter>
+</method>
+<method name="put"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="K">
+</parameter>
+<parameter name="value" type="V">
+</parameter>
+</method>
+</class>
+<class name="Lock"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="createLock"
+ return="com.ericsson.research.trap.utils.Lock"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="lock"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="lockInterruptibly"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
+<method name="tryLock"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="tryLock"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="waitTime" type="long">
+</parameter>
+<exception name="InterruptedException" type="java.lang.InterruptedException">
+</exception>
+</method>
+<method name="unlock"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="PackageScanner"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="scan"
+ return="java.lang.Class&lt;?&gt;[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="packageName" type="java.lang.String">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="scan"
+ return="java.lang.Class&lt;?&gt;[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="packageName" type="java.lang.String">
+</parameter>
+<parameter name="cl" type="java.lang.ClassLoader">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</class>
+<class name="SSLUtil"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SSLUtil"
+ type="com.ericsson.research.trap.utils.SSLUtil"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getContext"
+ return="javax.net.ssl.SSLContext"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyStore" type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial">
+</parameter>
+<parameter name="trustStore" type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial">
+</parameter>
+</method>
+<method name="getInsecure"
+ return="javax.net.ssl.SSLContext"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="KeyManagementException" type="java.security.KeyManagementException">
+</exception>
+<exception name="NoSuchAlgorithmException" type="java.security.NoSuchAlgorithmException">
+</exception>
+</method>
+<method name="purgeKeyStore"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyStore" type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial">
+</parameter>
+</method>
+<method name="purgeTrustStore"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="trustStore" type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial">
+</parameter>
+</method>
+</class>
+<class name="SSLUtil.SSLMaterial"
+ extends="java.lang.Object"
+ abstract="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SSLUtil.SSLMaterial"
+ type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<constructor name="SSLUtil.SSLMaterial"
+ type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyMaterialType" type="java.lang.String">
+</parameter>
+<parameter name="keyMaterialFilename" type="java.lang.String">
+</parameter>
+<parameter name="keyMaterialPassphrase" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="getKeyMaterialInputStream"
+ return="java.io.InputStream"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeyMaterialPassphrase"
+ return="char[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getKeyMaterialType"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setKeyMaterialFilename"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyMaterialFilename" type="java.lang.String">
+</parameter>
+</method>
+<method name="setKeyMaterialPassphrase"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyMaterialPassphrase" type="java.lang.String">
+</parameter>
+</method>
+<method name="setKeyMaterialType"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="keyMaterialType" type="java.lang.String">
+</parameter>
+</method>
+<field name="JKS_TYPE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;jks&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="PKCS12_TYPE"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;pkcs12&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+</class>
+<class name="StringUtil"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getLoggerComponent"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="o" type="java.lang.Object">
+</parameter>
+</method>
+<method name="split"
+ return="java.lang.String[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+<parameter name="c" type="char">
+</parameter>
+</method>
+<method name="toUtfBytes"
+ return="byte[]"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="s" type="java.lang.String">
+</parameter>
+</method>
+<method name="toUtfString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="buffer" type="byte[]">
+</parameter>
+</method>
+<method name="toUtfString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="encoded" type="char[]">
+</parameter>
+</method>
+<method name="toUtfString"
+ return="java.lang.Object"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="bytes" type="byte[]">
+</parameter>
+<parameter name="i" type="int">
+</parameter>
+<parameter name="length" type="int">
+</parameter>
+</method>
+</class>
+<class name="ThreadPool"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="executeAfter"
+ return="com.ericsson.research.trap.utils.Future"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="java.lang.Runnable">
+</parameter>
+<parameter name="delay" type="long">
+</parameter>
+</method>
+<method name="executeAt"
+ return="com.ericsson.research.trap.utils.Future"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="java.lang.Runnable">
+</parameter>
+<parameter name="timestamp" type="long">
+</parameter>
+</method>
+<method name="executeCached"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="java.lang.Runnable">
+</parameter>
+</method>
+<method name="executeFixed"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="java.lang.Runnable">
+</parameter>
+</method>
+<method name="weakExecuteAfter"
+ return="com.ericsson.research.trap.utils.Future"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="task" type="java.lang.Runnable">
+</parameter>
+<parameter name="delay" type="long">
+</parameter>
+</method>
+</class>
+<class name="UID"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="randomUID"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<class name="UUID"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="randomUUID"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+</package>
+</api>

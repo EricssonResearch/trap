@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for TrAP Parent." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
+<title>
+
+  TrapKeepalivePredictor
+
+
+| TrAP Parent
+
+</title>
+<link href="../../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">TrAP Parent</span>
+    
+    </div>
+    <div id="headerRight">
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../../packages.html"  >Package Index</a> | 
+                <a href="../../../../../classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/package-summary.html">com.ericsson.research.transport</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ssl/package-summary.html">com.ericsson.research.transport.ssl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ws/package-summary.html">com.ericsson.research.transport.ws</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ws/spi/package-summary.html">com.ericsson.research.transport.ws.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ws/spi/util/package-summary.html">com.ericsson.research.transport.ws.spi.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/package-summary.html">com.ericsson.research.trap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/auth/package-summary.html">com.ericsson.research.trap.auth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/delegates/package-summary.html">com.ericsson.research.trap.delegates</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/examples/package-summary.html">com.ericsson.research.trap.examples</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/package-summary.html">com.ericsson.research.trap.impl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/buffers/package-summary.html">com.ericsson.research.trap.impl.buffers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/http/package-summary.html">com.ericsson.research.trap.impl.http</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/tomcat/package-summary.html">com.ericsson.research.trap.spi.tomcat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/transports/package-summary.html">com.ericsson.research.trap.spi.transports</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/ws/netty/package-summary.html">com.ericsson.research.trap.spi.ws.netty</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/tests/package-summary.html">com.ericsson.research.trap.tests</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/utils/package-summary.html">com.ericsson.research.trap.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/utils/impl/package-summary.html">com.ericsson.research.trap.utils.impl</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/ListenerTrapTransport.html">ListenerTrapTransport</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/ListenerTrapTransportDelegate.html">ListenerTrapTransportDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapConfiguration.html">TrapConfiguration</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepaliveDelegate.html">TrapKeepaliveDelegate</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html">TrapKeepalivePredictor</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessageBuffer.html">TrapMessageBuffer</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportDelegate.html">TrapTransportDelegate</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapConstants.html">TrapConstants</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapEndpointMessage.html">TrapEndpointMessage</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.TrapHostable.html">TrapHostingTransport.TrapHostable</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Operation.html">TrapMessage.Operation</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Operation.Value.html">TrapMessage.Operation.Value</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportPriority.html">TrapTransportPriority</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportProtocol.html">TrapTransportProtocol</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportState.html">TrapTransportState</a></li>
+      </ul>
+    </li>
+              
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportException.html">TrapTransportException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+
+
+
+
+  <a href="#pubmethods">Methods</a>
+  
+
+
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1>TrapKeepalivePredictor</h1>
+
+
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">com.ericsson.research.trap.spi.TrapKeepalivePredictor</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../com/ericsson/research/trap/spi/transports/DisabledKeepalivePredictor.html">DisabledKeepalivePredictor</a>,
+            
+              <a href="../../../../../com/ericsson/research/trap/spi/transports/StaticKeepalivePredictor.html">StaticKeepalivePredictor</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/transports/DisabledKeepalivePredictor.html">DisabledKeepalivePredictor</a></td>
+              <td class="jd-descrcol" width="100%">Disables the default keepalive engine.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/transports/StaticKeepalivePredictor.html">StaticKeepalivePredictor</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>A TrapKeepalivePredictor allows TrapTransports to determine on an automatic basis the next keepalive. Implementations
+ of this class can attempt various predictions on how long keepalives to use</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#dataReceived()">dataReceived</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Called by the transport when it has received some data – any data.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#dataSent()">dataSent</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Called by the transport when it has sent some data – any data.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#getKeepaliveExpiry()">getKeepaliveExpiry</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Accessor for the current keepalive expiry.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#getKeepaliveInterval()">getKeepaliveInterval</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the keepalive interval.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#getNextKeepaliveSend()">getNextKeepaliveSend</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the number of msec until the next keepalive should be sent.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#keepaliveReceived(boolean, char, int, byte[])">keepaliveReceived</a></span>(boolean isPing, char pingType, int remoteTimer, byte[] data)</nobr>
+        
+        <div class="jd-descrdiv">Called when a keepalive (PING or PONG) is received.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#nextKeepaliveReceivedDelta()">nextKeepaliveReceivedDelta</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Determines when the predictor expects the next keepalive to be received.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setDelegate(com.ericsson.research.trap.spi.TrapKeepaliveDelegate)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapKeepaliveDelegate.html">TrapKeepaliveDelegate</a> delegate)</nobr>
+        
+        <div class="jd-descrdiv">Sets a delegate for timeout notifications.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setKeepaliveExpiry(long)">setKeepaliveExpiry</a></span>(long newExpiry)</nobr>
+        
+        <div class="jd-descrdiv">Sets the keepalive expiry.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setKeepaliveInterval(int)">setKeepaliveInterval</a></span>(int interval)</nobr>
+        
+        <div class="jd-descrdiv">Sets the keepalive interval, in seconds.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setMaxAutoKeepalive(int)">setMaxAutoKeepalive</a></span>(int max)</nobr>
+        
+        <div class="jd-descrdiv">Sets the maximum keepalive interval automatic keepalive time adjustments are allowed to use.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setMaxKeepalive(int)">setMaxKeepalive</a></span>(int max)</nobr>
+        
+        <div class="jd-descrdiv">Sets the maximum keepalive timer supported by the transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setMinAutoKeepalive(int)">setMinAutoKeepalive</a></span>(int min)</nobr>
+        
+        <div class="jd-descrdiv">Sets the minimum keepalive interval automatic keepalive time adjustments are allowed to use.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#setMinKeepalive(int)">setMinKeepalive</a></span>(int min)</nobr>
+        
+        <div class="jd-descrdiv">Sets the minimum keepalive timer supported by this transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#start()">start</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Starts the predictor's timeout facilities, enabling the predictor to do timeout notifications.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html#stop()">stop</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Stops the predictor's timeout notifications/timers.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="dataReceived()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">dataReceived</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called by the transport when it has received some data – any data.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="dataSent()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">dataSent</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called by the transport when it has sent some data – any data.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getKeepaliveExpiry()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        long
+      </span>
+      <span class="sympad">getKeepaliveExpiry</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Accessor for the current keepalive expiry.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The keepalive expiry, in msec.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getKeepaliveInterval()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getKeepaliveInterval</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the keepalive interval.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The current keepalive interval, in seconds.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNextKeepaliveSend()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        long
+      </span>
+      <span class="sympad">getNextKeepaliveSend</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the number of msec until the next keepalive should be sent. This differs from the receive timer, and is
+ used to determine when to dispatch a new keepalive to the remote side.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the number of msec until the next keepalive.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="keepaliveReceived(boolean, char, int, byte[])"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">keepaliveReceived</span>
+      <span class="normal">(boolean isPing, char pingType, int remoteTimer, byte[] data)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when a keepalive (PING or PONG) is received.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>isPing</td>
+          <td>Whether the sent message is a ping or a pong</td>
+        </tr>
+        <tr>
+          <th>pingType</td>
+          <td>The type of ping that is received.</td>
+        </tr>
+        <tr>
+          <th>remoteTimer</td>
+          <td>The remote side's requested time until next keepalive</td>
+        </tr>
+        <tr>
+          <th>data</td>
+          <td>The payload of the ping, as sent from this side.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="nextKeepaliveReceivedDelta()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        long
+      </span>
+      <span class="sympad">nextKeepaliveReceivedDelta</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Determines when the predictor expects the next keepalive to be received. This can be a positive number of the
+ next keepalive is in the future, or a negative number if the keepalive was supposed to happen but didn't.
+ <p>
+ This method can be used to inspect whether the keepalive mechanism is working (on the local side) or whether the
+ remote side is connected.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The number of milliseconds until/since the keepalive was expected.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDelegate(com.ericsson.research.trap.spi.TrapKeepaliveDelegate)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setDelegate</span>
+      <span class="normal">(<a href="../../../../../com/ericsson/research/trap/spi/TrapKeepaliveDelegate.html">TrapKeepaliveDelegate</a> delegate)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets a delegate for timeout notifications. This delegate MUST be <b>weakly</b> referenced, to prevent the
+ predictor from stopping garbage collection with its timers.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>delegate</td>
+          <td>The delegate that will receive the predictor's, well, predictions!
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setKeepaliveExpiry(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setKeepaliveExpiry</span>
+      <span class="normal">(long newExpiry)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the keepalive expiry. This controls how long time after a missed keepalive should be permitted to pass
+ before the predictor notifies the delegate of the fact. The expiry value should be long enough to not produce too
+ many false positives due to network latency.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newExpiry</td>
+          <td>A new expiry value, in milliseconds. Must be positive.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setKeepaliveInterval(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setKeepaliveInterval</span>
+      <span class="normal">(int interval)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the keepalive interval, in seconds. Some special values are reserved from <code><a href="../../../../../com/ericsson/research/trap/TrapKeepalivePolicy.html">TrapKeepalivePolicy</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>interval</td>
+          <td>The new keepalive interval.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaxAutoKeepalive(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setMaxAutoKeepalive</span>
+      <span class="normal">(int max)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the maximum keepalive interval automatic keepalive time adjustments are allowed to use.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>max</td>
+          <td>The new maximum, in seconds
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaxKeepalive(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setMaxKeepalive</span>
+      <span class="normal">(int max)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the maximum keepalive timer supported by the transport. Called by the transport when a new
+ KeepalivePredictor is assigned to it. In effect, this predictor must then ignore any setKeepaliveInterval calls
+ with a value larger than max.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>max</td>
+          <td>The maximum keepalive interval, in seconds.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMinAutoKeepalive(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setMinAutoKeepalive</span>
+      <span class="normal">(int min)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the minimum keepalive interval automatic keepalive time adjustments are allowed to use.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>min</td>
+          <td>The new minimum, in seconds
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMinKeepalive(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setMinKeepalive</span>
+      <span class="normal">(int min)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the minimum keepalive timer supported by this transport.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>min</td>
+          <td>The minimum keepalive interval, in seconds.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="start()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">start</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Starts the predictor's timeout facilities, enabling the predictor to do timeout notifications.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="stop()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">stop</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Stops the predictor's timeout notifications/timers.
+</p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize doclava-developer-docs.js */
+</script>
+
+</body>
+</html>

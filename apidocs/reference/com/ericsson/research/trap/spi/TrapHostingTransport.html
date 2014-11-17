@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for TrAP Parent." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
+<title>
+
+  TrapHostingTransport
+
+
+| TrAP Parent
+
+</title>
+<link href="../../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">TrAP Parent</span>
+    
+    </div>
+    <div id="headerRight">
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../../packages.html"  >Package Index</a> | 
+                <a href="../../../../../classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/package-summary.html">com.ericsson.research.transport</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ssl/package-summary.html">com.ericsson.research.transport.ssl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ws/package-summary.html">com.ericsson.research.transport.ws</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ws/spi/package-summary.html">com.ericsson.research.transport.ws.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/transport/ws/spi/util/package-summary.html">com.ericsson.research.transport.ws.spi.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/package-summary.html">com.ericsson.research.trap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/auth/package-summary.html">com.ericsson.research.trap.auth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/delegates/package-summary.html">com.ericsson.research.trap.delegates</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/examples/package-summary.html">com.ericsson.research.trap.examples</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/package-summary.html">com.ericsson.research.trap.impl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/buffers/package-summary.html">com.ericsson.research.trap.impl.buffers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/http/package-summary.html">com.ericsson.research.trap.impl.http</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/tomcat/package-summary.html">com.ericsson.research.trap.spi.tomcat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/transports/package-summary.html">com.ericsson.research.trap.spi.transports</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/spi/ws/netty/package-summary.html">com.ericsson.research.trap.spi.ws.netty</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/tests/package-summary.html">com.ericsson.research.trap.tests</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/utils/package-summary.html">com.ericsson.research.trap.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/utils/impl/package-summary.html">com.ericsson.research.trap.utils.impl</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/ListenerTrapTransport.html">ListenerTrapTransport</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/ListenerTrapTransportDelegate.html">ListenerTrapTransportDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapConfiguration.html">TrapConfiguration</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepaliveDelegate.html">TrapKeepaliveDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html">TrapKeepalivePredictor</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessageBuffer.html">TrapMessageBuffer</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportDelegate.html">TrapTransportDelegate</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapConstants.html">TrapConstants</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapEndpointMessage.html">TrapEndpointMessage</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.TrapHostable.html">TrapHostingTransport.TrapHostable</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Operation.html">TrapMessage.Operation</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Operation.Value.html">TrapMessage.Operation.Value</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportPriority.html">TrapTransportPriority</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportProtocol.html">TrapTransportProtocol</a></li>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportState.html">TrapTransportState</a></li>
+      </ul>
+    </li>
+              
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportException.html">TrapTransportException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+  <a href="#nestedclasses">Nested Classes</a>
+  
+
+
+
+
+
+
+  &#124; <a href="#inhconstants">Inherited Constants</a>
+  
+
+
+
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1>TrapHostingTransport</h1>
+
+
+
+  
+  
+      implements 
+      
+        <a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a> 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">com.ericsson.research.trap.spi.TrapHostingTransport</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../com/ericsson/research/trap/spi/transports/HTTPServletListener.html">HTTPServletListener</a>,
+            
+              <a href="../../../../../com/ericsson/research/trap/spi/transports/ListenerHttpTransport.html">ListenerHttpTransport</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/transports/HTTPServletListener.html">HTTPServletListener</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/transports/ListenerHttpTransport.html">ListenerHttpTransport</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>Defines interfaces for transports that are capable of hosting files. This allows an application to sideload
+ information on transports, instead of having to set up its own hosting setup. The primary use-case for hosting
+ transports is when the main application wants to provide some file/data (e.g. setup JavaScript) without having to
+ provide its own hosting interface. HTTP transports should implement this interface.
+ <p>
+ This interface is NOT intended as a replacement to the Servlet API or similar containers, and should only be used
+ when it is too expensive to set up a proper container. Additionally, it is not intended for dynamic content, or
+ anything advanced really.</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="jd-sumtable"><tr><th colspan="12">Nested Classes</th></tr>
+
+
+  
+    <tr class="alt-color api apilevel-" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        class</nobr></td>
+      <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.TrapHostable.html">TrapHostingTransport.TrapHostable</a></td>
+      <td class="jd-descrcol" width="100%">Interface for objects hosted by a transport.&nbsp;</td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-com.ericsson.research.trap.spi.TrapTransport" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-com.ericsson.research.trap.spi.TrapTransport-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+<a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html">com.ericsson.research.trap.spi.TrapTransport</a>
+<div id="inherited-constants-com.ericsson.research.trap.spi.TrapTransport">
+  <div id="inherited-constants-com.ericsson.research.trap.spi.TrapTransport-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-com.ericsson.research.trap.spi.TrapTransport-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_IGNORE_INVALID">CERT_IGNORE_INVALID</a></td>
+        <td class="jd-descrcol" width="100%">Corresponding flag to <code><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_USE_INSECURE_TEST">CERT_USE_INSECURE_TEST</a></code> to tell client transports to ignore invalid server
+ certificates.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_KEYSTORE_NAME">CERT_KEYSTORE_NAME</a></td>
+        <td class="jd-descrcol" width="100%">The name (in case of a .jar embedded resource) or path to the file containing the keystore material.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_KEYSTORE_PASS">CERT_KEYSTORE_PASS</a></td>
+        <td class="jd-descrcol" width="100%">The password/passphrase used for the keystore file.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_KEYSTORE_TYPE">CERT_KEYSTORE_TYPE</a></td>
+        <td class="jd-descrcol" width="100%">The type of the certificate keystore.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_TRUSTSTORE_NAME">CERT_TRUSTSTORE_NAME</a></td>
+        <td class="jd-descrcol" width="100%">The name (in case of a .jar embedded resource) or path to the file containing the keystore material.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_TRUSTSTORE_PASS">CERT_TRUSTSTORE_PASS</a></td>
+        <td class="jd-descrcol" width="100%">The password/passphrase used for the truststore file.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_TRUSTSTORE_TYPE">CERT_TRUSTSTORE_TYPE</a></td>
+        <td class="jd-descrcol" width="100%">The type of the certificate truststore.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#CERT_USE_INSECURE_TEST">CERT_USE_INSECURE_TEST</a></td>
+        <td class="jd-descrcol" width="100%">Uses <b>insecure, untrusted</b> default certificates.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#OPTION_ENABLED">OPTION_ENABLED</a></td>
+        <td class="jd-descrcol" width="100%">Option to enable a transport.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#OPTION_LOGGERPREFIX">OPTION_LOGGERPREFIX</a></td>
+        <td class="jd-descrcol" width="100%">Sets a string that will be used as a prefix to logger calls.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#OPTION_PRIORITY">OPTION_PRIORITY</a></td>
+        <td class="jd-descrcol" width="100%">The transport priority is a numeric value that determines the order in which Trap should prefer transports.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#OPTION_WARN_ADDRESS">OPTION_WARN_ADDRESS</a></td>
+        <td class="jd-descrcol" width="100%">Option string to configure the transport to warn about (server) transports that have not been configured to
+ listen to a specific IP number.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#TRAP_TRANSPORT_PACKAGE">TRAP_TRANSPORT_PACKAGE</a></td>
+        <td class="jd-descrcol" width="100%">The package to search for transports
+</td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/URI.html">URI</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html#addHostedObject(com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable, java.lang.String)">addHostedObject</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.TrapHostable.html">TrapHostingTransport.TrapHostable</a> hosted, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> preferredName)</nobr>
+        
+        <div class="jd-descrdiv">Adds an object to be hosted.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html#getProtocolName()">getProtocolName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Accessor for the protocol implemented by the hosting transport.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.ericsson.research.trap.spi.TrapTransport" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.ericsson.research.trap.spi.TrapTransport-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html">com.ericsson.research.trap.spi.TrapTransport</a>
+
+<div id="inherited-methods-com.ericsson.research.trap.spi.TrapTransport">
+  <div id="inherited-methods-com.ericsson.research.trap.spi.TrapTransport-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.ericsson.research.trap.spi.TrapTransport-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#canConnect()">canConnect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Queries if this transport can perform a connection, i.e.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#canListen()">canListen</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Queries if this transport can accept incoming connections, i.e.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#configure(java.lang.String, int)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, int configurationValue)</nobr>
+        
+        <div class="jd-descrdiv">Configures a specific transport setting (key/value) using integer values.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#configure(java.lang.String, java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
+        
+        <div class="jd-descrdiv">Configures a specific transport setting (key/value)</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#connect()">connect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Signals to this transport that it should attempt to connect to the remote endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#disable()">disable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Disables this transport, preventing it from participating in the transport abstraction.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#disconnect()">disconnect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Signals to this transport that it must disconnect.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#enable()">enable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Enables this transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#flushTransport()">flushTransport</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Flushes the transport buffers.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#forceError()">forceError</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Forces the transport to enter an ERROR state, closing the transport ungracefully.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getAuthenticationContext()">getAuthenticationContext</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches all available authentication context keys and values.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Map.html">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>,&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getAuthenticationContext(java.util.Collection<java.lang.String>)">getAuthenticationContext</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt; authenticationKeys)</nobr>
+        
+        <div class="jd-descrdiv">Fetches the available authentication context values for the specified keys.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getAuthenticationKeys()">getAuthenticationKeys</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the authentication keys available; the keys are string options that specify which context data is
+ available.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getConfiguration()">getConfiguration</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a configuration string representing this transport's configuration.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getContext()">getContext</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the associated callback context object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getFormat()">getFormat</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Accesses the current format for this transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getKeepaliveInterval()">getKeepaliveInterval</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retreives the current value of <i>keepaliveInterval</i>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html">TrapKeepalivePredictor</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getKeepalivePredictor()">getKeepalivePredictor</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves the currently-in-use keepalive predictor.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../com/ericsson/research/trap/spi/TrapTransportState.html">TrapTransportState</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getState()">getState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the transport's current state</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getTransportName()">getTransportName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets this transport's name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#getTransportPriority()">getTransportPriority</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches this transport's priority, which is used in the comparable implementation to sort transports, if needed.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#init()">init</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Initialises the transport, making it able to connect again.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#isAlive(long, boolean, long)">isAlive</a></span>(long within, boolean check, long timeout)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to verify if the transport is alive, or has been alive within a certain number of milliseconds.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#isAvailable()">isAvailable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Asks if the transport is available for sending.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#isConfigured(boolean, boolean)">isConfigured</a></span>(boolean client, boolean server)</nobr>
+        
+        <div class="jd-descrdiv">Queries whether this transport is configured for a particular role.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#isConnected()">isConnected</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Checks if this transport is currently connected to the other end.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#isEnabled()">isEnabled</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Checks whether the given Trap transport is enabled (i.e.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#isObjectTransport()">isObjectTransport</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Queries whether this transport is capable of transporting TrapObjectMessages.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#lastAlive()">lastAlive</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Fetches the last known liveness timestamp of the transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#receiveTransportedMessage(com.ericsson.research.trap.spi.TrapMessage)">receiveTransportedMessage</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> msg)</nobr>
+        
+        <div class="jd-descrdiv">Receives a transported message, sent from the other side using
+ <code><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportDelegate.html#ttNeedTransport(com.ericsson.research.trap.spi.TrapMessage, com.ericsson.research.trap.spi.TrapTransport, java.lang.Object)">ttNeedTransport(TrapMessage, TrapTransport, Object)</a></code></div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#send(com.ericsson.research.trap.spi.TrapMessage, boolean)">send</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message, boolean expectMore)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to send a message with this transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#sendTransportSpecific(com.ericsson.research.trap.spi.TrapMessage)">sendTransportSpecific</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</nobr>
+        
+        <div class="jd-descrdiv">Sends a transport-specific message, bypassing the regular message queue.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setAuthentication(com.ericsson.research.trap.auth.TrapAuthentication)">setAuthentication</a></span>(<a href="../../../../../com/ericsson/research/trap/auth/TrapAuthentication.html">TrapAuthentication</a> authentication)</nobr>
+        
+        <div class="jd-descrdiv">Set an authentication instance for this transport, to be used for authenticating any messages that need
+ authentication.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setConfiguration(com.ericsson.research.trap.spi.TrapConfiguration)">setConfiguration</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapConfiguration.html">TrapConfiguration</a> configuration)</nobr>
+        
+        <div class="jd-descrdiv">Sets the Transport's configuration object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setFormat(com.ericsson.research.trap.spi.TrapMessage.Format)">setFormat</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.Format.html">TrapMessage.Format</a> format)</nobr>
+        
+        <div class="jd-descrdiv">Sets the message format for this transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setKeepaliveExpiry(long)">setKeepaliveExpiry</a></span>(long newExpiry)</nobr>
+        
+        <div class="jd-descrdiv">Alias to set the expiry of the currently configured predictor.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setKeepaliveInterval(int)">setKeepaliveInterval</a></span>(int newInterval)</nobr>
+        
+        <div class="jd-descrdiv">Sets a new keepalive interval for the trap endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setKeepalivePredictor(com.ericsson.research.trap.spi.TrapKeepalivePredictor)">setKeepalivePredictor</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapKeepalivePredictor.html">TrapKeepalivePredictor</a> newPredictor)</nobr>
+        
+        <div class="jd-descrdiv">Assigns a new predictor.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setTransportDelegate(com.ericsson.research.trap.spi.TrapTransportDelegate, java.lang.Object)">setTransportDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapTransportDelegate.html">TrapTransportDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        
+        <div class="jd-descrdiv">Sets the listener of this transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/spi/TrapTransport.html#setTransportPriority(int)">setTransportPriority</a></span>(int priority)</nobr>
+        
+        <div class="jd-descrdiv">Sets this transport's priority.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="addHostedObject(com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/URI.html">URI</a>
+      </span>
+      <span class="sympad">addHostedObject</span>
+      <span class="normal">(<a href="../../../../../com/ericsson/research/trap/spi/TrapHostingTransport.TrapHostable.html">TrapHostingTransport.TrapHostable</a> hosted, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> preferredName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Adds an object to be hosted. The hosted object will be accessible from the URI returned. The URI type is
+ transport dependent; an HTTP transport would return an HTTP URI, other transports may have other types.
+ <p>
+ The URI returned will be pseudo-random. It is impossible to guarantee any specific URI, format or path, as all
+ depend on the specific transport quantities.
+ <p>
+ The hosted object will be weakly referenced. To remove the object, simply let it get GC'd.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>hosted</td>
+          <td>The object to host.</td>
+        </tr>
+        <tr>
+          <th>preferredName</td>
+          <td>A human readable name at which this object would prefer to be hosted. The path is not guaranteed, but
+            it may be more predictable than purely random. May be <i>null</i>, in which case a random path is
+            used.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The URI at which the object's data can be accessed remotely.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getProtocolName()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getProtocolName</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Accessor for the protocol implemented by the hosting transport.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A value from <code><a href="../../../../../com/ericsson/research/trap/spi/TrapTransportProtocol.html">TrapTransportProtocol</a></code>.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize doclava-developer-docs.js */
+</script>
+
+</body>
+</html>

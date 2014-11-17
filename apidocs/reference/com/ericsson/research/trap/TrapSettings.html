@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for TrAP Parent." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>
+
+  TrapSettings
+
+
+| TrAP Parent
+
+</title>
+<link href="../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../", "../../../../../assets/");
+</script>
+<script src="../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">TrAP Parent</span>
+    
+    </div>
+    <div id="headerRight">
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../packages.html"  >Package Index</a> | 
+                <a href="../../../../classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/package-summary.html">com.ericsson.research.transport</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ssl/package-summary.html">com.ericsson.research.transport.ssl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ws/package-summary.html">com.ericsson.research.transport.ws</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ws/spi/package-summary.html">com.ericsson.research.transport.ws.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ws/spi/util/package-summary.html">com.ericsson.research.transport.ws.spi.util</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/package-summary.html">com.ericsson.research.trap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/auth/package-summary.html">com.ericsson.research.trap.auth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/delegates/package-summary.html">com.ericsson.research.trap.delegates</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/examples/package-summary.html">com.ericsson.research.trap.examples</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/package-summary.html">com.ericsson.research.trap.impl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/buffers/package-summary.html">com.ericsson.research.trap.impl.buffers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/http/package-summary.html">com.ericsson.research.trap.impl.http</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/tomcat/package-summary.html">com.ericsson.research.trap.spi.tomcat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/transports/package-summary.html">com.ericsson.research.trap.spi.transports</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/ws/netty/package-summary.html">com.ericsson.research.trap.spi.ws.netty</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/tests/package-summary.html">com.ericsson.research.trap.tests</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/utils/package-summary.html">com.ericsson.research.trap.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/utils/impl/package-summary.html">com.ericsson.research.trap.utils.impl</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapChannel.html">TrapChannel</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapListenerDelegate.html">TrapListenerDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapPeer.TrapPeerChannel.html">TrapPeer.TrapPeerChannel</a></li>
+          <li class="selected api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapSettings.html">TrapSettings</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/IndexConfigurator.html">IndexConfigurator</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/IndexMojo.html">IndexMojo</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapFactory.html">TrapFactory</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapKeepalivePolicy.html">TrapKeepalivePolicy</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapTransports.html">TrapTransports</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+
+
+
+
+  <a href="#pubmethods">Methods</a>
+  
+
+
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1>TrapSettings</h1>
+
+
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">com.ericsson.research.trap.TrapSettings</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../com/ericsson/research/trap/impl/ClientTrapEndpoint.html">ClientTrapEndpoint</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/impl/ListenerTrapEndpoint.html">ListenerTrapEndpoint</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/impl/ServerTrapEndpoint.html">ServerTrapEndpoint</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html">TrapEndpointImpl</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a>,
+            
+              <a href="../../../../com/ericsson/research/trap/impl/TrapPeerImpl.html">TrapPeerImpl</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/impl/ClientTrapEndpoint.html">ClientTrapEndpoint</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/impl/ListenerTrapEndpoint.html">ListenerTrapEndpoint</a></td>
+              <td class="jd-descrcol" width="100%">This endpoint listens for incoming connections.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/impl/ServerTrapEndpoint.html">ServerTrapEndpoint</a></td>
+              <td class="jd-descrcol" width="100%">The server trap endpoint does not really need to care about a lot of
+ things...&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a></td>
+              <td class="jd-descrcol" width="100%">A TrapClient is a TrapEndpoint capable of opening an outgoing connection, commonly to a TrapListener.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a></td>
+              <td class="jd-descrcol" width="100%">The main interface to Trap, a TrapEndpoint is the shared interface between servers and clients.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html">TrapEndpointImpl</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></td>
+              <td class="jd-descrcol" width="100%">A TrapListener is a special kind of Trap node capable of listening for incoming connections.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a></td>
+              <td class="jd-descrcol" width="100%">Interface used to maintain peer to peer Trap connections.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../com/ericsson/research/trap/impl/TrapPeerImpl.html">TrapPeerImpl</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>A common ancestor interface for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a></code> and <code><a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></code>. Methods common to TrapEndpoints and
+ TrapListeners will be found here, generally on managing the transports themselves.</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#configure(java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configuration)</nobr>
+        
+        <div class="jd-descrdiv">Configures this TrapEndpoint, overwriting any previous configuration, and setting the new string to the new
+ configuration.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#configureTransport(java.lang.String, java.lang.String, java.lang.String)">configureTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
+        
+        <div class="jd-descrdiv">Changes the configuration of a given transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#disableAllTransports()">disableAllTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Convenience method to disable all transports at a given configurable object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#disableTransport(java.lang.String)">disableTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Disables a transport.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#enableTransport(java.lang.String)">enableTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Enables a transport with a given name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getConfiguration()">getConfiguration</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the configuration of this endpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getHostingTransport(java.lang.String)">getHostingTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> protocol)</nobr>
+        
+        <div class="jd-descrdiv">Attempts to fetch a <code><a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></code> instance for the specific protocol.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getHostingTransports()">getHostingTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Ask the endpoint to make a list of the currently available <code><a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></code>s associated with it.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getTransport(java.lang.String)">getTransport</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Accesses a single transport by name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getTransports()">getTransports</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the current set of transports associated with this TrapEndpoint.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#isTransportEnabled(java.lang.String)">isTransportEnabled</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</nobr>
+        
+        <div class="jd-descrdiv">Queries if a transport is enabled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate</a></span>(<a href="../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</nobr>
+        
+        <div class="jd-descrdiv">Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setDelegateContext(java.lang.Object)">setDelegateContext</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> delegateContext)</nobr>
+        
+        <div class="jd-descrdiv">Trap delegates may have an additional context object provided at callback time.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapSettings.html#setOption(java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> optionName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets a configuration option.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="configure(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">configure</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configuration)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Configures this TrapEndpoint, overwriting any previous configuration, and setting the new string to the new
+ configuration. This will also reconfigure any constituent transports. This method should be used before using any
+ of the programmatic configuration methods, as it may override them.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>configuration</td>
+          <td>A string representing the new configuration.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="configureTransport(java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">configureTransport</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Changes the configuration of a given transport. This is an alias to accessing the transport and configuring it
+ directly. After configuration, the transport settings will be updated.
+ <p>
+ Care should be taken when using this method to not conflict with Trap's general management. In most cases, an
+ endpoint will manage transport settings automatically, although some tweaks can be done on a per-transport basis.
+ <p>
+ General configuration keys can be found as static properties in <code><a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a></code>. Specific options are
+ relevant only to the given transport.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>transportName</td>
+          <td>The name of the transport to configure.</td>
+        </tr>
+        <tr>
+          <th>configurationKey</td>
+          <td>The <i>unprefixed</i> configuration key</td>
+        </tr>
+        <tr>
+          <th>configurationValue</td>
+          <td>The new value of the key.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>If the transport does not exist (and thus cannot be configured).
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="disableAllTransports()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">disableAllTransports</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Convenience method to disable all transports at a given configurable object. This is primarily used to create
+ controlled-environment Trap connections, where the available transports are not automatically set. Primarily
+ targeted towards tests or other controlled environments, or when all transports need to be clamped down.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="disableTransport(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">disableTransport</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Disables a transport. Unlike <code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#enableTransport(java.lang.String)">enableTransport(String)</a></code>, this method will always succeed, even if the
+ transport does not exist. This allows applications to safely remove transports they do not wish to use – if the
+ transport does not exist, it will not be used.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>transportName</td>
+          <td>The transport to disable
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="enableTransport(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">enableTransport</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Enables a transport with a given name. Enabling a transport merely switches the enabled flag of the transport in
+ the resident Trap configuration. It does not necessarily connect it.
+ <p>
+ Enabling a transport after a client endpoint has been asked to connect will cause the transport to be ignored
+ until the reconnect procedure is triggered. For this reason, it is recommended that enabling/disabling transports
+ is done before an endpoint is connected.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>transportName</td>
+          <td>The transport to enable.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>If the transport does not exist. This exception is thrown to prevent applications that rely on a
+             certain transport from being surprised when the transport never connects. A typical case is a client
+             disabling the http transport when websockets is not available.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getConfiguration()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getConfiguration</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the configuration of this endpoint. This is the configuration as it applies for this node; it does not
+ represent the configuration another endpoint needs to have to connect here. See
+ <code><a href="../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration()">getClientConfiguration()</a></code> for that. This method is useful for debugging.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A string representing the current configuration of this TrapEndpoint.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getHostingTransport(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a>
+      </span>
+      <span class="sympad">getHostingTransport</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> protocol)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to fetch a <code><a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></code> instance for the specific protocol. This method effectively
+ fetches the hosting transports and attempts to find the one with the highest priority that conforms to
+ <i>protocol</i>. Not all protocols may have hosting transports. No verification will be performed that the query
+ can ever return a non-null value.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>protocol</td>
+          <td>The protocol of the transport that should host. See <code><a href="../../../../com/ericsson/research/trap/spi/TrapTransportProtocol.html">TrapTransportProtocol</a></code>.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The hosting transport for the given protocol with the highest priority. Else, <i>null</i>.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getHostingTransports()">getHostingTransports()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getHostingTransports()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a>&gt;
+      </span>
+      <span class="sympad">getHostingTransports</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Ask the endpoint to make a list of the currently available <code><a href="../../../../com/ericsson/research/trap/spi/TrapHostingTransport.html">TrapHostingTransport</a></code>s associated with it. The
+ number of transports may be zero when called from, for example, client endpoints. See the TrapHostingTransport
+ documentation for discussion on the uses of these.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A collection of all transports that can potentially host objects. The collection may be empty.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTransport(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a>
+      </span>
+      <span class="sympad">getTransport</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Accesses a single transport by name. This is useful for advanced configuration of transports, debugging or highly
+ specialised tweaking.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>transportName</td>
+          <td>The name of the transport.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The <code><a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a></code> instance representing the transport</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>If the transport does not exist.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTransports()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;<a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html">TrapTransport</a>&gt;
+      </span>
+      <span class="sympad">getTransports</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the current set of transports associated with this TrapEndpoint. These transports represent all the
+ instances available to the endpoint, not necessarily the ones that are currently in use. Each transport has an
+ individual state that determines if it is connected or not.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A collection of transports associated with this endpoint.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isTransportEnabled(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isTransportEnabled</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> transportName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Queries if a transport is enabled. Preferable to calling <code><a href="../../../../com/ericsson/research/trap/TrapSettings.html#getTransport(java.lang.String)">getTransport(String)</a></code> and
+ <code><a href="../../../../com/ericsson/research/trap/spi/TrapTransport.html#isEnabled()">isEnabled()</a></code> as this method will not throw if a transport does not exist.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>transportName</td>
+          <td>The transport whose state to query.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><i>true</i> if a transport exists, and is enabled, <i>false</i> otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setDelegate</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces. If
+ <i>replaceAllExisting</i> is true, then all callbacks are reset, even the ones not implemented by <i>delegate</i>
+ (they will instead log a warning if applicable). Otherwise, only the implemented callbacks are overwritten.
+ <p>
+ Multiple invocations to setDelegate can be used to set different object as delegates for different actions. For
+ example, <i>setDelegate(openDelegate, false)</i> and <i>setDelegate(dataDelegate, false)</i> will retain
+ <b>both</b> objects as delegates. The actions a delegate is retained for depend on the interfaces implemented.
+ <p>
+ All delegates can be cleared by invoking <i>setDelegate(null, true)</i>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>delegate</td>
+          <td>The delegate to add. It must implement at least one sub-interface of TrapDelegate, or the call will
+            have no effect.</td>
+        </tr>
+        <tr>
+          <th>replaceAllExisting</td>
+          <td><i>true</i> to clear all delegates before assigning this delegate, <i>false</i> to keep any delegates
+            that do not conflict with this one.</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDelegateContext(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setDelegateContext</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> delegateContext)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Trap delegates may have an additional context object provided at callback time. This is a single object shared
+ between all delegates, and may be used for server dispatching purposes.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>delegateContext</td>
+          <td>The context object to provide to delegates.</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOption(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setOption</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> optionName, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets a configuration option.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>optionName</td>
+          <td>The full option name (including prefix, if applicable).</td>
+        </tr>
+        <tr>
+          <th>value</td>
+          <td>The new value.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize doclava-developer-docs.js */
+</script>
+
+</body>
+</html>

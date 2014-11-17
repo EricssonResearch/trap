@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Javadoc API documentation for TrAP Parent." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>
+
+  TrapEndpointDelegate
+
+
+| TrAP Parent
+
+</title>
+<link href="../../../../../assets/doclava-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/doclava-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../", "../../../../../assets/");
+</script>
+<script src="../../../../../assets/doclava-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">TrAP Parent</span>
+    
+    </div>
+    <div id="headerRight">
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links"><nobr>
+                <a href="../../../../packages.html"  >Package Index</a> | 
+                <a href="../../../../classes.html" >Class Index</a></nobr>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/package-summary.html">com.ericsson.research.transport</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ssl/package-summary.html">com.ericsson.research.transport.ssl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ws/package-summary.html">com.ericsson.research.transport.ws</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ws/spi/package-summary.html">com.ericsson.research.transport.ws.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/transport/ws/spi/util/package-summary.html">com.ericsson.research.transport.ws.spi.util</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/package-summary.html">com.ericsson.research.trap</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/auth/package-summary.html">com.ericsson.research.trap.auth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/delegates/package-summary.html">com.ericsson.research.trap.delegates</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/examples/package-summary.html">com.ericsson.research.trap.examples</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/package-summary.html">com.ericsson.research.trap.impl</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/buffers/package-summary.html">com.ericsson.research.trap.impl.buffers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/http/package-summary.html">com.ericsson.research.trap.impl.http</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/tomcat/package-summary.html">com.ericsson.research.trap.spi.tomcat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/transports/package-summary.html">com.ericsson.research.trap.spi.transports</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/spi/ws/netty/package-summary.html">com.ericsson.research.trap.spi.ws.netty</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/tests/package-summary.html">com.ericsson.research.trap.tests</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/utils/package-summary.html">com.ericsson.research.trap.utils</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/utils/impl/package-summary.html">com.ericsson.research.trap.utils.impl</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapChannel.html">TrapChannel</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapClient.html">TrapClient</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a></li>
+          <li class="selected api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapListenerDelegate.html">TrapListenerDelegate</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapObject.html">TrapObject</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapPeer.html">TrapPeer</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapPeer.TrapPeerChannel.html">TrapPeer.TrapPeerChannel</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapSettings.html">TrapSettings</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/IndexConfigurator.html">IndexConfigurator</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/IndexMojo.html">IndexMojo</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapFactory.html">TrapFactory</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapKeepalivePolicy.html">TrapKeepalivePolicy</a></li>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapTransports.html">TrapTransports</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links"><nobr>
+            <a href="../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../classes.html" >Class Index</a></nobr>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+
+<div class="sum-details-links">
+
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1>TrapEndpointDelegate</h1>
+
+
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">com.ericsson.research.trap.TrapEndpointDelegate</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+<p>
+  <p class="caution">
+      <strong>
+  This interface is deprecated.</strong><br/> Renamed to <code><a href="../../../../com/ericsson/research/trap/delegates/TrapEndpointDelegate.html">TrapEndpointDelegate</a></code>
+
+  </p>
+
+<h2>Class Overview</h2>
+<p>This interface has been superseded by the corresponding delegate in the <i>com.ericsson.research.trap.delegates</i>
+ package. The trapData signature has also been renamed. Code should be updated correspondingly.</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html#trapData(byte[], com.ericsson.research.trap.TrapEndpoint, java.lang.Object)">trapData</a></span>(byte[] data, <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a> endpoint, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        
+        <div class="jd-descrdiv">Called when the Trap endpoint has received byte data from the other end.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html#trapFailedSending(java.util.Collection<?>, com.ericsson.research.trap.TrapEndpoint, java.lang.Object)">trapFailedSending</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;?&gt; datas, <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a> endpoint, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        
+        <div class="jd-descrdiv">Called when a Trap Endpoint knows it has failed to send some messages.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpointDelegate.html#trapStateChange(com.ericsson.research.trap.TrapState, com.ericsson.research.trap.TrapState, com.ericsson.research.trap.TrapEndpoint, java.lang.Object)">trapStateChange</a></span>(<a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a> newState, <a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a> oldState, <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a> endpoint, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        
+        <div class="jd-descrdiv">Called when Trap changes state.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="trapData(byte[], com.ericsson.research.trap.TrapEndpoint, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">trapData</span>
+      <span class="normal">(byte[] data, <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a> endpoint, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when the Trap endpoint has received byte data from the other end.
+ This method executes in a Trap thread, so it should only perform minimal
+ operations before returning, in order to allow for maximum throughput.
+ <p>
+ If asynchronous, this method may be called concurrently for each channel,
+ but it may only be called simultaneously by one thread per channel. If
+ the application does not explicitly utilise channels when sending
+ messages, this function will only be called by one thread at a time.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>data</td>
+          <td>The data received. The ownership of this array is transferred
+            to the receiver. It will not be overwritten by Trap, and Trap
+            will not read any changes off of it.</td>
+        </tr>
+        <tr>
+          <th>endpoint</td>
+          <td>The TrapEndpoint that received the data.</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>The original context object supplied to the TrapEndpoint for
+            this delegate.</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="trapFailedSending(java.util.Collection<?>, com.ericsson.research.trap.TrapEndpoint, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">trapFailedSending</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Collection.html">Collection</a>&lt;?&gt; datas, <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a> endpoint, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when a Trap Endpoint knows it has failed to send some messages.
+ This can occur when the Trap Endpoint is killed forcibly, loses all its
+ transports while still having an outgoing buffer, or fails to wake up a
+ client that has disconnected all its transports normally.
+ <p>
+ Note that there are conditions when Trap may unwittingly lose data (such
+ as data sent during a switch from unauthenticated -> authenticated
+ session, when the authentication is triggered from the remote side), so
+ the sum of data received by the other end, and called on this method, may
+ be different. Additionally, there may be instances where data supplied by
+ this method was received on the other side, but the successful transfer
+ was not acknowledged.
+ <p>
+ In most cases, the objects in <code>datas</code> have most probably
+ failed to be sent properly, and are supplied back to the application. The
+ application may then inspect to see what failed, or discard it all.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>datas</td>
+          <td>A collection of transportable objects that failed sending.
+            Usually byte arrays, but may contain TrapObject instances.</td>
+        </tr>
+        <tr>
+          <th>endpoint</td>
+          <td>The TrapEndpoint that failed sending.</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>An application-supplied context for this listener.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="trapStateChange(com.ericsson.research.trap.TrapState, com.ericsson.research.trap.TrapState, com.ericsson.research.trap.TrapEndpoint, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">trapStateChange</span>
+      <span class="normal">(<a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a> newState, <a href="../../../../com/ericsson/research/trap/TrapState.html">TrapState</a> oldState, <a href="../../../../com/ericsson/research/trap/TrapEndpoint.html">TrapEndpoint</a> endpoint, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when Trap changes state. Includes both the new state, and the
+ previous one.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newState</td>
+          <td>The new state of the TrapEndpoint <code>endpoint</code>.</td>
+        </tr>
+        <tr>
+          <th>oldState</td>
+          <td>The previous state (the one right before the change). The
+            combination of new/old state yields useful information on what
+            the context is of the endpoint.</td>
+        </tr>
+        <tr>
+          <th>endpoint</td>
+          <td>The TrapEndpoint instance that changed its state. Useful for
+            when a single delegate manages multiple endpoints.</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>The caller-specific context that was provided when the
+            delegate was registered.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://code.google.com/p/doclava/">Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize doclava-developer-docs.js */
+</script>
+
+</body>
+</html>
