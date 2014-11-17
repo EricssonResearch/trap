@@ -17,9 +17,10 @@
 			<item name="Java Quickstart" href="./trap-api/quickstart.html" />
 			<item name="JavaScript Quickstart" href="./trap-js/index.html" />
 			<item name="Channels" href="./channels.html" />
+			<item name="Configuration" href="./configuration.html" />
 		</menu>
 		
-		<menu name="Language Specific Documentation">
+		<menu name="Language Specific Documentation" inherit="top">
 			<item name="Java" href="./trap-api/index.html"/>
 			<item name="JavaScript" href="./trap-js/index.html"/>
 		</menu>

@@ -13,12 +13,12 @@ cd $DIR
 cd ..
 git checkout -b maint-$1
 cd trap-parent
-mvn -Pcc versions:set -DnewVersion=$1.0
+mvn -Pcc versions:set -DnewVersion=$1
 mvn -Pcc clean install
 mvn -Pcc deploy
 cd ..
-git commit -a -m "$1.0 Release"
-git tag -a v$1.0 -m "Release v$1.0"
+git commit -a -m "$1 Release"
+git tag -a v$1 -m "Release v$1"
 cd trap-parent
 mvn -Pcc versions:set -DnewVersion=$1.1-SNAPSHOT
 cd ..

@@ -1,8 +1,5 @@
 #!/bin/bash
-echo $1 $2
 
-asdgf
-((!$#)) && echo Usage: minor_release.sh rel_minor next_minor && exit 1
 set -e
 unset CDPATH
 SOURCE="${BASH_SOURCE[0]}"
@@ -12,16 +9,25 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-cd $DIR
-cd ..
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion=$1
-mvn -Pcc clean install -DskipTests
-mvn -Pcc deploy -DskipTests
-cd ..
-git commit -a -m "$1 Release"
-git tag -a v$1 -m "Release v$1"
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion="$2-SNAPSHOT"
-cd ..
-git commit -a -m "$2 Snapshot"
+
+IFS=. read major minor maint <<<"$2"
+
+nmajor=$(($major+1))
+nminor=$(($minor+1))
+nmaint=$(($maint+1))
+
+case $1 in 
+
+	"major")
+# Do this sometime
+	;;
+
+	"minor")
+		$DIR/release.sh $major.$minor $major.$nminor
+	;;
+
+	"maint")
+		$DIR/minor_release.sh $major.$minor.$maint $major.$minor.$nmaint
+	;;
+
+esac

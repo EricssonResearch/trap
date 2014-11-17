@@ -16,7 +16,7 @@
 	    "query": "value", 
 	    "private": false,
 	    "lenient": true, 
-                
+	    "readme": "This is the Trap JSDoc. Use the links to the right to navigate to the classes",
 	},
     "jsVersion": 180
 }

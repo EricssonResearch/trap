@@ -100,10 +100,6 @@ public class ConfigurationImpl implements Configuration
         {
             String c = strings[i].trim();
             
-            //if (!c.startsWith("trap.")) continue; // Invalid formatted string.
-            
-            // trap.config_type.config_element.config_key = config_value
-            
             int pos = c.indexOf('=');
             if ((pos < 0) || (pos >= (c.length() - 1)))
             {
