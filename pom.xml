@@ -329,6 +329,20 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<aggregate>true</aggregate>
+						<instrumentation>
+							<includes>
+								<include>com.ericsson.*</include>
+								<include>com.ericsson.**</include>
+							</includes>
+						</instrumentation>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -438,6 +452,14 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 						</reports>
 					</reportSet>
 				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
 			</plugin>
 		</plugins>
 	</reporting>

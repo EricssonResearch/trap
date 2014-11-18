@@ -64,6 +64,7 @@ public class ConfigTest implements OnAccept
         Thread.sleep(100);
         String configuration = listener.getClientConfiguration();
         
+        System.out.println(configuration);
         Assert.assertTrue(configuration.contains("trap.transport.websocket.wsuri = ws://127.0.0.1:51442/ws"));
         
         listener.close();
@@ -81,7 +82,8 @@ public class ConfigTest implements OnAccept
         
         Thread.sleep(100);
         String configuration = listener.getClientConfiguration();
-        
+
+        System.out.println(configuration);
         Assert.assertTrue(configuration.contains("trap.transport.websocket.wsuri = ws://ericsson.com:51442/"));
         
         listener.close();

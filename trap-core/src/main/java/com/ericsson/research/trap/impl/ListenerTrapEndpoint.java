@@ -291,7 +291,14 @@ public class ListenerTrapEndpoint extends TrapEndpointImpl implements ListenerTr
             }
             catch (Exception e)
             {
-                this.logger.warn("Failed to instantiate " + transports[i].getName(), e);
+                if (e instanceof TrapException)
+                {
+                    this.logger.debug("Transport class [{}] failed to instantiate. This is most probably a transport that is not meant to be instantiated here.", transports[i].getName());
+                }
+                else
+                {
+                    this.logger.warn("Failed to instantiate " + transports[i].getName(), e);
+                }
             }
         }
     }
