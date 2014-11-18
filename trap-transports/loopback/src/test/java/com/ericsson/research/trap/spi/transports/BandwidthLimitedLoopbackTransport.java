@@ -90,8 +90,6 @@ public class BandwidthLimitedLoopbackTransport extends AsynchronousLoopbackTrans
 	public synchronized void internalConnect() throws TrapException
 	{
 		super.internalConnect();
-		this.bandwidthFuture = ThreadPool.executeAfter(this.bandwidthTask, 1000);
-		
 	}
 	
 	@Override
@@ -105,7 +103,7 @@ public class BandwidthLimitedLoopbackTransport extends AsynchronousLoopbackTrans
 	public void internalSend(TrapMessage message, boolean expectMore) throws TrapTransportException
 	{
 		this.queuedMessages.add(message);
-		this.tryFlush();
+		tryFlush();
 	}
 	
 	private synchronized void tryFlush() throws TrapTransportException
@@ -113,25 +111,31 @@ public class BandwidthLimitedLoopbackTransport extends AsynchronousLoopbackTrans
 		
 		for (;;)
 		{
-			TrapMessage message = this.queuedMessages.peek();
+			TrapMessage message = null;
 			
-			if (message != null)
-			{
-				if (message.length() > this.bytesPerSecond - this.currentSecondBytes.get())
+				message = this.queuedMessages.peek();
+				if (message != null)
 				{
-					if (this.bandwidthFuture == null)
-						this.bandwidthFuture = ThreadPool.executeAfter(this.bandwidthTask, 1000);
+					if (message.length() > this.bytesPerSecond - this.currentSecondBytes.get())
+					{
+						if (this.bandwidthFuture == null)
+							this.bandwidthFuture = ThreadPool.executeAfter(this.bandwidthTask, 1000);
+						return;
+					}
+					this.currentSecondBytes.addAndGet((int) message.length());
+					
+					super.internalSend(message, false);
+						
+					this.delegate.ttMessageSent(message, this, this.delegateContext);
+					
+					this.queuedMessages.poll();
+				}
+				else
+				{
 					return;
 				}
-				this.currentSecondBytes.addAndGet((int) message.length());
-				super.internalSend(message, false);
-				
-				this.delegate.ttMessageSent(message, this, this.delegateContext);
-				this.queuedMessages.poll();
 			}
-			else
-				break;
-		}
+			
 	}
 	
 	@Override

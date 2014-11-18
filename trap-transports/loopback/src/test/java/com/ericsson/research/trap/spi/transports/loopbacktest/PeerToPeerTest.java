@@ -39,6 +39,7 @@ import java.util.logging.Level;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.ericsson.research.trap.TrapEndpoint;
@@ -52,6 +53,7 @@ import com.ericsson.research.trap.spi.transports.LoopbackTransport;
 import com.ericsson.research.trap.utils.JDKLoggerConfig;
 import com.ericsson.research.trap.utils.StringUtil;
 
+@Ignore("This test is for a prototype that is not ready for prime time.")
 public class PeerToPeerTest
 {
     private TrapPeerImpl one;

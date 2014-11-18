@@ -88,7 +88,7 @@ public class WebSocketSecureTest extends TestCase
 		this.clientReader = new WSDataListener();
 		this.clientSocket = WSFactory.createWebSocketClient(ss.getURI(), clientReader, WSFactory.VERSION_HIXIE_75, sc);
 		this.clientSocket.open();
-		wsReader.waitForOpen(1000);
+		wsReader.waitForOpen(100000);
 		clientReader.waitForOpen(1000);
 	}
 	

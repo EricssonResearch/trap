@@ -36,17 +36,18 @@ package com.ericsson.research.transport.ws.spi;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-import com.ericsson.research.transport.ManagedServerSocket;
-import com.ericsson.research.transport.ManagedServerSocketClient;
-import com.ericsson.research.transport.ManagedSocket;
 import com.ericsson.research.transport.ws.WSAcceptListener;
 import com.ericsson.research.transport.ws.WSSecurityContext;
 import com.ericsson.research.transport.ws.WSServer;
 import com.ericsson.research.transport.ws.WSURI;
+import com.ericsson.research.trap.nio.Nio;
+import com.ericsson.research.trap.nio.ServerSocket;
+import com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler;
+import com.ericsson.research.trap.nio.Socket;
 
-public class WSServerImpl implements ManagedServerSocketClient, WSServer {
+public class WSServerImpl implements ServerSocketHandler, WSServer {
 
-	private ManagedServerSocket acceptSocket;
+	private ServerSocket acceptSocket;
 	private final WSAcceptListener serverListener;
 	private final String host;
 	private int	port;
@@ -66,18 +67,10 @@ public class WSServerImpl implements ManagedServerSocketClient, WSServer {
 
 	private void bind() throws IOException {
 		if (securityContext == null)
-			acceptSocket = new ManagedServerSocket();
+			acceptSocket = Nio.factory().server(this);
 		else
-			acceptSocket = WSSecureSocketFactory.getSecureServerSocket(securityContext);
-		acceptSocket.registerClient(this);
+			acceptSocket = WSSecureSocketFactory.getSecureServerSocket(securityContext, this);
 		acceptSocket.listen(host, port);
-	}
-
-	public void notifyAccept(final ManagedSocket socket) {
-		serverListener.notifyAccept(new WSNioEndpoint(socket, new WSPrefetcher(securityContext), null));
-	}
-	
-	public void notifyBound(ManagedServerSocket socket) {
 		serverListener.notifyReady(this);
 	}
 
@@ -118,11 +111,30 @@ public class WSServerImpl implements ManagedServerSocketClient, WSServer {
 	}
 	
 	public InetSocketAddress getAddress() {
-		return acceptSocket.getInetAddress();
+		try
+        {
+	        return acceptSocket.getInetAddress();
+        }
+        catch (IOException e)
+        {
+        	throw new RuntimeException(e);
+        }
 	}
 
 	public void close() {
         acceptSocket.close();
 	}
+
+	@Override
+    public void accept(Socket sock, ServerSocket ss)
+    {
+		serverListener.notifyAccept(new WSNioEndpoint(sock, new WSPrefetcher(securityContext), null));	    
+    }
+
+	@Override
+    public void error(Throwable exc, ServerSocket ss)
+    {
+		serverListener.notifyError(exc);
+    }
 
 }

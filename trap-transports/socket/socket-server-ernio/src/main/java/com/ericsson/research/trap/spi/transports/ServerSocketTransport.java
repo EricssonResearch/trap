@@ -40,11 +40,11 @@ import java.util.Collection;
 
 import javax.net.ssl.SSLContext;
 
-import com.ericsson.research.transport.ManagedServerSocket;
-import com.ericsson.research.transport.ManagedServerSocketClient;
-import com.ericsson.research.transport.ManagedSocket;
-import com.ericsson.research.transport.ssl.SSLServerSocket;
 import com.ericsson.research.trap.TrapException;
+import com.ericsson.research.trap.nio.Nio;
+import com.ericsson.research.trap.nio.ServerSocket;
+import com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler;
+import com.ericsson.research.trap.nio.Socket;
 import com.ericsson.research.trap.spi.ListenerTrapTransport;
 import com.ericsson.research.trap.spi.ListenerTrapTransportDelegate;
 import com.ericsson.research.trap.spi.TrapConfiguration;
@@ -57,251 +57,251 @@ import com.ericsson.research.trap.spi.TrapTransportState;
 import com.ericsson.research.trap.utils.SSLUtil;
 import com.ericsson.research.trap.utils.SSLUtil.SSLMaterial;
 
-public class ServerSocketTransport extends AbstractListenerTransport implements ListenerTrapTransport, ManagedServerSocketClient
+public class ServerSocketTransport extends AbstractListenerTransport implements ListenerTrapTransport, ServerSocketHandler
 {
-    
-    private ManagedServerSocket           serverSocket;
-    private ListenerTrapTransportDelegate listenerDelegate;
-    private Object                        listenerContext;
-    boolean                               defaultHost = false;
-    private boolean                       secure      = false;
-    
-    public ServerSocketTransport()
-    {
-        this.transportPriority = TrapTransportPriority.SOCKET_ERNIO;
-    }
-    
-    public String getTransportName()
-    {
-        return "socket";
-    }
-    
-    public String getProtocolName()
-    {
-        return TrapTransportProtocol.TCP;
-    }
-    
-    /**
-     * Listen for incoming connections.
-     */
-    public void listen(ListenerTrapTransportDelegate listener, Object context) throws TrapException
-    {
-        // Remember the delegate and context. We need them for callbacks
-        this.listenerDelegate = listener;
-        this.listenerContext = context;
-        this.delegate = new TrapTransportDelegate() {
-            
-            public void ttStateChanged(TrapTransportState newState, TrapTransportState oldState, TrapTransport transport, Object context)
-            {
-                // TODO Auto-generated method stub
-                
-            }
-            
-            public void ttMessageReceived(TrapMessage message, TrapTransport transport, Object context)
-            {
-                // TODO Auto-generated method stub
-                
-            }
-            
-            public void ttMessageSent(TrapMessage message, TrapTransport transport, Object context)
-            {
-                // TODO Auto-generated method stub
-                
-            }
-            
-            @Override
-            public void ttMessagesFailedSending(Collection<TrapMessage> messages, TrapTransport transport, Object context)
-            {
-                // TODO Auto-generated method stub
-                
-            }
-            
-            @Override
-            public void ttNeedTransport(TrapMessage message, TrapTransport transport, Object context)
-            {
-                // TODO Auto-generated method stub
-                
-            }
-        };
-        
-        // Start a socket
-        ManagedServerSocket ss;
-        
-        SSLContext sslc = null;
-        
-        if (this.getOption(CERT_USE_INSECURE_TEST) != null)
-        {
-            sslc = SSLUtil.getContext(new SSLMaterial("jks", "trapserver.jks", "Ericsson"), new SSLMaterial("jks", "trapserver.jks", "Ericsson"));
-            this.logger.warn("Using insecure SSL context");
-        }
-        else
-        {
-            try
-            {
-                String keyType = this.getOption(CERT_KEYSTORE_TYPE);
-                String keyName = this.getOption(CERT_KEYSTORE_NAME);
-                String keyPass = this.getOption(CERT_KEYSTORE_PASS);
-                
-                String trustType = this.getOption(CERT_TRUSTSTORE_TYPE);
-                String trustName = this.getOption(CERT_TRUSTSTORE_NAME);
-                String trustPass = this.getOption(CERT_TRUSTSTORE_PASS);
-                
-                if (keyName != null)
-                {
-                    sslc = SSLUtil.getContext(new SSLMaterial(keyType, keyName, keyPass), new SSLMaterial(trustType, trustName, trustPass));
-                    this.logger.info("Using provided SSL context. Keystore [{}], Truststore [{}]", keyName, trustName);
-                }
-                
-            }
-            catch (Exception e)
-            {
-                this.logger.warn("Not using SSL due to exception {}", e);
-            }
-        }
-        
-        if (sslc == null)
-        {
-            ss = new ManagedServerSocket();
-        }
-        else
-        {
-            
-            ss = new SSLServerSocket(sslc);
-            this.secure = true;
-        }
-        
-        // Register for callbacks on the socket (we're using async sockets)
-        ss.registerClient(this);
-        try
-        {
-            // Listen on port 0
-            int port = 0;
-            try
-            {
-                port = Integer.parseInt(this.getOption(SocketConstants.CONFIG_PORT));
-            }
-            catch (Throwable t)
-            {
-            }
-            
-            String host = null;
-            
-            try
-            {
-                host = this.getOption(SocketConstants.CONFIG_HOST);
-            }
-            catch (Throwable t)
-            {
-            }
-            
-            if ((host == null) || (host.trim().length() == 0))
-            {
-                this.defaultHost = true;
-                host = "0.0.0.0";
-            }
-            
-            ss.listen(InetAddress.getByName(host), port);
-            
-            // We'll receive a callback when the socket is bound
-        }
-        catch (IOException e)
-        {
-            throw new TrapException(e);
-        }
-    }
-    
-    /**
-     * Called when the Server Socket is ready to accept incoming connections
-     */
-    public void notifyBound(ManagedServerSocket socket)
-    {
-        // Assign the socket to a field, so we can access it later.
-        this.serverSocket = socket;
-        this.setState(TrapTransportState.CONNECTED);
-    }
-    
-    /**
-     * Called when we want to configure a client to connect to us. See AsynchronousTransportTest for an example on when
-     * it is called.
-     */
-    public void getClientConfiguration(TrapConfiguration destination, String defaultName)
-    {
-        // This function may be called before we're ready on the server socket side. This loop will prevent us
-        // from accessing a non-ready server socket.
-        while ((this.serverSocket == null) && (this.getState() != TrapTransportState.ERROR) && (this.getState() != TrapTransportState.DISCONNECTED))
-            try
-            {
-                System.out.println("Waiting...");
-                Thread.sleep(10);
-            }
-            catch (InterruptedException e)
-            {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        
-        // If we still don't have a server socket, we're not going to be ready (state == ERROR or interrupted).
-        if (this.serverSocket == null)
-            throw new IllegalStateException("Could not initialise Server Socket");
-        
-        // Insert the appropriate values into the TrapConfiguration. These are the same values we expect on the client side.
-        // The exact values are not defined by Trap but are Transport-specific. Each transport can and will have a different
-        // set of values they want transferred.
-        InetSocketAddress inetAddress = this.serverSocket.getInetAddress();
-        
-        // Check for pre-existing port
-        String port = this.getOption("autoconfig.port");
-        
-        if (port == null)
-            port = Integer.toString(inetAddress.getPort());
-        
-        String hostName = this.getOption("autoconfig.host");
-        
-        if (hostName == null)
-            hostName = defaultName;
-        
-        if (hostName == null)
-            hostName = this.getHostName(inetAddress.getAddress(), this.defaultHost, true);
-        
-        destination.setOption(this.prefix, SocketConstants.CONFIG_HOST, hostName);
-        destination.setOption(this.prefix, SocketConstants.CONFIG_PORT, port);
-        destination.setOption(this.prefix, SocketConstants.CONFIG_SECURE, "" + this.secure);
-        
-    }
-    
-    /*
-     * This function will be called by the async socket API to notify of an incoming connection (but no data yet). We need to create
-     * a corresponding TrapTransport object and send it to the Trap Core for processing.
-     *
-     * (non-Javadoc)
-     * @see com.ericsson.research.transport.ManagedServerSocketClient#notifyAccept(com.ericsson.research.transport.ManagedSocket)
-     */
-    public void notifyAccept(ManagedSocket socket)
-    {
-        // Create a SocketTransport that wraps around the socket
-        TrapTransport transport = new SocketTransport(socket);
-        
-        // Notify the listener of a new connection
-        this.listenerDelegate.ttsIncomingConnection(transport, this, this.listenerContext);
-    }
-    
-    // Called when we want to close the server socket (=stop listening).
-    @Override
-    protected void internalDisconnect()
-    {
-        this.serverSocket.close();
-    }
-    
-    // Called by the async socket interface when a failure occurs. We'll mostly just propagate it by setState.
-    public void notifyError(Exception e)
-    {
-        this.setState(TrapTransportState.ERROR);
-    }
-    
-    @Override
-    public void flushTransport()
-    {
-        
-    }
-    
+
+	private ServerSocket	              serverSocket;
+	private ListenerTrapTransportDelegate	listenerDelegate;
+	private Object	                      listenerContext;
+	boolean	                              defaultHost	= false;
+	private boolean	                      secure	  = false;
+
+	public ServerSocketTransport()
+	{
+		this.transportPriority = TrapTransportPriority.SOCKET_ERNIO;
+	}
+
+	public String getTransportName()
+	{
+		return "socket";
+	}
+
+	public String getProtocolName()
+	{
+		return TrapTransportProtocol.TCP;
+	}
+
+	/**
+	 * Listen for incoming connections.
+	 */
+	public void listen(ListenerTrapTransportDelegate listener, Object context) throws TrapException
+	{
+		// Remember the delegate and context. We need them for callbacks
+		this.listenerDelegate = listener;
+		this.listenerContext = context;
+		this.delegate = new TrapTransportDelegate()
+		{
+
+			public void ttStateChanged(TrapTransportState newState, TrapTransportState oldState, TrapTransport transport, Object context)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			public void ttMessageReceived(TrapMessage message, TrapTransport transport, Object context)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			public void ttMessageSent(TrapMessage message, TrapTransport transport, Object context)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void ttMessagesFailedSending(Collection<TrapMessage> messages, TrapTransport transport, Object context)
+			{
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void ttNeedTransport(TrapMessage message, TrapTransport transport, Object context)
+			{
+				// TODO Auto-generated method stub
+
+			}
+		};
+
+		// Start a socket
+		ServerSocket ss;
+
+		SSLContext sslc = null;
+
+		if (this.getOption(CERT_USE_INSECURE_TEST) != null)
+		{
+			sslc = SSLUtil.getContext(new SSLMaterial("jks", "trapserver.jks", "Ericsson"), new SSLMaterial("jks", "trapserver.jks", "Ericsson"));
+			this.logger.warn("Using insecure SSL context");
+		}
+		else
+		{
+			try
+			{
+				String keyType = this.getOption(CERT_KEYSTORE_TYPE);
+				String keyName = this.getOption(CERT_KEYSTORE_NAME);
+				String keyPass = this.getOption(CERT_KEYSTORE_PASS);
+
+				String trustType = this.getOption(CERT_TRUSTSTORE_TYPE);
+				String trustName = this.getOption(CERT_TRUSTSTORE_NAME);
+				String trustPass = this.getOption(CERT_TRUSTSTORE_PASS);
+
+				if (keyName != null)
+				{
+					sslc = SSLUtil.getContext(new SSLMaterial(keyType, keyName, keyPass), new SSLMaterial(trustType, trustName, trustPass));
+					this.logger.info("Using provided SSL context. Keystore [{}], Truststore [{}]", keyName, trustName);
+				}
+
+			}
+			catch (Exception e)
+			{
+				this.logger.warn("Not using SSL due to exception {}", e);
+			}
+		}
+
+		try
+		{
+
+			if (sslc == null)
+			{
+				ss = Nio.factory().server(this);
+			}
+			else
+			{
+
+				ss = Nio.factory().sslServer(sslc, this);
+				this.secure = true;
+			}
+			// Listen on port 0
+			int port = 0;
+			try
+			{
+				port = Integer.parseInt(this.getOption(SocketConstants.CONFIG_PORT));
+			}
+			catch (Throwable t)
+			{
+			}
+
+			String host = null;
+
+			try
+			{
+				host = this.getOption(SocketConstants.CONFIG_HOST);
+			}
+			catch (Throwable t)
+			{
+			}
+
+			if ((host == null) || (host.trim().length() == 0))
+			{
+				this.defaultHost = true;
+				host = "0.0.0.0";
+			}
+
+			ss.listen(InetAddress.getByName(host), port);
+			this.serverSocket = ss;
+			this.setState(TrapTransportState.CONNECTED);
+
+			// We'll receive a callback when the socket is bound
+		}
+		catch (IOException e)
+		{
+			throw new TrapException(e);
+		}
+	}
+
+	/**
+	 * Called when we want to configure a client to connect to us. See
+	 * AsynchronousTransportTest for an example on when it is called.
+	 */
+	public void getClientConfiguration(TrapConfiguration destination, String defaultName)
+	{
+		// This function may be called before we're ready on the server socket
+		// side. This loop will prevent us
+		// from accessing a non-ready server socket.
+		while ((this.serverSocket == null) && (this.getState() != TrapTransportState.ERROR) && (this.getState() != TrapTransportState.DISCONNECTED))
+			try
+			{
+				System.out.println("Waiting...");
+				Thread.sleep(10);
+			}
+			catch (InterruptedException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		// If we still don't have a server socket, we're not going to be ready
+		// (state == ERROR or interrupted).
+		if (this.serverSocket == null)
+			throw new IllegalStateException("Could not initialise Server Socket");
+
+		// Insert the appropriate values into the TrapConfiguration. These are
+		// the same values we expect on the client side.
+		// The exact values are not defined by Trap but are Transport-specific.
+		// Each transport can and will have a different
+		// set of values they want transferred.
+		InetSocketAddress inetAddress;
+		try
+		{
+			inetAddress = this.serverSocket.getInetAddress();
+
+			// Check for pre-existing port
+			String port = this.getOption("autoconfig.port");
+
+			if (port == null)
+				port = Integer.toString(inetAddress.getPort());
+
+			String hostName = this.getOption("autoconfig.host");
+
+			if (hostName == null)
+				hostName = defaultName;
+
+			if (hostName == null)
+				hostName = this.getHostName(inetAddress.getAddress(), this.defaultHost, true);
+
+			destination.setOption(this.prefix, SocketConstants.CONFIG_HOST, hostName);
+			destination.setOption(this.prefix, SocketConstants.CONFIG_PORT, port);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		destination.setOption(this.prefix, SocketConstants.CONFIG_SECURE, "" + this.secure);
+
+	}
+
+	// Called when we want to close the server socket (=stop listening).
+	@Override
+	protected void internalDisconnect()
+	{
+		this.serverSocket.close();
+	}
+
+	@Override
+	public void flushTransport()
+	{
+
+	}
+
+	@Override
+	public void accept(Socket sock, ServerSocket ss)
+	{
+		// Create a SocketTransport that wraps around the socket
+		TrapTransport transport = new SocketTransport(sock);
+
+		// Notify the listener of a new connection
+		this.listenerDelegate.ttsIncomingConnection(transport, this, this.listenerContext);
+
+	}
+
+	@Override
+	public void error(Throwable exc, ServerSocket ss)
+	{
+		this.setState(TrapTransportState.ERROR);
+
+	}
+
 }

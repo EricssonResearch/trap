@@ -705,6 +705,10 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
                         TrapEndpointImpl.this.sendingLock.notifyAll();
                     }
                 }
+                
+                // The final check. If we've gotten this far out, it's worth it.
+                if ((TrapEndpointImpl.this.messageQueue.peek() != null))
+                	kickSendingThread();
             }
         }
     };

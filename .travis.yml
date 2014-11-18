@@ -3,4 +3,10 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk7
-  - openjdk6
+
+cache:
+  apt: true
+  directories:
+    - $HOME/.m2/repository
+
+install:
