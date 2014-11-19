@@ -1,6 +1,6 @@
 Transport Abstraction Package (trap)
 ====
-<img src="https://travis-ci.org/EricssonResearch/trap.svg?branch=master"/>
+<a href="https://travis-ci.org/EricssonResearch/trap"><img src="https://travis-ci.org/EricssonResearch/trap.svg?branch=master"/></a>
 
 This library provides a socket-based interface that abstracts a set of underlying transports (socket, websocket, http, functioncall), while allowing reconnects, network connection changes, compression and multiplexing. Trap can utilise one or more underlying connections to improve performance, is a fully binary protocol, and is designed to handle failures.
 
