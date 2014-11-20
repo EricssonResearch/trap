@@ -43,7 +43,9 @@ import java.util.logging.Level;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import com.ericsson.research.trap.TrapClient;
@@ -60,7 +62,8 @@ import com.ericsson.research.trap.spi.transports.BandwidthLimitedLoopbackTranspo
 import com.ericsson.research.trap.utils.JDKLoggerConfig;
 import com.ericsson.research.trap.utils.ThreadPool;
 
-// @RunWith(Parameterized.class)
+ @RunWith(Parameterized.class)
+ @Ignore("This test is prone to race conditions in the TEST class itself.")
 public class BandwidthTransportTest implements OnAccept, OnData
 {
 	
@@ -85,7 +88,7 @@ public class BandwidthTransportTest implements OnAccept, OnData
 	@Parameterized.Parameters
 	public static List<Object[]> data()
 	{
-		return Arrays.asList(new Object[1][0]);
+		return Arrays.asList(new Object[100][0]);
 	}
 	
 	@Before
@@ -122,7 +125,7 @@ public class BandwidthTransportTest implements OnAccept, OnData
 		at.performMessageTests(Integer.MAX_VALUE);
 	}
 	
-	@Test(timeout = 10000000)
+	@Test(timeout = 10000)
 	public void testNormal() throws Exception
 	{
 		this.performMessageTests(2000, 10);
@@ -183,12 +186,13 @@ public class BandwidthTransportTest implements OnAccept, OnData
 	}
 	
 	@Test
+	@Ignore
 	public void testChunkingChannels() throws Exception
 	{
 		
 		this.messages = 2;
 		
-		this.s.send(new byte[512 * 1024], 1, false);
+		this.s.send(new byte[16 * 1024], 1, false);
 		this.s.send(new byte[16], 2, false);
 		
 		byte[] r1 = this.receive();

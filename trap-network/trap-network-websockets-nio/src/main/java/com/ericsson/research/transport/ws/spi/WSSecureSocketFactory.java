@@ -37,19 +37,18 @@ import java.io.IOException;
 
 import javax.net.ssl.SSLContext;
 
-import com.ericsson.research.transport.ManagedServerSocket;
-import com.ericsson.research.transport.ManagedSocket;
-import com.ericsson.research.transport.ssl.SSLServerSocket;
-import com.ericsson.research.transport.ssl.SSLSocket;
 import com.ericsson.research.transport.ws.WSSecurityContext;
+import com.ericsson.research.trap.nio.Nio;
+import com.ericsson.research.trap.nio.ServerSocket;
+import com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler;
+import com.ericsson.research.trap.nio.Socket;
 import com.ericsson.research.trap.utils.SSLUtil;
 import com.ericsson.research.trap.utils.SSLUtil.SSLMaterial;
 
 public class WSSecureSocketFactory
 {
     
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    private static Object getSecureSocketHelper(WSSecurityContext sc, Class clazz) throws IOException
+    private static SSLContext getSecureSocketHelper(WSSecurityContext sc) throws IOException
     {
         try
         {
@@ -57,7 +56,7 @@ public class WSSecureSocketFactory
             
             if (sslContext == null)
                 sslContext = SSLUtil.getContext(new SSLMaterial(sc.getKeyStoreType(), sc.getKeyStoreFilename(), sc.getKeyStorePassphrase()), new SSLMaterial(sc.getTrustStoreType(), sc.getTrustStoreFilename(), sc.getTrustStorePassphrase()));
-            return clazz.getConstructor(SSLContext.class).newInstance(sslContext);
+            return sslContext;
         }
         catch (Exception e)
         {
@@ -68,14 +67,14 @@ public class WSSecureSocketFactory
         }
     }
     
-    public static ManagedSocket getSecureSocket(WSSecurityContext sc) throws IOException
+    public static Socket getSecureSocket(WSSecurityContext sc) throws IOException
     {
-        return (ManagedSocket) getSecureSocketHelper(sc, SSLSocket.class);
+        return Nio.factory().sslClient(getSecureSocketHelper(sc));
     }
     
-    public static ManagedServerSocket getSecureServerSocket(WSSecurityContext sc) throws IOException
+    public static ServerSocket getSecureServerSocket(WSSecurityContext sc, ServerSocketHandler handler) throws IOException
     {
-        return (ManagedServerSocket) getSecureSocketHelper(sc, SSLServerSocket.class);
+    	return Nio.factory().sslServer(getSecureSocketHelper(sc), handler);
     }
     
 }

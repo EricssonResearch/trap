@@ -33,6 +33,8 @@ package com.ericsson.research.trap.spi.sockettest;
  * ##_END_LICENSE_##
  */
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
@@ -41,6 +43,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import com.ericsson.research.trap.TrapClient;
 import com.ericsson.research.trap.TrapEndpoint;
@@ -56,6 +60,7 @@ import com.ericsson.research.trap.spi.TrapTransport;
 import com.ericsson.research.trap.utils.JDKLoggerConfig;
 import com.ericsson.research.trap.utils.ThreadPool;
 
+@RunWith(Parameterized.class)
 public class WSSTest implements OnAccept, OnData
 {
     
@@ -74,6 +79,11 @@ public class WSSTest implements OnAccept, OnData
     public static void setLoggerLevel()
     {
         JDKLoggerConfig.initForPrefixes(Level.FINE);
+    }
+    
+    @Parameterized.Parameters
+    public static List<Object[]> args() {
+    	return Arrays.asList(new Object[10][]);
     }
     
     @Before
@@ -99,7 +109,7 @@ public class WSSTest implements OnAccept, OnData
             Thread.sleep(10);
     }
     
-    @Test(timeout = 10000000)
+    @Test(timeout = 10000)
     public void testNormal() throws Exception
     {
         this.performMessageTests(1000);
