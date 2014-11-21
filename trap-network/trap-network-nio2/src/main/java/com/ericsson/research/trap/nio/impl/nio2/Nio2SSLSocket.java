@@ -248,7 +248,6 @@ public class Nio2SSLSocket extends Nio2SocketBase
 				}
 				catch (Exception exc)
 				{
-					exc.printStackTrace();
 					handler.error(exc, Nio2SSLSocket.this);
 					_close();
 				}

@@ -84,7 +84,7 @@ public class AsynchronousLoopbackTransport extends LoopbackTransport implements 
 		}
 		catch (InterruptedException e)
 		{
-			e.printStackTrace();
+			throw new TrapTransportException(message, getState());
 		}
 
 		if (!this.sending)

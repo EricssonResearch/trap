@@ -238,7 +238,9 @@ public class WebSocketTransport extends AbstractTransport
         }
         catch (Throwable t)
         {
-            t.printStackTrace();
+            this.logger.error(t.toString(), t);
+            this.setState(TrapTransportState.ERROR);
+            throw new TrapTransportException(message, this.state);
         }
     }
     

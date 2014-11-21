@@ -689,7 +689,6 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
             catch (Throwable t)
             {
                 TrapEndpointImpl.this.logger.error("Exception while processing sending on {}: ", TrapEndpointImpl.this, t);
-                t.printStackTrace();
                 synchronized (TrapEndpointImpl.this.sendingLock)
                 {
                     TrapEndpointImpl.this.setSending(false);
@@ -1252,7 +1251,7 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
             }
             catch (TrapException e)
             {
-                e.printStackTrace();
+            	logger.trace("Failed to send END message response. Remote side closed during ending handshake", e);
                 
                 Iterator<TrapTransport> it = this.transports.iterator();
                 
@@ -1423,7 +1422,7 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
             }
             catch (Exception e)
             {
-                e.printStackTrace();
+				logger.error("Unhandled exception while trying to recover failed messages; {}", e, e);
                 this.close();
                 this.setState(TrapState.ERROR);
             }
