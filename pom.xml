@@ -42,47 +42,15 @@
 
 The Transport Abstraction Package, or trap, provides an overlaying socket api that can be used across multiple underlying transports, while supporting reconnects, wifi/cellular handover, compression and multiplexing.</description>
 
-	<repositories>
-		<repository>
-			<id>trap-releases</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>trap-snapshots</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
 	<distributionManagement>
-		<repository>
-			<id>trap-releases</id>
-			<url>${trap-releases-repo}</url>
-		</repository>
 		<snapshotRepository>
-			<id>trap-snapshots</id>
-			<url>${trap-snapshots-repo}</url>
-			<uniqueVersion>false</uniqueVersion>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 		<site>
 			<id>github</id>
 			<name>Github</name>
@@ -93,8 +61,8 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<trap-releases-repo>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</trap-releases-repo>
-		<trap-snapshots-repo>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</trap-snapshots-repo>
+		<trap-releases-repo>http://repo1.maven.org/maven2/</trap-releases-repo>
+		<trap-snapshots-repo>https://oss.sonatype.org/content/repositories/snapshots</trap-snapshots-repo>
 		<source-phase>package</source-phase>
 		<github.global.server>github</github.global.server>
 	</properties>
@@ -212,6 +180,17 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -369,6 +348,55 @@ The Transport Abstraction Package, or trap, provides an overlaying socket api th
 			</plugins>
 		</pluginManagement>
 	</build>
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
