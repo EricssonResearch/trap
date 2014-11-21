@@ -41,6 +41,7 @@ package com.ericsson.research.trap.nio.impl.nio2;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
+import java.nio.channels.ClosedChannelException;
 import java.nio.channels.CompletionHandler;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -61,7 +62,9 @@ public class Nio2Socket extends Nio2SocketBase
 		super(sock);
 
 		for (int i = 0; i < 2; i++)
+		{
 			rws[i] = new ReentrantReadWriteLock();
+		}
 	}
 
 	@Override
@@ -146,8 +149,11 @@ public class Nio2Socket extends Nio2SocketBase
 			@Override
 			public void failed(Throwable exc, Nio2Socket attachment)
 			{
-				handler.error(exc, Nio2Socket.this);
-				_close();
+				if (!(exc instanceof ClosedChannelException))
+				{
+					handler.error(exc, Nio2Socket.this);
+					_close();
+				}
 			}
 		});
 	}

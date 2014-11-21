@@ -173,7 +173,7 @@ public abstract class StringUtil
      *             in the rare event that the JVM does not support UTF-8. It should always support it, so this function
      *             wraps away the exception
      */
-    public static Object toUtfString(byte[] bytes, int i, int length)
+    public static String toUtfString(byte[] bytes, int i, int length)
     {
         try
         {
