@@ -11,31 +11,13 @@
 		
 	<repositories>
 		<repository>
-			<id>trap-releases</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>trap-snapshots</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</url>
+			<url>https://oss.sonatype.com/content/repositories/snapshots</url>
 			<releases>
 				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
 			</snapshots>
 		</repository>
 	</repositories>
@@ -47,13 +29,6 @@
 	
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
 			<plugin>
 			   <groupId>org.apache.maven.plugins</groupId>
 			   <artifactId>maven-jar-plugin</artifactId>

@@ -13,31 +13,13 @@
 		
 	<repositories>
 		<repository>
-			<id>trap-releases</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>trap-snapshots</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</url>
+			<url>https://oss.sonatype.com/content/repositories/snapshots</url>
 			<releases>
 				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
 			</snapshots>
 		</repository>
 	</repositories>
@@ -184,16 +166,6 @@
 		</pluginManagement>
 
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>com.googlecode.jstd-maven-plugin</groupId>
 				<artifactId>jstd-maven-plugin</artifactId>
