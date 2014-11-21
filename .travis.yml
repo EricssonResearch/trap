@@ -4,6 +4,8 @@ jdk:
 - oraclejdk7
 - openjdk7
 
+cache: true
+
 before_install: source ./etc/scripts/s3_caching.sh
 install: getCachedDependencies
 after_script: cacheDependencies
