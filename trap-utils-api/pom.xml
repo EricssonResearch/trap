@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>trap-parent</artifactId>
@@ -8,64 +9,35 @@
 	</parent>
 	<artifactId>trap-utils-api</artifactId>
 	<name>TrAP Utils API</name>
-		
+
 	<repositories>
 		<repository>
-			<id>trap-releases</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-releases</url>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>trap-snapshots</id>
-			<url>https://nexus.d2dx.com/nexus/content/repositories/trap-snapshots</url>
+			<url>https://oss.sonatype.com/content/repositories/snapshots</url>
 			<releases>
 				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
-				<updatePolicy>daily</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>java-1.4-compile</id>
+						<id>java-1.5-compile</id>
 						<phase>compile</phase>
 						<goals>
 							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<source>1.5</source>
-							<target>1.5</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>java-1.5-compile</id>
-						<phase>process-test-sources</phase>
-						<goals>
-							<goal>testCompile</goal>
 						</goals>
 						<configuration>
 							<source>1.5</source>

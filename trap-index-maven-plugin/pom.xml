@@ -9,6 +9,20 @@
 	</parent>
 	<artifactId>trap-index-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
+		
+	<repositories>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://oss.sonatype.com/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
 	<build>
 		<plugins>
 			<plugin>

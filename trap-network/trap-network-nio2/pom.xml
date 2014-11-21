@@ -10,6 +10,18 @@
 	<artifactId>trap-network-nio2</artifactId>
 	<packaging>jar</packaging>
 
+	<repositories>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://oss.sonatype.com/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
