@@ -356,13 +356,11 @@ public class TrapPeerImpl extends TrapEndpointImpl implements TrapPeer, OnAccept
         }
         catch (IOException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("IOException while receiving data", e);
         }
         catch (TrapException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Trap Exception while receiving data", e);
         }
         
     }
@@ -625,7 +623,7 @@ public class TrapPeerImpl extends TrapEndpointImpl implements TrapPeer, OnAccept
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+        	logger.error("Exception while trying to communicate with remote peer: {}", e, e);
         }
     }
     

@@ -488,7 +488,8 @@ public class TrapChannelImpl implements TrapChannel, Runnable
 									}
 									catch (IOException e)
 									{
-										e.printStackTrace();
+										parentEP.logger.error("IOException while defragmenting a message; {}", e, e);
+										parentEP.close();
 									}
 									break;
 								
@@ -516,8 +517,8 @@ public class TrapChannelImpl implements TrapChannel, Runnable
 									}
 									catch (IOException e)
 									{
-										// TODO Auto-generated catch block
-										e.printStackTrace();
+										parentEP.logger.error("IOException while defragmenting a message; {}", e, e);
+										parentEP.close();
 									}
 								}
 								
@@ -540,7 +541,8 @@ public class TrapChannelImpl implements TrapChannel, Runnable
 								}
 								catch (IOException e)
 								{
-									e.printStackTrace();
+									parentEP.logger.error("IOException while defragmenting a message; {}", e, e);
+									parentEP.close();
 								}
 								continue;
 							}
@@ -559,14 +561,14 @@ public class TrapChannelImpl implements TrapChannel, Runnable
 					}
 					catch (Exception e)
 					{
-						e.printStackTrace();
+						parentEP.logger.error("Unhandled exception while receiving message; {}", e, e);
 					}
 				}
 				
 			}
 			catch (Exception e)
 			{
-				e.printStackTrace();
+				parentEP.logger.error("Unhandled exception while receiving message; {}", e, e);
 			}
 			finally
 			{

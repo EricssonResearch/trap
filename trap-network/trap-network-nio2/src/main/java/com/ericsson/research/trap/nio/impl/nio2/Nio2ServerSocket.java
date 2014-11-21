@@ -107,7 +107,7 @@ public class Nio2ServerSocket implements ServerSocket
                 }
                 catch (IOException e)
                 {
-                    e.printStackTrace();
+                	handler.error(e, arg1);
                 }
             }
         });

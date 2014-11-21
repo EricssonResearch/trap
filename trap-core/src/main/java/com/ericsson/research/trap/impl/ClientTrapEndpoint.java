@@ -488,7 +488,7 @@ public class ClientTrapEndpoint extends TrapEndpointImpl implements TrapClient, 
                     }
                     catch (TrapException e)
                     {
-                        e.printStackTrace();
+                    	logger.error("Failed to reopen Trap Endpoint due to {}", e, e);
                     }
                 }
             }, 1000);
@@ -630,7 +630,7 @@ public class ClientTrapEndpoint extends TrapEndpointImpl implements TrapClient, 
                 }
                 catch (Throwable t)
                 {
-                    t.printStackTrace();
+                	logger.warn("Unhandled exception in connection handler", t);
                 }
             }
         });

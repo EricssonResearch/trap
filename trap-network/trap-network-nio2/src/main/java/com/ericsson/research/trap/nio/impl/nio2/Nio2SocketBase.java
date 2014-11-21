@@ -37,6 +37,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
+import java.nio.channels.AsynchronousCloseException;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -106,7 +107,8 @@ public abstract class Nio2SocketBase implements Socket
 		}
 		catch (IOException ex)
 		{
-			Logger.getLogger(Nio2Socket.class.getName()).log(Level.SEVERE, null, ex);
+			if (!(ex instanceof AsynchronousCloseException))
+				Logger.getLogger(Nio2Socket.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 

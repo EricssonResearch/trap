@@ -380,7 +380,7 @@ public abstract class AbstractTransport implements TrapTransport, TrapKeepaliveD
         }
         catch (Throwable t)
         {
-            t.printStackTrace();
+        	logger.warn("Exception while notifying our delegate of state change: {}", t, t);
         }
         if ((newState == TrapTransportState.AVAILABLE) && (this.connectionTimeoutTask != null))
         {
@@ -870,11 +870,11 @@ public abstract class AbstractTransport implements TrapTransport, TrapKeepaliveD
             int time = 30;
             try
             {
-                time = Integer.parseInt(new String(bs, 1, 6, "UTF-8"));
+                time = Integer.parseInt(StringUtil.toUtfString(bs, 1, 6));
             }
-            catch (Exception e)
+            catch (NumberFormatException e)
             {
-                e.printStackTrace();
+            	logger.debug("NFE while parsing remote timer. Should not happen.", e);
             }       
             
             if (this.logger.isTraceEnabled())
@@ -923,12 +923,12 @@ public abstract class AbstractTransport implements TrapTransport, TrapKeepaliveD
             int timer = 30;
             try
             {
-                timer = Integer.parseInt(new String(bs, 1, 6, "UTF-8"));
+                timer = Integer.parseInt(StringUtil.toUtfString(bs, 1, 6));
             }
-            catch (Exception e)
+            catch (NumberFormatException e)
             {
-                e.printStackTrace();
-            }
+            	logger.trace("NumberFormatException while trying to parse timer from remote", e);
+            } 
             
             // We don't need to send anything; the validator will create a PONG message if needed.
             
@@ -1027,7 +1027,7 @@ public abstract class AbstractTransport implements TrapTransport, TrapKeepaliveD
         }
         catch (UnsupportedEncodingException e)
         {
-            e.printStackTrace();
+        	logger.debug("USE on challenge", e);
         }
         
         return false;
@@ -1292,8 +1292,7 @@ public abstract class AbstractTransport implements TrapTransport, TrapKeepaliveD
             }
             else
             {
-                this.logger.warn("Exception while trying to send keepalive on {}", this);
-                e.printStackTrace();
+                this.logger.warn("Exception while trying to send keepalive on {}", this, e);
             }
             return;
         }
