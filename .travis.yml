@@ -5,13 +5,3 @@ jdk:
 - openjdk7
 
 cache: true
-
-before_install: source ./etc/scripts/s3_caching.sh
-install: getCachedDependencies
-after_script: cacheDependencies
-
-env:
-  global:
-  - AWS_BUCKET: trap-travis-cache
-  - secure: Tdkw7rGJMhXbbZploYptr0C7KbAMRN3RtELkZPSyStNglAC8jUMeVPXqx89nkOg0UKx/ZsM1g2a771GPAiu1wzxv8J1jjBy0WUWSA2RYk3VCvqT80S3y9MeMFT1ziRDakUXg2ABn3p6FeMaYJhWf1k/zlKCGu26MlLu+SqXGwGE=
-  - secure: Dzfrz4nbT0X9HG8ShLX1YU9d/moVT/BBxyPDstQEx3PmQcsDukRJUZJQsmpRRlVduU7Pdj1EE9VEjoRzMHJKybNlDVYwWMI/FeMYABCETvmImqDLFwZK/yASLbfXixPe1ofT/IERbYHLtmO/u4OT254B39zR0zZ5VZUFSBfyvww=
