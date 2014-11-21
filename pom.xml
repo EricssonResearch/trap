@@ -7,6 +7,8 @@
 	<name>TrAP Parent</name>
 	<packaging>pom</packaging>
 	<version>1.3.0-SNAPSHOT</version>
+	
+	Final Codeship Branching Test
 
 	<developers>
 		<developer>
@@ -15,7 +17,7 @@
 			<name>Vladimir Katardjiev</name>
 			<timezone>8</timezone>
 			<organization>Ericsson AB</organization>
-			<organizationUrl>https://www.ericsson.com</organizationUrl>
+			<organizationUrl>http://www.ericsson.com</organizationUrl>
 		</developer>
 	</developers>
 
