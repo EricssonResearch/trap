@@ -54,7 +54,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class Nio2Socket extends Nio2SocketBase
 {
 
-	ReadWriteLock[]	rws	= new ReadWriteLock[4];
+	ReadWriteLock[]	rws	= new ReadWriteLock[3];
 
 	public Nio2Socket(AsynchronousSocketChannel sock)
 	{
