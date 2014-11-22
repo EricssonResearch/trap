@@ -126,7 +126,7 @@ public class WSSTest implements OnAccept, OnData
         this.performMessageTests(1000);
     }
     
-    @Test(timeout = 1000000)
+    @Test(timeout = 20000)
     public void testAlwaysBlocking() throws Exception
     {
         
@@ -146,7 +146,7 @@ public class WSSTest implements OnAccept, OnData
         this.performMessageTests(1000);
     }
     
-    @Test(timeout = 10000)
+    @Test(timeout = 20000)
     public void testByteBlocking() throws Exception
     {
         LinkedByteBlockingMessageQueue q = new LinkedByteBlockingMessageQueue();
@@ -157,13 +157,13 @@ public class WSSTest implements OnAccept, OnData
         this.performMessageTests(1000);
     }
     
-    @Test(timeout = 10000)
+    @Test(timeout = 20000)
     public void testIndefiniteBlocking() throws Exception
     {
         
         LinkedBlockingMessageQueue q = new LinkedBlockingMessageQueue();
         q.setBlockingTimeout(Long.MAX_VALUE);
-        q.resize(1);
+        q.resize(2);
         this.s.setQueue(q);
         
         this.performMessageTests(1000);

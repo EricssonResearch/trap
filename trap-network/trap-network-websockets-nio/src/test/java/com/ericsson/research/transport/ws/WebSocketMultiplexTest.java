@@ -150,7 +150,7 @@ public class WebSocketMultiplexTest {
 	@Test
 	public void testSend() throws InterruptedException {
 		long start = System.currentTimeMillis();
-		for(int i=1;i<=200000;i++) {
+		for(int i=1;i<=20000;i++) {
 			try {
 				executor.execute(new SendTask(i));
 			} catch(Throwable t) {

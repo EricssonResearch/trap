@@ -71,18 +71,24 @@ public class SingleCallback<T> implements Callback<T>
     public T get(long timeout) throws InterruptedException
     {
         long start = System.currentTimeMillis();
-        long end = Math.max(start + timeout, timeout);
+        long elapsed;
         
         synchronized (this)
         {
             while (this.value == null)
             {
-                long remaining = end - System.currentTimeMillis();
+                elapsed = System.currentTimeMillis() - start;
+                long remaining = timeout - elapsed;
                 
-                if (end <= 0)
-                    return this.value;
+                if (remaining <= 0)
+                    break;
+                
                 this.wait(remaining);
             }
+            
+            if (value == null)
+            	throw new NullPointerException();
+            
             return this.value;
         }
         

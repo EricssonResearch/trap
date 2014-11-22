@@ -156,13 +156,13 @@ public class AsynchronousTransportTest implements OnAccept, OnData
         this.performMessageTests(1000);
     }
     
-    @Test(timeout = 1000000)
+    @Test(timeout = 20000)
     public void testAlwaysBlocking() throws Exception
     {
         
         LinkedBlockingMessageQueue q = new LinkedBlockingMessageQueue();
         q.setBlockingTimeout(1000);
-        q.resize(1);
+        q.resize(2);
         this.s.setQueue(q);
         
         this.performMessageTests(1000);
