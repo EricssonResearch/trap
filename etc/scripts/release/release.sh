@@ -10,21 +10,16 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd $DIR
-cd ..
-git checkout -b maint-$1
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion=$1
-mvn -Pcc clean install
-mvn -Pcc deploy
-cd ..
+# etc/scripts/release
+cd ../../..
+mvn versions:set -DnewVersion=$1
+mvn clean install -DskipTests
+mvn -Prelease deploy -DskipTests
 git commit -a -m "$1 Release"
 git tag -a v$1 -m "Release v$1"
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion=$1.1-SNAPSHOT
-cd ..
+git checkout -b maint-$1
+mvn versions:set -DnewVersion=$1.1-SNAPSHOT
 git commit -a -m "$1.1 Snapshot"
 git checkout master
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion $2.0-SNAPSHOT
-cd ..
+mvn versions:set -DnewVersion $2.0-SNAPSHOT
 git commit -a -m "$2.0 Snapshot"

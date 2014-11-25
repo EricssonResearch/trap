@@ -1,7 +1,5 @@
 #!/bin/bash
-echo $1 $2
 
-asdgf
 ((!$#)) && echo Usage: minor_release.sh rel_minor next_minor && exit 1
 set -e
 unset CDPATH
@@ -13,15 +11,12 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 cd $DIR
-cd ..
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion=$1
-mvn -Pcc clean install -DskipTests
-mvn -Pcc deploy -DskipTests
-cd ..
+# etc/scripts/release
+cd ../../..
+mvn versions:set -DnewVersion=$1
+mvn -Prelease clean install -DskipTests
+mvn -Prelease deploy -DskipTests
 git commit -a -m "$1 Release"
 git tag -a v$1 -m "Release v$1"
-cd trap-parent
-mvn -Pcc versions:set -DnewVersion="$2-SNAPSHOT"
-cd ..
+mvn versions:set -DnewVersion="$2-SNAPSHOT"
 git commit -a -m "$2 Snapshot"
