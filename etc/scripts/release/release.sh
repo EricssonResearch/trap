@@ -21,5 +21,5 @@ git checkout -b maint-$1
 mvn versions:set -DnewVersion=$1.1-SNAPSHOT
 git commit -a -m "$1.1 Snapshot"
 git checkout master
-mvn versions:set -DnewVersion $2.0-SNAPSHOT
+mvn versions:set -DnewVersion=$2.0-SNAPSHOT
 git commit -a -m "$2.0 Snapshot"

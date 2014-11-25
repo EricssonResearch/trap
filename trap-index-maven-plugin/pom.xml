@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>trap-parent</artifactId>
 		<groupId>com.ericsson.research.trap</groupId>
-		<version>1.3</version>
+		<version>1.4.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-index-maven-plugin</artifactId>
@@ -150,7 +150,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-utils-15</artifactId>
-			<version>1.3</version>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.maven.plugin-testing</groupId>
