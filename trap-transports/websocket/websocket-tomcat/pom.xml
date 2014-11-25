@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>websocket</artifactId>
 		<groupId>com.ericsson.research.trap.transports</groupId>
-		<version>1.3.0-SNAPSHOT</version>
+		<version>1.4.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>websocket-tomcat</artifactId>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-core</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>websocket-ernio</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.4.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ericsson.research.trap</groupId>
 		<artifactId>trap-parent</artifactId>
-		<version>1.3.0-SNAPSHOT</version>
+		<version>1.4.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-android</artifactId>
@@ -56,22 +56,22 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-socket</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>websocket-ernio</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>http-client-sun</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>loopback</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.android</groupId>

@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>trap-tests-parent</artifactId>
 		<groupId>com.ericsson.research.trap.tests</groupId>
-		<version>1.3.0-SNAPSHOT</version>
+		<version>1.4.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-tests-arquillian-parent</artifactId>
