@@ -9,5 +9,3 @@ matrix:
     - jdk: openjdk7
   fast_finish: true
 
-cache: true
-
