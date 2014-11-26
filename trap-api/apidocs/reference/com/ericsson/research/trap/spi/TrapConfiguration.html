@@ -498,10 +498,10 @@ From interface
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Set.html">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys()">getKeys</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys(int)">getKeys</a></span>(int keyDepth)</nobr>
         
-        <div class="jd-descrdiv">Returns the set of keys that are contained in this configuration at or
- after the call to getKeys() is made, but before it returns.</div>
+        <div class="jd-descrdiv">Get the keys up to a certain depth, as represented by the number of
+ periods in the key.</div>
   
   </td></tr>
 
@@ -517,10 +517,10 @@ From interface
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Set.html">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys(int)">getKeys</a></span>(int keyDepth)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys()">getKeys</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Get the keys up to a certain depth, as represented by the number of
- periods in the key.</div>
+        <div class="jd-descrdiv">Returns the set of keys that are contained in this configuration at or
+ after the call to getKeys() is made, but before it returns.</div>
   
   </td></tr>
 
@@ -554,9 +554,9 @@ From interface
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String, java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
         
-        <div class="jd-descrdiv">Fetches the value of a given option.</div>
+        <div class="jd-descrdiv">Get an option with a prefix.</div>
   
   </td></tr>
 
@@ -572,9 +572,9 @@ From interface
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String, java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
         
-        <div class="jd-descrdiv">Get an option with a prefix.</div>
+        <div class="jd-descrdiv">Fetches the value of a given option.</div>
   
   </td></tr>
 
@@ -665,9 +665,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets an option with a prefix.</div>
+        <div class="jd-descrdiv">Sets an option.</div>
   
   </td></tr>
 
@@ -683,9 +683,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets an option.</div>
+        <div class="jd-descrdiv">Sets an option with a prefix.</div>
   
   </td></tr>
 

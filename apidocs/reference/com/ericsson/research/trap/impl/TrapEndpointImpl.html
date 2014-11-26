@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -1363,9 +1369,9 @@ Summary:
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean reconnect, long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
   
   </td></tr>
 
@@ -1381,9 +1387,9 @@ Summary:
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean reconnect, long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
   
   </td></tr>
 
@@ -1505,10 +1511,8 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(com.ericsson.research.trap.spi.TrapMessage)">send</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</nobr>
         
-        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
-  
   </td></tr>
 
 
@@ -1523,9 +1527,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[])">send</a></span>(byte[] data)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
         
-        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
   
   </td></tr>
 
@@ -1541,8 +1545,10 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(com.ericsson.research.trap.spi.TrapMessage)">send</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[])">send</a></span>(byte[] data)</nobr>
         
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+  
   </td></tr>
 
 
@@ -1612,9 +1618,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
         
-        <div class="jd-descrdiv">Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces.</div>
+        <div class="jd-descrdiv">Registers an object as a delegate to this endpoint.</div>
   
   </td></tr>
 
@@ -1630,9 +1636,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</nobr>
         
-        <div class="jd-descrdiv">Registers an object as a delegate to this endpoint.</div>
+        <div class="jd-descrdiv">Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces.</div>
   
   </td></tr>
 
@@ -2489,7 +2495,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -2505,7 +2511,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -2521,7 +2527,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -2744,9 +2750,9 @@ From interface
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
   
   </td></tr>
 
@@ -2762,9 +2768,9 @@ From interface
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
   
   </td></tr>
 
@@ -2834,9 +2840,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
         
-        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
   
   </td></tr>
 
@@ -2870,9 +2876,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
         
-        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
   
   </td></tr>
 
@@ -5389,67 +5395,6 @@ From interface
 </div>
 
 
-<A NAME="isAlive(long)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;
-      </span>
-      <span class="sympad">isAlive</span>
-      <span class="normal">(long timeout)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.
- This function is primarily intended for when an application requires to know it has connectivity <i>right this
- instant</i>, and should be used sparingly on power-constrained devices.
- <p>
- <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive(long)</a></code> is synonymous to calling <i>isAlive(timeout, true, true, timeout)</i>.
- <p>
- Note that isAlive is intended to be used in an asynchronous mode. The callback may be used to request a
- synchronous answer, but this is strongly discouraged. Further note that isAlive will take longer time to execute
- than <i>timeout</i> as it will both try to verify transport liveness, and then reconnect the transport if
- verification fails. Transport reconnection uses a timer longer than <i>timeout</i>, to allow for additional
- round-trips used when connecting.
- <p>
- <b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when none of the transports can perform
- the open() function) may cause an endpoint to close on the server, while the client considers it open. The client
- may not have discovered the underlying transport is dead yet, and may require more time to reconnect. A wakeup
- mechanism can be used to establish liveness, but the server's <i>timeout</i> value should be significantly more
- generous in order to accommodate the client's reconnect and/or wakeup procedure!</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>timeout</td>
-          <td>The timeout (in milliseconds) for the round-trip between the server.</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>A callback for <i>true</i> if the connection is currently alive (including if this function successfully
-         re-established the connection), <i>false</i> otherwise.</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="isAlive(long, boolean, boolean, long)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -5514,6 +5459,67 @@ From interface
           <th>timeout</td>
           <td>If check is true, how many milliseconds at most the liveness check should take before returning false
             anyway. The application can use this value if it has a time constraint on it.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A callback for <i>true</i> if the connection is currently alive (including if this function successfully
+         re-established the connection), <i>false</i> otherwise.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAlive(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;
+      </span>
+      <span class="sympad">isAlive</span>
+      <span class="normal">(long timeout)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.
+ This function is primarily intended for when an application requires to know it has connectivity <i>right this
+ instant</i>, and should be used sparingly on power-constrained devices.
+ <p>
+ <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive(long)</a></code> is synonymous to calling <i>isAlive(timeout, true, true, timeout)</i>.
+ <p>
+ Note that isAlive is intended to be used in an asynchronous mode. The callback may be used to request a
+ synchronous answer, but this is strongly discouraged. Further note that isAlive will take longer time to execute
+ than <i>timeout</i> as it will both try to verify transport liveness, and then reconnect the transport if
+ verification fails. Transport reconnection uses a timer longer than <i>timeout</i>, to allow for additional
+ round-trips used when connecting.
+ <p>
+ <b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when none of the transports can perform
+ the open() function) may cause an endpoint to close on the server, while the client considers it open. The client
+ may not have discovered the underlying transport is dead yet, and may require more time to reconnect. A wakeup
+ mechanism can be used to establish liveness, but the server's <i>timeout</i> value should be significantly more
+ generous in order to accommodate the client's reconnect and/or wakeup procedure!</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>timeout</td>
+          <td>The timeout (in milliseconds) for the round-trip between the server.</td>
         </tr>
       </table>
   </div>
@@ -5798,6 +5804,46 @@ From interface
 </div>
 
 
+<A NAME="send(com.ericsson.research.trap.spi.TrapMessage)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">send</span>
+      <span class="normal">(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="send(byte[], int, boolean)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -5897,46 +5943,6 @@ From interface
         </tr>
       </table>
   </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="../../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="send(com.ericsson.research.trap.spi.TrapMessage)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">send</span>
-      <span class="normal">(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
@@ -6099,60 +6105,6 @@ From interface
 </div>
 
 
-<A NAME="setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setDelegate</span>
-      <span class="normal">(<a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces. If
- <i>replaceAllExisting</i> is true, then all callbacks are reset, even the ones not implemented by <i>delegate</i>
- (they will instead log a warning if applicable). Otherwise, only the implemented callbacks are overwritten.
- <p>
- Multiple invocations to setDelegate can be used to set different object as delegates for different actions. For
- example, <i>setDelegate(openDelegate, false)</i> and <i>setDelegate(dataDelegate, false)</i> will retain
- <b>both</b> objects as delegates. The actions a delegate is retained for depend on the interfaces implemented.
- <p>
- All delegates can be cleared by invoking <i>setDelegate(null, true)</i>.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>delegate</td>
-          <td>The delegate to add. It must implement at least one sub-interface of TrapDelegate, or the call will
-            have no effect.</td>
-        </tr>
-        <tr>
-          <th>replaceAllExisting</td>
-          <td><i>true</i> to clear all delegates before assigning this delegate, <i>false</i> to keep any delegates
-            that do not conflict with this one.</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -6202,6 +6154,60 @@ From interface
         <tr>
           <th>context</td>
           <td>An optional object that will be supplied to the listener on every callback.</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setDelegate</span>
+      <span class="normal">(<a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces. If
+ <i>replaceAllExisting</i> is true, then all callbacks are reset, even the ones not implemented by <i>delegate</i>
+ (they will instead log a warning if applicable). Otherwise, only the implemented callbacks are overwritten.
+ <p>
+ Multiple invocations to setDelegate can be used to set different object as delegates for different actions. For
+ example, <i>setDelegate(openDelegate, false)</i> and <i>setDelegate(dataDelegate, false)</i> will retain
+ <b>both</b> objects as delegates. The actions a delegate is retained for depend on the interfaces implemented.
+ <p>
+ All delegates can be cleared by invoking <i>setDelegate(null, true)</i>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>delegate</td>
+          <td>The delegate to add. It must implement at least one sub-interface of TrapDelegate, or the call will
+            have no effect.</td>
+        </tr>
+        <tr>
+          <th>replaceAllExisting</td>
+          <td><i>true</i> to clear all delegates before assigning this delegate, <i>false</i> to keep any delegates
+            that do not conflict with this one.</td>
         </tr>
       </table>
   </div>

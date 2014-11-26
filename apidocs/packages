@@ -1,8 +1,10 @@
 com.ericsson.research.trap.utils
 com.ericsson.research.trap.utils.spi
 com.ericsson.research.trap.utils.impl
+com.ericsson.research.trap.nio
 com.ericsson.research.transport
 com.ericsson.research.transport.ssl
+com.ericsson.research.trap.nio.impl.nio1
 com.ericsson.research.transport.ws.spi.util
 com.ericsson.research.transport.ws.spi
 com.ericsson.research.transport.ws
@@ -16,6 +18,7 @@ com.ericsson.research.trap.impl
 com.ericsson.research.trap.impl.buffers
 com.ericsson.research.trap.impl.queues
 com.ericsson.research.trap.spi.transports
+com.ericsson.research.trap.nio.impl.nio2
 com.ericsson.research.trap.impl.http
 com.ericsson.research.trap.spi.ws.netty
 com.ericsson.research.trap.spi.tomcat

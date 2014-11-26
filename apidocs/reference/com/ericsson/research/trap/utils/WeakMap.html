@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -841,7 +847,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -857,7 +863,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -873,7 +879,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -928,6 +934,54 @@ From interface
             
             
             
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">compute</span>(K arg0, BiFunction&lt;?&nbsp;super&nbsp;K,&nbsp;?&nbsp;super&nbsp;V,&nbsp;?&nbsp;extends&nbsp;V&gt; arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">computeIfAbsent</span>(K arg0, Function&lt;?&nbsp;super&nbsp;K,&nbsp;?&nbsp;extends&nbsp;V&gt; arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">computeIfPresent</span>(K arg0, BiFunction&lt;?&nbsp;super&nbsp;K,&nbsp;?&nbsp;super&nbsp;V,&nbsp;?&nbsp;extends&nbsp;V&gt; arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -937,7 +991,7 @@ From interface
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -953,7 +1007,7 @@ From interface
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -969,7 +1023,7 @@ From interface
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -980,6 +1034,22 @@ From interface
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">equals</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">forEach</span>(BiConsumer&lt;?&nbsp;super&nbsp;K,&nbsp;?&nbsp;super&nbsp;V&gt; arg0)</nobr>
         
   </td></tr>
 
@@ -1008,6 +1078,22 @@ From interface
             
             
             
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getOrDefault</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0, V arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
             int</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1017,7 +1103,7 @@ From interface
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -1033,7 +1119,7 @@ From interface
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -1044,6 +1130,22 @@ From interface
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">keySet</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">merge</span>(K arg0, V arg1, BiFunction&lt;?&nbsp;super&nbsp;V,&nbsp;?&nbsp;super&nbsp;V,&nbsp;?&nbsp;extends&nbsp;V&gt; arg2)</nobr>
         
   </td></tr>
 
@@ -1091,6 +1193,38 @@ From interface
             V</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">putIfAbsent</span>(K arg0, V arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">remove</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">remove</span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> arg0)</nobr>
         
   </td></tr>
@@ -1098,6 +1232,54 @@ From interface
 
 	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">replace</span>(K arg0, V arg1, V arg2)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            V</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">replace</span>(K arg0, V arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">replaceAll</span>(BiFunction&lt;?&nbsp;super&nbsp;K,&nbsp;?&nbsp;super&nbsp;V,&nbsp;?&nbsp;extends&nbsp;V&gt; arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -1113,7 +1295,7 @@ From interface
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             

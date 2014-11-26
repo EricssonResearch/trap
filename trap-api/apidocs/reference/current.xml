@@ -3421,7 +3421,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="TrapHostingTransport.TrapHostable"
+<constructor name="TrapHostable"
  type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable"
  static="false"
  final="false"
@@ -3429,7 +3429,7 @@
  visibility="public"
 >
 </constructor>
-<constructor name="TrapHostingTransport.TrapHostable"
+<constructor name="TrapHostable"
  type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable"
  static="false"
  final="false"
@@ -4206,7 +4206,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="TrapMessage.Operation.Value"
+<constructor name="Value"
  type="com.ericsson.research.trap.spi.TrapMessage.Operation.Value"
  static="false"
  final="false"
@@ -6891,7 +6891,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="SSLUtil.SSLMaterial"
+<constructor name="SSLMaterial"
  type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial"
  static="false"
  final="false"
@@ -6899,7 +6899,7 @@
  visibility="public"
 >
 </constructor>
-<constructor name="SSLUtil.SSLMaterial"
+<constructor name="SSLMaterial"
  type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial"
  static="false"
  final="false"
@@ -7084,7 +7084,7 @@
 </parameter>
 </method>
 <method name="toUtfString"
- return="java.lang.Object"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"

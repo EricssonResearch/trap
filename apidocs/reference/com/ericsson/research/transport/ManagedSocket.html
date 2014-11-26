@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -564,7 +570,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#connect(java.lang.String, int)">connect</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> host, int port)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#connect(java.net.InetSocketAddress)">connect</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</nobr>
         
   </td></tr>
 
@@ -580,7 +586,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#connect(java.net.InetSocketAddress)">connect</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#connect(java.lang.String, int)">connect</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> host, int port)</nobr>
         
   </td></tr>
 
@@ -838,7 +844,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#write(byte[], int)">write</a></span>(byte[] data, int size)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#write(byte[])">write</a></span>(byte[] data)</nobr>
         
   </td></tr>
 
@@ -854,7 +860,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#write(byte[])">write</a></span>(byte[] data)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedSocket.html#write(byte[], int)">write</a></span>(byte[] data, int size)</nobr>
         
   </td></tr>
 
@@ -1057,7 +1063,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -1073,7 +1079,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -1089,7 +1095,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -1419,6 +1425,37 @@ From interface
 </div>
 
 
+<A NAME="connect(java.net.InetSocketAddress)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">connect</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
 <A NAME="connect(java.lang.String, int)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1454,37 +1491,6 @@ From interface
         </tr>
       </table>
   </div>
-
-    </div>
-</div>
-
-
-<A NAME="connect(java.net.InetSocketAddress)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">connect</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -1959,7 +1965,7 @@ From interface
 </div>
 
 
-<A NAME="write(byte[], int)"></A>
+<A NAME="write(byte[])"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1972,7 +1978,7 @@ From interface
         void
       </span>
       <span class="sympad">write</span>
-      <span class="normal">(byte[] data, int size)</span>
+      <span class="normal">(byte[] data)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1999,7 +2005,7 @@ From interface
 </div>
 
 
-<A NAME="write(byte[])"></A>
+<A NAME="write(byte[], int)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2012,7 +2018,7 @@ From interface
         void
       </span>
       <span class="sympad">write</span>
-      <span class="normal">(byte[] data)</span>
+      <span class="normal">(byte[] data, int size)</span>
     </h4>
       <div class="api-level">
         <div>

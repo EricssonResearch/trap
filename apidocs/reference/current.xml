@@ -3882,7 +3882,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<implements name="com.ericsson.research.transport.ManagedSocketClient">
+<implements name="com.ericsson.research.trap.nio.Socket.SocketHandler">
 </implements>
 <constructor name="WSNioEndpoint"
  type="com.ericsson.research.transport.ws.spi.WSNioEndpoint"
@@ -3905,13 +3905,52 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="socket" type="com.ericsson.research.transport.ManagedSocket">
+<parameter name="socket" type="com.ericsson.research.trap.nio.Socket">
 </parameter>
 <parameter name="protocol" type="com.ericsson.research.transport.ws.spi.WSAbstractProtocol">
 </parameter>
 <parameter name="listener" type="com.ericsson.research.transport.ws.WSListener">
 </parameter>
 </constructor>
+<method name="_flush"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="closed"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="error"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="exc" type="java.lang.Throwable">
+</parameter>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
 <method name="forceClose"
  return="void"
  abstract="false"
@@ -3957,6 +3996,47 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="opened"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="received"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="java.nio.ByteBuffer">
+</parameter>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="sent"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
 </method>
 </class>
 <class name="WSPrefetcher"
@@ -4218,7 +4298,7 @@
 >
 </constructor>
 <method name="getSecureServerSocket"
- return="com.ericsson.research.transport.ManagedServerSocket"
+ return="com.ericsson.research.trap.nio.ServerSocket"
  abstract="false"
  native="false"
  synchronized="false"
@@ -4229,11 +4309,13 @@
 >
 <parameter name="sc" type="com.ericsson.research.transport.ws.WSSecurityContext">
 </parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
 <exception name="IOException" type="java.io.IOException">
 </exception>
 </method>
 <method name="getSecureSocket"
- return="com.ericsson.research.transport.ManagedSocket"
+ return="com.ericsson.research.trap.nio.Socket"
  abstract="false"
  native="false"
  synchronized="false"
@@ -4256,7 +4338,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<implements name="com.ericsson.research.transport.ManagedServerSocketClient">
+<implements name="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
 </implements>
 <implements name="com.ericsson.research.transport.ws.WSServer">
 </implements>
@@ -4292,6 +4374,21 @@
 <exception name="IOException" type="java.io.IOException">
 </exception>
 </constructor>
+<method name="accept"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+<parameter name="ss" type="com.ericsson.research.trap.nio.ServerSocket">
+</parameter>
+</method>
 <method name="close"
  return="void"
  abstract="false"
@@ -4302,6 +4399,21 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+<method name="error"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="exc" type="java.lang.Throwable">
+</parameter>
+<parameter name="ss" type="com.ericsson.research.trap.nio.ServerSocket">
+</parameter>
 </method>
 <method name="getAddress"
  return="java.net.InetSocketAddress"
@@ -4324,32 +4436,6 @@
  deprecated="not deprecated"
  visibility="public"
 >
-</method>
-<method name="notifyAccept"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="socket" type="com.ericsson.research.transport.ManagedSocket">
-</parameter>
-</method>
-<method name="notifyBound"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="socket" type="com.ericsson.research.transport.ManagedServerSocket">
-</parameter>
 </method>
 <method name="notifyError"
  return="void"
@@ -8806,6 +8892,8 @@
  deprecated="not deprecated"
  visibility="public"
 >
+<implements name="java.lang.Comparable">
+</implements>
 <implements name="com.ericsson.research.trap.TrapEndpoint">
 </implements>
 <implements name="com.ericsson.research.trap.spi.TrapTransportDelegate">
@@ -12198,7 +12286,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="LinkedByteMessageQueue.QueuedMessage"
+<constructor name="QueuedMessage"
  type="com.ericsson.research.trap.impl.queues.LinkedByteMessageQueue.QueuedMessage"
  static="false"
  final="false"
@@ -12365,6 +12453,1306 @@
  deprecated="not deprecated"
  visibility="public"
 >
+</method>
+</class>
+</package>
+<package name="com.ericsson.research.trap.nio"
+>
+<class name="Nio"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Nio"
+ type="com.ericsson.research.trap.nio.Nio"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="factory"
+ return="com.ericsson.research.trap.nio.SocketFactory"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+<interface name="ServerSocket"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="close"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getInetAddress"
+ return="java.net.InetSocketAddress"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.net.InetAddress">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="addr" type="java.lang.String">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="address" type="java.net.InetSocketAddress">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</interface>
+<interface name="ServerSocket.ServerSocketHandler"
+ abstract="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="accept"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+<parameter name="ss" type="com.ericsson.research.trap.nio.ServerSocket">
+</parameter>
+</method>
+<method name="error"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="exc" type="java.lang.Throwable">
+</parameter>
+<parameter name="ss" type="com.ericsson.research.trap.nio.ServerSocket">
+</parameter>
+</method>
+</interface>
+<interface name="Socket"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="close"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getLocalSocketAddress"
+ return="java.net.InetSocketAddress"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="getRemoteSocketAddress"
+ return="java.net.InetSocketAddress"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="isSecure"
+ return="boolean"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="open"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="remote" type="java.net.InetSocketAddress">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.net.InetAddress">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="addr" type="java.lang.String">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="send"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="java.nio.ByteBuffer">
+</parameter>
+</method>
+<method name="setHandler"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="handler" type="com.ericsson.research.trap.nio.Socket.SocketHandler">
+</parameter>
+</method>
+</interface>
+<interface name="Socket.SocketHandler"
+ abstract="true"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="closed"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="error"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="exc" type="java.lang.Throwable">
+</parameter>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="opened"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="received"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="java.nio.ByteBuffer">
+</parameter>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="sent"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+</interface>
+<interface name="SocketFactory"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="client"
+ return="com.ericsson.research.trap.nio.Socket"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="server"
+ return="com.ericsson.research.trap.nio.ServerSocket"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="sslClient"
+ return="com.ericsson.research.trap.nio.Socket"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="sslServer"
+ return="com.ericsson.research.trap.nio.ServerSocket"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</interface>
+</package>
+<package name="com.ericsson.research.trap.nio.impl.nio1"
+>
+<class name="Nio1SocketFactory"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.nio.SocketFactory">
+</implements>
+<constructor name="Nio1SocketFactory"
+ type="com.ericsson.research.trap.nio.impl.nio1.Nio1SocketFactory"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="client"
+ return="com.ericsson.research.trap.nio.Socket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="server"
+ return="com.ericsson.research.trap.nio.ServerSocket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="sslClient"
+ return="com.ericsson.research.trap.nio.Socket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="sslServer"
+ return="com.ericsson.research.trap.nio.ServerSocket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</class>
+<class name="ServerSocketWrapper"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.transport.ManagedServerSocketClient">
+</implements>
+<implements name="com.ericsson.research.trap.nio.ServerSocket">
+</implements>
+<constructor name="ServerSocketWrapper"
+ type="com.ericsson.research.trap.nio.impl.nio1.ServerSocketWrapper"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.transport.ManagedServerSocket">
+</parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<parameter name="secure" type="boolean">
+</parameter>
+</constructor>
+<method name="close"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getInetAddress"
+ return="java.net.InetSocketAddress"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.net.InetAddress">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="addr" type="java.lang.String">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="address" type="java.net.InetSocketAddress">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="notifyAccept"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="socket" type="com.ericsson.research.transport.ManagedSocket">
+</parameter>
+</method>
+<method name="notifyBound"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="socket" type="com.ericsson.research.transport.ManagedServerSocket">
+</parameter>
+</method>
+<method name="notifyError"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="e" type="java.lang.Exception">
+</parameter>
+</method>
+</class>
+<class name="SocketWrapper"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.transport.ManagedSocketClient">
+</implements>
+<implements name="com.ericsson.research.trap.nio.Socket">
+</implements>
+<method name="close"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getLocalSocketAddress"
+ return="java.net.InetSocketAddress"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="getRemoteSocketAddress"
+ return="java.net.InetSocketAddress"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="isSecure"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="notifyConnected"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="notifyDisconnected"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="notifyError"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="e" type="java.lang.Exception">
+</parameter>
+</method>
+<method name="notifySocketData"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="byte[]">
+</parameter>
+<parameter name="size" type="int">
+</parameter>
+</method>
+<method name="open"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="remote" type="java.net.InetSocketAddress">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.net.InetAddress">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="addr" type="java.lang.String">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="send"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="java.nio.ByteBuffer">
+</parameter>
+</method>
+<method name="setHandler"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="handler" type="com.ericsson.research.trap.nio.Socket.SocketHandler">
+</parameter>
+</method>
+</class>
+</package>
+<package name="com.ericsson.research.trap.nio.impl.nio2"
+>
+<class name="Nio2SSLServerSocket"
+ extends="com.ericsson.research.trap.nio.impl.nio2.Nio2ServerSocket"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Nio2SSLServerSocket"
+ type="com.ericsson.research.trap.nio.impl.nio2.Nio2SSLServerSocket"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ss" type="java.nio.channels.AsynchronousServerSocketChannel">
+</parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+</constructor>
+</class>
+<class name="Nio2SSLSocket"
+ extends="com.ericsson.research.trap.nio.impl.nio2.Nio2SocketBase"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Nio2SSLSocket"
+ type="com.ericsson.research.trap.nio.impl.nio2.Nio2SSLSocket"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="java.nio.channels.AsynchronousSocketChannel">
+</parameter>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<parameter name="clientMode" type="boolean">
+</parameter>
+</constructor>
+<method name="isSecure"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="send"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="java.nio.ByteBuffer">
+</parameter>
+</method>
+</class>
+<class name="Nio2ServerSocket"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.nio.ServerSocket">
+</implements>
+<constructor name="Nio2ServerSocket"
+ type="com.ericsson.research.trap.nio.impl.nio2.Nio2ServerSocket"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="ss" type="java.nio.channels.AsynchronousServerSocketChannel">
+</parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+</constructor>
+<method name="close"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getInetAddress"
+ return="java.net.InetSocketAddress"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.net.InetAddress">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="addr" type="java.lang.String">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="listen"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="address" type="java.net.InetSocketAddress">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+</class>
+<class name="Nio2Socket"
+ extends="com.ericsson.research.trap.nio.impl.nio2.Nio2SocketBase"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="Nio2Socket"
+ type="com.ericsson.research.trap.nio.impl.nio2.Nio2Socket"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="java.nio.channels.AsynchronousSocketChannel">
+</parameter>
+</constructor>
+<method name="_read"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isSecure"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="send"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="src" type="java.nio.ByteBuffer">
+</parameter>
+</method>
+</class>
+<class name="Nio2SocketBase"
+ extends="java.lang.Object"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.nio.Socket">
+</implements>
+<constructor name="Nio2SocketBase"
+ type="com.ericsson.research.trap.nio.impl.nio2.Nio2SocketBase"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="java.nio.channels.AsynchronousSocketChannel">
+</parameter>
+</constructor>
+<method name="close"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getLocalSocketAddress"
+ return="java.net.InetSocketAddress"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="getRemoteSocketAddress"
+ return="java.net.InetSocketAddress"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="remote" type="java.net.InetSocketAddress">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="host" type="java.net.InetAddress">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="open"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="addr" type="java.lang.String">
+</parameter>
+<parameter name="port" type="int">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="setHandler"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="handler" type="com.ericsson.research.trap.nio.Socket.SocketHandler">
+</parameter>
+</method>
+</class>
+<class name="Nio2SocketFactory"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="com.ericsson.research.trap.nio.SocketFactory">
+</implements>
+<constructor name="Nio2SocketFactory"
+ type="com.ericsson.research.trap.nio.impl.nio2.Nio2SocketFactory"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="client"
+ return="com.ericsson.research.trap.nio.Socket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="server"
+ return="com.ericsson.research.trap.nio.ServerSocket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="sslClient"
+ return="com.ericsson.research.trap.nio.Socket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<method name="sslServer"
+ return="com.ericsson.research.trap.nio.ServerSocket"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sslc" type="javax.net.ssl.SSLContext">
+</parameter>
+<parameter name="handler" type="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
 </method>
 </class>
 </package>
@@ -12644,7 +14032,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="TrapHostingTransport.TrapHostable"
+<constructor name="TrapHostable"
  type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable"
  static="false"
  final="false"
@@ -12652,7 +14040,7 @@
  visibility="public"
 >
 </constructor>
-<constructor name="TrapHostingTransport.TrapHostable"
+<constructor name="TrapHostable"
  type="com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable"
  static="false"
  final="false"
@@ -13429,7 +14817,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="TrapMessage.Operation.Value"
+<constructor name="Value"
  type="com.ericsson.research.trap.spi.TrapMessage.Operation.Value"
  static="false"
  final="false"
@@ -17809,7 +19197,7 @@
 >
 <implements name="com.ericsson.research.trap.spi.ListenerTrapTransport">
 </implements>
-<implements name="com.ericsson.research.transport.ManagedServerSocketClient">
+<implements name="com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler">
 </implements>
 <constructor name="ServerSocketTransport"
  type="com.ericsson.research.trap.spi.transports.ServerSocketTransport"
@@ -17819,6 +19207,36 @@
  visibility="public"
 >
 </constructor>
+<method name="accept"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+<parameter name="ss" type="com.ericsson.research.trap.nio.ServerSocket">
+</parameter>
+</method>
+<method name="error"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="exc" type="java.lang.Throwable">
+</parameter>
+<parameter name="ss" type="com.ericsson.research.trap.nio.ServerSocket">
+</parameter>
+</method>
 <method name="flushTransport"
  return="void"
  abstract="false"
@@ -17894,45 +19312,6 @@
 </parameter>
 <exception name="TrapException" type="com.ericsson.research.trap.TrapException">
 </exception>
-</method>
-<method name="notifyAccept"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="socket" type="com.ericsson.research.transport.ManagedSocket">
-</parameter>
-</method>
-<method name="notifyBound"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="socket" type="com.ericsson.research.transport.ManagedServerSocket">
-</parameter>
-</method>
-<method name="notifyError"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="e" type="java.lang.Exception">
-</parameter>
 </method>
 </class>
 <class name="ServerWebSocketTransport"
@@ -18155,7 +19534,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<implements name="com.ericsson.research.transport.ManagedSocketClient">
+<implements name="com.ericsson.research.trap.nio.Socket.SocketHandler">
 </implements>
 <constructor name="SocketTransport"
  type="com.ericsson.research.trap.spi.transports.SocketTransport"
@@ -18172,9 +19551,37 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<parameter name="socket" type="com.ericsson.research.transport.ManagedSocket">
+<parameter name="socket" type="com.ericsson.research.trap.nio.Socket">
 </parameter>
 </constructor>
+<method name="closed"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="error"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="e" type="java.lang.Throwable">
+</parameter>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
 <method name="fillAuthenticationKeys"
  return="void"
  abstract="false"
@@ -18262,41 +19669,6 @@
 <exception name="TrapTransportException" type="com.ericsson.research.trap.spi.TrapTransportException">
 </exception>
 </method>
-<method name="notifyConnected"
- return="void"
- abstract="false"
- native="false"
- synchronized="true"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="notifyDisconnected"
- return="void"
- abstract="false"
- native="false"
- synchronized="true"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-</method>
-<method name="notifyError"
- return="void"
- abstract="false"
- native="false"
- synchronized="false"
- static="false"
- final="false"
- deprecated="not deprecated"
- visibility="public"
->
-<parameter name="e" type="java.lang.Exception">
-</parameter>
-</method>
 <method name="notifySocketData"
  return="void"
  abstract="false"
@@ -18310,6 +19682,47 @@
 <parameter name="data" type="byte[]">
 </parameter>
 <parameter name="size" type="int">
+</parameter>
+</method>
+<method name="opened"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="received"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="data" type="java.nio.ByteBuffer">
+</parameter>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
+</parameter>
+</method>
+<method name="sent"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sock" type="com.ericsson.research.trap.nio.Socket">
 </parameter>
 </method>
 </class>
@@ -21406,7 +22819,7 @@
  deprecated="not deprecated"
  visibility="public"
 >
-<constructor name="SSLUtil.SSLMaterial"
+<constructor name="SSLMaterial"
  type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial"
  static="false"
  final="false"
@@ -21414,7 +22827,7 @@
  visibility="public"
 >
 </constructor>
-<constructor name="SSLUtil.SSLMaterial"
+<constructor name="SSLMaterial"
  type="com.ericsson.research.trap.utils.SSLUtil.SSLMaterial"
  static="false"
  final="false"
@@ -21599,7 +23012,7 @@
 </parameter>
 </method>
 <method name="toUtfString"
- return="java.lang.Object"
+ return="java.lang.String"
  abstract="false"
  native="false"
  synchronized="false"

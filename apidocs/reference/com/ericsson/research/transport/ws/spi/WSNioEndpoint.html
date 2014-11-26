@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -370,7 +376,7 @@ Summary:
   
       implements 
       
-        <a href="../../../../../../com/ericsson/research/transport/ManagedSocketClient.html">ManagedSocketClient</a> 
+        <a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html">Socket.SocketHandler</a> 
       
   
   
@@ -561,7 +567,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#WSNioEndpoint(com.ericsson.research.transport.ManagedSocket, com.ericsson.research.transport.ws.spi.WSAbstractProtocol, com.ericsson.research.transport.ws.WSListener)">WSNioEndpoint</a></span>(<a href="../../../../../../com/ericsson/research/transport/ManagedSocket.html">ManagedSocket</a> socket, <a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocol.html">WSAbstractProtocol</a> protocol, <a href="../../../../../../com/ericsson/research/transport/ws/WSListener.html">WSListener</a> listener)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#WSNioEndpoint(com.ericsson.research.trap.nio.Socket, com.ericsson.research.transport.ws.spi.WSAbstractProtocol, com.ericsson.research.transport.ws.WSListener)">WSNioEndpoint</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> socket, <a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocol.html">WSAbstractProtocol</a> protocol, <a href="../../../../../../com/ericsson/research/transport/ws/WSListener.html">WSListener</a> listener)</nobr>
         
   </td></tr>
 
@@ -583,6 +589,54 @@ Summary:
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#_flush()">_flush</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#closed(com.ericsson.research.trap.nio.Socket)">closed</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#error(java.lang.Throwable, com.ericsson.research.trap.nio.Socket)">error</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> exc, <a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
             synchronized
             
             
@@ -596,7 +650,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -612,7 +666,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             synchronized
@@ -628,7 +682,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -644,7 +698,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             synchronized
@@ -655,6 +709,54 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#open()">open</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#opened(com.ericsson.research.trap.nio.Socket)">opened</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            synchronized
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#received(java.nio.ByteBuffer, com.ericsson.research.trap.nio.Socket)">received</a></span>(ByteBuffer data, <a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSNioEndpoint.html#sent(com.ericsson.research.trap.nio.Socket)">sent</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
         
   </td></tr>
 
@@ -832,7 +934,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocolWrapper.html#notifyError(java.lang.Throwable)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> t)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocolWrapper.html#notifyError(java.lang.Exception)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</nobr>
         
   </td></tr>
 
@@ -848,7 +950,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocolWrapper.html#notifyError(java.lang.Exception)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocolWrapper.html#notifyError(java.lang.Throwable)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> t)</nobr>
         
   </td></tr>
 
@@ -1194,29 +1296,13 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            final
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1231,92 +1317,18 @@ From class
   </td></tr>
 
 
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.ericsson.research.transport.ManagedSocketClient" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-com.ericsson.research.transport.ManagedSocketClient-trigger"
-          src="../../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  <a href="../../../../../../com/ericsson/research/transport/ManagedSocketClient.html">com.ericsson.research.transport.ManagedSocketClient</a>
-
-<div id="inherited-methods-com.ericsson.research.transport.ManagedSocketClient">
-  <div id="inherited-methods-com.ericsson.research.transport.ManagedSocketClient-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-com.ericsson.research.transport.ManagedSocketClient-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
-            abstract
             
             
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ManagedSocketClient.html#notifyConnected()">notifyConnected</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
+            final
             
             
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ManagedSocketClient.html#notifyDisconnected()">notifyDisconnected</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ManagedSocketClient.html#notifyError(java.lang.Exception)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/transport/ManagedSocketClient.html#notifySocketData(byte[], int)">notifySocketData</a></span>(byte[] data, int size)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -1603,6 +1615,112 @@ From interface
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.ericsson.research.trap.nio.Socket.SocketHandler" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.ericsson.research.trap.nio.Socket.SocketHandler-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html">com.ericsson.research.trap.nio.Socket.SocketHandler</a>
+
+<div id="inherited-methods-com.ericsson.research.trap.nio.Socket.SocketHandler">
+  <div id="inherited-methods-com.ericsson.research.trap.nio.Socket.SocketHandler-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.ericsson.research.trap.nio.Socket.SocketHandler-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html#closed(com.ericsson.research.trap.nio.Socket)">closed</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html#error(java.lang.Throwable, com.ericsson.research.trap.nio.Socket)">error</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> exc, <a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html#opened(com.ericsson.research.trap.nio.Socket)">opened</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html#received(java.nio.ByteBuffer, com.ericsson.research.trap.nio.Socket)">received</a></span>(ByteBuffer data, <a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/nio/Socket.SocketHandler.html#sent(com.ericsson.research.trap.nio.Socket)">sent</a></span>(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -1677,7 +1795,7 @@ From interface
 </div>
 
 
-<A NAME="WSNioEndpoint(com.ericsson.research.transport.ManagedSocket, com.ericsson.research.transport.ws.spi.WSAbstractProtocol, com.ericsson.research.transport.ws.WSListener)"></A>
+<A NAME="WSNioEndpoint(com.ericsson.research.trap.nio.Socket, com.ericsson.research.transport.ws.spi.WSAbstractProtocol, com.ericsson.research.transport.ws.WSListener)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1690,7 +1808,7 @@ From interface
         
       </span>
       <span class="sympad">WSNioEndpoint</span>
-      <span class="normal">(<a href="../../../../../../com/ericsson/research/transport/ManagedSocket.html">ManagedSocket</a> socket, <a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocol.html">WSAbstractProtocol</a> protocol, <a href="../../../../../../com/ericsson/research/transport/ws/WSListener.html">WSListener</a> listener)</span>
+      <span class="normal">(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> socket, <a href="../../../../../../com/ericsson/research/transport/ws/spi/WSAbstractProtocol.html">WSAbstractProtocol</a> protocol, <a href="../../../../../../com/ericsson/research/transport/ws/WSListener.html">WSListener</a> listener)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1721,6 +1839,99 @@ From interface
 
 <h2>Public Methods</h2>
 
+
+
+<A NAME="_flush()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">_flush</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="closed(com.ericsson.research.trap.nio.Socket)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">closed</span>
+      <span class="normal">(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="error(java.lang.Throwable, com.ericsson.research.trap.nio.Socket)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">error</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> exc, <a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
 
 
 <A NAME="forceClose()"></A>
@@ -1891,6 +2102,99 @@ From interface
         </tr>
       </table>
   </div>
+
+    </div>
+</div>
+
+
+<A NAME="opened(com.ericsson.research.trap.nio.Socket)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">opened</span>
+      <span class="normal">(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="received(java.nio.ByteBuffer, com.ericsson.research.trap.nio.Socket)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+        synchronized 
+        void
+      </span>
+      <span class="sympad">received</span>
+      <span class="normal">(ByteBuffer data, <a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="sent(com.ericsson.research.trap.nio.Socket)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sent</span>
+      <span class="normal">(<a href="../../../../../../com/ericsson/research/trap/nio/Socket.html">Socket</a> sock)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>

@@ -489,10 +489,10 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Set.html">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys()">getKeys</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys(int)">getKeys</a></span>(int keyDepth)</nobr>
         
-        <div class="jd-descrdiv">Returns the set of keys that are contained in this configuration at or
- after the call to getKeys() is made, but before it returns.</div>
+        <div class="jd-descrdiv">Get the keys up to a certain depth, as represented by the number of
+ periods in the key.</div>
   
   </td></tr>
 
@@ -508,10 +508,10 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Set.html">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys(int)">getKeys</a></span>(int keyDepth)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getKeys()">getKeys</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Get the keys up to a certain depth, as represented by the number of
- periods in the key.</div>
+        <div class="jd-descrdiv">Returns the set of keys that are contained in this configuration at or
+ after the call to getKeys() is made, but before it returns.</div>
   
   </td></tr>
 
@@ -545,9 +545,9 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String, java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
         
-        <div class="jd-descrdiv">Fetches the value of a given option.</div>
+        <div class="jd-descrdiv">Get an option with a prefix.</div>
   
   </td></tr>
 
@@ -563,9 +563,9 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String, java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#getOption(java.lang.String)">getOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</nobr>
         
-        <div class="jd-descrdiv">Get an option with a prefix.</div>
+        <div class="jd-descrdiv">Fetches the value of a given option.</div>
   
   </td></tr>
 
@@ -656,9 +656,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets an option with a prefix.</div>
+        <div class="jd-descrdiv">Sets an option.</div>
   
   </td></tr>
 
@@ -674,9 +674,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Configuration.html#setOption(java.lang.String, java.lang.String, java.lang.String)">setOption</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> prefix, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</nobr>
         
-        <div class="jd-descrdiv">Sets an option.</div>
+        <div class="jd-descrdiv">Sets an option with a prefix.</div>
   
   </td></tr>
 
@@ -954,46 +954,6 @@ Summary:
 </div>
 
 
-<A NAME="getKeys()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Set.html">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;
-      </span>
-      <span class="sympad">getKeys</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Returns the set of keys that are contained in this configuration at or
- after the call to getKeys() is made, but before it returns. The exact set
- of keys is an immutable snapshot (and thus not prone to
- ConcurrentModificationException), but is a complete clone of the key set
- each time this method is called.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>The set of keys in this configuration
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getKeys(int)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1033,6 +993,46 @@ Summary:
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>The set of unique keys at the given depth.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getKeys()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/Set.html">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>&gt;
+      </span>
+      <span class="sympad">getKeys</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the set of keys that are contained in this configuration at or
+ after the call to getKeys() is made, but before it returns. The exact set
+ of keys is an immutable snapshot (and thus not prone to
+ ConcurrentModificationException), but is a complete clone of the key set
+ each time this method is called.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The set of keys in this configuration
 </li></ul>
   </div>
 
@@ -1089,51 +1089,6 @@ Summary:
 </div>
 
 
-<A NAME="getOption(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
-      </span>
-      <span class="sympad">getOption</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Fetches the value of a given option.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>option</td>
-          <td>The fully qualified option name.</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>The value of the option, or null if undefined.
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getOption(java.lang.String, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1176,6 +1131,51 @@ Summary:
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>The value of the option, or null.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getOption(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getOption</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Fetches the value of a given option.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>option</td>
+          <td>The fully qualified option name.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The value of the option, or null if undefined.
 </li></ul>
   </div>
 
@@ -1377,6 +1377,51 @@ Summary:
 </div>
 
 
+<A NAME="setOption(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setOption</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets an option. The option must be prefixed.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>option</td>
+          <td>The option name</td>
+        </tr>
+        <tr>
+          <th>value</td>
+          <td>The option value.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="setOption(java.lang.String, java.lang.String, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1417,51 +1462,6 @@ Summary:
         <tr>
           <th>value</td>
           <td>The new option value.
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setOption(java.lang.String, java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        void
-      </span>
-      <span class="sympad">setOption</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> option, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets an option. The option must be prefixed.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>option</td>
-          <td>The option name</td>
-        </tr>
-        <tr>
-          <th>value</td>
-          <td>The option value.
 </td>
         </tr>
       </table>

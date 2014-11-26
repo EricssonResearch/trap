@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -500,10 +506,9 @@ Summary:
             byte[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/ByteConverter.html#toBigEndian(int, byte[], int)">toBigEndian</a></span>(int src, byte[] arr, int off)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/ByteConverter.html#toBigEndian(int)">toBigEndian</a></span>(int i)</nobr>
         
-        <div class="jd-descrdiv">Converts an integer to big endian, writing the result into a target
- array.</div>
+        <div class="jd-descrdiv">Converts an integer into big endian, 8-bit format, creating a new array.</div>
   
   </td></tr>
 
@@ -519,9 +524,10 @@ Summary:
             byte[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/ByteConverter.html#toBigEndian(int)">toBigEndian</a></span>(int i)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/ByteConverter.html#toBigEndian(int, byte[], int)">toBigEndian</a></span>(int src, byte[] arr, int off)</nobr>
         
-        <div class="jd-descrdiv">Converts an integer into big endian, 8-bit format, creating a new array.</div>
+        <div class="jd-descrdiv">Converts an integer to big endian, writing the result into a target
+ array.</div>
   
   </td></tr>
 
@@ -718,7 +724,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -734,7 +740,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -750,7 +756,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -974,6 +980,51 @@ From class
 </div>
 
 
+<A NAME="toBigEndian(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        byte[]
+      </span>
+      <span class="sympad">toBigEndian</span>
+      <span class="normal">(int i)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Converts an integer into big endian, 8-bit format, creating a new array.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>i</td>
+          <td>The integer to convert.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A new array with the serialization of i.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="toBigEndian(int, byte[], int)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1032,51 +1083,6 @@ From class
 </td>
         </tr>
       </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="toBigEndian(int)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-         
-         
-         
-        byte[]
-      </span>
-      <span class="sympad">toBigEndian</span>
-      <span class="normal">(int i)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Converts an integer into big endian, 8-bit format, creating a new array.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>i</td>
-          <td>The integer to convert.</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>A new array with the serialization of i.
-</li></ul>
   </div>
 
     </div>

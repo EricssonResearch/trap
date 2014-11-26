@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -568,9 +574,9 @@ From class
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/StringUtil.html#toUtfString(char[])">toUtfString</a></span>(char[] encoded)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/StringUtil.html#toUtfString(byte[])">toUtfString</a></span>(byte[] buffer)</nobr>
         
-        <div class="jd-descrdiv">Convert a char array to UTF string</div>
+        <div class="jd-descrdiv">Convert a UTF-8 byte array to a string.</div>
   
   </td></tr>
 
@@ -586,9 +592,9 @@ From class
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/StringUtil.html#toUtfString(byte[])">toUtfString</a></span>(byte[] buffer)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/StringUtil.html#toUtfString(char[])">toUtfString</a></span>(char[] encoded)</nobr>
         
-        <div class="jd-descrdiv">Convert a UTF-8 byte array to a string.</div>
+        <div class="jd-descrdiv">Convert a char array to UTF string</div>
   
   </td></tr>
 
@@ -601,7 +607,7 @@ From class
             
             static
             
-            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a></nobr>
+            <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/StringUtil.html#toUtfString(byte[], int, int)">toUtfString</a></span>(byte[] bytes, int i, int length)</nobr>
@@ -776,7 +782,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -792,7 +798,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -808,7 +814,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 

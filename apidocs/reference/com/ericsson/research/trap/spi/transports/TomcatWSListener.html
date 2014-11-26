@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -1102,7 +1108,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/TomcatWSListener.html#notifyError(java.lang.Throwable)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> t)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/TomcatWSListener.html#notifyError(java.lang.Exception)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</nobr>
         
   </td></tr>
 
@@ -1118,7 +1124,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/TomcatWSListener.html#notifyError(java.lang.Exception)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/TomcatWSListener.html#notifyError(java.lang.Throwable)">notifyError</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> t)</nobr>
         
   </td></tr>
 
@@ -1407,9 +1413,9 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/AbstractTransport.html#configure(java.lang.String, int)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, int configurationValue)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/AbstractTransport.html#configure(java.lang.String, java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
         
-        <div class="jd-descrdiv">Configures a specific transport setting (key/value) using integer values.</div>
+        <div class="jd-descrdiv">Configures a specific transport setting (key/value)</div>
   
   </td></tr>
 
@@ -1425,9 +1431,9 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/AbstractTransport.html#configure(java.lang.String, java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/transports/AbstractTransport.html#configure(java.lang.String, int)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, int configurationValue)</nobr>
         
-        <div class="jd-descrdiv">Configures a specific transport setting (key/value)</div>
+        <div class="jd-descrdiv">Configures a specific transport setting (key/value) using integer values.</div>
   
   </td></tr>
 
@@ -2832,7 +2838,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -2848,7 +2854,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -2864,7 +2870,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -3067,9 +3073,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/TrapTransport.html#configure(java.lang.String, int)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, int configurationValue)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/TrapTransport.html#configure(java.lang.String, java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
         
-        <div class="jd-descrdiv">Configures a specific transport setting (key/value) using integer values.</div>
+        <div class="jd-descrdiv">Configures a specific transport setting (key/value)</div>
   
   </td></tr>
 
@@ -3085,9 +3091,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/TrapTransport.html#configure(java.lang.String, java.lang.String)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationValue)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/TrapTransport.html#configure(java.lang.String, int)">configure</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configurationKey, int configurationValue)</nobr>
         
-        <div class="jd-descrdiv">Configures a specific transport setting (key/value)</div>
+        <div class="jd-descrdiv">Configures a specific transport setting (key/value) using integer values.</div>
   
   </td></tr>
 
@@ -4229,7 +4235,7 @@ From interface
 </div>
 
 
-<A NAME="notifyError(java.lang.Throwable)"></A>
+<A NAME="notifyError(java.lang.Exception)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -4242,7 +4248,7 @@ From interface
         void
       </span>
       <span class="sympad">notifyError</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> t)</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -4260,7 +4266,7 @@ From interface
 </div>
 
 
-<A NAME="notifyError(java.lang.Exception)"></A>
+<A NAME="notifyError(java.lang.Throwable)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -4273,7 +4279,7 @@ From interface
         void
       </span>
       <span class="sympad">notifyError</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Exception.html">Exception</a> e)</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Throwable.html">Throwable</a> t)</span>
     </h4>
       <div class="api-level">
         <div>

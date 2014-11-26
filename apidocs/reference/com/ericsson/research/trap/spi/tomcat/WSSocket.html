@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -529,7 +535,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/tomcat/WSSocket.html#send(java.nio.ByteBuffer)">send</a></span>(ByteBuffer b)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/tomcat/WSSocket.html#send(java.lang.String)">send</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</nobr>
         
   </td></tr>
 
@@ -545,7 +551,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/tomcat/WSSocket.html#send(java.lang.String)">send</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</nobr>
+        <span class="sympad"><a href="../../../../../../com/ericsson/research/trap/spi/tomcat/WSSocket.html#send(java.nio.ByteBuffer)">send</a></span>(ByteBuffer b)</nobr>
         
   </td></tr>
 
@@ -1014,7 +1020,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -1030,7 +1036,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -1046,7 +1052,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -1298,7 +1304,7 @@ From interface
 </div>
 
 
-<A NAME="send(java.nio.ByteBuffer)"></A>
+<A NAME="send(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1311,7 +1317,7 @@ From interface
         void
       </span>
       <span class="sympad">send</span>
-      <span class="normal">(ByteBuffer b)</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1338,7 +1344,7 @@ From interface
 </div>
 
 
-<A NAME="send(java.lang.String)"></A>
+<A NAME="send(java.nio.ByteBuffer)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1351,7 +1357,7 @@ From interface
         void
       </span>
       <span class="sympad">send</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</span>
+      <span class="normal">(ByteBuffer b)</span>
     </h4>
       <div class="api-level">
         <div>

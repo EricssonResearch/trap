@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -580,7 +586,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/AndroidHandler.html#publish(java.util.logging.Logger, java.lang.String, java.util.logging.Level, java.lang.String)">publish</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Logger.html">Logger</a> source, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> tag, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Level.html">Level</a> level, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> message)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/AndroidHandler.html#publish(java.util.logging.LogRecord)">publish</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/LogRecord.html">LogRecord</a> record)</nobr>
         
   </td></tr>
 
@@ -596,7 +602,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/AndroidHandler.html#publish(java.util.logging.LogRecord)">publish</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/LogRecord.html">LogRecord</a> record)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/AndroidHandler.html#publish(java.util.logging.Logger, java.lang.String, java.util.logging.Level, java.lang.String)">publish</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Logger.html">Logger</a> source, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> tag, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Level.html">Level</a> level, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> message)</nobr>
         
   </td></tr>
 
@@ -735,7 +741,7 @@ From class
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
-            synchronized
+            
             
             
             
@@ -799,7 +805,7 @@ From class
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
-            
+            synchronized
             
             
             
@@ -815,7 +821,7 @@ From class
     <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
-            
+            synchronized
             
             
             
@@ -831,7 +837,7 @@ From class
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
-            
+            synchronized
             
             
             
@@ -847,7 +853,7 @@ From class
     <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
-            
+            synchronized
             
             
             
@@ -1040,7 +1046,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -1056,7 +1062,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -1072,7 +1078,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -1226,7 +1232,7 @@ From class
 </div>
 
 
-<A NAME="publish(java.util.logging.Logger, java.lang.String, java.util.logging.Level, java.lang.String)"></A>
+<A NAME="publish(java.util.logging.LogRecord)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1239,7 +1245,7 @@ From class
         void
       </span>
       <span class="sympad">publish</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Logger.html">Logger</a> source, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> tag, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Level.html">Level</a> level, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> message)</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/LogRecord.html">LogRecord</a> record)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1257,7 +1263,7 @@ From class
 </div>
 
 
-<A NAME="publish(java.util.logging.LogRecord)"></A>
+<A NAME="publish(java.util.logging.Logger, java.lang.String, java.util.logging.Level, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1270,7 +1276,7 @@ From class
         void
       </span>
       <span class="sympad">publish</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/LogRecord.html">LogRecord</a> record)</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Logger.html">Logger</a> source, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> tag, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/util/logging/Level.html">Level</a> level, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> message)</span>
     </h4>
       <div class="api-level">
         <div>

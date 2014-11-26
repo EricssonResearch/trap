@@ -430,9 +430,9 @@ Summary:
             <a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapFactory.html#createListener()">createListener</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapFactory.html#createListener(java.lang.String)">createListener</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configuration)</nobr>
         
-        <div class="jd-descrdiv">Creates a listener endpoint with default configuration.</div>
+        <div class="jd-descrdiv">Creates a listener endpoint instance, capable of accepting new incoming connections.</div>
   
   </td></tr>
 
@@ -448,9 +448,9 @@ Summary:
             <a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapFactory.html#createListener(java.lang.String)">createListener</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> configuration)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapFactory.html#createListener()">createListener</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Creates a listener endpoint instance, capable of accepting new incoming connections.</div>
+        <div class="jd-descrdiv">Creates a listener endpoint with default configuration.</div>
   
   </td></tr>
 
@@ -673,7 +673,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -689,7 +689,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -705,7 +705,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -822,52 +822,6 @@ From class
 </div>
 
 
-<A NAME="createListener()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-         
-         
-         
-        <a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a>
-      </span>
-      <span class="sympad">createListener</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Creates a listener endpoint with default configuration. <b>It is up to the caller to ensure proper configuration
- of the listener before calling <code><a href="../../../../com/ericsson/research/trap/TrapListener.html#listen(com.ericsson.research.trap.delegates.OnAccept)">listen(OnAccept)</a></code> </b>.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>A newly created TrapListener instance.</li></ul>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
-            <td>If an error occurred during instantiation; either if the configuration was invalid, or if the Trap
-             implementation was not present.</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="createListener(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -918,6 +872,52 @@ From class
             <td>If an error occurred during instantiation; either if the configuration was invalid, or if the Trap
              implementation was not present.
 </td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createListener()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../com/ericsson/research/trap/TrapListener.html">TrapListener</a>
+      </span>
+      <span class="sympad">createListener</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates a listener endpoint with default configuration. <b>It is up to the caller to ensure proper configuration
+ of the listener before calling <code><a href="../../../../com/ericsson/research/trap/TrapListener.html#listen(com.ericsson.research.trap.delegates.OnAccept)">listen(OnAccept)</a></code> </b>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A newly created TrapListener instance.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../com/ericsson/research/trap/TrapException.html">TrapException</a></td>
+            <td>If an error occurred during instantiation; either if the configuration was invalid, or if the Trap
+             implementation was not present.</td>
         </tr>
       </table>
   </div>

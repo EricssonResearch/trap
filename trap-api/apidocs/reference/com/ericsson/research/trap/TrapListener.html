@@ -422,7 +422,7 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration()">getClientConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration(java.lang.String)">getClientConfiguration</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> hostname)</nobr>
         
         <div class="jd-descrdiv">Asks the server to generate a client configuration string, in order to configure the transports to properly
  connect to this TrapServer instance.</div>
@@ -441,7 +441,7 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration(java.lang.String)">getClientConfiguration</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> hostname)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration()">getClientConfiguration</a></span>()</nobr>
         
         <div class="jd-descrdiv">Asks the server to generate a client configuration string, in order to configure the transports to properly
  connect to this TrapServer instance.</div>
@@ -876,44 +876,6 @@ From interface
 </div>
 
 
-<A NAME="getClientConfiguration()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
-      </span>
-      <span class="sympad">getClientConfiguration</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Asks the server to generate a client configuration string, in order to configure the transports to properly
- connect to this TrapServer instance. Each TrapTransport that supports listening will generate this configuration,
- and the entire string can then be supplied as-is to the TrapClient.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>The client configuration string needed to connect here.
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getClientConfiguration(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -955,6 +917,44 @@ From interface
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>The client configuration string needed to connect here</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getClientConfiguration()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getClientConfiguration</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Asks the server to generate a client configuration string, in order to configure the transports to properly
+ connect to this TrapServer instance. Each TrapTransport that supports listening will generate this configuration,
+ and the entire string can then be supplied as-is to the TrapClient.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The client configuration string needed to connect here.
+</li></ul>
   </div>
 
     </div>

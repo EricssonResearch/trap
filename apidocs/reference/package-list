@@ -11,6 +11,9 @@ com.ericsson.research.trap.impl
 com.ericsson.research.trap.impl.buffers
 com.ericsson.research.trap.impl.http
 com.ericsson.research.trap.impl.queues
+com.ericsson.research.trap.nio
+com.ericsson.research.trap.nio.impl.nio1
+com.ericsson.research.trap.nio.impl.nio2
 com.ericsson.research.trap.spi
 com.ericsson.research.trap.spi.queues
 com.ericsson.research.trap.spi.tomcat

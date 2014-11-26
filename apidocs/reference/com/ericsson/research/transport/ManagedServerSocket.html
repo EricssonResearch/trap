@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -618,6 +624,38 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedServerSocket.html#listen(java.net.InetSocketAddress)">listen</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedServerSocket.html#listen(int)">listen</a></span>(int port)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedServerSocket.html#listen(java.net.InetAddress, int)">listen</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetAddress.html">InetAddress</a> host, int port)</nobr>
         
   </td></tr>
@@ -635,38 +673,6 @@ Summary:
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedServerSocket.html#listen(java.lang.String, int)">listen</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> addr, int port)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedServerSocket.html#listen(int)">listen</a></span>(int port)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/transport/ManagedServerSocket.html#listen(java.net.InetSocketAddress)">listen</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</nobr>
         
   </td></tr>
 
@@ -981,7 +987,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -997,7 +1003,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -1013,7 +1019,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -1475,6 +1481,77 @@ From interface
 </div>
 
 
+<A NAME="listen(java.net.InetSocketAddress)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">listen</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="listen(int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">listen</span>
+      <span class="normal">(int port)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="listen(java.net.InetAddress, int)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1541,77 +1618,6 @@ From interface
         </tr>
       </table>
   </div>
-
-    </div>
-</div>
-
-
-<A NAME="listen(int)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">listen</span>
-      <span class="normal">(int port)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th><a href="http://download.oracle.com/javase/6/docs/api/index.html?java/io/IOException.html">IOException</a></td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="listen(java.net.InetSocketAddress)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">listen</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/net/InetSocketAddress.html">InetSocketAddress</a> address)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>

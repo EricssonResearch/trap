@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -991,7 +997,7 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/ListenerTrapEndpoint.html#getClientConfiguration()">getClientConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/ListenerTrapEndpoint.html#getClientConfiguration(java.lang.String)">getClientConfiguration</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> hostname)</nobr>
         
         <div class="jd-descrdiv">Asks the server to generate a client configuration string, in order to configure the transports to properly
  connect to this TrapServer instance.</div>
@@ -1010,7 +1016,7 @@ Summary:
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/ListenerTrapEndpoint.html#getClientConfiguration(java.lang.String)">getClientConfiguration</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> hostname)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/ListenerTrapEndpoint.html#getClientConfiguration()">getClientConfiguration</a></span>()</nobr>
         
         <div class="jd-descrdiv">Asks the server to generate a client configuration string, in order to configure the transports to properly
  connect to this TrapServer instance.</div>
@@ -1755,9 +1761,9 @@ From class
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean reconnect, long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
   
   </td></tr>
 
@@ -1773,9 +1779,9 @@ From class
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean reconnect, long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
   
   </td></tr>
 
@@ -2137,10 +2143,8 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(com.ericsson.research.trap.spi.TrapMessage)">send</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</nobr>
         
-        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
-  
   </td></tr>
 
 
@@ -2155,9 +2159,9 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[])">send</a></span>(byte[] data)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
         
-        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
   
   </td></tr>
 
@@ -2173,8 +2177,10 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(com.ericsson.research.trap.spi.TrapMessage)">send</a></span>(<a href="../../../../../com/ericsson/research/trap/spi/TrapMessage.html">TrapMessage</a> message)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#send(byte[])">send</a></span>(byte[] data)</nobr>
         
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+  
   </td></tr>
 
 
@@ -2244,9 +2250,9 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
         
-        <div class="jd-descrdiv">Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces.</div>
+        <div class="jd-descrdiv">Registers an object as a delegate to this endpoint.</div>
   
   </td></tr>
 
@@ -2262,9 +2268,9 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.TrapEndpointDelegate, java.lang.Object)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/TrapEndpointDelegate.html">TrapEndpointDelegate</a> delegate, <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Object.html">Object</a> context)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/impl/TrapEndpointImpl.html#setDelegate(com.ericsson.research.trap.delegates.TrapDelegate, boolean)">setDelegate</a></span>(<a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a> delegate, boolean replaceAllExisting)</nobr>
         
-        <div class="jd-descrdiv">Registers an object as a delegate to this endpoint.</div>
+        <div class="jd-descrdiv">Sets the object <i>delegate</i> as the listener for all the implemented <code><a href="../../../../../com/ericsson/research/trap/delegates/TrapDelegate.html">TrapDelegate</a></code> sub-interfaces.</div>
   
   </td></tr>
 
@@ -2768,7 +2774,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -2784,7 +2790,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -2800,7 +2806,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -3023,9 +3029,9 @@ From interface
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
   
   </td></tr>
 
@@ -3041,9 +3047,9 @@ From interface
             <a href="../../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
   
   </td></tr>
 
@@ -3113,9 +3119,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
         
-        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
   
   </td></tr>
 
@@ -3149,9 +3155,9 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
         
-        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
   
   </td></tr>
 
@@ -3416,7 +3422,7 @@ From interface
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration()">getClientConfiguration</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration(java.lang.String)">getClientConfiguration</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> hostname)</nobr>
         
         <div class="jd-descrdiv">Asks the server to generate a client configuration string, in order to configure the transports to properly
  connect to this TrapServer instance.</div>
@@ -3435,7 +3441,7 @@ From interface
             <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration(java.lang.String)">getClientConfiguration</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> hostname)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/TrapListener.html#getClientConfiguration()">getClientConfiguration</a></span>()</nobr>
         
         <div class="jd-descrdiv">Asks the server to generate a client configuration string, in order to configure the transports to properly
  connect to this TrapServer instance.</div>
@@ -4154,44 +4160,6 @@ From interface
 </div>
 
 
-<A NAME="getClientConfiguration()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
-      </span>
-      <span class="sympad">getClientConfiguration</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Asks the server to generate a client configuration string, in order to configure the transports to properly
- connect to this TrapServer instance. Each TrapTransport that supports listening will generate this configuration,
- and the entire string can then be supplied as-is to the TrapClient.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>The client configuration string needed to connect here.
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="getClientConfiguration(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -4233,6 +4201,44 @@ From interface
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>The client configuration string needed to connect here</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getClientConfiguration()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getClientConfiguration</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Asks the server to generate a client configuration string, in order to configure the transports to properly
+ connect to this TrapServer instance. Each TrapTransport that supports listening will generate this configuration,
+ and the entire string can then be supplied as-is to the TrapClient.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The client configuration string needed to connect here.
+</li></ul>
   </div>
 
     </div>

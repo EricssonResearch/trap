@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -492,7 +498,7 @@ Summary:
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/RunnableFuture.html#cancel(boolean)">cancel</a></span>(boolean mayInterruptIfRunning)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/RunnableFuture.html#cancel()">cancel</a></span>()</nobr>
         
         <div class="jd-descrdiv">Cancel the future task.</div>
   
@@ -510,7 +516,7 @@ Summary:
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/RunnableFuture.html#cancel()">cancel</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/RunnableFuture.html#cancel(boolean)">cancel</a></span>(boolean mayInterruptIfRunning)</nobr>
         
         <div class="jd-descrdiv">Cancel the future task.</div>
   
@@ -742,7 +748,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -758,7 +764,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -774,7 +780,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -816,7 +822,7 @@ From interface
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Future.html#cancel(boolean)">cancel</a></span>(boolean mayInterruptIfRunning)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Future.html#cancel()">cancel</a></span>()</nobr>
         
         <div class="jd-descrdiv">Cancel the future task.</div>
   
@@ -834,7 +840,7 @@ From interface
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Future.html#cancel()">cancel</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Future.html#cancel(boolean)">cancel</a></span>(boolean mayInterruptIfRunning)</nobr>
         
         <div class="jd-descrdiv">Cancel the future task.</div>
   
@@ -1005,6 +1011,43 @@ From interface
 
 
 
+<A NAME="cancel()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">cancel</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Cancel the future task.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>false if the task could not be cancelled, typically because it
+         has already completed normally; true otherwise
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="cancel(boolean)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1041,43 +1084,6 @@ From interface
         </tr>
       </table>
   </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>false if the task could not be cancelled, typically because it
-         has already completed normally; true otherwise
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="cancel()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        boolean
-      </span>
-      <span class="sympad">cancel</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Cancel the future task.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>false if the task could not be cancelled, typically because it

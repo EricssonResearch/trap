@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -783,9 +789,9 @@ Summary:
             <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
   
   </td></tr>
 
@@ -801,9 +807,9 @@ Summary:
             <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long, boolean, boolean, long)">isAlive</a></span>(long within, boolean check, boolean force, long timeout)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive</a></span>(long timeout)</nobr>
         
-        <div class="jd-descrdiv">Attempts to verify if the endpoint is alive, or has been alive within a certain number of milliseconds.</div>
+        <div class="jd-descrdiv">Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.</div>
   
   </td></tr>
 
@@ -873,9 +879,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
         
-        <div class="jd-descrdiv">Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
+        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
   
   </td></tr>
 
@@ -909,9 +915,9 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send</a></span>(byte[] data, int channel, boolean useCompression)</nobr>
+        <span class="sympad"><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[])">send</a></span>(byte[] data)</nobr>
         
-        <div class="jd-descrdiv">Attempts to queue data for sending.</div>
+        <div class="jd-descrdiv">Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</div>
   
   </td></tr>
 
@@ -2243,67 +2249,6 @@ From interface
 </div>
 
 
-<A NAME="isAlive(long)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;
-      </span>
-      <span class="sympad">isAlive</span>
-      <span class="normal">(long timeout)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.
- This function is primarily intended for when an application requires to know it has connectivity <i>right this
- instant</i>, and should be used sparingly on power-constrained devices.
- <p>
- <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive(long)</a></code> is synonymous to calling <i>isAlive(timeout, true, true, timeout)</i>.
- <p>
- Note that isAlive is intended to be used in an asynchronous mode. The callback may be used to request a
- synchronous answer, but this is strongly discouraged. Further note that isAlive will take longer time to execute
- than <i>timeout</i> as it will both try to verify transport liveness, and then reconnect the transport if
- verification fails. Transport reconnection uses a timer longer than <i>timeout</i>, to allow for additional
- round-trips used when connecting.
- <p>
- <b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when none of the transports can perform
- the open() function) may cause an endpoint to close on the server, while the client considers it open. The client
- may not have discovered the underlying transport is dead yet, and may require more time to reconnect. A wakeup
- mechanism can be used to establish liveness, but the server's <i>timeout</i> value should be significantly more
- generous in order to accommodate the client's reconnect and/or wakeup procedure!</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>timeout</td>
-          <td>The timeout (in milliseconds) for the round-trip between the server.</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>A callback for <i>true</i> if the connection is currently alive (including if this function successfully
-         re-established the connection), <i>false</i> otherwise.</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="isAlive(long, boolean, boolean, long)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -2368,6 +2313,67 @@ From interface
           <th>timeout</td>
           <td>If check is true, how many milliseconds at most the liveness check should take before returning false
             anyway. The application can use this value if it has a time constraint on it.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A callback for <i>true</i> if the connection is currently alive (including if this function successfully
+         re-established the connection), <i>false</i> otherwise.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAlive(long)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../com/ericsson/research/trap/utils/Callback.html">Callback</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/Boolean.html">Boolean</a>&gt;
+      </span>
+      <span class="sympad">isAlive</span>
+      <span class="normal">(long timeout)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to verify that the endpoint is alive, with a round trip time of at most <i>timeout</i> milliseconds.
+ This function is primarily intended for when an application requires to know it has connectivity <i>right this
+ instant</i>, and should be used sparingly on power-constrained devices.
+ <p>
+ <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#isAlive(long)">isAlive(long)</a></code> is synonymous to calling <i>isAlive(timeout, true, true, timeout)</i>.
+ <p>
+ Note that isAlive is intended to be used in an asynchronous mode. The callback may be used to request a
+ synchronous answer, but this is strongly discouraged. Further note that isAlive will take longer time to execute
+ than <i>timeout</i> as it will both try to verify transport liveness, and then reconnect the transport if
+ verification fails. Transport reconnection uses a timer longer than <i>timeout</i>, to allow for additional
+ round-trips used when connecting.
+ <p>
+ <b>Warning:</b> Calling <i>isAlive</i> on a Server Trap Endpoint (i.e. when none of the transports can perform
+ the open() function) may cause an endpoint to close on the server, while the client considers it open. The client
+ may not have discovered the underlying transport is dead yet, and may require more time to reconnect. A wakeup
+ mechanism can be used to establish liveness, but the server's <i>timeout</i> value should be significantly more
+ generous in order to accommodate the client's reconnect and/or wakeup procedure!</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>timeout</td>
+          <td>The timeout (in milliseconds) for the round-trip between the server.</td>
         </tr>
       </table>
   </div>
@@ -2514,7 +2520,7 @@ From interface
 </div>
 
 
-<A NAME="send(byte[])"></A>
+<A NAME="send(byte[], int, boolean)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2527,7 +2533,7 @@ From interface
         void
       </span>
       <span class="sympad">send</span>
-      <span class="normal">(byte[] data)</span>
+      <span class="normal">(byte[] data, int channel, boolean useCompression)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2539,13 +2545,28 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Attempts to queue data for sending. If the queue length is exceeded, it may block or throw an exception, as per
+ the queue type.
+ <p>
+ Please note that while send will accurately send the data over to the other endpoint, it is advisable to instead
+ use <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject)">send(TrapObject)</a></code> if the data being sent is a serialized object. If the other endpoint is locally
+ deployed, the TrapObject will never be serialized, thus saving on large amounts of processing power.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>data</td>
-          <td>The data to send</td>
+          <td>The data to send. This should be UTF-8 readable if it is aimed at a browser, for maximum
+            compatibility. If the remote endpoint is a Java or C client or server, can be any arbitrary data of
+            less than 2^28-1 bytes length (7-bit encoding) or 2^32-1 bytes (8-bit encoding)</td>
+        </tr>
+        <tr>
+          <th>channel</td>
+          <td>The channel to send the data on. Recommended in the range [1-63], but will accept ID zero as well.</td>
+        </tr>
+        <tr>
+          <th>useCompression</td>
+          <td><i>True</i> if Trap should apply compression algorithm to this message, <i>false</i> otherwise.</td>
         </tr>
       </table>
   </div>
@@ -2633,7 +2654,7 @@ From interface
 </div>
 
 
-<A NAME="send(byte[], int, boolean)"></A>
+<A NAME="send(byte[])"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2646,7 +2667,7 @@ From interface
         void
       </span>
       <span class="sympad">send</span>
-      <span class="normal">(byte[] data, int channel, boolean useCompression)</span>
+      <span class="normal">(byte[] data)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2658,28 +2679,13 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Attempts to queue data for sending. If the queue length is exceeded, it may block or throw an exception, as per
- the queue type.
- <p>
- Please note that while send will accurately send the data over to the other endpoint, it is advisable to instead
- use <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(com.ericsson.research.trap.TrapObject)">send(TrapObject)</a></code> if the data being sent is a serialized object. If the other endpoint is locally
- deployed, the TrapObject will never be serialized, thus saving on large amounts of processing power.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Alias for <code><a href="../../../../com/ericsson/research/trap/TrapEndpoint.html#send(byte[], int, boolean)">send(byte[], int, boolean)</a></code>, with the channel ID set to 1.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>data</td>
-          <td>The data to send. This should be UTF-8 readable if it is aimed at a browser, for maximum
-            compatibility. If the remote endpoint is a Java or C client or server, can be any arbitrary data of
-            less than 2^28-1 bytes length (7-bit encoding) or 2^32-1 bytes (8-bit encoding)</td>
-        </tr>
-        <tr>
-          <th>channel</td>
-          <td>The channel to send the data on. Recommended in the range [1-63], but will accept ID zero as well.</td>
-        </tr>
-        <tr>
-          <th>useCompression</td>
-          <td><i>True</i> if Trap should apply compression algorithm to this message, <i>false</i> otherwise.</td>
+          <td>The data to send</td>
         </tr>
       </table>
   </div>

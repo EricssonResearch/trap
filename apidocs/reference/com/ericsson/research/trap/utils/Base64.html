@@ -171,6 +171,12 @@
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/impl/queues/package-summary.html">com.ericsson.research.trap.impl.queues</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/package-summary.html">com.ericsson.research.trap.nio</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio1/package-summary.html">com.ericsson.research.trap.nio.impl.nio1</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../com/ericsson/research/trap/nio/impl/nio2/package-summary.html">com.ericsson.research.trap.nio.impl.nio2</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/package-summary.html">com.ericsson.research.trap.spi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../com/ericsson/research/trap/spi/queues/package-summary.html">com.ericsson.research.trap.spi.queues</a></li>
@@ -455,7 +461,7 @@ Summary:
             byte[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#decode(char[])">decode</a></span>(char[] in)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#decode(java.lang.String)">decode</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</nobr>
         
         <div class="jd-descrdiv">Decodes a byte array from Base64 format.</div>
   
@@ -491,7 +497,7 @@ Summary:
             byte[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#decode(java.lang.String)">decode</a></span>(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#decode(char[])">decode</a></span>(char[] in)</nobr>
         
         <div class="jd-descrdiv">Decodes a byte array from Base64 format.</div>
   
@@ -545,7 +551,7 @@ Summary:
             char[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#encode(byte[], int, int)">encode</a></span>(byte[] in, int iOff, int iLen)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#encode(byte[], int)">encode</a></span>(byte[] in, int iLen)</nobr>
         
         <div class="jd-descrdiv">Encodes a byte array into Base64 format.</div>
   
@@ -563,7 +569,7 @@ Summary:
             char[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#encode(byte[], int)">encode</a></span>(byte[] in, int iLen)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#encode(byte[])">encode</a></span>(byte[] in)</nobr>
         
         <div class="jd-descrdiv">Encodes a byte array into Base64 format.</div>
   
@@ -581,7 +587,7 @@ Summary:
             char[]</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#encode(byte[])">encode</a></span>(byte[] in)</nobr>
+        <span class="sympad"><a href="../../../../../com/ericsson/research/trap/utils/Base64.html#encode(byte[], int, int)">encode</a></span>(byte[] in, int iOff, int iLen)</nobr>
         
         <div class="jd-descrdiv">Encodes a byte array into Base64 format.</div>
   
@@ -833,7 +839,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -849,7 +855,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -865,7 +871,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -918,7 +924,7 @@ From class
 
 
 
-<A NAME="decode(char[])"></A>
+<A NAME="decode(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -931,7 +937,7 @@ From class
         byte[]
       </span>
       <span class="sympad">decode</span>
-      <span class="normal">(char[] in)</span>
+      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -949,8 +955,8 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>in</td>
-          <td>A character array containing the Base64 encoded data.</td>
+          <th>s</td>
+          <td>A Base64 String to be decoded.</td>
         </tr>
       </table>
   </div>
@@ -1036,7 +1042,7 @@ From class
 </div>
 
 
-<A NAME="decode(java.lang.String)"></A>
+<A NAME="decode(char[])"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1049,7 +1055,7 @@ From class
         byte[]
       </span>
       <span class="sympad">decode</span>
-      <span class="normal">(<a href="http://download.oracle.com/javase/6/docs/api/index.html?java/lang/String.html">String</a> s)</span>
+      <span class="normal">(char[] in)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1067,8 +1073,8 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>s</td>
-          <td>A Base64 String to be decoded.</td>
+          <th>in</td>
+          <td>A character array containing the Base64 encoded data.</td>
         </tr>
       </table>
   </div>
@@ -1202,60 +1208,6 @@ From class
 </div>
 
 
-<A NAME="encode(byte[], int, int)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-         
-         
-         
-        char[]
-      </span>
-      <span class="sympad">encode</span>
-      <span class="normal">(byte[] in, int iOff, int iLen)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Encodes a byte array into Base64 format.
- No blanks or line breaks are inserted in the output.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>in</td>
-          <td>An array containing the data bytes to be encoded.</td>
-        </tr>
-        <tr>
-          <th>iOff</td>
-          <td>Offset of the first byte in <code>in</code> to be processed.</td>
-        </tr>
-        <tr>
-          <th>iLen</td>
-          <td>Number of bytes to process in <code>in</code>, starting at <code>iOff</code>.</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>A character array containing the Base64 encoded data.
-</li></ul>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="encode(byte[], int)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1339,6 +1291,60 @@ From class
         <tr>
           <th>in</td>
           <td>An array containing the data bytes to be encoded.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A character array containing the Base64 encoded data.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="encode(byte[], int, int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        char[]
+      </span>
+      <span class="sympad">encode</span>
+      <span class="normal">(byte[] in, int iOff, int iLen)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Encodes a byte array into Base64 format.
+ No blanks or line breaks are inserted in the output.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>in</td>
+          <td>An array containing the data bytes to be encoded.</td>
+        </tr>
+        <tr>
+          <th>iOff</td>
+          <td>Offset of the first byte in <code>in</code> to be processed.</td>
+        </tr>
+        <tr>
+          <th>iLen</td>
+          <td>Number of bytes to process in <code>in</code>, starting at <code>iOff</code>.</td>
         </tr>
       </table>
   </div>

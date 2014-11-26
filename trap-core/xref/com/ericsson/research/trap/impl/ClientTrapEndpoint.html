@@ -496,7 +496,7 @@
 <a class="jxr_linenumber" name="L488" href="#L488">488</a>                     }
 <a class="jxr_linenumber" name="L489" href="#L489">489</a>                     <strong class="jxr_keyword">catch</strong> (TrapException e)
 <a class="jxr_linenumber" name="L490" href="#L490">490</a>                     {
-<a class="jxr_linenumber" name="L491" href="#L491">491</a>                         e.printStackTrace();
+<a class="jxr_linenumber" name="L491" href="#L491">491</a>                     	logger.error(<span class="jxr_string">"Failed to reopen Trap Endpoint due to {}"</span>, e, e);
 <a class="jxr_linenumber" name="L492" href="#L492">492</a>                     }
 <a class="jxr_linenumber" name="L493" href="#L493">493</a>                 }
 <a class="jxr_linenumber" name="L494" href="#L494">494</a>             }, 1000);
@@ -638,7 +638,7 @@
 <a class="jxr_linenumber" name="L630" href="#L630">630</a>                 }
 <a class="jxr_linenumber" name="L631" href="#L631">631</a>                 <strong class="jxr_keyword">catch</strong> (Throwable t)
 <a class="jxr_linenumber" name="L632" href="#L632">632</a>                 {
-<a class="jxr_linenumber" name="L633" href="#L633">633</a>                     t.printStackTrace();
+<a class="jxr_linenumber" name="L633" href="#L633">633</a>                 	logger.warn(<span class="jxr_string">"Unhandled exception in connection handler"</span>, t);
 <a class="jxr_linenumber" name="L634" href="#L634">634</a>                 }
 <a class="jxr_linenumber" name="L635" href="#L635">635</a>             }
 <a class="jxr_linenumber" name="L636" href="#L636">636</a>         });
