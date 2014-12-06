@@ -83,6 +83,7 @@ public class IndexConfigurator extends AbstractComponentConfigurator {
         converter.processConfiguration(this.converterLookup, component, containerRealm.getClassLoader(), configuration, expressionEvaluator, listener);
     }
 
+    @SuppressWarnings("unchecked")
     private void addProjectDependenciesToClassRealm(ExpressionEvaluator expressionEvaluator, ClassRealm containerRealm) throws ComponentConfigurationException {
         Set<String> runtimeClasspathElements = new HashSet<String>();
         try {

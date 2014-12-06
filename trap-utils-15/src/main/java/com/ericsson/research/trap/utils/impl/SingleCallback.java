@@ -40,16 +40,18 @@ public class SingleCallback<T> implements Callback<T>
     
     private com.ericsson.research.trap.utils.Callback.SingleArgumentCallback<T> callback;
     private T                                                                   value = null;
+	private boolean	               												called	= false;
     
     public SingleCallback<T> callback(T value)
     {
         SingleArgumentCallback<T> cb;
         synchronized (this)
         {
-            if (this.value != null)
+            if (called)
                 return this; // Do nothing if we already were called
                 
             this.value = value;
+            called = true;
             
             if (this.callback == null)
             {
@@ -75,7 +77,7 @@ public class SingleCallback<T> implements Callback<T>
         
         synchronized (this)
         {
-            while (this.value == null)
+            while (!called)
             {
                 elapsed = System.currentTimeMillis() - start;
                 long remaining = timeout - elapsed;
@@ -85,9 +87,6 @@ public class SingleCallback<T> implements Callback<T>
                 
                 this.wait(remaining);
             }
-            
-            if (value == null)
-            	throw new NullPointerException();
             
             return this.value;
         }
@@ -102,7 +101,7 @@ public class SingleCallback<T> implements Callback<T>
         {
             this.callback = callback;
             
-            if (this.value == null)
+            if (!called)
                 return;
             
             // Retrieve the results outside of synchronized to prevent deadlocks.
@@ -110,6 +109,11 @@ public class SingleCallback<T> implements Callback<T>
             cb = callback;
         }
         cb.receiveSingleArgumentCallback(val);
+    }
+
+    public boolean isDone()
+    {
+	    return called;
     }
     
 }

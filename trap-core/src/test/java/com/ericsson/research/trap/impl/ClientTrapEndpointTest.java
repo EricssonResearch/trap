@@ -107,11 +107,7 @@ public class ClientTrapEndpointTest
             {
             }
             
-			public void fillContext()
-            {
-            }
-            
-            public void init()
+			public void init()
             {
             }
             
@@ -337,11 +333,7 @@ public class ClientTrapEndpointTest
             {
             }
             
-			public void fillContext()
-            {
-            }
-            
-            public void init()
+			public void init()
             {
                 // TODO Auto-generated method stub
                 

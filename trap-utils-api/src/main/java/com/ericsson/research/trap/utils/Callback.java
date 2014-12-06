@@ -34,7 +34,15 @@ package com.ericsson.research.trap.utils;
  */
 
 /**
- * Provides a generic callback mechanism to handle asynchronous callbacks, while allowing synchronous accesses of them.
+ * Provides a generic callback mechanism to handle asynchronous callbacks, while
+ * allowing synchronous accesses of them.
+ * <p>
+ * The Callback interface (and its corresponding implementation) is thread safe,
+ * and allows the usage of a return value to communicate a potentially
+ * asynchronous response. The caller can choose whether to block by using
+ * {@link #get()} or to use an asynchronous response by using
+ * {@link #setCallback(SingleArgumentCallback)}. The caller can perform the
+ * callback independently of the receiver observing the value.
  * 
  * @author Vladimir Katardjiev
  * @param <T>
@@ -42,52 +50,63 @@ package com.ericsson.research.trap.utils;
  */
 public interface Callback<T>
 {
-    /**
-     * Asynchronous callback interface. Listeners should implement this interface (usually in an anonymous inner class)
-     * to receive the results of the callback.
-     * 
-     * @author Vladimir Katardjiev
-     * @param <T>
-     *            The type of object being provided by the callback
-     */
-    public interface SingleArgumentCallback<T>
-    {
-        /**
-         * Called to receive the callback value.
-         * 
-         * @param result
-         *            The callback value
-         */
-        public void receiveSingleArgumentCallback(T result);
-    }
-    
-    /**
-     * Synchronous accessor for the callback. Should not be used together with
-     * {@link #setCallback(SingleArgumentCallback)}.
-     * 
-     * @return The callback value, synchronously
-     * @throws InterruptedException
-     *             If the thread is interrupted while waiting for the callback.
-     */
-    public T get() throws InterruptedException;
-    
-    /**
-     * Like {@link #get()} but with a limited timer.
-     * 
-     * @param timeout
-     *            The maximum time to wait.
-     * @return The callback value, synchronously.
-     * @throws InterruptedException
-     *             If the thread is interrupted while waiting for the callback.
-     */
-    public T get(long timeout) throws InterruptedException;
-    
-    /**
-     * Sets the function that will receive the callback. The function will be called as soon as the callback value is
-     * ready.
-     * 
-     * @param callback
-     *            The function to call
-     */
-    public void setCallback(SingleArgumentCallback<T> callback);
+	/**
+	 * Asynchronous callback interface. Listeners should implement this
+	 * interface (usually in an anonymous inner class) to receive the results of
+	 * the callback.
+	 * 
+	 * @author Vladimir Katardjiev
+	 * @param <T>
+	 *            The type of object being provided by the callback
+	 */
+	public interface SingleArgumentCallback<T>
+	{
+		/**
+		 * Called to receive the callback value.
+		 * 
+		 * @param result
+		 *            The callback value
+		 */
+		public void receiveSingleArgumentCallback(T result);
+	}
+
+	/**
+	 * Synchronous accessor for the callback. Should not be used together with
+	 * {@link #setCallback(SingleArgumentCallback)}.
+	 * 
+	 * @return The callback value, synchronously
+	 * @throws InterruptedException
+	 *             If the thread is interrupted while waiting for the callback.
+	 */
+	public T get() throws InterruptedException;
+
+	/**
+	 * Like {@link #get()} but with a limited timer.
+	 * 
+	 * @param timeout
+	 *            The maximum time to wait.
+	 * @return The callback value, synchronously.
+	 * @throws InterruptedException
+	 *             If the thread is interrupted while waiting for the callback.
+	 */
+	public T get(long timeout) throws InterruptedException;
+
+	/**
+	 * Sets the function that will receive the callback. The function will be
+	 * called as soon as the callback value is ready.
+	 * 
+	 * @param callback
+	 *            The function to call
+	 */
+	public void setCallback(SingleArgumentCallback<T> callback);
+
+	/**
+	 * Checks whether the callback is done (i.e. whether the callback return
+	 * value has been set). In essence, it is asking if {@link #get()} will
+	 * block, or if the {@link SingleArgumentCallback} method is going to be, or
+	 * has been, called.
+	 * 
+	 * @return <i>true</i> iff the callback has happened from the caller side.
+	 */
+	public boolean isDone();
 }

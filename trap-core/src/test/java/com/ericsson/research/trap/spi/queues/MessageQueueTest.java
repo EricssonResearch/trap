@@ -191,7 +191,7 @@ public class MessageQueueTest
         if (!(this.mq instanceof BlockingMessageQueue))
             return;
         
-        this.exec.submit(this.createWriter(0, numMsgs));
+        MessageQueueTest.exec.submit(this.createWriter(0, numMsgs));
         
         while (this.mq.size() != this.mq.length())
         {
@@ -213,7 +213,7 @@ public class MessageQueueTest
             return;
         ((BlockingMessageQueue) this.mq).setBlockingTimeout(1000);
         
-        this.exec.submit(this.createWriter(0, numMsgs));
+        MessageQueueTest.exec.submit(this.createWriter(0, numMsgs));
         
         while (this.mq.size() != this.mq.length())
         {
@@ -246,9 +246,9 @@ public class MessageQueueTest
         
         for (int i = 0; i < 50; i++)
         {
-            this.exec.submit(this.createWriter(0, 50));
-            this.exec.submit(this.createPopper(50));
-            this.exec.submit(this.createPeeker());
+            MessageQueueTest.exec.submit(this.createWriter(0, 50));
+            MessageQueueTest.exec.submit(this.createPopper(50));
+            MessageQueueTest.exec.submit(this.createPeeker());
         }
         
         while (this.mq.peek() != null)
@@ -263,10 +263,10 @@ public class MessageQueueTest
         // Uncontented test on multiple readers and writers, stresses concurrency support.
         this.mq = this.newMQ(10000);
         
-        this.exec.submit(this.createWriter(0, 2000));
+        MessageQueueTest.exec.submit(this.createWriter(0, 2000));
         for (int i = 0; i < 100; i++)
         {
-            this.exec.submit(this.createPopper(20));
+            MessageQueueTest.exec.submit(this.createPopper(20));
         }
         
         while (this.mq.peek() != null)
@@ -282,8 +282,8 @@ public class MessageQueueTest
         this.mq = this.newMQ(10000);
         
         for (int i = 0; i < 100; i++)
-            this.exec.submit(this.createWriter(0, 20));
-        this.exec.submit(this.createPopper(2000));
+            MessageQueueTest.exec.submit(this.createWriter(0, 20));
+        MessageQueueTest.exec.submit(this.createPopper(2000));
         
         while (this.mq.peek() != null)
         {
@@ -299,8 +299,8 @@ public class MessageQueueTest
             return;
         
         for (int i = 0; i < 100; i++)
-            this.exec.submit(this.createWriter(0, 20));
-        this.exec.submit(this.createPopper(2000));
+            MessageQueueTest.exec.submit(this.createWriter(0, 20));
+        MessageQueueTest.exec.submit(this.createPopper(2000));
         
         while (this.mq.peek() != null)
         {
@@ -316,11 +316,11 @@ public class MessageQueueTest
             return;
         
         for (int i = 0; i < 100; i++)
-            this.exec.submit(this.createWriter(0, 20));
+            MessageQueueTest.exec.submit(this.createWriter(0, 20));
         for (int i = 0; i < 100; i++)
-            this.exec.submit(this.createPopper(20));
+            MessageQueueTest.exec.submit(this.createPopper(20));
         for (int i = 0; i < 100; i++)
-            this.exec.submit(this.createPeeker());
+            MessageQueueTest.exec.submit(this.createPeeker());
         
         while (this.mq.peek() != null)
         {

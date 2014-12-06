@@ -48,7 +48,7 @@ public class MiscellaneousTests
         try
         {
             TrapListener listener = TrapFactory.createListener();
-            String string = listener.getClientConfiguration();
+            listener.getClientConfiguration();
         }
         catch (Throwable t)
         {
