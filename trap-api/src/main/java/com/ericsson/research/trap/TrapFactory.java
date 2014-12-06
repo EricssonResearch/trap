@@ -90,6 +90,7 @@ public class TrapFactory
     {
         try
         {
+            @SuppressWarnings("unchecked")
             Class<TrapListener> c = (Class<TrapListener>) Class.forName("com.ericsson.research.trap.impl.ListenerTrapEndpoint");
             TrapListener l = c.newInstance();
             l.configure(resolveConfiguration(configuration));

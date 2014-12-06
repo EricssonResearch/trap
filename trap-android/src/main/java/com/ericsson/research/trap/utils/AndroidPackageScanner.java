@@ -99,9 +99,9 @@ public class AndroidPackageScanner extends PackageScanner
                 dexs = (DexFile[]) dexField.get(classLoader);
             }
             
-            if (this.pathField != null)
+            if (AndroidPackageScanner.pathField != null)
             {
-                String path = (String) this.pathField.get(classLoader);
+                String path = (String) AndroidPackageScanner.pathField.get(classLoader);
                 dexs = new DexFile[] { new DexFile(path) };
             }
             for (DexFile dex : dexs)
