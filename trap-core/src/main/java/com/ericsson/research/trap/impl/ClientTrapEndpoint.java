@@ -223,166 +223,169 @@ public class ClientTrapEndpoint extends TrapEndpointImpl implements TrapClient, 
     
     // One of our transports has changed the state, let's see what happened...
     
-    public synchronized void ttStateChanged(TrapTransportState newState, TrapTransportState oldState, TrapTransport transport, Object context)
+    public void ttStateChanged(TrapTransportState newState, TrapTransportState oldState, TrapTransport transport, Object context)
     {
-        // Super will manage available transports. All we need to consider is what action to take.
-        super.ttStateChanged(newState, oldState, transport, context);
-        
-        // Always remove from active, to clear any confusion... 
-        if (newState == TrapTransportState.DISCONNECTING || newState == TrapTransportState.DISCONNECTED || newState == TrapTransportState.ERROR)
-            this.activeTransports.remove(transport);
-        
-        // Don't trigger any recoveries if we've asked to close.
-        if ((this.getState() == TrapState.CLOSED) || (this.getState() == TrapState.CLOSING) || (this.getState() == TrapState.ERROR))
-            return;
-        
-        // What to do if we lose a transport
-        if ((newState == TrapTransportState.DISCONNECTED) || (newState == TrapTransportState.ERROR))
+        synchronized (this)
         {
+            // Super will manage available transports. All we need to consider is what action to take.
+            super.ttStateChanged(newState, oldState, transport, context);
             
-            this.availableTransports.remove(transport);
-            this.activeTransports.remove(transport);
+            // Always remove from active, to clear any confusion... 
+            if (newState == TrapTransportState.DISCONNECTING || newState == TrapTransportState.DISCONNECTED || newState == TrapTransportState.ERROR)
+                this.activeTransports.remove(transport);
             
-            if (this.logger.isDebugEnabled())
-            {
-                StringBuilder logMsg = new StringBuilder();
-                logMsg.append("Lost a transport. TrapEndpont state is ");
-                logMsg.append(this.getState().toString());
-                logMsg.append(". I have ");
-                logMsg.append(this.activeTransports.size());
-                logMsg.append(" active transports. Name/State follows... ");
-                
-                synchronized (this.activeTransports)
-                {
-                    Iterator<TrapTransport> it = this.activeTransports.iterator();
-                    
-                    while (it.hasNext())
-                    {
-                        TrapTransport at = it.next();
-                        logMsg.append(at.getTransportName());
-                        logMsg.append("/");
-                        logMsg.append(at.getState());
-                        logMsg.append(", ");
-                    }
-                }
-                
-                this.logger.debug(logMsg.toString());
-            }
-            
-            if (this.getState() == TrapState.SLEEPING && System.currentTimeMillis() >= this.canReconnectUntil)
-            {
-                this.logger.debug("Timer expired on reconnect");
-                this.setState(TrapState.CLOSED);
+            // Don't trigger any recoveries if we've asked to close.
+            if ((this.getState() == TrapState.CLOSED) || (this.getState() == TrapState.CLOSING) || (this.getState() == TrapState.ERROR))
                 return;
-            }
             
-            // This was an already connected transport. If we have other transports available, we should silently try and reconnect it in the background
-            if ((oldState == TrapTransportState.AVAILABLE) || (oldState == TrapTransportState.UNAVAILABLE) || (oldState == TrapTransportState.CONNECTED))
+            // What to do if we lose a transport
+            if ((newState == TrapTransportState.DISCONNECTED) || (newState == TrapTransportState.ERROR))
             {
                 
-                if (this.activeTransports.size() != 0)
+                this.availableTransports.remove(transport);
+                this.activeTransports.remove(transport);
+                
+                if (this.logger.isDebugEnabled())
                 {
-                    // We can just reconnect this transport (if applicable)
-                    if (!this.transportsToConnect.contains(transport))
+                    StringBuilder logMsg = new StringBuilder();
+                    logMsg.append("Lost a transport. TrapEndpont state is ");
+                    logMsg.append(this.getState().toString());
+                    logMsg.append(". I have ");
+                    logMsg.append(this.activeTransports.size());
+                    logMsg.append(" active transports. Name/State follows... ");
+                    
+                    synchronized (this.activeTransports)
                     {
-                        this.transportsToConnect.add(transport);
+                        Iterator<TrapTransport> it = this.activeTransports.iterator();
+                        
+                        while (it.hasNext())
+                        {
+                            TrapTransport at = it.next();
+                            logMsg.append(at.getTransportName());
+                            logMsg.append("/");
+                            logMsg.append(at.getState());
+                            logMsg.append(", ");
+                        }
                     }
                     
-                    this.kickRecoveryThread();
+                    this.logger.debug(logMsg.toString());
+                }
+                
+                if (this.getState() == TrapState.SLEEPING && System.currentTimeMillis() >= this.canReconnectUntil)
+                {
+                    this.logger.debug("Timer expired on reconnect");
+                    this.setState(TrapState.CLOSED);
                     return;
                 }
                 
-                if (this.getState() == TrapState.OPENING)
-                {
-                    // The current transport failed. Just drop it in the failed transports pile.
-                    // (Failed transports are cycled in at regular intervals)
-                    this.failedTransports.add(transport);
-                    
-                    // Also notify recovery that we have lost a transport. This may schedule another to be reconnected.
-                    this.kickRecoveryThread();
-                    return;
-                }
-                else
+                // This was an already connected transport. If we have other transports available, we should silently try and reconnect it in the background
+                if ((oldState == TrapTransportState.AVAILABLE) || (oldState == TrapTransportState.UNAVAILABLE) || (oldState == TrapTransportState.CONNECTED))
                 {
                     
-                    long openTimeout = 1000;
-                    
-                    if (this.getState() == TrapState.OPEN)
+                    if (this.activeTransports.size() != 0)
                     {
-                        // We have to report that we've lost all our transports.
-                        this.setState(TrapState.SLEEPING);
+                        // We can just reconnect this transport (if applicable)
+                        if (!this.transportsToConnect.contains(transport))
+                        {
+                            this.transportsToConnect.add(transport);
+                        }
                         
-                        // Adjust reconnect timeout
-                        this.canReconnectUntil = System.currentTimeMillis() + this.reconnectTimeout;
-                        
-                        // This is the first time, just reconnect immediately
-                        openTimeout = 0;
-                    }
-                    
-                    if (this.getState() != TrapState.SLEEPING)
-                    {
-                        // We have nothing to do here
+                        this.kickRecoveryThread();
                         return;
                     }
                     
-                    // this is the point at which the code is asked to reconnect
-                    // It should take this into account.
-                    
-                    // Checks that need to be made at this point:
-                    // - when to stop trying to connect
-                    // - how long between reconnect intervals
-                    // -- IF we should reconnect (e.g. if this was a wakeup call)
-                    
-                    // For now, we'll be doing recovery any time the timeout hasn't expired
-                    // fixed every second. This MUST be changed for wakeup support
-                    if (System.currentTimeMillis() < this.canReconnectUntil)
-                        ThreadPool.executeAfter(new Runnable() {
-                            
-                            public void run()
-                            {
-                                try
-                                {
-                                    ClientTrapEndpoint.this.doOpen();
-                                }
-                                catch (TrapException e)
-                                {
-                                    ClientTrapEndpoint.this.logger.error("Error while reconnecting after all transports failed", e);
-                                    return;
-                                }
-                            }
-                        }, openTimeout);
+                    if (this.getState() == TrapState.OPENING)
+                    {
+                        // The current transport failed. Just drop it in the failed transports pile.
+                        // (Failed transports are cycled in at regular intervals)
+                        this.failedTransports.add(transport);
+                        
+                        // Also notify recovery that we have lost a transport. This may schedule another to be reconnected.
+                        this.kickRecoveryThread();
+                        return;
+                    }
                     else
-                        this.setState(TrapState.CLOSED);
+                    {
+                        
+                        long openTimeout = 1000;
+                        
+                        if (this.getState() == TrapState.OPEN)
+                        {
+                            // We have to report that we've lost all our transports.
+                            this.setState(TrapState.SLEEPING);
+                            
+                            // Adjust reconnect timeout
+                            this.canReconnectUntil = System.currentTimeMillis() + this.reconnectTimeout;
+                            
+                            // This is the first time, just reconnect immediately
+                            openTimeout = 0;
+                        }
+                        
+                        if (this.getState() != TrapState.SLEEPING)
+                        {
+                            // We have nothing to do here
+                            return;
+                        }
+                        
+                        // this is the point at which the code is asked to reconnect
+                        // It should take this into account.
+                        
+                        // Checks that need to be made at this point:
+                        // - when to stop trying to connect
+                        // - how long between reconnect intervals
+                        // -- IF we should reconnect (e.g. if this was a wakeup call)
+                        
+                        // For now, we'll be doing recovery any time the timeout hasn't expired
+                        // fixed every second. This MUST be changed for wakeup support
+                        if (System.currentTimeMillis() < this.canReconnectUntil)
+                            ThreadPool.executeAfter(new Runnable() {
+                                
+                                public void run()
+                                {
+                                    try
+                                    {
+                                        ClientTrapEndpoint.this.doOpen();
+                                    }
+                                    catch (TrapException e)
+                                    {
+                                        ClientTrapEndpoint.this.logger.error("Error while reconnecting after all transports failed", e);
+                                        return;
+                                    }
+                                }
+                            }, openTimeout);
+                        else
+                            this.setState(TrapState.CLOSED);
+                    }
                 }
-            }
-            else if (oldState == TrapTransportState.CONNECTING)
-            {
-                
-                // With these new changes, we can always use the new cycle logic.
-                // The recovery thread will shift our state if we no longer have any viable connection
-                this.cycleTransport(transport, "connectivity failure");
-            }
-            else
-            {
-                // disconnecting, so do nothing
-                
-                if ((this.getState() == TrapState.OPEN) || (this.getState() == TrapState.SLEEPING))
+                else if (oldState == TrapTransportState.CONNECTING)
                 {
-                    if (this.activeTransports.size() == 0)
-                        this.cycleTransport(transport, "This transport disconnected (orderly??) while we lost all other transports.");
+                    
+                    // With these new changes, we can always use the new cycle logic.
+                    // The recovery thread will shift our state if we no longer have any viable connection
+                    this.cycleTransport(transport, "connectivity failure");
                 }
-            }
-            
-            // There is a possible path through which we can fall through the cracks and not go over to state SLEEPING. We should do that now.
-            if (this.getState() == TrapState.OPEN && this.activeTransports.size() == 0)
-            {
-                // We have to report that we've lost all our transports.
-                this.setState(TrapState.SLEEPING);
+                else
+                {
+                    // disconnecting, so do nothing
+                    
+                    if ((this.getState() == TrapState.OPEN) || (this.getState() == TrapState.SLEEPING))
+                    {
+                        if (this.activeTransports.size() == 0)
+                            this.cycleTransport(transport, "This transport disconnected (orderly??) while we lost all other transports.");
+                    }
+                }
                 
-                // Adjust reconnect timeout
-                this.canReconnectUntil = System.currentTimeMillis() + this.reconnectTimeout;
+                // There is a possible path through which we can fall through the cracks and not go over to state SLEEPING. We should do that now.
+                if (this.getState() == TrapState.OPEN && this.activeTransports.size() == 0)
+                {
+                    // We have to report that we've lost all our transports.
+                    this.setState(TrapState.SLEEPING);
+                    
+                    // Adjust reconnect timeout
+                    this.canReconnectUntil = System.currentTimeMillis() + this.reconnectTimeout;
+                }
+                
             }
-            
         }
         
         if (newState == TrapTransportState.CONNECTED)
@@ -488,7 +491,7 @@ public class ClientTrapEndpoint extends TrapEndpointImpl implements TrapClient, 
                     }
                     catch (TrapException e)
                     {
-                    	logger.error("Failed to reopen Trap Endpoint due to {}", e, e);
+                        logger.error("Failed to reopen Trap Endpoint due to {}", e, e);
                     }
                 }
             }, 1000);
@@ -630,7 +633,7 @@ public class ClientTrapEndpoint extends TrapEndpointImpl implements TrapClient, 
                 }
                 catch (Throwable t)
                 {
-                	logger.warn("Unhandled exception in connection handler", t);
+                    logger.warn("Unhandled exception in connection handler", t);
                 }
             }
         });

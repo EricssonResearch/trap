@@ -38,6 +38,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 import com.ericsson.research.transport.ManagedServerSocket;
+import com.ericsson.research.transport.ManagedServerSocket.State;
 import com.ericsson.research.transport.ManagedServerSocketClient;
 import com.ericsson.research.transport.ManagedSocket;
 import com.ericsson.research.trap.nio.ServerSocket;
@@ -108,6 +109,12 @@ public class ServerSocketWrapper implements ServerSocket, ManagedServerSocketCli
     public void close()
     {
 		sock.close();
+    }
+
+    @Override
+    public boolean isClosed()
+    {
+        return sock.getState() == State.NOT_LISTENING;
     }
 
 }

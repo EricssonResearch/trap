@@ -60,4 +60,6 @@ public interface ServerSocket
     public void listen(InetSocketAddress address) throws IOException;
 
 	public void close();
+
+    public boolean isClosed();
 }

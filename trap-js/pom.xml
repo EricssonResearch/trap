@@ -39,13 +39,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
-			<artifactId>trap-transport-websocket</artifactId>
-			<version>1.4.0-SNAPSHOT</version>
-			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-socket</artifactId>
 			<version>1.4.0-SNAPSHOT</version>
 			<type>pom</type>
@@ -54,13 +47,6 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-loopback</artifactId>
-			<version>1.4.0-SNAPSHOT</version>
-			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.ericsson.research.trap</groupId>
-			<artifactId>trap-transport-http</artifactId>
 			<version>1.4.0-SNAPSHOT</version>
 			<type>pom</type>
 			<scope>test</scope>
@@ -75,6 +61,11 @@
 			<artifactId>jstestrunner-junit</artifactId>
 			<version>1.0.2</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>wshttp-server-nano</artifactId>
+			<version>1.4.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

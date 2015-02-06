@@ -86,7 +86,7 @@ public class JSServerStart implements OnAccept
 		Logger.getLogger("com").setLevel(Level.FINEST);
 		Logger.getLogger("com").addHandler(h);
 		*/
-		JDKLoggerConfig.initForPrefixes(Level.ALL);
+		JDKLoggerConfig.initForPrefixes(Level.INFO);
 		Thread thread = new Thread(new Runnable() {
 
 			@Override

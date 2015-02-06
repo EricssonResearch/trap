@@ -39,5 +39,7 @@
 		<module>http-tests-sun</module>
 		<module>http-tests-servlet</module>
 		<module>http-utils-sun</module>
+		<module>http-impl-nanohttpd-nio</module>
+		<module>wshttp-server-nano</module>
 	</modules>
 </project>

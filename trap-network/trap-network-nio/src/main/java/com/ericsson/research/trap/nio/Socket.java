@@ -76,5 +76,7 @@ public interface Socket {
     public InetSocketAddress getLocalSocketAddress() throws IOException;
     
     public InetSocketAddress getRemoteSocketAddress() throws IOException;
+
+    public SocketHandler getHandler();
     
 }
