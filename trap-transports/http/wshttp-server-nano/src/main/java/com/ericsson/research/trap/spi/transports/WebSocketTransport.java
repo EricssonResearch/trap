@@ -453,13 +453,20 @@ public class WebSocketTransport extends AbstractTransport
     
     public void notifyError(Throwable t)
     {
+        
+        WSInterface sock = socket;
         this.logger.error("WebSocket Error", t);
-        if (this.socket != null)
+        synchronized (this)
         {
-            this.socket.close();
-            this.socket.setReadListener(null);
+            if (this.socket != null)
+            {
+                sock = socket;
+                socket.setReadListener(null);
+                this.socket.setReadListener(null);
+                socket = null;
+            }
         }
-        this.socket = null;
+        sock.close();
         this.setState(TrapTransportState.ERROR);
     }
     

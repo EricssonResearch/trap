@@ -96,8 +96,8 @@ public class HttpToWebsocketSwitchingTest implements OnAccept, OnData
 	@BeforeClass
 	public static void setLoggerLevel()
 	{
-		JDKLoggerConfig.initForPrefixes(Level.INFO);
-        TrapImplDebugPrinter.start();
+		JDKLoggerConfig.initForPrefixes(Level.ALL);
+        //TrapImplDebugPrinter.start();
 	}
 	
 	@Before

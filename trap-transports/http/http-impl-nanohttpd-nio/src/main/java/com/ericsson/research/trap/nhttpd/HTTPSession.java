@@ -2,7 +2,6 @@ package com.ericsson.research.trap.nhttpd;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,7 +60,7 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
         this.outputStream = new NioOutputStream(sock);
     }
     
-    public synchronized void run()
+    public void run()
     {
         try
         {
@@ -757,9 +756,9 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     private NioInputStream  inputStream;
     
     @Override
-    public void received(ByteBuffer data, Socket sock)
+    public synchronized void received(ByteBuffer data, Socket sock)
     {
-        if (!haveStreams)
+        if (inputStream == null)
         {
             this.inputStream = new NioInputStream(sock);
             server.asyncRunner.exec(this);

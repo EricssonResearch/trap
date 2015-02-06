@@ -71,6 +71,8 @@ public class ThreadPoolImpl extends ThreadPool
     
     public static String describeState()
     {
+        if (lastInstance == null)
+            return "";
         String cachedStatus = "cachedPool: " + describeState(lastInstance.cachedPool);
         String fixedStatus = "fixedPool: " + describeState(lastInstance.fixedPool);
         String scheduledStatus = "scheduledPool: " + describeState(lastInstance.scheduledPool);

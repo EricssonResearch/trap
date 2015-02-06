@@ -186,9 +186,12 @@ public class NanoHTTPD implements ServerSocketHandler
      * @param socket
      *            the {@link Socket} for the connection.
      */
-    public synchronized void registerConnection(Socket socket)
+    public void registerConnection(Socket socket)
     {
-        openConnections.add(socket);
+        synchronized (openConnections)
+        {
+            openConnections.add(socket);
+        }
     }
     
     /**
@@ -197,19 +200,27 @@ public class NanoHTTPD implements ServerSocketHandler
      * @param socket
      *            the {@link Socket} for the connection.
      */
-    public synchronized void unRegisterConnection(Socket socket)
+    public void unRegisterConnection(Socket socket)
     {
-        openConnections.remove(socket);
+        synchronized (openConnections)
+        {
+            
+            openConnections.remove(socket);
+        }
     }
     
     /**
      * Forcibly closes all connections that are open.
      */
-    public synchronized void closeAllConnections()
+    public void closeAllConnections()
     {
-        for (Socket socket : openConnections)
+        synchronized (openConnections)
         {
-            safeClose(socket);
+            Socket[] socks = openConnections.toArray(new Socket[]{});
+            for (Socket socket : socks)
+            {
+                safeClose(socket);
+            }
         }
     }
     
@@ -454,7 +465,7 @@ public class NanoHTTPD implements ServerSocketHandler
     {
         this.sslc = sslc;
     }
-
+    
     public InetSocketAddress getAddress() throws IOException
     {
         return myServerSocket.getInetAddress();
