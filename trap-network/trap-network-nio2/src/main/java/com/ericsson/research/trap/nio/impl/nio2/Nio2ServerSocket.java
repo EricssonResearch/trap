@@ -129,4 +129,10 @@ public class Nio2ServerSocket implements ServerSocket
         	handler.error(e, this);
         }
     }
+
+    @Override
+    public boolean isClosed()
+    {
+        return !ss.isOpen();
+    }
 }

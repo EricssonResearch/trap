@@ -122,11 +122,17 @@ public abstract class Nio2SocketBase implements Socket
 		return (InetSocketAddress) sock.getRemoteAddress();
 	}
 
-	@Override
-	public void setHandler(SocketHandler handler)
-	{
-		this.handler = handler;
-	}
+    @Override
+    public void setHandler(SocketHandler handler)
+    {
+        this.handler = handler;
+    }
+
+    @Override
+    public SocketHandler getHandler()
+    {
+        return handler;
+    }
 
 	@Override
 	public void open(InetSocketAddress remote) throws IOException

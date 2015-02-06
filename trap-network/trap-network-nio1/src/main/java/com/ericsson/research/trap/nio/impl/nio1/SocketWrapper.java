@@ -76,6 +76,7 @@ public class SocketWrapper implements Socket, ManagedSocketClient
             	handler.error(e, this);
             }
 			src.clear();
+			src.limit(0);
 		}
 		else
 			throw new RuntimeException("Whoops! Need to implement this wrapper (or do I?)");
@@ -147,6 +148,12 @@ public class SocketWrapper implements Socket, ManagedSocketClient
     public void notifyError(Exception e)
     {
 		handler.error(e, this);
+    }
+
+    @Override
+    public SocketHandler getHandler()
+    {
+        return handler;
     }
 
 }

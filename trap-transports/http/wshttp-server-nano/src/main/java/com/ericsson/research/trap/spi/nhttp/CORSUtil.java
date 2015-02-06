@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.ericsson.research.trap.nio;
+package com.ericsson.research.trap.spi.nhttp;
+
+import com.ericsson.research.trap.nhttpd.IHTTPSession;
+import com.ericsson.research.trap.nhttpd.Response;
 
 /*
  * ##_BEGIN_LICENSE_##
@@ -38,45 +36,21 @@ package com.ericsson.research.trap.nio;
  * ##_END_LICENSE_##
  */
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-
-/**
- *
- * @author Vladimir Katardjiev
- */
-public interface Socket {
-    
-    public interface SocketHandler {
+public class CORSUtil
+{
+    public static void setCors(IHTTPSession session, Response r)
+    {
+        String origin = session.getHeaders().get("Origin");
         
-        public void sent(Socket sock);
-        public void received(ByteBuffer data, Socket sock);
-        public void opened(Socket sock);
-        public void closed(Socket sock);
-        public void error(Throwable exc, Socket sock);
+        if (origin == null)
+            origin = "null";
         
+        r.addHeader("Allow", "GET,PUT,POST,DELETE,OPTIONS");
+        r.addHeader("Access-Control-Allow-Origin", origin);
+        r.addHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+        r.addHeader("Access-Control-Allow-Headers", "Content-Type");
+        r.addHeader("Access-Control-Request-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+        r.addHeader("Access-Control-Request-Headers", "Content-Type");
+        r.addHeader("Access-Control-Max-Age", "3600");
     }
-    
-    public void setHandler(SocketHandler handler);
-    
-    public void send(ByteBuffer src);
-    
-    public void open(InetSocketAddress remote) throws IOException;
-    
-    public void open(InetAddress host, int port) throws IOException;
-    
-    public void open(String addr, int port) throws IOException;
-    
-    public void close();
-    
-    public boolean isSecure();
-
-    public InetSocketAddress getLocalSocketAddress() throws IOException;
-    
-    public InetSocketAddress getRemoteSocketAddress() throws IOException;
-
-    public SocketHandler getHandler();
-    
 }

@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.ericsson.research.trap.nio;
+package com.ericsson.research.trap.spi.nhttp;
 
 /*
  * ##_BEGIN_LICENSE_##
@@ -38,45 +33,12 @@ package com.ericsson.research.trap.nio;
  * ##_END_LICENSE_##
  */
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-
-/**
- *
- * @author Vladimir Katardjiev
- */
-public interface Socket {
-    
-    public interface SocketHandler {
-        
-        public void sent(Socket sock);
-        public void received(ByteBuffer data, Socket sock);
-        public void opened(Socket sock);
-        public void closed(Socket sock);
-        public void error(Throwable exc, Socket sock);
-        
-    }
-    
-    public void setHandler(SocketHandler handler);
-    
-    public void send(ByteBuffer src);
-    
-    public void open(InetSocketAddress remote) throws IOException;
-    
-    public void open(InetAddress host, int port) throws IOException;
-    
-    public void open(String addr, int port) throws IOException;
-    
-    public void close();
-    
-    public boolean isSecure();
-
-    public InetSocketAddress getLocalSocketAddress() throws IOException;
-    
-    public InetSocketAddress getRemoteSocketAddress() throws IOException;
-
-    public SocketHandler getHandler();
-    
+public class WebSocketConstants
+{
+	/*
+	 * These config strings are configurable as trap.transport.ws.wsuri = ws://abcd
+	 */
+	public static final String	CONFIG_URI	= "wsuri";
+	public static final String	CONFIG_SERVER_HOST	= "host";
+	public static final String	CONFIG_SERVER_PORT	= "port";
 }
