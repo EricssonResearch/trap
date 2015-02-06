@@ -96,7 +96,7 @@ public class HttpToWebsocketSwitchingTest implements OnAccept, OnData
 	@BeforeClass
 	public static void setLoggerLevel()
 	{
-		JDKLoggerConfig.initForPrefixes(Level.ALL);
+		JDKLoggerConfig.initForPrefixes(Level.INFO);
         //TrapImplDebugPrinter.start();
 	}
 	
@@ -157,7 +157,7 @@ public class HttpToWebsocketSwitchingTest implements OnAccept, OnData
 		this.listener = null;
 	}
 	
-	@Test(timeout = 10000)
+	@Test(timeout = 100000)
 	public void testNormal() throws Exception
 	{
 		
@@ -174,12 +174,13 @@ public class HttpToWebsocketSwitchingTest implements OnAccept, OnData
 			this.lastServerData = null;
 			byte[] str = ("Hello" + i++).getBytes();
 			this.c.send(str);
+            Thread.sleep(10, 500);
 			
 			while (this.lastServerData == null)
 			{
 				Thread.sleep(0, 500);
 			}
-		} while (http.isConnected() || !websocket.isConnected());
+		} while (http.isAvailable() || !websocket.isConnected());
 		
 	}
 	

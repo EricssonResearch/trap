@@ -560,11 +560,12 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
         
         this.kickSendingThread();
     }
-    
+    String stName = null;
     // @formatter:off
     Runnable sendingThread = new Runnable() {
         public void run()
         {
+            stName = Thread.currentThread().getName();
             try
             {
                 for (;;)
@@ -675,11 +676,26 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
 
                             if ((TrapEndpointImpl.this.messageQueue.peek() == null) || (first == null) || TrapEndpointImpl.this.abortSending)
                             {
-                                
-
                                 //System.out.println("######### Ending condition: " + (TrapEndpointImpl.this.messageQueueSize == 0) + (first == null));
                                 TrapEndpointImpl.this.logger.trace("Send loop end: First: {}, Available: {}, EP: {}, MQ: {}", new Object[]{ first, TrapEndpointImpl.this.availableTransports, TrapEndpointImpl.this, TrapEndpointImpl.this.messageQueue });
-                                TrapEndpointImpl.this.setSending(false);
+
+                                synchronized (sendingLock)
+                                {
+                                    
+                                    // Make one more loop to catch any MQ rebuilds needed.
+                                    if (messageQueueRebuild)
+                                        continue;
+                                    
+                                    TrapEndpointImpl.this.setSending(false);
+                                    TrapEndpointImpl.this.messageQueue.rewind();
+                                    
+                                    // The final check. If we've gotten this far out, it's worth it.
+                                    if ((TrapEndpointImpl.this.messageQueue.peek() != null) && first != null)
+                                    {
+                                        kickSendingThread();
+                                    }
+                                }
+                                
                                 return;
                             }
                         }
@@ -689,10 +705,6 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
             catch (Throwable t)
             {
                 TrapEndpointImpl.this.logger.error("Exception while processing sending on {}: ", TrapEndpointImpl.this, t);
-                synchronized (TrapEndpointImpl.this.sendingLock)
-                {
-                    TrapEndpointImpl.this.setSending(false);
-                }
             }
             finally
             {
@@ -704,10 +716,6 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
                         TrapEndpointImpl.this.sendingLock.notifyAll();
                     }
                 }
-                
-                // The final check. If we've gotten this far out, it's worth it.
-                if ((TrapEndpointImpl.this.messageQueue.peek() != null))
-                	kickSendingThread();
             }
         }
     };
@@ -1336,6 +1344,7 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
         {
             LinkedList<Object> faileds = new LinkedList<Object>();
             
+            this.messageQueue.rewind();
             while (this.messageQueue.peek() != null)
             {
                 TrapMessage msg = this.messageQueue.pop();

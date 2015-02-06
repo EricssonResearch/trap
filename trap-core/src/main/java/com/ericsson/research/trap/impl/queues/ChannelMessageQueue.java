@@ -54,6 +54,8 @@ public class ChannelMessageQueue
     long                        cPrio      = 0;
     int                         cPrioIndex = 0;
     long                        cPrioBytes = 0;
+    @SuppressWarnings("unused")
+    private TrapMessage lastPeek;
     
     public ChannelMessageQueue()
     {
@@ -104,10 +106,11 @@ public class ChannelMessageQueue
             if (msg != null)
             {
                 this.cPrioIndex = i;
+                lastPeek = msg;
                 return msg;
             }
         }
-        
+        lastPeek = null;
         return null;
     }
     

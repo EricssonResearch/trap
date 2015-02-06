@@ -138,6 +138,9 @@ public class ServerWebSocketTransport extends AbstractListenerTransport implemen
 
 	public void getClientConfiguration(TrapConfiguration destination, String defaultHost)
 	{
+	    
+	    if (server == null || server.server == null)
+	        return;
 
 		InetSocketAddress address;
 		try
