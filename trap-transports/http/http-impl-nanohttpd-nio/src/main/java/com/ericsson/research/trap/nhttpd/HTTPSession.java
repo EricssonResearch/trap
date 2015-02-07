@@ -778,9 +778,9 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
         if (inputStream == null)
         {
             this.inputStream = new NioInputStream(sock);
+            inputStream.received(data, sock);
             server.asyncRunner.exec(this);
         }
-        inputStream.received(data, sock);
     }
     
     @Override

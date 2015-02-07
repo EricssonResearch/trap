@@ -191,7 +191,12 @@ public class Response
     {
         
         if (data == null)
+        {
+            sendContentLengthHeaderIfNotAlreadyPresent(pw, header, 0);
+            pw.print("\r\n");
+            pw.flush();
             return;
+        }
         
         pw.print("Transfer-Encoding: chunked\r\n");
         pw.print("\r\n");

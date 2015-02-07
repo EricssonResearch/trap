@@ -378,7 +378,7 @@ public class ClientHttpTransport extends AbstractTransport
                     }
                     catch (Exception e)
                     {
-                        //e.printStackTrace();
+                        e.printStackTrace();
                         ClientHttpTransport.this.logger.debug("Moving to state ERROR due to exception", e);
                         ClientHttpTransport.this.setState(TrapTransportState.ERROR);
                         return;

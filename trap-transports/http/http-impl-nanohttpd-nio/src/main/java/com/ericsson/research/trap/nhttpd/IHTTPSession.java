@@ -40,4 +40,6 @@ public interface IHTTPSession
     InputStream getInputStream();
     
     void upgrade(SocketHandler handler);
+
+	void finish(Response r);
 }
