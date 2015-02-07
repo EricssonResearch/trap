@@ -62,6 +62,7 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     
     public void run()
     {
+        
         try
         {
             // Read the first 8192 bytes.
@@ -165,9 +166,10 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
                     inputStream.received(ByteBuffer.wrap(buf, 0, rlen), sock);
                     return;
                 }
-                cookies.unloadQueue(r);
-                r.setRequestMethod(method);
-                r.send(outputStream);
+                
+                if (!r.getAsync())
+                    finish(r);
+                
             }
         }
         catch (SocketException e)
@@ -189,6 +191,20 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
             Response r = new Response(re.getStatus(), NanoHTTPD.MIME_PLAINTEXT, re.getMessage());
             r.send(outputStream);
             NanoHTTPD.safeClose(outputStream);
+        }
+        finally
+        {
+            
+        }
+    }
+    
+    public void finish(Response r)
+    {
+        try
+        {
+            cookies.unloadQueue(r);
+            r.setRequestMethod(method);
+            r.send(outputStream);
         }
         finally
         {
@@ -749,6 +765,7 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     public void sent(Socket sock)
     {
         // Handled by the OutputStream primarily
+        outputStream.sent(sock);
     }
     
     boolean                 haveStreams = false;

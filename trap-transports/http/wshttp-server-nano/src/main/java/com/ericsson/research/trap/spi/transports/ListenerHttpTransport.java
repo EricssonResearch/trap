@@ -170,7 +170,8 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
         {
             this.logger.trace("Incoming request on root: {} {}", request.getMethod(), request.getUri());
             String path = request.getUri();
-            String base = path.split("/")[1];
+            String[] parts = path.split("/");
+            String base = parts.length >= 2 ? parts[1] : "";
             
             CORSUtil.setCors(request, response);
             

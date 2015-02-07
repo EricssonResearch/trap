@@ -38,8 +38,6 @@ public class NioOutputStream extends OutputStream implements SocketHandler
         
         sock.send(peek);
         
-        if (!peek.hasRemaining())
-            sent(sock);
     }
     
     @Override
@@ -82,5 +80,10 @@ public class NioOutputStream extends OutputStream implements SocketHandler
         buffer.flip();
         bufs.add(buffer);
         sent(sock);
+    }
+
+    public void setHandler(SocketHandler handler)
+    {
+        this.handler = handler;
     }
 }

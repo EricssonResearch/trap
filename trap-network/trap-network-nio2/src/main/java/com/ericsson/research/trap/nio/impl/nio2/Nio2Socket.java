@@ -185,6 +185,7 @@ public class Nio2Socket extends Nio2SocketBase
 					if (!needsWriting.compareAndSet(true, false))
 					{
 						isWriting.getAndSet(false);
+	                    handler.sent(Nio2Socket.this);
 						return;
 					}
 				}
