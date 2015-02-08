@@ -159,6 +159,10 @@ public class Response
         {
             // Couldn't write? No can do.
         }
+        catch (IllegalStateException ioe)
+        {
+            // Couldn't write? No can do.
+        }
     }
     
     protected void sendContentLengthHeaderIfNotAlreadyPresent(PrintWriter pw, Map<String, String> header, int size)
