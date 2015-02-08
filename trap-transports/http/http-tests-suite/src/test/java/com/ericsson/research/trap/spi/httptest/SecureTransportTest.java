@@ -56,6 +56,7 @@ import com.ericsson.research.trap.delegates.OnData;
 import com.ericsson.research.trap.impl.queues.LinkedBlockingMessageQueue;
 import com.ericsson.research.trap.impl.queues.LinkedByteBlockingMessageQueue;
 import com.ericsson.research.trap.spi.TrapTransport;
+import com.ericsson.research.trap.utils.JDKLoggerConfig;
 import com.ericsson.research.trap.utils.ThreadPool;
 
 public class SecureTransportTest implements OnAccept, OnData
@@ -75,10 +76,7 @@ public class SecureTransportTest implements OnAccept, OnData
 	@BeforeClass
 	public static void setLoggerLevel()
 	{
-		Logger jl = Logger.getLogger("");
-		jl.setLevel(Level.FINEST);
-		for (Handler h : jl.getHandlers())
-			h.setLevel(Level.ALL);
+		JDKLoggerConfig.initForPrefixes(Level.INFO);
 	}
 	
 	@Before
@@ -87,6 +85,7 @@ public class SecureTransportTest implements OnAccept, OnData
 
 		this.listener = TrapFactory.createListener(null);
 		this.listener.setOption(TrapTransport.CERT_USE_INSECURE_TEST, "true");
+		listener.disableTransport("websocket");
 		this.listener.listen(this);
 		
 		String cfg = this.listener.getClientConfiguration();

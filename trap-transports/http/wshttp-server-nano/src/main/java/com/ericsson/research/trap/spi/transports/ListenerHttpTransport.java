@@ -401,7 +401,7 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
         }
         
         this.hostedObjects.put(preferredPath, handler);
-        URI uri = URI.create(this.getUrl("localhost") + preferredPath);
+        URI uri = URI.create(this.getUrl("localhost") + "/" + preferredPath);
         hosted.setURI(uri);
         return uri;
     }

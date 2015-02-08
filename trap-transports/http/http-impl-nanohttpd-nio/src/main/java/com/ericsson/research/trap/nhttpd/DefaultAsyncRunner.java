@@ -6,14 +6,14 @@ import com.ericsson.research.trap.utils.ThreadPool;
 /**
  * Default threading strategy for NanoHttpd.
  * <p/>
- * <p>By default, the server spawns a new Thread for every incoming request.  These are set
- * to <i>daemon</i> status, and named according to the request number.  The name is
- * useful when profiling the application.</p>
+ * Integrated with Trap, it will leverage a thread pool to do its business.
  */
-public class DefaultAsyncRunner implements AsyncRunner {
+public class DefaultAsyncRunner implements AsyncRunner
+{
 
-    @Override
-    public void exec(Runnable code) {
-        ThreadPool.executeCached(code);
-    }
+	@Override
+	public void exec(Runnable code)
+	{
+		ThreadPool.executeCached(code);
+	}
 }

@@ -60,7 +60,6 @@ import com.ericsson.research.trap.spi.TrapTransportState;
 import com.ericsson.research.trap.spi.nhttp.CORSUtil;
 import com.ericsson.research.trap.spi.nhttp.FullRequestHandler;
 import com.ericsson.research.trap.utils.ThreadPool;
-import com.ericsson.research.trap.utils.UID;
 
 public class ServerHttpTransport extends AbstractTransport implements Runnable, FullRequestHandler
 {
@@ -389,6 +388,12 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 
 					this.request = request;
 					this.response = response;
+					
+					long delay = expirationDelay;
+
+					if (!messagesToSend.isEmpty())
+						delay = 10;
+					
 					ThreadPool.executeAfter(new Runnable()
 					{
 						
@@ -397,7 +402,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 						{
 							flushTransport();
 						}
-					}, expirationDelay);
+					}, delay);
 				}
 
 			}
@@ -519,7 +524,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 
 			byte[] body = bos.toByteArray();
 
-			response.setData(new ByteArrayInputStream(body));
+			response.setData(body);
 
 			this.messagesToSend.clear();
 		}

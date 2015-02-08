@@ -335,43 +335,6 @@ public class ClientHttpTransport extends AbstractTransport
                         
                         InputStream is = c.getInputStream();
                         
-                        // In some circumstances, the HTTPUrlConnection's input stream appears to contain an HTTP body. This is pretty interesting (and slightly wrong).
-                        
-                        if (c.getContentLength() > 0)
-                        {
-                            
-                            String clStr = c.getHeaderField("Content-Length");
-                            int contentLength = Integer.parseInt(clStr);
-                            
-                            if (contentLength > 0)
-                            {
-                                
-                                // We have a known content length we can verify.
-                                byte[] content = new byte[contentLength];
-                                
-                                int read = is.read(content);
-                                
-                                if (read != content.length)
-                                {
-                                    // TODO: This is a bug!
-                                    ClientHttpTransport.this.logger.error("Content read does not equal content length. Aborting...");
-                                    ClientHttpTransport.this.forceError();
-                                    return;
-                                }
-                                
-                                if (is.read() >= 0)
-                                {
-                                    // This is another bug. We have more content than was reported!
-                                    ClientHttpTransport.this.logger.error("Excess content detected! Something is VERY wrong with this HTTP connection. Aborting...");
-                                    ClientHttpTransport.this.forceError();
-                                    return;
-                                }
-                                
-                                ClientHttpTransport.this.receive(content, 0, content.length);
-                                continue;
-                            }
-                        }
-                        
                         int read = 0;
                         while ((read = is.read(ClientHttpTransport.this.readBuf)) != -1)
                             ClientHttpTransport.this.receive(ClientHttpTransport.this.readBuf, 0, read);

@@ -12,6 +12,7 @@ public class NioInputStream extends InputStream implements SocketHandler
 {
 	private static final ByteBuffer	EMPTY	    = ByteBuffer.allocate(0);
 	private Object	                receiveLock	= new Object();
+	private Object	                readLock	= new Object();
 	LinkedBlockingDeque<ByteBuffer>	bufs	    = new LinkedBlockingDeque<ByteBuffer>();
 	boolean	                        open	    = true;
 	private SocketHandler	        handler;
@@ -33,14 +34,16 @@ public class NioInputStream extends InputStream implements SocketHandler
 			this.handler = handler;
 			if (through)
 			{
-				for (ByteBuffer b : bufs)
-					if (b.capacity() > 0 && b.remaining() > 0)
-						handler.received(b, sock);
 				open = false;
+				bufs.offer(EMPTY);
+				synchronized (readLock)
+				{
+					for (ByteBuffer b : bufs)
+						if (b.capacity() > 0 && b.remaining() > 0)
+							handler.received(b, sock);
+				}
 			}
 		}
-		if (!open)
-			bufs.offer(EMPTY);
 
 	}
 
@@ -80,10 +83,9 @@ public class NioInputStream extends InputStream implements SocketHandler
 			if (open)
 			{
 				open = false;
+				bufs.offer(EMPTY);
 			}
 		}
-		if (!open)
-			bufs.offer(EMPTY);
 
 		handler.closed(sock);
 	}
@@ -97,48 +99,54 @@ public class NioInputStream extends InputStream implements SocketHandler
 	public ByteBuffer getNextBuf(long timeout) throws IOException
 	{
 
-		try
+		synchronized (readLock)
 		{
-			ByteBuffer buf;
-			for (;;)
+			try
 			{
-				if (!open)
-					return null;
-
-				buf = bufs.poll(timeout, TimeUnit.MILLISECONDS);
-
-				if (!open)
-					return null;
-
-				if (buf == null)
-					return null;
-
-				bufs.push(buf);
-				if (!buf.hasRemaining())
+				ByteBuffer buf;
+				for (;;)
 				{
-					if (!bufs.isEmpty())
+					if (!open)
+						return null;
+
+					buf = bufs.poll(timeout, TimeUnit.MILLISECONDS);
+
+					if (buf == null)
+						return null;
+
+					bufs.push(buf);
+
+					if (!open)
+						return null;
+					
+					if (!buf.hasRemaining())
+					{
 						bufs.pop();
+					}
+					else
+						break;
 				}
-				else
-					break;
+				return buf;
 			}
-			return buf;
-		}
-		catch (InterruptedException e)
-		{
-			throw new IOException(e);
+			catch (InterruptedException e)
+			{
+				throw new IOException(e);
+			}
 		}
 	}
 
 	@Override
 	public synchronized int read() throws IOException
 	{
+
 		ByteBuffer buf = getNextBuf(30000);
 
 		if (buf == null)
 			return -1;
 
-		return buf.get();
+		int rv = buf.get() & 0xFF;
+
+		return rv;
 	}
 
 	@Override
@@ -157,9 +165,10 @@ public class NioInputStream extends InputStream implements SocketHandler
 	@Override
 	public int available() throws IOException
 	{
-		if (bufs.size() > 1)
-			return 1;
-
-		return bufs.peek().remaining();
+		ByteBuffer peek = bufs.peek();
+		if (peek == null)
+			return 0;
+		
+		return peek.remaining();
 	}
 }
