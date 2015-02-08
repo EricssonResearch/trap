@@ -178,15 +178,20 @@ public class Nio2Socket extends Nio2SocketBase
 
 			if (buf.remaining() == 0)
 			{
-
+				boolean sentNotification = false;
 				synchronized (isWriting)
 				{
 					// Maybe we need to flip the buffers for more data
 					if (!needsWriting.compareAndSet(true, false))
 					{
 						isWriting.getAndSet(false);
-						return;
+						sentNotification = true;
 					}
+				}
+				
+				if (sentNotification) {
+                    handler.sent(Nio2Socket.this);
+                    return;
 				}
 
 				// Clear the buffer so it can be used again

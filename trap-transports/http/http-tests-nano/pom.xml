@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>http</artifactId>
+		<groupId>com.ericsson.research.trap.transports</groupId>
+		<version>1.4.0-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>http-tests-nano</artifactId>
+	<name>Trap HTTP Test for NanoHTTPD Transport</name>
+		
+	<repositories>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://oss.sonatype.com/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+				<configuration>
+					<dependenciesToScan>
+						<dependency>com.ericsson.research.trap.transports:http-tests-suite</dependency>
+						<dependency>com.ericsson.research.trap.transports:http-tests-suites</dependency>
+					</dependenciesToScan>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.ericsson.research.trap</groupId>
+			<artifactId>trap-core</artifactId>
+			<version>1.4.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>http-client-sun</artifactId>
+			<version>1.4.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>http-tests-suite</artifactId>
+			<version>1.4.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>wshttp-server-nano</artifactId>
+			<version>1.4.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<description>Test for HTTP using sun provider</description>
+</project>

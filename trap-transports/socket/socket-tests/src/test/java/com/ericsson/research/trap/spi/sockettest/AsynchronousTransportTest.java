@@ -313,7 +313,7 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 		try
 		{
 			while (this.incomingEP == null)
-				this.wait();
+				this.wait(10);
 			
 			return this.incomingEP;
 		}

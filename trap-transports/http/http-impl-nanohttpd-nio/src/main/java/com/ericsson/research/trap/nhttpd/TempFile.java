@@ -1,7 +1,6 @@
 package com.ericsson.research.trap.nhttpd;
 
 import java.io.OutputStream;
-import java.nio.ByteBuffer;
 
 /**
  * A temp file.

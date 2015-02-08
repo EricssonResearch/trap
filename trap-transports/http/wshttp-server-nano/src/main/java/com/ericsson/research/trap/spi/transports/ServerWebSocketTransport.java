@@ -164,7 +164,7 @@ public class ServerWebSocketTransport extends AbstractListenerTransport implemen
 			hostName = defaultHost;
 
 		if (hostName == null)
-			hostName = this.getHostName(address.getAddress(), this.defaultHost, true);
+			hostName = this.getHostName(address.getAddress(), this.server.defaultHost, true);
 
 		String targetUri = "ws" + (this.server.secure ? "s" : "") + "://" + hostName + ":" + port + "/" + REGISTER_RESOURCE;
 

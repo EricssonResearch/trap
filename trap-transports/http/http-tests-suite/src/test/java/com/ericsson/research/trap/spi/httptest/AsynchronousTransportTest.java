@@ -35,9 +35,7 @@ package com.ericsson.research.trap.spi.httptest;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -50,43 +48,43 @@ import com.ericsson.research.trap.TrapException;
 import com.ericsson.research.trap.TrapFactory;
 import com.ericsson.research.trap.TrapListener;
 import com.ericsson.research.trap.TrapState;
+import com.ericsson.research.trap.TrapTransports;
 import com.ericsson.research.trap.delegates.OnAccept;
 import com.ericsson.research.trap.delegates.OnData;
 import com.ericsson.research.trap.impl.queues.LinkedBlockingMessageQueue;
 import com.ericsson.research.trap.impl.queues.LinkedByteBlockingMessageQueue;
+import com.ericsson.research.trap.utils.JDKLoggerConfig;
 import com.ericsson.research.trap.utils.ThreadPool;
 
 public class AsynchronousTransportTest implements OnAccept, OnData
 {
-	
-	TrapEndpoint					incomingEP;
-	TrapListener					listener;
-	TrapClient						c;
-	TrapEndpoint					s;
 
-	ConcurrentLinkedQueue<byte[]>	receipts		= new ConcurrentLinkedQueue<byte[]>();
-	AtomicInteger							receivingCount	= new AtomicInteger(0);
-	AtomicInteger							processed		= new AtomicInteger(0);
-	AtomicInteger							receiving;
-	int								messages;
+	TrapEndpoint	              incomingEP;
+	TrapListener	              listener;
+	TrapClient	                  c;
+	TrapEndpoint	              s;
+
+	ConcurrentLinkedQueue<byte[]>	receipts	 = new ConcurrentLinkedQueue<byte[]>();
+	AtomicInteger	              receivingCount	= new AtomicInteger(0);
+	AtomicInteger	              processed	     = new AtomicInteger(0);
+	AtomicInteger	              receiving;
+	int	                          messages;
 
 	@BeforeClass
 	public static void setLoggerLevel()
 	{
-		Logger jl = Logger.getLogger("");
-		jl.setLevel(Level.INFO);
-		for (Handler h : jl.getHandlers())
-			h.setLevel(Level.INFO);
+		JDKLoggerConfig.initForPrefixes(Level.INFO);
 	}
-	
+
 	@Before
 	public void setUp() throws Throwable
 	{
 
 		this.listener = TrapFactory.createListener(null);
-		
+		listener.disableTransport("websocket");
+
 		this.listener.listen(this);
-		
+
 		String cfg = this.listener.getClientConfiguration();
 		this.c = TrapFactory.createClient(cfg, true);
 		this.c.setDelegate(this, true);
@@ -94,9 +92,9 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 		this.c.setAsync(false);
 
 		// Accept
-		
+
 		this.s = this.accept();
-		
+
 		while (this.c.getState() != TrapState.OPEN)
 			Thread.sleep(10);
 	}
@@ -114,32 +112,33 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 		q.setBlockingTimeout(1000);
 		q.resize(10);
 		this.s.setQueue(q);
-		
+
 		this.performMessageTests(1000);
 	}
 
 	@Test(timeout = 20000)
 	public void testAlwaysBlocking() throws Exception
 	{
-		
+
 		LinkedBlockingMessageQueue q = new LinkedBlockingMessageQueue();
 		q.setBlockingTimeout(1000);
 		q.resize(1);
 		this.s.setQueue(q);
-		
-		// TODO: OpenJDK has some hideous bug here where performance takes a stupidly large nosedive
+
+		// TODO: OpenJDK has some hideous bug here where performance takes a
+		// stupidly large nosedive
 		// when using Trap blocking transports.
 		this.performMessageTests(20);
 	}
-	
+
 	@Test(timeout = 10000)
 	public void testByte() throws Exception
 	{
-		
+
 		this.s.setQueueType(TrapEndpoint.REGULAR_BYTE_QUEUE);
 		this.performMessageTests(1000);
 	}
-	
+
 	@Test(timeout = 20000)
 	public void testByteBlocking() throws Exception
 	{
@@ -148,29 +147,31 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 		q.resize(128);
 		this.s.setQueue(q);
 
-		
-		// TODO: OpenJDK has some hideous bug here where performance takes a stupidly large nosedive
+		// TODO: OpenJDK has some hideous bug here where performance takes a
+		// stupidly large nosedive
 		// when using Trap blocking transports.
 		this.performMessageTests(20);
 	}
-	
+
 	@Test(timeout = 10000)
 	public void testIndefiniteBlocking() throws Exception
 	{
-		
+
 		LinkedBlockingMessageQueue q = new LinkedBlockingMessageQueue();
 		q.setBlockingTimeout(Long.MAX_VALUE);
 		q.resize(1);
 		this.s.setQueue(q);
-		
+
 		this.performMessageTests(20);
 	}
+
 	int	j	= 0;
+
 	public void performMessageTests(final int messages) throws Exception
 	{
 
 		final byte[] bytes = "Helloes".getBytes();
-		
+
 		this.receiving = new AtomicInteger(1);
 		this.receipts = new ConcurrentLinkedQueue<byte[]>();
 		this.receivingCount = new AtomicInteger(0);
@@ -179,8 +180,9 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 
 		for (int k = 0; k < this.receiving.get(); k++)
 		{
-			ThreadPool.executeFixed(new Runnable() {
-				
+			ThreadPool.executeFixed(new Runnable()
+			{
+
 				public void run()
 				{
 					for (int i = 0; i < (messages / AsynchronousTransportTest.this.receiving.get()); i++)
@@ -203,12 +205,13 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 				}
 			});
 		}
-		
-		ThreadPool.executeCached(new Runnable() {
-			
+
+		ThreadPool.executeCached(new Runnable()
+		{
+
 			public void run()
 			{
-				
+
 				try
 				{
 					AsynchronousTransportTest.this.s.send(bytes);
@@ -243,36 +246,38 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 				}
 				System.out.println("Done queueing");
 			}
-			
+
 		});
 
 		while (this.receiving.get() != 0)
 			Thread.sleep(100);
 
 	}
-	
+
 	@Test
 	public void testLiveness() throws Exception
 	{
-		
+
 		this.s.send("Hello".getBytes());
 		Thread.sleep(20);
-		
+
 		// Now check liveness
 		Assert.assertTrue(this.s.isAlive(100, true, false, 0).get());
 		Assert.assertTrue(this.s.isAlive(1000, false, false, 0).get());
-		
+
 		Thread.sleep(10);
-		// This should return false; we're basically asking if there was a message in the last 0 milliseconds, after explicitly sleeping
+		// This should return false; we're basically asking if there was a
+		// message in the last 0 milliseconds, after explicitly sleeping
 		Assert.assertFalse(this.s.isAlive(0, false, false, 0).get());
-		
+
 		Thread.sleep(10);
 		this.c.send("Hello".getBytes());
 		Thread.sleep(25);
-		
-		// This should succeed; the server has received a message within the last 25 ms.
+
+		// This should succeed; the server has received a message within the
+		// last 25 ms.
 		Assert.assertTrue(this.s.isAlive(45, false, false, 0).get());
-		
+
 		// This should fail; the client has not.
 		Assert.assertFalse(this.c.isAlive(5, false, false, 0).get());
 	}
@@ -283,7 +288,7 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 		{
 			while (this.incomingEP == null)
 				this.wait();
-			
+
 			return this.incomingEP;
 		}
 		finally
@@ -291,7 +296,7 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 			this.incomingEP = null;
 		}
 	}
-	
+
 	private byte[] receive() throws Exception
 	{
 		byte[] b = null;
@@ -308,7 +313,7 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 		endpoint.setDelegate(this, true);
 		this.notify();
 	}
-	
+
 	int	f	= 0;
 
 	public void trapData(byte[] data, int channel, TrapEndpoint endpoint, Object context)
@@ -318,7 +323,7 @@ public class AsynchronousTransportTest implements OnAccept, OnData
 
 		this.receivingCount.incrementAndGet();
 		this.receipts.add(data);
-		
+
 		if (this.receipts.size() > 10000)
 			try
 			{

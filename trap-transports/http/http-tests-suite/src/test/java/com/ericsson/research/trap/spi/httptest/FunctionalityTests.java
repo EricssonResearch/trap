@@ -70,6 +70,7 @@ public class FunctionalityTests implements OnAccept
     {
         JDKLoggerConfig.initForPrefixes(Level.ALL);
         this.listener = TrapFactory.createListener(null);
+		listener.disableTransport("websocket");
         this.listener.listen(this);
         
         String cfg = this.listener.getClientConfiguration();

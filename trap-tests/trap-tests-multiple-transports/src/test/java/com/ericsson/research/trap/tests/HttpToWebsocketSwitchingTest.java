@@ -90,7 +90,7 @@ public class HttpToWebsocketSwitchingTest implements OnAccept, OnData
 		if ("true".equals(System.getProperty("trap.stresstest")))
 			return Arrays.asList(new Object[500][0]);
 		else
-			return Arrays.asList(new Object[10][0]);
+			return Arrays.asList(new Object[101][0]);
 	}
 	
 	@BeforeClass
@@ -146,11 +146,12 @@ public class HttpToWebsocketSwitchingTest implements OnAccept, OnData
 	}
 	
 	@After
-	public void tearDown()
+	public void tearDown() throws InterruptedException
 	{
 		this.receipts.clear();
 		this.c.close();
 		this.s.close();
+		
 		this.c = null;
 		this.s = null;
 		this.listener.close();

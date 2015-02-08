@@ -33,8 +33,9 @@ package com.ericsson.research.trap.spi.httptest;
  * ##_END_LICENSE_##
  */
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Handler;
@@ -42,10 +43,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import com.ericsson.research.trap.TrapClient;
 import com.ericsson.research.trap.TrapEndpoint;
@@ -54,127 +55,106 @@ import com.ericsson.research.trap.TrapListener;
 import com.ericsson.research.trap.TrapState;
 import com.ericsson.research.trap.delegates.OnAccept;
 import com.ericsson.research.trap.delegates.OnData;
-import com.ericsson.research.trap.utils.ThreadPool;
+import com.ericsson.research.trap.impl.ClientTrapEndpoint;
+import com.ericsson.research.trap.spi.transports.ClientHttpTransport;
 
-@RunWith(Parameterized.class)
-public class HttpPerformanceTest implements OnAccept, OnData
+/*
+ * Tests the HTTP expiry timers
+ */
+@Ignore // This test is not actually testing anything meaningful.
+// Keepalives and other items will destroy it.
+public class HttpExpiryTest implements OnAccept, OnData
 {
+	TrapEndpoint					incomingEP;
+	TrapListener					listener;
+	TrapClient						c;
+	TrapEndpoint					s;
 	
-	TrapEndpoint						incomingEP;
-	static TrapListener					listener;
-	static TrapClient					c;
-	static TrapEndpoint					s;
-	private static HttpPerformanceTest	instance;
-	
-	ConcurrentLinkedQueue<byte[]>		receipts		= new ConcurrentLinkedQueue<byte[]>();
-	AtomicInteger						receivingCount	= new AtomicInteger(0);
-	AtomicInteger						processed		= new AtomicInteger(0);
-	AtomicInteger						receiving;
-	int									messages;
+	ConcurrentLinkedQueue<byte[]>	receipts		= new ConcurrentLinkedQueue<byte[]>();
+	AtomicInteger					receivingCount	= new AtomicInteger(0);
+	AtomicInteger					processed		= new AtomicInteger(0);
+	AtomicInteger					receiving;
+	int								messages;
+	private TimedHttpTransport		timedHttpTransport;
+	boolean							expiredInTime	= false;
 	
 	@BeforeClass
-	public static void setUp() throws Throwable
+	public static void setLoggerLevel()
 	{
+		Logger jl = Logger.getLogger("");
+		jl.setLevel(Level.FINEST);
+		for (Handler h : jl.getHandlers())
+			h.setLevel(Level.ALL);
+	}
+	
+	@Before
+	public void setUp() throws Throwable
+	{
+		this.testBegun = false;
+		this.listener = TrapFactory.createListener(null);
 		
-		instance = new HttpPerformanceTest();
+		this.listener.listen(this);
 		
-		listener = TrapFactory.createListener(null);
-		listener.disableTransport("websocket");
-		listener.listen(instance);
-		
-		String cfg = listener.getClientConfiguration();
-		c = TrapFactory.createClient(cfg, true);
-		c.setDelegate(instance, true);
-		c.setAsync(true);
-		c.open();
+		String cfg = this.listener.getClientConfiguration();
+		this.c = TrapFactory.createClient(cfg, true);
+		this.c.setDelegate(this, true);
+		this.timedHttpTransport = new TimedHttpTransport();
+		((ClientTrapEndpoint) this.c).removeTransport(this.c.getTransport("http"));
+		((ClientTrapEndpoint) this.c).addTransport(this.timedHttpTransport);
+		this.c.open();
+		this.c.setAsync(false);
 		
 		// Accept
 		
-		s = instance.accept();
-		s.setAsync(true);
+		this.s = this.accept();
 		
-		Logger jl = Logger.getLogger("");
-		jl.setLevel(Level.INFO);
-		for (Handler h : jl.getHandlers())
-			h.setLevel(Level.INFO);
-		
-		while (c.getState() != TrapState.OPEN)
+		while (this.c.getState() != TrapState.OPEN)
 			Thread.sleep(10);
-	}
-	
-	@Parameterized.Parameters
-	public static List<Object[]> data()
-	{
-		if ("true".equals(System.getProperty("trap.stresstest")))
-			return Arrays.asList(new Object[100][0]);
-		else
-			return Arrays.asList(new Object[10][0]);
+		
+		this.expiredInTime = false;
 	}
 	
 	@Test(timeout = 10000)
 	public void testNormal() throws Exception
 	{
-		this.performMessageTests();
+		this.performTimeoutTest(1000);
 	}
 	
-	public void performMessageTests() throws Exception
+	@Test(timeout = 10000)
+	public void testStillHanging() throws Exception
+	{
+		this.timeout = 1000;
+
+		this.expiredInTime = false;
+		this.testBegun = true;
+		this.s.send(new byte[] { 42 });
+		
+		Thread.sleep(1500);
+		Assert.assertTrue("Expired prematurely", this.expiredInTime);
+	}
+
+	
+	int	j	= 0;
+	private boolean	testBegun;
+	private long	timeout;
+	
+	public synchronized void performTimeoutTest(final long timeout) throws Exception
 	{
 		
-		final byte[] bytes = "Helloes".getBytes();
+		this.timeout = timeout;
+		long finalTime = System.currentTimeMillis();
+		finalTime += timeout + 1000;
+
+		this.expiredInTime = false;
+		this.testBegun = true;
+		this.s.send(new byte[] { 42 });
 		
-		instance.receiving = new AtomicInteger(32);
-		instance.receipts = new ConcurrentLinkedQueue<byte[]>();
-		instance.receivingCount = new AtomicInteger(0);
-		instance.processed = new AtomicInteger(0);
-		instance.messages = 100000;
+		while ((System.currentTimeMillis() < finalTime) && !this.expiredInTime)
+			Thread.sleep(200);
 		
-		for (int k = 0; k < instance.receiving.get(); k++)
-		{
-			ThreadPool.executeFixed(new Runnable() {
-				
-				public void run()
-				{
-					for (int i = 0; i < (HttpPerformanceTest.instance.messages / HttpPerformanceTest.instance.receiving.get()); i++)
-						try
-						{
-							byte[] b = HttpPerformanceTest.instance.receive();
-							if (b == null)
-								continue;
-							Assert.assertArrayEquals(b, bytes);
-							HttpPerformanceTest.instance.processed.incrementAndGet();
-						}
-						catch (Exception e)
-						{
-							e.printStackTrace();
-						}
-					HttpPerformanceTest.instance.receiving.decrementAndGet();
-				}
-			});
-		}
-		
-		ThreadPool.executeCached(new Runnable() {
-			
-			public void run()
-			{
-				for (int i = 0; i < HttpPerformanceTest.instance.messages; i++)
-				{
-					try
-					{
-						HttpPerformanceTest.s.send(bytes);
-					}
-					catch (Throwable e)
-					{
-						e.printStackTrace();
-					}
-				}
-				
-			}
-			
-		});
-		
-		while (instance.receiving.get() != 0)
-			Thread.sleep(10);
-		
+		if (!this.expiredInTime)
+			Assert.fail("Did not end in time");
+
 	}
 	
 	protected synchronized TrapEndpoint accept() throws InterruptedException
@@ -192,6 +172,7 @@ public class HttpPerformanceTest implements OnAccept, OnData
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	private byte[] receive() throws Exception
 	{
 		byte[] b = null;
@@ -204,15 +185,18 @@ public class HttpPerformanceTest implements OnAccept, OnData
 	
 	public synchronized void incomingTrapConnection(TrapEndpoint endpoint, TrapListener listener, Object context)
 	{
-		//System.out.println("Incoming Connection");
 		this.incomingEP = endpoint;
 		endpoint.setDelegate(this, true);
 		this.notify();
 	}
 	
+	int	f	= 0;
+	
 	public void trapData(byte[] data, int channel, TrapEndpoint endpoint, Object context)
 	{
-		//System.out.println(new String(data));
+		if (data.length == 0)
+			System.err.println("We have a problem!");
+		
 		this.receivingCount.incrementAndGet();
 		this.receipts.add(data);
 		
@@ -225,5 +209,33 @@ public class HttpPerformanceTest implements OnAccept, OnData
 			{
 				e.printStackTrace();
 			}
+	}
+	
+	class TimedHttpTransport extends ClientHttpTransport
+	{
+		
+		long	startTime	= 0;
+		long	endTime		= 0;
+
+		protected HttpURLConnection openConnection(URL u) throws IOException
+		{
+			if (HttpExpiryTest.this.testBegun)
+			{
+				this.expirationDelay = HttpExpiryTest.this.timeout;
+				if (this.startTime == 0)
+				{
+					this.startTime = System.currentTimeMillis();
+				}
+				else
+				{
+					this.endTime = System.currentTimeMillis();
+					
+					System.out.println((this.endTime - this.startTime));
+					HttpExpiryTest.this.expiredInTime = (this.endTime - this.startTime) <= (HttpExpiryTest.this.timeout + 200); // 200ms tolerance for failure
+				}
+			}
+			return super.openConnection(u);
+		}
+		
 	}
 }

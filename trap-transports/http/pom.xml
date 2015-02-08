@@ -35,6 +35,7 @@
 		<module>http-server-servlet-2.5</module>
 		<module>http-server-servlet-3.0</module>
 		<module>http-server-sun</module>
+		<module>http-tests-nano</module>
 		<module>http-tests-suite</module>
 		<module>http-tests-sun</module>
 		<module>http-tests-servlet</module>
