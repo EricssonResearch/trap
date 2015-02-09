@@ -150,12 +150,14 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
             // if size == -1, assume chunked
             
             if (size == -1)
-                if ("chunked".equals(headers.get("Transfer-Encoding")))
+            {
+                if ("chunked".equals(headers.get("transfer-encoding")))
                 {
                     body = new ChunkedInputStream(inputStream);
                 }
-                else
-                    body = new LimitedInputStream(inputStream, size);
+            }
+            else
+                body = new LimitedInputStream(inputStream, size);
             
             // Ok, now do the serve()
             Response r = server.serve(this);
