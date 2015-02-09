@@ -209,7 +209,6 @@ public class Response
         byte[] CRLF = "\r\n".getBytes();
         byte[] buff = new byte[BUFFER_SIZE];
         int read;
-        System.out.println(data.available());
         while ((read = data.read(buff)) > -1)
         {
             outputStream.write(String.format("%x\r\n", read).getBytes());
