@@ -187,6 +187,7 @@ public class ServerWebSocketTransport extends AbstractListenerTransport implemen
 	@Override
     public void handle(IHTTPSession request, Response response)
     {
+	    response.setAsync(true);
 		response.setStatus(Status.SWITCH_PROTOCOL);
 		Socket socket = request.getSocket();
 		WSNioEndpoint ws = new WSNioEndpoint(socket, new WSPrefetcher(new WSSecurityContext(server.server.getSslc())), null);
