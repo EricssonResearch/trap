@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>http</artifactId>
 		<groupId>com.ericsson.research.trap.transports</groupId>
-		<version>1.4.0-SNAPSHOT</version>
+		<version>1.4.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>http-server-servlet-3.0</artifactId>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-core</artifactId>
-			<version>1.4.0-SNAPSHOT</version>
+			<version>1.4.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>http-server-servlet-2.5</artifactId>
-			<version>1.4.0-SNAPSHOT</version>
+			<version>1.4.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
