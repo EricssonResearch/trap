@@ -43,7 +43,7 @@ public class CORSUtil
         String origin = session.getHeaders().get("Origin");
         
         if (origin == null)
-            origin = "null";
+            return;
         
         r.addHeader("Allow", "GET,PUT,POST,DELETE,OPTIONS");
         r.addHeader("Access-Control-Allow-Origin", origin);
