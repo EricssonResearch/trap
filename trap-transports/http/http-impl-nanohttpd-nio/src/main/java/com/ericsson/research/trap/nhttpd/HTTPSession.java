@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import com.ericsson.research.trap.nhttpd.NanoHTTPD.Method;
-import com.ericsson.research.trap.nhttpd.Response.Status;
 import com.ericsson.research.trap.nio.NioInputStream;
 import com.ericsson.research.trap.nio.NioOutputStream;
 import com.ericsson.research.trap.nio.Socket;
@@ -41,6 +40,7 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     private String                queryParameterString;
     private Socket                sock;
     private NanoHTTPD             server;
+    private byte[]                buf;
     
     public HTTPSession(NanoHTTPD server, TempFileManager tempFileManager, Socket sock) throws IOException
     {
@@ -70,7 +70,8 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
             // Apache's default header limit is 8KB.
             // Do NOT assume that a single read will get the entire header at
             // once!
-            byte[] buf = new byte[BUFSIZE];
+            this.buf = new byte[BUFSIZE];
+            headers.clear();
             splitbyte = 0;
             rlen = 0;
             {
@@ -78,6 +79,14 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
                 try
                 {
                     read = inputStream.read(buf, 0, BUFSIZE);
+                    
+                    if (read == 16 && buf[0] < 0 && buf[1] == 0 && buf[2] == 0)
+                    {
+                        //System.out.println("Problem");
+                        // FIXME: There is an error here where a Trap message is occasionally received here (16 bytes read)
+                        // Don't know where it comes from or why.
+                        read = 0;
+                    }
                 }
                 catch (Exception e)
                 {
@@ -95,7 +104,7 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
                     sock.close();
                     return;
                 }
-                while (read > 0)
+                while (read >= 0)
                 {
                     rlen += read;
                     splitbyte = findHeaderEnd(buf, rlen);
@@ -155,6 +164,8 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
                 {
                     body = new ChunkedInputStream(inputStream);
                 }
+                else
+                    body = null;
             }
             else
                 body = new LimitedInputStream(inputStream, size);
@@ -167,15 +178,8 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
             }
             else
             {
-                if (r.getStatus() == Status.SWITCH_PROTOCOL)
-                {
-                    inputStream.received(ByteBuffer.wrap(buf, 0, rlen), sock);
-                    return;
-                }
-                
                 if (!r.getAsync())
                     finish(r);
-                
             }
         }
         catch (SocketException e)
@@ -211,6 +215,22 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     
     public void finish(Response r)
     {
+        
+        try
+        {
+            // Read any (eventual) message body, to prevent downstream corruption
+            if (body != null)
+            {
+                byte[] buf = new byte[4096];
+                while (body.read(buf) > -1);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            sock.close();
+        }
+        body = null;
         try
         {
             cookies.unloadQueue(r);
@@ -815,9 +835,31 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     {
         if (inputStream == null)
         {
+            
+            int limit = data.limit();
+            int position = data.position();
+            
+            byte[] buf = new byte[limit-position];
+            data.get(buf);
+            data.limit(limit);
+            data.position(position);
+            
+            try
+            {
+                if (buf[0] < 0 && buf[1] == 0)
+                   System.out.println("Received Trap message on new HTTP session!!!");
+            }
+            catch(Exception e) {
+                
+            }
+            
             this.inputStream = new NioInputStream(sock);
             inputStream.received(data, sock);
             server.asyncRunner.exec(this);
+        }
+        else
+        {
+            inputStream.received(data, sock);
         }
     }
     
@@ -848,6 +890,8 @@ class HTTPSession implements IHTTPSession, SocketHandler, Runnable
     @Override
     public void upgrade(SocketHandler handler)
     {
+        inputStream.received(ByteBuffer.wrap(buf, 0, rlen), sock);
         inputStream.setHandler(handler, sock, true);
+        body = null;
     }
 }

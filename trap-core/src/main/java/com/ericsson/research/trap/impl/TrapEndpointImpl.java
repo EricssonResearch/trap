@@ -483,15 +483,6 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
 			throw new NullPointerException("Cannot send null message.");
 
 		if ((this.getState() != TrapState.OPEN) && (message.getOp() != Operation.END) && this.getState() != TrapState.SLEEPING) // EXCEPT
-			// if
-			// we
-			// are
-			// (re-)sending
-			// the
-			// END
-			// message
-			// to
-			// terminate
 			throw new TrapException("Tried to send to non-open Trap session");
 
 		TrapChannelImpl channel = (this.getChannel(message.getChannel()));
