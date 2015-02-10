@@ -157,7 +157,7 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
                 response.setStatus(StatusCodes.OK);
                 
                 byte[] uriBytes = StringUtil.toUtfBytes(t.getPath().substring(1));
-                response.setData(uriBytes).setStatus(201);
+                response.setData(uriBytes).setStatus(200);
                 
             }
         };

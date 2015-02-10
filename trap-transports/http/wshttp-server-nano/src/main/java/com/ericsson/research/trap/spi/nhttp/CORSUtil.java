@@ -40,7 +40,7 @@ public class CORSUtil
 {
     public static void setCors(Request session, Response r)
     {
-        String origin = session.getHeaders().get("Origin");
+        String origin = session.getHeaders().get("origin");
         
         if (origin == null)
             return;
