@@ -38,8 +38,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.ericsson.research.trap.utils.ThreadPoolImpl;
-
 /*
  * These tests are run with 64mb max ram. Thus, we'll use this to ensure we
  * don't crash while testing.

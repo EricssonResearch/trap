@@ -36,8 +36,6 @@ package com.ericsson.research.trap.utils;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-import com.ericsson.research.trap.utils.Lock;
-
 public class LockImpl extends Lock
 {
 	

@@ -447,9 +447,12 @@ public class MessageQueueTest
                         
                         mmq.put(new TrapMessageImpl().setMessageId(i + start).setOp(Operation.MESSAGE));
                     }
-                    catch (TrapException e)
-                    {
-                    }
+                catch (TrapException e)
+                {
+                }
+                catch (Exception e)
+                {
+                }
                 
             }
         };

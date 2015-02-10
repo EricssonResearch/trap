@@ -50,10 +50,10 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.ericsson.research.trap.nio.ServerSocket;
-import com.ericsson.research.trap.nio.SocketFactory;
 import com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler;
 import com.ericsson.research.trap.nio.Socket;
 import com.ericsson.research.trap.nio.Socket.SocketHandler;
+import com.ericsson.research.trap.nio.SocketFactory;
 import com.ericsson.research.trap.utils.SSLUtil;
 import com.ericsson.research.trap.utils.SSLUtil.SSLMaterial;
 

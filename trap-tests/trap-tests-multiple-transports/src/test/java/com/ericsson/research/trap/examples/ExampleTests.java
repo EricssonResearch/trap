@@ -37,16 +37,6 @@ import java.util.logging.Level;
 
 import org.junit.Test;
 
-import com.ericsson.research.trap.examples.AuthenticatedEchoClient;
-import com.ericsson.research.trap.examples.AuthenticatedEchoServer;
-import com.ericsson.research.trap.examples.AutoConfiguredServer;
-import com.ericsson.research.trap.examples.ConfiguredClient;
-import com.ericsson.research.trap.examples.ConfiguredServer;
-import com.ericsson.research.trap.examples.DelegateEchoClient;
-import com.ericsson.research.trap.examples.EchoClient;
-import com.ericsson.research.trap.examples.EchoServer;
-import com.ericsson.research.trap.examples.MultiplexedClient;
-import com.ericsson.research.trap.examples.MultiplexedServer;
 import com.ericsson.research.trap.utils.JDKLoggerConfig;
 
 // This class should test the examples in the Trap API

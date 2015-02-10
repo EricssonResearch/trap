@@ -45,9 +45,9 @@ import java.nio.channels.AsynchronousSocketChannel;
 import javax.net.ssl.SSLContext;
 
 import com.ericsson.research.trap.nio.ServerSocket;
-import com.ericsson.research.trap.nio.SocketFactory;
 import com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler;
 import com.ericsson.research.trap.nio.Socket;
+import com.ericsson.research.trap.nio.SocketFactory;
 
 /**
  *

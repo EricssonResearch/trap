@@ -35,8 +35,6 @@ package com.ericsson.research.trap.utils;
 
 import java.util.concurrent.ScheduledFuture;
 
-import com.ericsson.research.trap.utils.Future;
-
 public class FutureImpl implements Future
 {
 	
