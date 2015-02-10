@@ -35,9 +35,7 @@ package com.ericsson.research.trap.spi.httptest;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.junit.Assert;
 import org.junit.Before;

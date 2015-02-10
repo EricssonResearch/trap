@@ -48,7 +48,6 @@ import com.ericsson.research.trap.TrapException;
 import com.ericsson.research.trap.TrapFactory;
 import com.ericsson.research.trap.TrapListener;
 import com.ericsson.research.trap.TrapState;
-import com.ericsson.research.trap.TrapTransports;
 import com.ericsson.research.trap.delegates.OnAccept;
 import com.ericsson.research.trap.delegates.OnData;
 import com.ericsson.research.trap.impl.queues.LinkedBlockingMessageQueue;

@@ -1,13 +1,13 @@
 package com.ericsson.research.trap.spi.nhttp.handlers;
 
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
-import com.ericsson.research.trap.nhttpd.Response.Status;
+import com.ericsson.research.trap.nhttpd.StatusCodes;
 import com.ericsson.research.trap.spi.TrapHostingTransport.TrapHostable;
-import com.ericsson.research.trap.spi.nhttp.FullRequestHandler;
 
 
-public class Redirect extends TrapHostable implements FullRequestHandler
+public class Redirect extends TrapHostable implements RequestHandler
 {
     
     private String location;
@@ -19,9 +19,9 @@ public class Redirect extends TrapHostable implements FullRequestHandler
     }
     
     @Override
-    public void handle(IHTTPSession request, Response response)
+    public void handleRequest(Request request, Response response)
     {
-        response.setStatus(Status.REDIRECT);
+        response.setStatus(StatusCodes.FOUND);
         response.addHeader("Location", location);
     }
     

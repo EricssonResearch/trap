@@ -33,7 +33,6 @@ package com.ericsson.research.trap.utils;
  * ##_END_LICENSE_##
  */
 
-import com.ericsson.research.trap.utils.UUID;
 
 public class UUIDImpl extends UUID
 {

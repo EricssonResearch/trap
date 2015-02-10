@@ -69,7 +69,7 @@ public class CABMessageQueue implements BlockingMessageQueue
 		}
 		catch (InterruptedException e)
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new TrapException(e);
 		}
 	}

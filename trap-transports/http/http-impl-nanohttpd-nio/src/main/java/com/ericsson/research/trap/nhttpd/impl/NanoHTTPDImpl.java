@@ -1,4 +1,4 @@
-package com.ericsson.research.trap.nhttpd;
+package com.ericsson.research.trap.nhttpd.impl;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -15,6 +15,10 @@ import java.util.StringTokenizer;
 
 import javax.net.ssl.SSLContext;
 
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
+import com.ericsson.research.trap.nhttpd.Response;
+import com.ericsson.research.trap.nhttpd.options.DefaultAsyncRunner;
 import com.ericsson.research.trap.nio.Nio;
 import com.ericsson.research.trap.nio.ServerSocket;
 import com.ericsson.research.trap.nio.ServerSocket.ServerSocketHandler;
@@ -28,45 +32,10 @@ import com.ericsson.research.trap.nio.Socket;
  * <p>
  * </p>
  * Copyright (c) 2012-2013 by Paul S. Hawke, 2001,2005-2013 by Jarno Elonen, 2010 by Konstantinos Togias</p>
- * <p/>
- * <p/>
- * <b>Features + limitations: </b>
- * <ul>
- * <p/>
- * <li>Only one Java file</li>
- * <li>Java 5 compatible</li>
- * <li>Released as open source, Modified BSD licence</li>
- * <li>No fixed config files, logging, authorization etc. (Implement yourself if you need them.)</li>
- * <li>Supports parameter parsing of GET and POST methods (+ rudimentary PUT support in 1.25)</li>
- * <li>Supports both dynamic content and file serving</li>
- * <li>Supports file upload (since version 1.2, 2010)</li>
- * <li>Supports partial content (streaming)</li>
- * <li>Supports ETags</li>
- * <li>Never caches anything</li>
- * <li>Doesn't limit bandwidth, request time or simultaneous connections</li>
- * <li>Default code serves files and shows all HTTP parameters and headers</li>
- * <li>File server supports directory listing, index.html and index.htm</li>
- * <li>File server supports partial content (streaming)</li>
- * <li>File server supports ETags</li>
- * <li>File server does the 301 redirection trick for directories without '/'</li>
- * <li>File server supports simple skipping for files (continue download)</li>
- * <li>File server serves also very long files without memory overhead</li>
- * <li>Contains a built-in list of most common mime types</li>
- * <li>All header names are converted lowercase so they don't vary between browsers/clients</li>
- * <p/>
- * </ul>
- * <p/>
- * <p/>
- * <b>How to use: </b>
- * <ul>
- * <p/>
- * <li>Subclass and implement serve() and embed to your own program</li>
- * <p/>
- * </ul>
- * <p/>
+ * <p>
  * See the separate "LICENSE.md" file for the distribution license (Modified BSD licence)
  */
-public class NanoHTTPD implements ServerSocketHandler
+public abstract class NanoHTTPDImpl implements ServerSocketHandler
 {
     /**
      * Maximum time to wait on Socket.getInputStream().read() (in milliseconds) This is required as the Keep-Alive HTTP
@@ -93,16 +62,21 @@ public class NanoHTTPD implements ServerSocketHandler
      * Pluggable strategy for asynchronously executing requests.
      */
     AsyncRunner                    asyncRunner;
-    /**
-     * Pluggable strategy for creating and cleaning up temporary files.
-     */
-    private TempFileManagerFactory tempFileManagerFactory;
     private SSLContext             sslc;
+    
+    private RequestHandler handler = new RequestHandler()
+	{
+		@Override
+		public void handleRequest(Request request, Response response)
+		{
+			// Do_nothing. The response will return 404.
+		}
+	};
     
     /**
      * Constructs an HTTP server on given port.
      */
-    public NanoHTTPD(int port)
+    public NanoHTTPDImpl(int port)
     {
         this(null, port);
     }
@@ -110,11 +84,10 @@ public class NanoHTTPD implements ServerSocketHandler
     /**
      * Constructs an HTTP server on given hostname and port.
      */
-    public NanoHTTPD(String hostname, int port)
+    public NanoHTTPDImpl(String hostname, int port)
     {
         this.hostname = hostname;
         this.myPort = port;
-        setTempFileManagerFactory(new DefaultTempFileManagerFactory());
         setAsyncRunner(new DefaultAsyncRunner());
     }
     
@@ -247,63 +220,6 @@ public class NanoHTTPD implements ServerSocketHandler
     }
     
     /**
-     * Override this to customize the server.
-     * <p/>
-     * <p/>
-     * (By default, this delegates to serveFile() and allows directory listing.)
-     *
-     * @param uri
-     *            Percent-decoded URI without parameters, for example "/index.cgi"
-     * @param method
-     *            "GET", "POST" etc.
-     * @param parms
-     *            Parsed, percent decoded parameters from URI and, in case of POST, data.
-     * @param headers
-     *            Header entries, percent decoded
-     * @return HTTP response, see class Response for details
-     */
-    @Deprecated
-    public Response serve(String uri, Method method, Map<String, String> headers, Map<String, String> parms, Map<String, String> files)
-    {
-        return new Response(Response.Status.NOT_FOUND, MIME_PLAINTEXT, "Not Found");
-    }
-    
-    /**
-     * Override this to customize the server.
-     * <p/>
-     * <p/>
-     * (By default, this delegates to serveFile() and allows directory listing.)
-     *
-     * @param session
-     *            The HTTP session
-     * @return HTTP response, see class Response for details
-     */
-    public Response serve(IHTTPSession session)
-    {
-        Map<String, String> files = new HashMap<String, String>();
-        Method method = session.getMethod();
-        if (Method.PUT.equals(method) || Method.POST.equals(method))
-        {
-            try
-            {
-                session.parseBody(files);
-            }
-            catch (IOException ioe)
-            {
-                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "SERVER INTERNAL ERROR: IOException: " + ioe.getMessage());
-            }
-            catch (ResponseException re)
-            {
-                return new Response(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
-            }
-        }
-        
-        Map<String, String> parms = session.getParms();
-        parms.put(QUERY_STRING_PARAMETER, session.getQueryParameterString());
-        return serve(session.getUri(), method, session.getHeaders(), parms, files);
-    }
-    
-    /**
      * Decode percent encoded <code>String</code> values.
      *
      * @param str
@@ -388,43 +304,6 @@ public class NanoHTTPD implements ServerSocketHandler
         this.asyncRunner = asyncRunner;
     }
     
-    // ------------------------------------------------------------------------------- //
-    //
-    // Temp file handling strategy.
-    //
-    // ------------------------------------------------------------------------------- //
-    
-    /**
-     * Pluggable strategy for creating and cleaning up temporary files.
-     *
-     * @param tempFileManagerFactory
-     *            new strategy for handling temp files.
-     */
-    public void setTempFileManagerFactory(TempFileManagerFactory tempFileManagerFactory)
-    {
-        this.tempFileManagerFactory = tempFileManagerFactory;
-    }
-    
-    /**
-     * HTTP Request methods, with the ability to decode a <code>String</code> back to its enum value.
-     */
-    public enum Method
-    {
-        GET, PUT, POST, DELETE, HEAD, OPTIONS;
-        
-        static Method lookup(String method)
-        {
-            for (Method m : Method.values())
-            {
-                if (m.toString().equalsIgnoreCase(method))
-                {
-                    return m;
-                }
-            }
-            return null;
-        }
-    }
-    
     /**
      * Pluggable strategy for asynchronously executing requests.
      */
@@ -437,10 +316,9 @@ public class NanoHTTPD implements ServerSocketHandler
     public void accept(Socket sock, ServerSocket ss)
     {
         registerConnection(sock);
-        TempFileManager tempFileManager = tempFileManagerFactory.create();
         try
         {
-            new HTTPSession(this, tempFileManager, sock);
+            new HTTPSession(this, sock);
         }
         catch (IOException e)
         {
@@ -469,6 +347,17 @@ public class NanoHTTPD implements ServerSocketHandler
     public InetSocketAddress getAddress() throws IOException
     {
         return myServerSocket.getInetAddress();
+    }
+
+	public RequestHandler getHandler()
+    {
+	    return handler;
+    }
+
+	public NanoHTTPDImpl setHandler(RequestHandler handler)
+    {
+		this.handler = handler;
+		return this;
     }
     
     // ------------------------------------------------------------------------------- //

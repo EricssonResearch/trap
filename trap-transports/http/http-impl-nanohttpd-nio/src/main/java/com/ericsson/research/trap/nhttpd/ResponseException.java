@@ -1,22 +1,26 @@
 package com.ericsson.research.trap.nhttpd;
 
 
-public final class ResponseException extends Exception {
+public final class ResponseException extends Exception
+{
 
-    private static final long serialVersionUID = 1L;
-    private final Response.Status status;
+	private static final long	serialVersionUID	= 1L;
+	private final int	      status;
 
-    public ResponseException(Response.Status status, String message) {
-        super(message);
-        this.status = status;
-    }
+	public ResponseException(int status, String message)
+	{
+		super(message);
+		this.status = status;
+	}
 
-    public ResponseException(Response.Status status, String message, Exception e) {
-        super(message, e);
-        this.status = status;
-    }
+	public ResponseException(int status, String message, Exception e)
+	{
+		super(message, e);
+		this.status = status;
+	}
 
-    public Response.Status getStatus() {
-        return status;
-    }
+	public int getStatus()
+	{
+		return status;
+	}
 }

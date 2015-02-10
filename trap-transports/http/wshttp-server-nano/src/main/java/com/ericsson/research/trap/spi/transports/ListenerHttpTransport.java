@@ -44,11 +44,12 @@ import java.util.Map;
 import javax.net.ssl.SSLContext;
 
 import com.ericsson.research.trap.TrapException;
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
-import com.ericsson.research.trap.nhttpd.NanoHTTPD;
+import com.ericsson.research.trap.nhttpd.HTTPD;
+import com.ericsson.research.trap.nhttpd.Method;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
-import com.ericsson.research.trap.nhttpd.NanoHTTPD.Method;
-import com.ericsson.research.trap.nhttpd.Response.Status;
+import com.ericsson.research.trap.nhttpd.StatusCodes;
 import com.ericsson.research.trap.spi.ListenerTrapTransport;
 import com.ericsson.research.trap.spi.ListenerTrapTransportDelegate;
 import com.ericsson.research.trap.spi.TrapConfiguration;
@@ -60,14 +61,13 @@ import com.ericsson.research.trap.spi.TrapTransportPriority;
 import com.ericsson.research.trap.spi.TrapTransportProtocol;
 import com.ericsson.research.trap.spi.TrapTransportState;
 import com.ericsson.research.trap.spi.nhttp.CORSUtil;
-import com.ericsson.research.trap.spi.nhttp.FullRequestHandler;
 import com.ericsson.research.trap.utils.SSLUtil;
 import com.ericsson.research.trap.utils.SSLUtil.SSLMaterial;
 import com.ericsson.research.trap.utils.StringUtil;
 import com.ericsson.research.trap.utils.UID;
 import com.ericsson.research.trap.utils.WeakMap;
 
-public class ListenerHttpTransport extends AbstractListenerTransport implements ListenerTrapTransport, TrapHostingTransport
+public class ListenerHttpTransport extends AbstractListenerTransport implements ListenerTrapTransport, TrapHostingTransport, RequestHandler
 {
     
     private static final String           REGISTER_RESOURCE = "_connectTrap";
@@ -76,12 +76,12 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
     
     int                                   mNum              = listenerNum++;
     
-    NanoHTTPD                             server;
+    HTTPD                             server;
     private ListenerTrapTransportDelegate serverListener;
     private Object                        context;
     boolean                               defaultHost       = true;
     boolean                               secure            = false;
-    private FullRequestHandler            registerHandler;
+    private RequestHandler            registerHandler;
     
     public ListenerHttpTransport() throws IOException
     {
@@ -113,25 +113,25 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
             }
         };
         this.transportPriority = TrapTransportPriority.HTTP_SUN;
-        this.registerHandler = new FullRequestHandler() {
+        this.registerHandler = new RequestHandler() {
             
             @Override
-            public void handle(IHTTPSession request, Response response)
+            public void handleRequest(Request request, Response response)
             {
                 
                 if (request.getUri().length() > REGISTER_RESOURCE.length() + 1)
                 {
                     String res = request.getUri().substring(REGISTER_RESOURCE.length() + 2);
                     
-                    FullRequestHandler handler = hostedObjects.get(res);
+                    RequestHandler handler = hostedObjects.get(res);
                     if (handler != null)
                     {
-                        handler.handle(request, response);
+                        handler.handleRequest(request, response);
                         return;
                     }
                     else
                     {
-                        response.setStatus(Status.NOT_FOUND);
+                        response.setStatus(StatusCodes.NOT_FOUND);
                         return;
                     }
                 }
@@ -140,7 +140,7 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
                 
                 if (request.getMethod() != Method.GET)
                 {
-                    response.setStatus(Status.METHOD_NOT_ALLOWED);
+                    response.setStatus(StatusCodes.METHOD_NOT_ALLOWED);
                     return;
                 }
                 
@@ -154,42 +154,14 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
                 // need
                 // this.
                 
-                response.setStatus(Status.OK);
+                response.setStatus(StatusCodes.OK);
                 
                 byte[] uriBytes = StringUtil.toUtfBytes(t.getPath().substring(1));
-                response.setData(uriBytes);
+                response.setData(uriBytes).setStatus(200);
                 
             }
         };
         this.hostedObjects.put(REGISTER_RESOURCE, this.registerHandler);
-    }
-    
-    public void handle(IHTTPSession request, Response response) throws IOException
-    {
-        try
-        {
-            this.logger.trace("Incoming request on root: {} {}", request.getMethod(), request.getUri());
-            String path = request.getUri();
-            String[] parts = path.split("/");
-            String base = parts.length >= 2 ? parts[1] : "";
-            
-            CORSUtil.setCors(request, response);
-            
-            FullRequestHandler handler = this.hostedObjects.get(base);
-            
-            if (handler != null)
-            {
-                handler.handle(request, response);
-                return;
-            }
-            
-            response.setStatus(Status.NOT_FOUND);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            response.setStatus(Status.INTERNAL_ERROR);
-        }
     }
     
     @Override
@@ -220,9 +192,9 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
     protected void internalDisconnect()
     {
         
-        Collection<FullRequestHandler> values = this.hostedObjects.values();
+        Collection<RequestHandler> values = this.hostedObjects.values();
         
-        for (FullRequestHandler obj : values)
+        for (RequestHandler obj : values)
             if (obj instanceof TrapHostable)
                 ((TrapHostable) obj).notifyRemoved();
         
@@ -290,32 +262,14 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
                 }
             }
             
-            this.server = new NanoHTTPD(host, port) {
-                
-                @Override
-                public Response serve(IHTTPSession session)
-                {
-                    Response response = new Response();
-                    try
-                    {
-                        handle(session, response);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                        response.setStatus(Status.INTERNAL_ERROR);
-                    }
-                    return response;
-                }
-                
-            };
+            this.server = new HTTPD(host, port);
             
             if (sslc != null)
             {
                 this.server.setSslc(sslc);
                 this.secure = true;
             }
-            
+            server.setHandler(this);
             this.server.start();
             this.setState(TrapTransportState.CONNECTED);
         }
@@ -362,12 +316,41 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
         return "http" + (this.secure ? "s" : "") + "://" + hostName + ":" + port + "/" + REGISTER_RESOURCE;
     }
     
+    @Override
+    public void handleRequest(Request request, Response response)
+    {
+        try
+        {
+            this.logger.trace("Incoming request on root: {} {}", request.getMethod(), request.getUri());
+            String path = request.getUri();
+            String[] parts = path.split("/");
+            String base = parts.length >= 2 ? parts[1] : "";
+            
+            CORSUtil.setCors(request, response);
+            
+            RequestHandler handler = this.hostedObjects.get(base);
+            
+            if (handler != null)
+            {
+                handler.handleRequest(request, response);
+                return;
+            }
+            
+            response.setStatus(StatusCodes.NOT_FOUND);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            response.setStatus(StatusCodes.INTERNAL_SERVER_ERROR).setData(e.getMessage());
+        }
+    }
+    
     public void unregister(ServerHttpTransport serverHttpTransport)
     {
         hostedObjects.remove(serverHttpTransport.getPath().substring(1));
     }
     
-    WeakMap<String, FullRequestHandler> hostedObjects = new WeakMap<String, FullRequestHandler>();
+    WeakMap<String, RequestHandler> hostedObjects = new WeakMap<String, RequestHandler>();
     
     @Override
     public URI addHostedObject(final TrapHostable hosted, String preferredPath)
@@ -375,23 +358,23 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
         if (preferredPath == null || this.hostedObjects.containsKey(preferredPath))
             preferredPath = UID.randomUID();
         
-        FullRequestHandler handler = null;
+        RequestHandler handler = null;
         
-        if (hosted instanceof FullRequestHandler)
+        if (hosted instanceof RequestHandler)
         {
-            handler = (FullRequestHandler) hosted;
+            handler = (RequestHandler) hosted;
         }
         else
         {
-            handler = new FullRequestHandler() {
+            handler = new RequestHandler() {
                 
                 @Override
-                public void handle(IHTTPSession request, Response response)
+                public void handleRequest(Request request, Response response)
                 {
                     response.addHeader("Content-Type", hosted.getContentType());
                     
                     byte[] bs = hosted.getBytes();
-                    response.setStatus(Status.OK);
+                    response.setStatus(StatusCodes.OK);
                     response.setData(new ByteArrayInputStream(bs));
                     
                     return;

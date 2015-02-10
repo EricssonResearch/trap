@@ -16,9 +16,11 @@ import org.junit.Test;
 
 import com.ericsson.research.trap.nhttpd.Cookie;
 import com.ericsson.research.trap.nhttpd.CookieHandler;
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
-import com.ericsson.research.trap.nhttpd.NanoHTTPD;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
+import com.ericsson.research.trap.nhttpd.StatusCodes;
+import com.ericsson.research.trap.nhttpd.impl.NanoHTTPDImpl;
 
 /**
  * @author Paul S. Hawke (paul.hawke@gmail.com)
@@ -69,15 +71,16 @@ public class CookieIntegrationTest extends IntegrationTestBase<CookieIntegration
         return new CookieTestServer();
     }
 
-    public static class CookieTestServer extends NanoHTTPD {
+    public static class CookieTestServer extends NanoHTTPDImpl implements RequestHandler {
         List<Cookie> cookiesReceived = new ArrayList<Cookie>();
         List<Cookie> cookiesToSend = new ArrayList<Cookie>();
 
         public CookieTestServer() {
             super(8192);
+            setHandler(this);
         }
 
-        @Override public Response serve(IHTTPSession session) {
+        @Override public void handleRequest(Request session, Response response) {
             CookieHandler cookies = session.getCookies();
             for (String cookieName : cookies) {
                 cookiesReceived.add(new Cookie(cookieName, cookies.read(cookieName)));
@@ -85,7 +88,8 @@ public class CookieIntegrationTest extends IntegrationTestBase<CookieIntegration
             for (Cookie c : cookiesToSend) {
                 cookies.set(c);
             }
-            return new Response("Cookies!");
+            response.setStatus(StatusCodes.OK).setData("Cookies");
         }
+
     }
 }

@@ -42,9 +42,10 @@ import com.ericsson.research.transport.ws.spi.WSNioEndpoint;
 import com.ericsson.research.transport.ws.spi.WSPrefetcher;
 import com.ericsson.research.trap.TrapException;
 import com.ericsson.research.trap.impl.TrapEndpointImpl;
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
-import com.ericsson.research.trap.nhttpd.Response.Status;
+import com.ericsson.research.trap.nhttpd.StatusCodes;
 import com.ericsson.research.trap.nio.Socket;
 import com.ericsson.research.trap.spi.ListenerTrapTransport;
 import com.ericsson.research.trap.spi.ListenerTrapTransportDelegate;
@@ -54,15 +55,13 @@ import com.ericsson.research.trap.spi.TrapTransport;
 import com.ericsson.research.trap.spi.TrapTransportDelegate;
 import com.ericsson.research.trap.spi.TrapTransportProtocol;
 import com.ericsson.research.trap.spi.TrapTransportState;
-import com.ericsson.research.trap.spi.nhttp.FullRequestHandler;
 import com.ericsson.research.trap.spi.nhttp.WebSocketConstants;
 
-public class ServerWebSocketTransport extends AbstractListenerTransport implements ListenerTrapTransport, FullRequestHandler
+public class ServerWebSocketTransport extends AbstractListenerTransport implements ListenerTrapTransport, RequestHandler
 {
 	public static final String	          REGISTER_RESOURCE	= "_connectTrapWS";
 	private ListenerTrapTransportDelegate	listenerDelegate;
 	private Object	                      listenerContext;
-	private boolean	                      defaultHost	    = true;
 	private ListenerHttpTransport server;
 
 	public String getTransportName()
@@ -185,15 +184,15 @@ public class ServerWebSocketTransport extends AbstractListenerTransport implemen
 	}
 
 	@Override
-    public void handle(IHTTPSession request, Response response)
+    public void handleRequest(Request request, Response response)
     {
 	    response.setAsync(true);
-		response.setStatus(Status.SWITCH_PROTOCOL);
+		response.setStatus(StatusCodes.SWITCHING_PROTOCOLS);
 		Socket socket = request.getSocket();
 		WSNioEndpoint ws = new WSNioEndpoint(socket, new WSPrefetcher(new WSSecurityContext(server.server.getSslc())), null);
 		WebSocketTransport transport = new WebSocketTransport(ws);
 		this.listenerDelegate.ttsIncomingConnection(transport, this, this.listenerContext);
-        request.upgrade(ws);
+        request.upgrade(ws, true);
     }
 
 }

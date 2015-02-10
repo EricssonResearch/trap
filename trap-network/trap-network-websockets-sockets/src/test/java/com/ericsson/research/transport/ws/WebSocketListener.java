@@ -33,8 +33,6 @@ package com.ericsson.research.transport.ws;
  * ##_END_LICENSE_##
  */
 
-import com.ericsson.research.transport.ws.WSInterface;
-import com.ericsson.research.transport.ws.WSListener;
 
 public class WebSocketListener implements WSListener
 {

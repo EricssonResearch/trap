@@ -50,18 +50,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.ericsson.research.trap.TrapException;
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
-import com.ericsson.research.trap.nhttpd.Response.Status;
+import com.ericsson.research.trap.nhttpd.StatusCodes;
 import com.ericsson.research.trap.spi.TrapMessage;
 import com.ericsson.research.trap.spi.TrapTransportException;
 import com.ericsson.research.trap.spi.TrapTransportProtocol;
 import com.ericsson.research.trap.spi.TrapTransportState;
 import com.ericsson.research.trap.spi.nhttp.CORSUtil;
-import com.ericsson.research.trap.spi.nhttp.FullRequestHandler;
 import com.ericsson.research.trap.utils.ThreadPool;
 
-public class ServerHttpTransport extends AbstractTransport implements Runnable, FullRequestHandler
+public class ServerHttpTransport extends AbstractTransport implements Runnable, RequestHandler
 {
 
 	long	                            expirationDelay	      = 28000;	                                // Almost
@@ -187,7 +187,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 
 	byte[]	             readBuf	= new byte[4096];
 	private Response	 response;
-	private IHTTPSession	request;
+	private Request	request;
 
 	/*
 	 * HTTP transport will only switch to available when a GET is present. Thus,
@@ -218,7 +218,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 		return authed;
 	}
 
-	public void handle(IHTTPSession request, Response response)
+	public void handleRequest(Request request, Response response)
 	{
 		try
 		{
@@ -246,7 +246,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 						// Flush response headers, giving XHR a proper handle on
 						// things
 						CORSUtil.setCors(request, response);
-						response.setStatus(Status.CREATED);
+						response.setStatus(StatusCodes.CREATED);
 
 						try
 						{
@@ -264,7 +264,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 							byte[] body = bos.toByteArray();
 
 							response.setData(new ByteArrayInputStream(body));
-							request.finish(response);
+							response.sendAsyncResponse();
 
 							this.messagesToSend.clear();
 							return;
@@ -273,7 +273,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 						{
 							e.printStackTrace();
 							this.messagesToSend.clear();
-							request.finish(response);
+							response.sendAsyncResponse();
 							// No reason here.
 							return;
 						}
@@ -285,8 +285,8 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 					{
 
 						CORSUtil.setCors(request, response);
-						response.setStatus(Status.OK);
-						request.finish(response);
+						response.setStatus(StatusCodes.OK);
+						response.sendAsyncResponse();
 						return;
 
 					}
@@ -322,21 +322,22 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 
 						CORSUtil.setCors(request, response);
 
-						response.setStatus(Status.OK);
-						request.finish(response);
+						response.setStatus(StatusCodes.OK);
+						response.sendAsyncResponse();
 						return;
 					}
 
 					CORSUtil.setCors(request, response);
 
-					response.setStatus(Status.ACCEPTED);
-					request.finish(response);
+					response.setStatus(StatusCodes.ACCEPTED);
+					response.sendAsyncResponse();
 				}
 				catch (Exception e)
 				{
 					this.logger.debug("Exception while sending a POST response: ", e);
 					e.printStackTrace();
-					request.finish(response);
+					response.setStatus(500).setData(e.getMessage());
+					response.sendAsyncResponse();
 				}
 
 			}
@@ -354,7 +355,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 
 				// Flush response headers, giving XHR a proper handle on things
 				CORSUtil.setCors(request, response);
-				response.setStatus(Status.CREATED);
+				response.setStatus(StatusCodes.CREATED);
 
 				synchronized (this)
 				{
@@ -363,7 +364,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 					{
 						this.logger.warn("Invalid HTTP state: Labelled as AVAILABLE when already have a longpoll running");
 						this.wait(1000);
-						request.finish(response);
+						response.sendAsyncResponse();
 						return;
 					}
 
@@ -372,7 +373,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 					if ((this.getState() == TrapTransportState.DISCONNECTED) || (this.getState() == TrapTransportState.DISCONNECTING)
 					        || (this.getState() == TrapTransportState.ERROR))
 					{
-						request.finish(response);
+						response.sendAsyncResponse();
 						return;
 					}
 
@@ -409,8 +410,8 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 			else if ("OPTIONS".equals(method))
 			{
 				CORSUtil.setCors(request, response);
-				response.setStatus(Status.OK);
-				request.finish(response);
+				response.setStatus(StatusCodes.OK);
+				response.sendAsyncResponse();
 			}
 			else if ("PUT".equals(method))
 			{
@@ -421,14 +422,15 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 				this.setState(TrapTransportState.DISCONNECTED);
 
 				CORSUtil.setCors(request, response);
-				response.setStatus(Status.OK);
-				request.finish(response);
+				response.setStatus(StatusCodes.OK);
+				response.sendAsyncResponse();
 			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			request.finish(response);
+			response.setStatus(500).setData(e.getMessage());
+			response.sendAsyncResponse();
 		}
 	}
 
@@ -549,7 +551,7 @@ public class ServerHttpTransport extends AbstractTransport implements Runnable, 
 				this.setState(TrapTransportState.UNAVAILABLE);
 			}
 
-			request.finish(response);
+			response.sendAsyncResponse();
 			response = null;
 			request = null;
 			this.logger.trace("Longpoll ended...");

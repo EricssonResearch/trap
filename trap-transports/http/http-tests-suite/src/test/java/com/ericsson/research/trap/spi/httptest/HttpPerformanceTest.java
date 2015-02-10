@@ -54,6 +54,7 @@ import com.ericsson.research.trap.TrapListener;
 import com.ericsson.research.trap.TrapState;
 import com.ericsson.research.trap.delegates.OnAccept;
 import com.ericsson.research.trap.delegates.OnData;
+import com.ericsson.research.trap.utils.JDKLoggerConfig;
 import com.ericsson.research.trap.utils.ThreadPool;
 
 @RunWith(Parameterized.class)
@@ -75,7 +76,6 @@ public class HttpPerformanceTest implements OnAccept, OnData
 	@BeforeClass
 	public static void setUp() throws Throwable
 	{
-		
 		instance = new HttpPerformanceTest();
 		
 		listener = TrapFactory.createListener(null);

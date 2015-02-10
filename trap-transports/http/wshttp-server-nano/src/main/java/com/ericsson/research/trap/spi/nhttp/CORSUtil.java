@@ -1,6 +1,6 @@
 package com.ericsson.research.trap.spi.nhttp;
 
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
+import com.ericsson.research.trap.nhttpd.Request;
 import com.ericsson.research.trap.nhttpd.Response;
 
 /*
@@ -38,9 +38,9 @@ import com.ericsson.research.trap.nhttpd.Response;
 
 public class CORSUtil
 {
-    public static void setCors(IHTTPSession session, Response r)
+    public static void setCors(Request session, Response r)
     {
-        String origin = session.getHeaders().get("Origin");
+        String origin = session.getHeaders().get("origin");
         
         if (origin == null)
             return;

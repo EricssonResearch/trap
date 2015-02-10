@@ -7,20 +7,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.message.BasicNameValuePair;
 import org.junit.Test;
 
-import com.ericsson.research.trap.nhttpd.NanoHTTPD;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
+import com.ericsson.research.trap.nhttpd.impl.NanoHTTPDImpl;
 
 /**
  * @author Paul S. Hawke (paul.hawke@gmail.com)
@@ -61,53 +57,22 @@ public class GetAndPostIntegrationTest extends IntegrationTestBase<GetAndPostInt
         assertEquals("POST:testPostWithNoParameters", responseBody);
     }
 
-    @Test
-    public void testPostRequestWithFormEncodedParameters() throws Exception {
-        testServer.response = "testPostRequestWithFormEncodedParameters";
-
-        HttpPost httppost = new HttpPost("http://localhost:8192/");
-        List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-        postParameters.add(new BasicNameValuePair("age", "120"));
-        postParameters.add(new BasicNameValuePair("gender", "Male"));
-        httppost.setEntity(new UrlEncodedFormEntity(postParameters));
-
-        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-        String responseBody = httpclient.execute(httppost, responseHandler);
-
-        assertEquals("POST:testPostRequestWithFormEncodedParameters-params=2;age=120;gender=Male", responseBody);
-    }
-
-    @Test
-    public void testPostRequestWithMultipartEncodedParameters() throws Exception {
-        testServer.response = "testPostRequestWithMultipartEncodedParameters";
-
-        HttpPost httppost = new HttpPost("http://localhost:8192/");
-        MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-        reqEntity.addPart("age", new StringBody("120"));
-        reqEntity.addPart("gender", new StringBody("Male"));
-        httppost.setEntity(reqEntity);
-
-        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-        String responseBody = httpclient.execute(httppost, responseHandler);
-
-        assertEquals("POST:testPostRequestWithMultipartEncodedParameters-params=2;age=120;gender=Male", responseBody);
-    }
-
     @Override public TestServer createTestServer() {
         return new TestServer();
     }
 
-    public static class TestServer extends NanoHTTPD {
+    public static class TestServer extends NanoHTTPDImpl implements RequestHandler {
         public String response;
 
         public TestServer() {
             super(8192);
+            setHandler(this);
         }
 
         @Override
-        public Response serve(String uri, Method method, Map<String, String> header, Map<String, String> parms, Map<String, String> files) {
-            StringBuilder sb = new StringBuilder(String.valueOf(method) + ':' + response);
-
+        public void handleRequest(Request request, Response response) {
+            StringBuilder sb = new StringBuilder(String.valueOf(request.getMethod()) + ':' + this.response);
+			Map<String, String> parms = request.getParms();
             if (parms.size() > 1) {
                 parms.remove("NanoHttpd.QUERY_STRING");
                 sb.append("-params=").append(parms.size());
@@ -117,8 +82,10 @@ public class GetAndPostIntegrationTest extends IntegrationTestBase<GetAndPostInt
                     sb.append(';').append(k).append('=').append(parms.get(k));
                 }
             }
+            
+            response.setData(sb.toString()).setStatus(200);
 
-            return new Response(sb.toString());
         }
+
     }
 }

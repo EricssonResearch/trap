@@ -76,7 +76,7 @@ public class SometimesAvailableLoopbackTransport extends LoopbackTransport imple
 		if (this.state == TrapTransportState.AVAILABLE)
 		{
 			this.setState(TrapTransportState.UNAVAILABLE);
-			long sleepFor = (long) ((Math.random() * 20) + 10);
+			long sleepFor = (long) ((Math.random() * 10) + 5);
 			ThreadPool.executeAfter(this, sleepFor);
 		}
 		super.internalSend(message, expectMore);
