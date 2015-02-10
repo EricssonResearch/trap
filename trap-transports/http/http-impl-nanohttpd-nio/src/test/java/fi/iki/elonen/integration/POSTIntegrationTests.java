@@ -1,32 +1,27 @@
 package fi.iki.elonen.integration;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
-import com.ericsson.research.trap.nhttpd.NanoHTTPD;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
-import com.ericsson.research.trap.nhttpd.Response.Status;
+import com.ericsson.research.trap.nhttpd.StatusCodes;
+import com.ericsson.research.trap.nhttpd.impl.NanoHTTPDImpl;
 
 /**
  * @author Paul S. Hawke (paul.hawke@gmail.com) On: 5/19/13 at 5:36 PM
@@ -130,17 +125,18 @@ public class POSTIntegrationTests extends IntegrationTestBase<POSTIntegrationTes
 		return new TestServer();
 	}
 
-	public static class TestServer extends NanoHTTPD
+	public static class TestServer extends NanoHTTPDImpl implements RequestHandler
 	{
 		public boolean	chunked;
 
 		public TestServer()
 		{
 			super(8192);
+            setHandler(this);
 		}
 
 		@Override
-		public Response serve(IHTTPSession session)
+		public void handleRequest(Request session, Response r)
 		{
 
 			try
@@ -152,14 +148,12 @@ public class POSTIntegrationTests extends IntegrationTestBase<POSTIntegrationTes
 				while ((read = is.read(bs)) > -1)
 					bos.write(bs, 0, read);
 
-				Response r = new Response();
-				r.setStatus(Status.OK);
+				r.setStatus(StatusCodes.OK);
 
 				if (chunked)
 					r.setData(new ByteArrayInputStream(bos.toByteArray()));
 				else
 					r.setData(bos.toByteArray());
-				return r;
 			}
 			catch (IOException e)
 			{

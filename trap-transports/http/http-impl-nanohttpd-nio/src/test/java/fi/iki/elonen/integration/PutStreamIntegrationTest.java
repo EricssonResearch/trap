@@ -12,9 +12,11 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.junit.Test;
 
-import com.ericsson.research.trap.nhttpd.IHTTPSession;
-import com.ericsson.research.trap.nhttpd.NanoHTTPD;
+import com.ericsson.research.trap.nhttpd.Method;
+import com.ericsson.research.trap.nhttpd.Request;
+import com.ericsson.research.trap.nhttpd.RequestHandler;
 import com.ericsson.research.trap.nhttpd.Response;
+import com.ericsson.research.trap.nhttpd.impl.NanoHTTPDImpl;
 
 public class PutStreamIntegrationTest extends IntegrationTestBase<PutStreamIntegrationTest.TestServer> {
 
@@ -34,19 +36,14 @@ public class PutStreamIntegrationTest extends IntegrationTestBase<PutStreamInteg
         return new TestServer();
     }
 
-    public static class TestServer extends NanoHTTPD {
+    public static class TestServer extends NanoHTTPDImpl implements RequestHandler {
         public TestServer() {
             super(8192);
+            setHandler(this);
         }
 
         @Override
-        public Response serve(String uri, Method method, Map<String, String> headers, Map<String, String> parms, Map<String, String> files)
-        {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public Response serve(IHTTPSession session) {
+        public void handleRequest(Request session, Response response) {
             Method method = session.getMethod();
             Map<String, String> headers = session.getHeaders();
             int contentLength = Integer.parseInt(headers.get("content-length"));
@@ -58,11 +55,12 @@ public class PutStreamIntegrationTest extends IntegrationTestBase<PutStreamInteg
                 dataInputStream.readFully(body, 0, contentLength);
             }
             catch(IOException e) {
-                return new Response(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, e.getMessage());
+            	response.setStatus(500).setData(e.getMessage());
+            	return;
             }
-
-            String response = String.valueOf(method) + ':' + new String(body);
-            return new Response(response);
+            
+            String rv = String.valueOf(method) + ':' + new String(body);
+            response.setData(rv).setStatus(200);
         }
     }
 }

@@ -1,6 +1,6 @@
-package com.ericsson.research.trap.nhttpd;
+package com.ericsson.research.trap.nhttpd.options;
 
-import com.ericsson.research.trap.nhttpd.NanoHTTPD.AsyncRunner;
+import com.ericsson.research.trap.nhttpd.impl.NanoHTTPDImpl.AsyncRunner;
 import com.ericsson.research.trap.utils.ThreadPool;
 
 /**
