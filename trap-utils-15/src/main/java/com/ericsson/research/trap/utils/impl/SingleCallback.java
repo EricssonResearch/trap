@@ -67,7 +67,8 @@ public class SingleCallback<T> implements Callback<T>
     
     public T get() throws InterruptedException
     {
-        return this.get(Long.MAX_VALUE);
+        // By doing this subtraction, we guard against overflow errors caused by the clock changing (since System.currentTimeMillis() reports absolute time).
+        return this.get(Long.MAX_VALUE - Integer.MAX_VALUE);
     }
     
     public T get(long timeout) throws InterruptedException

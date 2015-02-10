@@ -298,7 +298,7 @@ public class SocketTest
 		sendBuf = null;
 	}
 
-	@Test
+	@Test(timeout=30000)
 	public void testThroughput() throws IOException, InterruptedException
 	{
 		for (int i = 0; i < 10; i++)
@@ -495,7 +495,7 @@ public class SocketTest
 		return msgs;
 	}
 
-	@Test
+    @Test(timeout=30000)
 	public void testTrapMessage() throws IOException, InterruptedException
 	{
 
