@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
 		<artifactId>trap-parent</artifactId>
@@ -10,7 +11,7 @@
 	<name>TrAP JavaScript</name>
 
 	<modelVersion>4.0.0</modelVersion>
-		
+
 	<repositories>
 		<repository>
 			<id>trap-snapshots</id>
@@ -23,7 +24,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -325,6 +326,7 @@
 					<classesDirectory>target</classesDirectory>
 					<includes>
 						<include>trap-full**</include>
+						<include>classes/com/**</include>
 					</includes>
 				</configuration>
 				<executions>
@@ -355,6 +357,24 @@
 							<classesDirectory>target</classesDirectory>
 							<includes>
 								<include>trap-min**</include>
+								<include>classes/com/**</include>
+							</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<forceCreation>true</forceCreation>
+							<classifier>inc</classifier>
+							<classesDirectory>target</classesDirectory>
+							<includes>
+								<include>trap-min**</include>
+								<include>trap-full**</include>
+								<include>classes/com/**</include>
 							</includes>
 						</configuration>
 					</execution>
@@ -389,22 +409,23 @@
 			</plugin>
 
 		</plugins>
-	</build><reporting>
-    <plugins>
-        <plugin>
-            <groupId>com.phasebash.jsdoc</groupId>
-            <artifactId>jsdoc3-maven-plugin</artifactId>
-            <version>1.1.0</version>
-            <configuration>
-                <recursive>true</recursive>
-                <directoryRoots>
-                    <directoryRoot>${basedir}/src/main/javascript</directoryRoot>
-                </directoryRoots>
-                <configFile>${basedir}/src/doc/javascript/conf.json</configFile>
-            </configuration>
-        </plugin>
-    </plugins>
-</reporting>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>com.phasebash.jsdoc</groupId>
+				<artifactId>jsdoc3-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<configuration>
+					<recursive>true</recursive>
+					<directoryRoots>
+						<directoryRoot>${basedir}/src/main/javascript</directoryRoot>
+					</directoryRoots>
+					<configFile>${basedir}/src/doc/javascript/conf.json</configFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<description>JavaScript implementation of Trap. Contains both browser and node.js code.</description>
 </project>
