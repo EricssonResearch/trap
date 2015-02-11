@@ -13,7 +13,6 @@ public class Resource extends TrapHostable implements RequestHandler
     
     private ResourceStreamSource src;
     
-    @FunctionalInterface
     public interface ResourceStreamSource
     {
         InputStream getStream();
