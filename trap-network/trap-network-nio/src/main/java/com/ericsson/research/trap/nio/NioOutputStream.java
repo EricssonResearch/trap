@@ -30,7 +30,13 @@ public class NioOutputStream extends OutputStream implements SocketHandler
 		{
 			peek = bufs.peek();
 			while (peek != null && !peek.hasRemaining())
-				peek = bufs.poll();
+			{
+			    // Remove the head
+			    bufs.poll();
+			    
+			    // Check the new head
+				peek = bufs.peek();
+			}
 
 			if (peek == null)
 			{
@@ -38,9 +44,10 @@ public class NioOutputStream extends OutputStream implements SocketHandler
 					sock.setHandler(handler);
 				return;
 			}
+			
+	        sock.send(peek);
 		}
 
-		sock.send(peek);
 
 	}
 
@@ -71,7 +78,7 @@ public class NioOutputStream extends OutputStream implements SocketHandler
 	@Override
 	public void write(int b) throws IOException
 	{
-		ByteBuffer buffer = ByteBuffer.allocate(4).putInt(b);
+		ByteBuffer buffer = ByteBuffer.allocate(1).put((byte) b);
 		buffer.flip();
 		bufs.add(buffer);
 		sent(sock);

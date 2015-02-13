@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
 		<artifactId>trap-parent</artifactId>
@@ -10,7 +11,7 @@
 	<name>TrAP JavaScript</name>
 
 	<modelVersion>4.0.0</modelVersion>
-		
+
 	<repositories>
 		<repository>
 			<id>trap-snapshots</id>
@@ -23,7 +24,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -218,7 +219,7 @@
 					<aggregations>
 						<aggregation>
 							<insertNewLine>true</insertNewLine>
-							<output>${project.build.directory}/trap-full.js</output>
+							<output>${project.build.directory}/classes/trap-full.js</output>
 							<includes>
 								<include>${basedir}/src/main/javascript/wrapper/browser-prefix.js</include>
 								<include>${basedir}/src/main/javascript/trap.js</include>
@@ -253,7 +254,7 @@
 						</aggregation>
 						<aggregation>
 							<insertNewLine>true</insertNewLine>
-							<output>${project.build.directory}/trap-node.js</output>
+							<output>${project.build.directory}/classes/trap-node.js</output>
 							<includes>
 								<include>${basedir}/src/main/javascript/wrapper/node-prefix.js</include>
 								<include>${basedir}/src/main/javascript/trap.js</include>
@@ -293,23 +294,23 @@
 						</aggregation>
 						<aggregation>
 							<insertNewLine>true</insertNewLine>
-							<output>${project.build.directory}/trap-min.js</output>
+							<output>${project.build.directory}/classes/trap-min.js</output>
 							<includes>
 								<include>${basedir}/src/main/javascript/wrapper/browser-prefix.js</include>
-								<include>classes/trap.js</include>
-								<include>classes/util/*</include>
-								<include>classes/impl/auth.js</include>
-								<include>classes/impl/channel.js</include>
-								<include>classes/impl/channelmessagequeue.js</include>
-								<include>classes/impl/configuration.js</include>
-								<include>classes/impl/customconfig.js</include>
-								<include>classes/impl/keepalive.js</include>
-								<include>classes/impl/messagebuffer.js</include>
-								<include>classes/impl/endpoint.js</include>
-								<include>classes/impl/message.js</include>
-								<include>classes/impl/client-endpoint.js</include>
-								<include>classes/spi/transport.js</include>
-								<include>classes/transports/*</include>
+								<include>${project.build.directory}/classes/trap.js</include>
+								<include>${project.build.directory}/classes/util/*</include>
+								<include>${project.build.directory}/classes/impl/auth.js</include>
+								<include>${project.build.directory}/classes/impl/channel.js</include>
+								<include>${project.build.directory}/classes/impl/channelmessagequeue.js</include>
+								<include>${project.build.directory}/classes/impl/configuration.js</include>
+								<include>${project.build.directory}/classes/impl/customconfig.js</include>
+								<include>${project.build.directory}/classes/impl/keepalive.js</include>
+								<include>${project.build.directory}/classes/impl/messagebuffer.js</include>
+								<include>${project.build.directory}/classes/impl/endpoint.js</include>
+								<include>${project.build.directory}/classes/impl/message.js</include>
+								<include>${project.build.directory}/classes/impl/client-endpoint.js</include>
+								<include>${project.build.directory}/classes/spi/transport.js</include>
+								<include>${project.build.directory}/classes/transports/*</include>
 								<include>${basedir}/src/main/javascript/wrapper/browser-suffix.js</include>
 							</includes>
 						</aggregation>
@@ -322,9 +323,9 @@
 				<version>2.4</version>
 				<configuration>
 					<forceCreation>true</forceCreation>
-					<classesDirectory>target</classesDirectory>
 					<includes>
 						<include>trap-full**</include>
+						<include>com/**</include>
 					</includes>
 				</configuration>
 				<executions>
@@ -337,9 +338,8 @@
 						<configuration>
 							<forceCreation>true</forceCreation>
 							<classifier>individual</classifier>
-							<classesDirectory>target</classesDirectory>
 							<includes>
-								<include>classes/**</include>
+								<include>**</include>
 							</includes>
 						</configuration>
 					</execution>
@@ -352,9 +352,25 @@
 						<configuration>
 							<forceCreation>true</forceCreation>
 							<classifier>min</classifier>
-							<classesDirectory>target</classesDirectory>
 							<includes>
 								<include>trap-min**</include>
+								<include>com/**</include>
+							</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<forceCreation>true</forceCreation>
+							<classifier>inc</classifier>
+							<includes>
+								<include>trap-min**</include>
+								<include>trap-full**</include>
+								<include>com/**</include>
 							</includes>
 						</configuration>
 					</execution>
@@ -374,11 +390,11 @@
 						<configuration>
 							<artifacts>
 								<artifact>
-									<file>${project.build.directory}/trap-full.js</file>
+									<file>${project.build.directory}/classes/trap-full.js</file>
 									<type>js</type>
 								</artifact>
 								<artifact>
-									<file>${project.build.directory}/trap-min.js</file>
+									<file>${project.build.directory}/classes/trap-min.js</file>
 									<type>js</type>
 									<classifier>min</classifier>
 								</artifact>
@@ -389,22 +405,23 @@
 			</plugin>
 
 		</plugins>
-	</build><reporting>
-    <plugins>
-        <plugin>
-            <groupId>com.phasebash.jsdoc</groupId>
-            <artifactId>jsdoc3-maven-plugin</artifactId>
-            <version>1.1.0</version>
-            <configuration>
-                <recursive>true</recursive>
-                <directoryRoots>
-                    <directoryRoot>${basedir}/src/main/javascript</directoryRoot>
-                </directoryRoots>
-                <configFile>${basedir}/src/doc/javascript/conf.json</configFile>
-            </configuration>
-        </plugin>
-    </plugins>
-</reporting>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>com.phasebash.jsdoc</groupId>
+				<artifactId>jsdoc3-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<configuration>
+					<recursive>true</recursive>
+					<directoryRoots>
+						<directoryRoot>${basedir}/src/main/javascript</directoryRoot>
+					</directoryRoots>
+					<configFile>${basedir}/src/doc/javascript/conf.json</configFile>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<description>JavaScript implementation of Trap. Contains both browser and node.js code.</description>
 </project>
