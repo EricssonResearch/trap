@@ -65,7 +65,7 @@ public class WebSocketTransport extends AbstractTransport
     private long                lastSend      = 0;
     private boolean             delayed       = false;
     private boolean             delayQueued   = false;
-    private boolean             useDelay      = true;
+    private boolean             useDelay      = false;
     private WSListener          mListener     = null;
     
     // Create a new SocketTransport for connecting (=client)
@@ -187,7 +187,7 @@ public class WebSocketTransport extends AbstractTransport
                 
                 this.delayed |= this.lastSend == System.currentTimeMillis();
                 this.delayed &= this.useDelay;
-                if (this.delayed && !this.delayQueued)
+                if ((this.delayed) && !this.delayQueued)
                 {
                     this.delayQueued = true;
                     ThreadPool.executeAfter(new Runnable() {
@@ -200,7 +200,7 @@ public class WebSocketTransport extends AbstractTransport
                     }, 1);
                 }
                 
-                if (expectMore || this.delayed)
+                if (this.delayed)
                 {
                     
                     if (this.outBuf == null)
