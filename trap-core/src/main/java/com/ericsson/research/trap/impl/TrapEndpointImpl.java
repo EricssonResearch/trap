@@ -1340,7 +1340,7 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
 		// Now sort into the appropriate delegates.
 		if (newState == TrapState.OPEN && oldState == TrapState.OPENING)
 			this.openDelegate.trapOpen(this, this.delegateContext);
-		else if (newState == TrapState.CLOSED && oldState == TrapState.CLOSING)
+		else if (newState == TrapState.CLOSED && (oldState == TrapState.CLOSING || TrapState.OPEN == oldState || TrapState.SLEEPING == oldState))
 			this.closeDelegate.trapClose(this, this.delegateContext);
 		else if (newState == TrapState.SLEEPING && oldState == TrapState.OPEN)
 			this.sleepDelegate.trapSleep(this, this.delegateContext);

@@ -67,7 +67,7 @@ public abstract class WSAbstractProtocol extends WSAbstractProtocolWrapper imple
 	
 	public WSAbstractProtocol(WSURI uri, WSSecurityContext securityContext) {
 		host = uri.getHost();
-		origin = "http://"+host;
+        origin = "http://"+host;
 		port = uri.getPort();
 		resource = uri.getPath();
 		client = true;
@@ -95,14 +95,14 @@ public abstract class WSAbstractProtocol extends WSAbstractProtocolWrapper imple
 		}
 		return "UKNOWN";
 	}
-	
-	public synchronized void close() {
-		if (state == CLOSED || state == CLOSING)
-			return;
-		state = CLOSING;
-		forceClose();
-	}
-	
+    
+    public synchronized void close() {
+        if (state == CLOSED || state == CLOSING)
+            return;
+        state = CLOSING;
+        forceClose();
+    }
+    
 	public void forceClose() {
 		wrapper.forceClose();
 	}
@@ -160,6 +160,12 @@ public abstract class WSAbstractProtocol extends WSAbstractProtocolWrapper imple
 						wrapper.setProtocol(newProtocol);
 						if(!client)
 							getHandshake().sendResponse();
+						
+						// Reset the origin, if available
+						String origin = newProtocol.handshake.getHeader("Origin");
+						if (origin != null)
+						    newProtocol.origin = origin;
+						
 						newProtocol.state = OPEN;
 						newProtocol.wrapper.notifyOpen(newProtocol.wrapper);
 						if(read > 0 && newProtocol != this) {

@@ -75,6 +75,12 @@ public class WSHybi10 extends WSHixie76 {
 		new WSHybiFrame(WSHybiFrame.PONG_FRAME, payload, client).serialize(getRawOutput());
 	}
 	
+
+    
+    public void close(int code, String reason) {
+        
+    };
+	
 	protected void internalClose() throws IOException {
 		new WSHybiFrame(WSHybiFrame.CLOSE_FRAME, empty, client).serialize(getRawOutput());
 	}
