@@ -114,6 +114,8 @@ public abstract class StringUtil
     {
         try
         {
+            if (buffer == null)
+                return null;
             String s = new String(buffer, "UTF-8");
             return (s);
         }
@@ -132,6 +134,8 @@ public abstract class StringUtil
      */
     public static String toUtfString(char[] encoded)
     {
+        if (encoded == null)
+            return null;
         String s = new String(encoded);
         return s;
     }

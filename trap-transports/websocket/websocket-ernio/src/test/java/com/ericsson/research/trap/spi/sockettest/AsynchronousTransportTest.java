@@ -120,6 +120,24 @@ public class AsynchronousTransportTest implements OnAccept, OnData
         
     }
     
+    @Test(timeout=20000)
+    public void testHugeMessage() throws Exception
+    {
+        
+        this.receiving = new AtomicInteger(4);
+        this.receipts = new ConcurrentLinkedQueue<byte[]>();
+        this.receivingCount = new AtomicInteger(0);
+        this.processed = new AtomicInteger(0);
+        this.messages = 1;
+        
+        byte[] msg = new byte[1*1024*1024];
+        for (int i=0; i<msg.length; i++)
+            msg[i]=(byte) i;
+        s.send(msg);
+        byte[] received = receive();
+        Assert.assertArrayEquals(msg, received);
+    }
+    
     private void testContext(TrapEndpoint ep) throws TrapException
     {
         TrapTransport t = ep.getTransport("websocket");

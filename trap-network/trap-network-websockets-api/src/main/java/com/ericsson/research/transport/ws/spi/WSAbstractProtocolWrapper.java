@@ -35,6 +35,8 @@ package com.ericsson.research.transport.ws.spi;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URI;
+import java.util.HashMap;
 
 import com.ericsson.research.transport.ws.WSInterface;
 import com.ericsson.research.transport.ws.WSListener;
@@ -91,6 +93,11 @@ public abstract class WSAbstractProtocolWrapper implements WSInterface, WSListen
 	public void close() {
 		this.protocol.close();
 	}
+    
+    public void close(int code, String reason)
+    {
+        this.protocol.close(code, reason);
+    }
 	
 	public void notifyOpen(WSInterface socket) {
 		if(this.listener != null)
@@ -141,4 +148,23 @@ public abstract class WSAbstractProtocolWrapper implements WSInterface, WSListen
 		this.forceClose();
 	}
 
+    public String getOrigin() {
+        return protocol.origin;
+    }
+    
+    public String getHost() {
+        return protocol.host;
+    }
+    
+    public URI getUri() {
+        return URI.create(protocol.location);
+    }
+    
+    public String getPath() {
+        return protocol.resource;
+    }
+    
+    public HashMap<String, String> getHeaders() {
+        return protocol.handshake.headers;
+    }
 }
