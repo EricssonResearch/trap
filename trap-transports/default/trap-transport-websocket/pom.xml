@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ericsson.research.trap</groupId>
         <artifactId>transports</artifactId>
-		<version>1.4.1-SNAPSHOT</version>
+		<version>1.4.1</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-transport-websocket</artifactId>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>websocket-ernio</artifactId>
-			<version>1.4.1-SNAPSHOT</version>
+			<version>1.4.1</version>
 		</dependency>
 	</dependencies>
 	
