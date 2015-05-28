@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>trap-tests-parent</artifactId>
 		<groupId>com.ericsson.research.trap.tests</groupId>
-		<version>1.4.1</version>
+		<version>1.4.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-tests-multiple-transports</artifactId>
@@ -64,22 +64,22 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-socket</artifactId>
-			<version>1.4.1</version>
+			<version>1.4.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-loopback</artifactId>
-			<version>1.4.1</version>
+			<version>1.4.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>wshttp-server-nano</artifactId>
-			<version>1.4.1</version>
+			<version>1.4.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>http-client-sun</artifactId>
-			<version>1.4.1</version>
+			<version>1.4.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

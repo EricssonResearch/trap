@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>http</artifactId>
 		<groupId>com.ericsson.research.trap.transports</groupId>
-		<version>1.4.1</version>
+		<version>1.4.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>http-client-apache</artifactId>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-core</artifactId>
-			<version>1.4.1</version>
+			<version>1.4.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

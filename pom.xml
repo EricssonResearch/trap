@@ -6,7 +6,7 @@
 	<artifactId>trap-parent</artifactId>
 	<name>TrAP Parent</name>
 	<packaging>pom</packaging>
-	<version>1.4.1</version>
+	<version>1.4.2-SNAPSHOT</version>
 
 	<developers>
 		<developer>
