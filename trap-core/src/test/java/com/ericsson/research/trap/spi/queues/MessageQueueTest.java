@@ -393,8 +393,8 @@ public class MessageQueueTest
         final BlockingMessageQueue bmq = (BlockingMessageQueue) this.newMQ(1);
         
         // With a decent timeout
-        bmq.setBlockingTimeout(20);
-        Assert.assertEquals(20, bmq.blockingTimeout());
+        bmq.setBlockingTimeout(30);
+        Assert.assertEquals(30, bmq.blockingTimeout());
         
         // And fill it
         bmq.put(new TrapMessageImpl().setOp(Operation.MESSAGE));
