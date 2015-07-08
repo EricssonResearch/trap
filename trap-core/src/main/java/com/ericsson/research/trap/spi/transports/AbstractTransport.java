@@ -381,6 +381,7 @@ public abstract class AbstractTransport implements TrapTransport, TrapKeepaliveD
         catch (Throwable t)
         {
         	logger.warn("Exception while notifying our delegate of state change: {}", t, t);
+        	t.printStackTrace();
         }
         if ((newState == TrapTransportState.AVAILABLE) && (this.connectionTimeoutTask != null))
         {

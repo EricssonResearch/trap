@@ -37,21 +37,22 @@ import java.util.concurrent.DelayQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadPoolImpl extends ThreadPool
 {
     
-    protected int                         CACHED_THREADS_MIN     = 50;
-    protected int                         CACHED_THREADS_MAX     = 100;
+    protected int                         CACHED_THREADS_MIN     = 0;
+    protected int                         CACHED_THREADS_MAX     = 2000;
     protected int                         CACHED_THREADS_TIMEOUT = 60 * 1000;
     
     protected int                         FIXED_THREADS          = 10;
     
     protected int                         SCHEDULED_THREADS      = 10;
     
-    protected ThreadPoolExecutor          cachedPool             = new ThreadPoolExecutor(this.CACHED_THREADS_MIN, this.CACHED_THREADS_MAX, this.CACHED_THREADS_TIMEOUT, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(5000));
+    protected ThreadPoolExecutor          cachedPool             = new ThreadPoolExecutor(this.CACHED_THREADS_MIN, this.CACHED_THREADS_MAX, this.CACHED_THREADS_TIMEOUT, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>());
     protected ThreadPoolExecutor          fixedPool              = new ThreadPoolExecutor(this.FIXED_THREADS, this.FIXED_THREADS, Long.MAX_VALUE, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
     protected ScheduledThreadPoolExecutor scheduledPool          = new ScheduledThreadPoolExecutor(this.SCHEDULED_THREADS);
     
@@ -64,8 +65,6 @@ public class ThreadPoolImpl extends ThreadPool
     {
         this.fixedPool.prestartAllCoreThreads();
         this.scheduledPool.prestartAllCoreThreads();
-        this.cachedPool.setMaximumPoolSize(this.CACHED_THREADS_MAX);
-        this.cachedPool.allowCoreThreadTimeOut(true);
         lastInstance = this;
     }
     

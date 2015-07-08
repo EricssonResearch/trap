@@ -493,6 +493,13 @@ public class ClientHttpTransport extends AbstractTransport
                         }
                         catch (TrapTransportException e)
                         {
+                            synchronized (ClientHttpTransport.this.sendingLock)
+                            {
+                                if (ClientHttpTransport.this.getState() == TrapTransportState.UNAVAILABLE)
+                                    ClientHttpTransport.this.setState(TrapTransportState.AVAILABLE);
+                                
+                                ClientHttpTransport.this.sending = false;
+                            }
                             ClientHttpTransport.this.delegate.ttMessagesFailedSending(e.failedMessages, ClientHttpTransport.this, ClientHttpTransport.this.delegateContext);
                             ClientHttpTransport.this.forceError();
                         }
