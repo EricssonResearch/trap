@@ -75,7 +75,7 @@ class PackageScannerImpl extends PackageScanner
         {
             return (other instanceof CacheKey) && (other.hashCode() == this.code);
         }
-        
+
     }
     
     LRUCache<CacheKey, Class<?>[]> cache = LRUCache.createCache();
