@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BugCollection version='3.0.0' threshold='medium' effort='min'><file classname='com.ericsson.research.transport.ws.spi.WSSocketEndpoint'></file><Error></Error><Project><SrcDir>/Users/vladi/egit/trap/trap-network/trap-network-websockets-sockets/src/main/java</SrcDir><SrcDir>/Users/vladi/egit/trap/trap-network/trap-network-websockets-sockets/src/test/java</SrcDir></Project></BugCollection>

@@ -1,0 +1,8 @@
+com.ericsson.research.trap
+com.ericsson.research.trap.auth
+com.ericsson.research.trap.delegates
+com.ericsson.research.trap.examples
+com.ericsson.research.trap.spi
+com.ericsson.research.trap.spi.queues
+com.ericsson.research.trap.utils
+
