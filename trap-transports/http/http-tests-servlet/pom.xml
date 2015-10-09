@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>trap-tests-arquillian-parent</artifactId>
+		<groupId>com.ericsson.research.trap.tests</groupId>
+		<version>1.4.2-SNAPSHOT</version>
+		<relativePath>../../../trap-tests/trap-tests-arquillian-parent/pom.xml</relativePath>
+	</parent>
+	<artifactId>http-tests-servlet</artifactId>
+	<name>Trap HTTP Test for Servlet Transport</name>
+		
+	<repositories>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.ericsson.research.trap</groupId>
+			<artifactId>trap-core</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>http-client-sun</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>http-server-servlet-3.0</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>http-server-servlet-2.5</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>http-tests-suite</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<description>Tests for the Servlet transport</description>
+</project>

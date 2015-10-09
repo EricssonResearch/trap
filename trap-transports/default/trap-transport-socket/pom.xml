@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ericsson.research.trap</groupId>
+        <artifactId>transports</artifactId>
+		<version>1.4.2-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<artifactId>trap-transport-socket</artifactId>
+	<name>Default Socket Transport</name>
+		
+	<repositories>
+		<repository>
+			<id>trap-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>socket-client-ernio</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.research.trap.transports</groupId>
+			<artifactId>socket-server-ernio</artifactId>
+			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+	<description>Shorthand to include the default (java.nio-based) socket transport implementation. Includes both server and client transports.</description>
+</project>

@@ -1,0 +1,11 @@
+Trap Java API
+====
+
+The Trap Java API is the main entry point for java usage. This package contains the interfaces used both to use trap, as found in the `com.ericsson.research.trap` package
+but also the interfaces to extend Trap, as specified in `com.ericsson.research.trap.spi`. Note that this package _includes no functionality_ and that _trap-core_ and at least
+one transport implementation are required.
+
+Contents
+====
+
+Please use the menu to the left to access the Trap Java API documentation and guides.
