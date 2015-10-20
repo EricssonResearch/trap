@@ -138,6 +138,12 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
                 
                 CORSUtil.setCors(request, response);
                 
+                if (request.getMethod() == Method.OPTIONS)
+                {
+                    response.setStatus(StatusCodes.OK);
+                    return;
+                }
+                
                 if (request.getMethod() != Method.GET)
                 {
                     response.setStatus(StatusCodes.METHOD_NOT_ALLOWED);
@@ -384,7 +390,7 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
         }
         
         this.hostedObjects.put(preferredPath, handler);
-        URI uri = URI.create(this.getUrl("localhost") + "/" + preferredPath);
+        URI uri = URI.create(this.getUrl(null) + "/" + preferredPath);
         hosted.setURI(uri);
         return uri;
     }

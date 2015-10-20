@@ -39,6 +39,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 
+import javax.net.ssl.SSLContext;
+
 import com.ericsson.research.transport.ws.WSFactory;
 import com.ericsson.research.transport.ws.WSInterface;
 import com.ericsson.research.transport.ws.WSListener;
@@ -323,10 +325,18 @@ public class WebSocketTransport extends AbstractTransport
             {
                 
                 WSSecurityContext sc = null;
-                if (this.getBooleanOption(TrapTransport.CERT_IGNORE_INVALID, false))
-                    sc = new WSSecurityContext(SSLUtil.getInsecure());
+                WSURI wsUri = new WSURI(uri);
                 
-                this.socket = WSFactory.createWebSocketClient(new WSURI(uri), null, WSFactory.VERSION_RFC_6455, sc);
+                if ("wss".equals(wsUri.getScheme()))
+                {                
+                    SSLContext ctx = SSLContext.getDefault();
+                    if (this.getBooleanOption(TrapTransport.CERT_IGNORE_INVALID, false))
+                        ctx = SSLUtil.getInsecure();
+                    
+                    sc = new WSSecurityContext(ctx);
+                }
+                
+                this.socket = WSFactory.createWebSocketClient(wsUri, null, WSFactory.VERSION_RFC_6455, sc);
                 this.createListener(this.socket);
                 this.socket.open();
             }

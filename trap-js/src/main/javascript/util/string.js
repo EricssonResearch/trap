@@ -78,8 +78,8 @@ String.fromUTF8ByteArray = function(arr, offset, length)
 	{
 		offset = 0; length = arr.length;
 	}
-	
-	for (var i=offset; i<length; i++)
+
+	for (var i=offset; i<length+offset; i++)
 		str += String.fromCharCode(arr[i]);
 	
 	return String.utf8Decode(str);

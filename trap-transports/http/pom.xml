@@ -42,5 +42,6 @@
 		<module>http-utils-sun</module>
 		<module>http-impl-nanohttpd-nio</module>
 		<module>wshttp-server-nano</module>
+		<module>wshttp-server-netty</module>
 	</modules>
 </project>

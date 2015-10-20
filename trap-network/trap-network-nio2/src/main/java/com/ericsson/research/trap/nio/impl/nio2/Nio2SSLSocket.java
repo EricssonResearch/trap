@@ -116,6 +116,7 @@ public class Nio2SSLSocket extends Nio2SocketBase
 		}
 		catch (SSLException e)
 		{
+		    e.printStackTrace();
 			handler.error(e, this);
 			return;
 		}

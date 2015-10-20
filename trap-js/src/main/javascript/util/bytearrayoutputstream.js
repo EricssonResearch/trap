@@ -46,29 +46,10 @@ Trap.ByteArrayOutputStream.prototype.write = function(src, off, len) {
 
 	if (typeof (src) == "string") {
 
-		var result = [];
-
-		for ( var n = off; n < off+len; n++) {
-
-			var c = src.charCodeAt(n);
-
-			if (c < 128) {
-				result.push(String.fromCharCode(c));
-			} else if ((c > 127) && (c < 2048)) {
-				result.push(String.fromCharCode((c >> 6) | 192));
-				result.push(String.fromCharCode((c & 63) | 128));
-			} else {
-				result.push(String.fromCharCode((c >> 12) | 224));
-				result.push(String.fromCharCode(((c >> 6) & 63) | 128));
-				result.push(String.fromCharCode((c & 63) | 128));
-			}
-
-		}
+		var result = src.toUTF8ByteArray();
 		this._checkAndResize(result.length);
-
 		for ( var i = 0; i < result.length; i++)
 			this.buf[this.off++] = result[i];
-
 		return;
 	}
 
