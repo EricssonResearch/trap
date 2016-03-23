@@ -84,12 +84,8 @@ public class WebSocketTransport extends AbstractTransport
     private static final String            OPTION_BINARY = "binary";
     private static final NioEventLoopGroup nioGroup      = new NioEventLoopGroup();
     private boolean                        binary        = true;
-    private long                           lastSend      = 0;
-    private boolean                        delayed       = false;
-    private boolean                        delayQueued   = false;
-    private boolean                        useDelay      = false;
     private boolean                        ssl           = false;
-    
+                                                         
     // Create a new SocketTransport for connecting (=client)
     public WebSocketTransport()
     {
@@ -123,7 +119,7 @@ public class WebSocketTransport extends AbstractTransport
     
     ByteArrayOutputStream         outBuf = new ByteArrayOutputStream();
     private ChannelHandlerContext ctx;
-    
+                                  
     public void internalSend(TrapMessage message, boolean expectMore) throws TrapTransportException
     {
         
@@ -135,37 +131,13 @@ public class WebSocketTransport extends AbstractTransport
             if (ctx == null)
                 throw new TrapTransportException(message, this.getState());
                 
+            byte[] raw = message.serialize();
             synchronized (ctx)
             {
-                
-                byte[] raw = message.serialize();
-                
-                this.delayed |= this.lastSend == System.currentTimeMillis();
-                this.delayed &= this.useDelay;
-                if ((this.delayed) && !this.delayQueued)
-                {
-                    this.delayQueued = true;
-                    ThreadPool.executeAfter(new Runnable() {
-                        
-                        @Override
-                        public void run()
-                        {
-                            WebSocketTransport.this.flushTransport();
-                        }
-                    }, 1);
-                }
-                
-                if (this.delayed)
-                {
-                    
-                    if (this.outBuf == null)
-                        this.outBuf = new ByteArrayOutputStream();
-                        
-                    this.outBuf.write(raw);
-                    return;
-                }
-                
                 this.performSend(raw);
+                
+                if (!expectMore)
+                    this.flushTransport();
             }
         }
         catch (IOException | TrapTransportException e)
@@ -198,38 +170,44 @@ public class WebSocketTransport extends AbstractTransport
         
         if (this.binary)
         {
-            this.ctx.channel().writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(raw)));
+            this.ctx.channel().write(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(raw)));
         }
         else
         {
-            this.ctx.channel().writeAndFlush(new TextWebSocketFrame(StringUtil.toUtfString(raw)));
+            this.ctx.channel().write(new TextWebSocketFrame(StringUtil.toUtfString(raw)));
         }
         
-        this.lastSend = System.currentTimeMillis();
-        this.delayed = this.delayQueued = false;
     }
     
+    long    lastFlush      = 0;
+    long    flushInterval  = 2;
+    boolean flushScheduled = false;
+                           
     @Override
     public void flushTransport()
     {
         synchronized (WebSocketTransport.this.ctx)
         {
-            try
+            if ((lastFlush + flushInterval) > System.currentTimeMillis())
             {
-                if (this.outBuf != null)
-                {
-                    byte[] raw = WebSocketTransport.this.outBuf.toByteArray();
-                    WebSocketTransport.this.outBuf = null;
+                if (flushScheduled)
+                    return;
                     
-                    if (raw.length > 0)
-                        WebSocketTransport.this.performSend(raw);
-                }
+                ThreadPool.executeAfter(this::doScheduledFlush, flushInterval + 1);
+                flushScheduled = true;
+                return;
             }
-            catch (IOException e)
-            {
-                WebSocketTransport.this.logger.debug(e.toString());
-                WebSocketTransport.this.forceError();
-            }
+            ctx.channel().flush();
+            lastFlush = System.currentTimeMillis();
+        }
+    }
+    
+    void doScheduledFlush()
+    {
+        synchronized (WebSocketTransport.this.ctx)
+        {
+            flushScheduled = false;
+            flushTransport();
         }
     }
     
@@ -248,38 +226,7 @@ public class WebSocketTransport extends AbstractTransport
     protected void internalConnect() throws TrapException
     {
         synchronized (this)
-        {/*
-         if (this.socket != null)
-          throw new TrapException("Cannot re-connect transport");
-          
-         this.outBuf = null;
-         
-         String uri = this.getOption(WebSocketConstants.CONFIG_URI);
-         
-         try
-         {
-          
-          WSSecurityContext sc = null;
-          WSURI wsUri = new WSURI(uri);
-          
-          if ("wss".equals(wsUri.getScheme()))
-          {
-           SSLContext ctx = SSLContext.getDefault();
-           if (this.getBooleanOption(TrapTransport.CERT_IGNORE_INVALID, false))
-         ctx = SSLUtil.getInsecure();
-         
-           sc = new WSSecurityContext(ctx);
-          }
-          
-          this.socket = WSFactory.createWebSocketClient(wsUri, null, WSFactory.VERSION_RFC_6455, sc);
-          this.createListener(this.socket);
-          this.socket.open();
-         }
-         catch (Exception e)
-         {
-          throw new TrapException(e);
-         }*/
-            
+        {
             URI uri = URI.create(this.getOption(WebSocketConstants.CONFIG_URI));
             SslContext sslc;
             try
@@ -308,14 +255,16 @@ public class WebSocketTransport extends AbstractTransport
                         handshaker.finishHandshake(ctx.channel(), (FullHttpResponse) msg);
                         notifyOpen();
                     }
-
+                    
                     @Override
-                    public void channelActive(ChannelHandlerContext ctx) {
+                    public void channelActive(ChannelHandlerContext ctx)
+                    {
                         handshaker.handshake(ctx.channel());
                     }
-
+                    
                     @Override
-                    public void channelInactive(ChannelHandlerContext ctx) {
+                    public void channelInactive(ChannelHandlerContext ctx)
+                    {
                         notifyClose();
                     }
                 };
@@ -542,7 +491,8 @@ public class WebSocketTransport extends AbstractTransport
                 ByteBuf content = frame.content();
                 if (content.hasArray())
                     notifyMessage(((BinaryWebSocketFrame) frame).content().array());
-                else {
+                else
+                {
                     int readableBytes = content.readableBytes();
                     byte[] buf = new byte[readableBytes];
                     content.readBytes(buf);
@@ -562,9 +512,10 @@ public class WebSocketTransport extends AbstractTransport
             notifyError(cause);
             ctx.close();
         }
-
+        
         @Override
-        public void channelInactive(ChannelHandlerContext ctx) {
+        public void channelInactive(ChannelHandlerContext ctx)
+        {
             notifyClose();
         }
     }
