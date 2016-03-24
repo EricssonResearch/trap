@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.ericsson.research.trap</groupId>
 		<artifactId>trap-network</artifactId>
-		<version>1.4.2-SNAPSHOT</version>
+		<version>1.4.2</version>
 	</parent>
 	<artifactId>trap-network-nio2</artifactId>
 	<packaging>jar</packaging>
@@ -46,23 +46,23 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-network-nio</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-utils-15</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-core</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-network-nio1</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ericsson.research.trap.packaging</groupId>
 		<artifactId>package-parent</artifactId>
-		<version>1.4.2-SNAPSHOT</version>
+		<version>1.4.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-full</artifactId>
@@ -52,7 +52,7 @@
 			<plugin>
 				<groupId>com.ericsson.research.trap</groupId>
 				<artifactId>trap-index-maven-plugin</artifactId>
-				<version>1.4.2-SNAPSHOT</version>
+				<version>1.4.2</version>
 				<configuration>
 					<packages>
 						<package>com.ericsson</package>
@@ -110,32 +110,32 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-socket</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-transport-loopback</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>http-server-servlet-3.0</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>http-server-servlet-2.5</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-android</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ericsson.research.trap.transports</groupId>
 			<artifactId>wshttp-server-nano</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 	</dependencies>
 

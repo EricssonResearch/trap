@@ -3,24 +3,24 @@
   <parent>
     <groupId>com.ericsson.research.trap.transports</groupId>
     <artifactId>http</artifactId>
-    <version>1.4.2-SNAPSHOT</version>
+    <version>1.4.2</version>
   </parent>
   <artifactId>http-impl-nanohttpd-nio</artifactId>
   <dependencies>
   	<dependency>
   		<groupId>com.ericsson.research.trap</groupId>
   		<artifactId>trap-network-nio</artifactId>
-  		<version>1.4.2-SNAPSHOT</version>
+  		<version>1.4.2</version>
   	</dependency>
   	<dependency>
   		<groupId>com.ericsson.research.trap</groupId>
   		<artifactId>trap-network-nio1</artifactId>
-  		<version>1.4.2-SNAPSHOT</version>
+  		<version>1.4.2</version>
   	</dependency>
   	<dependency>
   		<groupId>com.ericsson.research.trap</groupId>
   		<artifactId>trap-network-nio2</artifactId>
-  		<version>1.4.2-SNAPSHOT</version>
+  		<version>1.4.2</version>
   	</dependency>
   	<dependency>
   		<groupId>junit</groupId>

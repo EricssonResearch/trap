@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.ericsson.research.trap</groupId>
 		<artifactId>trap-parent</artifactId>
-		<version>1.4.2-SNAPSHOT</version>
+		<version>1.4.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-network</artifactId>

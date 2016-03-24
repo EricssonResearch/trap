@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>trap-parent</artifactId>
 		<groupId>com.ericsson.research.trap</groupId>
-		<version>1.4.2-SNAPSHOT</version>
+		<version>1.4.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-utils-15</artifactId>
@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-utils-api</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
