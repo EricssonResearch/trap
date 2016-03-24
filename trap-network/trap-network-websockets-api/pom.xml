@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ericsson.research.trap</groupId>
 		<artifactId>trap-parent</artifactId>
-		<version>1.4.2</version>
+		<version>1.4.3-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<artifactId>trap-network-websockets-api</artifactId>
@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>com.ericsson.research.trap</groupId>
 			<artifactId>trap-utils-15</artifactId>
-			<version>1.4.2</version>
+			<version>1.4.3-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<description>WebSocket implementation.</description>
