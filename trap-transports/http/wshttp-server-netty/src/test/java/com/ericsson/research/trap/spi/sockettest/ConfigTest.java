@@ -57,7 +57,7 @@ public class ConfigTest implements OnAccept
     @Test
     public void testHostPortConfig() throws Exception
     {
-        String config = "trap.transport.websocket.host = 127.0.0.1\ntrap.transport.websocket.port=51442";
+        String config = "trap.transport.http.host = 127.0.0.1\ntrap.transport.http.port=51442";
         TrapListener listener = TrapFactory.createListener(config);
         listener.listen(this);
         
@@ -65,7 +65,7 @@ public class ConfigTest implements OnAccept
         String configuration = listener.getClientConfiguration();
         
         System.out.println(configuration);
-        Assert.assertTrue(configuration.contains("trap.transport.websocket.wsuri = ws://127.0.0.1:51442/ws"));
+        Assert.assertTrue(configuration.contains("trap.transport.websocket.wsuri = ws://127.0.0.1:51442/"));
         
         listener.close();
     }
@@ -76,7 +76,7 @@ public class ConfigTest implements OnAccept
     @Test
     public void testAutoconfHostnamePortConfig() throws Exception
     {
-        String config = "trap.transport.websocket.host = 127.0.0.1\ntrap.transport.websocket.port=51442\ntrap.transport.websocket.autoconfig.host=ericsson.com";
+        String config = "trap.transport.http.host = 127.0.0.1\ntrap.transport.http.port=51442\ntrap.transport.websocket.autoconfig.host=ericsson.com";
         TrapListener listener = TrapFactory.createListener(config);
         listener.listen(this);
         
@@ -96,7 +96,7 @@ public class ConfigTest implements OnAccept
     @Test
     public void testAutoconfPortConfig() throws Exception
     {
-        String config = "trap.transport.websocket.host = 127.0.0.1\ntrap.transport.websocket.port=51442\ntrap.transport.websocket.autoconfig.port=1000";
+        String config = "trap.transport.http.host = 127.0.0.1\ntrap.transport.http.port=51442\ntrap.transport.websocket.autoconfig.port=1000";
         TrapListener listener = TrapFactory.createListener(config);
         listener.listen(this);
         
@@ -115,7 +115,7 @@ public class ConfigTest implements OnAccept
     @Test
     public void testAutoconfConfig() throws Exception
     {
-        String config = "trap.transport.websocket.host = 127.0.0.1\ntrap.transport.websocket.port=51442\ntrap.transport.websocket.autoconfig.port=1000\ntrap.transport.websocket.autoconfig.host=ericsson.com";
+        String config = "trap.transport.http.host = 127.0.0.1\ntrap.transport.http.port=51442\ntrap.transport.websocket.autoconfig.port=1000\ntrap.transport.websocket.autoconfig.host=ericsson.com";
         TrapListener listener = TrapFactory.createListener(config);
         listener.listen(this);
         

@@ -228,7 +228,15 @@ public class ListenerHttpTransport extends AbstractListenerTransport implements 
             if (obj instanceof TrapHostable)
                 ((TrapHostable) obj).notifyRemoved();
                 
-        ch.close();
+        ChannelFuture close = ch.close();
+        try
+        {
+            close.await();
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
         ch = null;
     }
     
