@@ -456,21 +456,8 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
         m.setOp(Operation.MESSAGE);
         m.setChannel(channel);
         m.setCompressed(useCompression && this.compressionEnabled);
-        this.send(m);
-        
-    }
-    
-    public void send(TrapMessage message) throws TrapException
-    {
-        
-        if (message == null)
-            throw new NullPointerException("Cannot send null message.");
-            
-        if ((this.getState() != TrapState.OPEN) && (message.getOp() != Operation.END) && this.getState() != TrapState.SLEEPING) // EXCEPT
-            throw new TrapException("Tried to send to non-open Trap session");
-            
-        TrapChannelImpl channel = (this.getChannel(message.getChannel()));
-        channel.assignMessageID(message);
+
+        TrapChannelImpl ch = assignMessageId(m);
         
         try
         {
@@ -479,7 +466,7 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
             {
                 try
                 {
-                    first.send(message, false);
+                    first.send(m, false);
                     return;
                 }
                 catch (Throwable t)
@@ -492,48 +479,28 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
         {
         }
         
+        ch.send(m);
+        
+    }
+    
+    private TrapChannelImpl assignMessageId(TrapMessage message) throws TrapException
+    {
+        if ((this.getState() != TrapState.OPEN) && (message.getOp() != Operation.END) && this.getState() != TrapState.SLEEPING) // EXCEPT
+            throw new TrapException("Tried to send to non-open Trap session");
+        TrapChannelImpl channel = (this.getChannel(message.getChannel()));
+        channel.assignMessageID(message);
+        return channel;
+    }
+    
+    public void send(TrapMessage message) throws TrapException
+    {
+        
+        if (message == null)
+            throw new NullPointerException("Cannot send null message.");
+        
+        TrapChannelImpl channel = assignMessageId(message);
         channel.send(message);
         
-        /*
-         * // There's a specific state (sleeping) that allows us to send a
-         * message by waking up the session if (this.getState() ==
-         * TrapState.SLEEPING) { // TODO: Wakeup // Wakeup comes defer, for
-         * defer may block. Then we must wait until defer unblocks. synchronized
-         * (this) { // Assign message id (if not already set) if
-         * (message.getMessageId() == 0) { int messageId =
-         * TrapEndpointImpl.this.messageId++;
-         * 
-         * if (messageId > TrapEndpointImpl.this.maxMessageId)
-         * TrapEndpointImpl.this.messageId = messageId = 1;
-         * 
-         * message.setMessageId(messageId); } }
-         * 
-         * // Defer message. this.deferMessage(message); return; }
-         * 
-         * // All other states do not allow the sending of messages.
-         * 
-         * synchronized (this) { // Assign message id (if not already set) if
-         * (message.getMessageId() == 0) { int messageId =
-         * TrapEndpointImpl.this.messageId++;
-         * 
-         * if (messageId > TrapEndpointImpl.this.maxMessageId)
-         * TrapEndpointImpl.this.messageId = messageId = 1;
-         * 
-         * message.setMessageId(messageId); } }
-         * 
-         * TrapTransport first = null;
-         * 
-         * try { first = (TrapTransport)
-         * TrapEndpointImpl.this.availableTransports.get(0); } catch (Throwable
-         * t) { first = null; }
-         * 
-         * if (first.isObjectTransport()) { try { first.send(message, false);
-         * return; } catch (Throwable t) {
-         * 
-         * } } this.deferMessage(message);
-         */
-        
-        this.kickSendingThread();
     }
     
     String   stName        = null;
@@ -575,54 +542,54 @@ public abstract class TrapEndpointImpl implements TrapEndpoint, TrapTransportDel
 								if (TrapEndpointImpl.this.logger.isTraceEnabled())
 									TrapEndpointImpl.this.logger.trace("Now selecting transport [{}] for sending", first.getTransportName());
 
-											while (first.isAvailable())
-											{
-												try
-												{
-													TrapMessage m = TrapEndpointImpl.this.messageQueue.peek();
-													if (m == null)
-														break;
+								try
+								{
+                                    while (first.isAvailable())
+                                    {
+    									TrapMessage m = TrapEndpointImpl.this.messageQueue.peek();
+    									if (m == null)
+    										break;
+    
+    									first.send(m, true);
+    									TrapEndpointImpl.this.messageQueue.pop();
+                                    }
+								}
+								catch (TrapTransportException e)
+								{
+									TrapEndpointImpl.this.logger.debug(e.getMessage(), e);
+								}
+								catch (Exception e)
+								{
+									TrapEndpointImpl.this.logger.debug(e.getMessage(), e);
 
-													first.send(m, true);
-													TrapEndpointImpl.this.messageQueue.pop();
-												}
-												catch (TrapTransportException e)
-												{
-													TrapEndpointImpl.this.logger.debug(e.getMessage(), e);
-												}
-												catch (Exception e)
-												{
-													TrapEndpointImpl.this.logger.debug(e.getMessage(), e);
+									// What should happen if we get an exception here? We don't want this loop to continue, that's for sure.
+									// The first transport is clearly inadequate for the task.
+									if (first.getState() == TrapTransportState.AVAILABLE)
+									{
 
-													// What should happen if we get an exception here? We don't want this loop to continue, that's for sure.
-															// The first transport is clearly inadequate for the task.
-															if (first.getState() == TrapTransportState.AVAILABLE)
-															{
+										// Now, the problem here is that the regular API only allows us to do a graceful disconnect.
+										// If we do that, though, recovery code won't be initialised.
+										TrapEndpointImpl.this.logger.warn("Forcibly removing transport {} from available due to infinite loop protection. This code should not occur with a well-behaved transport.", first.getTransportName());
+										TrapEndpointImpl.this.logger.warn("Caused by {}", e.getMessage(), e);
 
-																// Now, the problem here is that the regular API only allows us to do a graceful disconnect.
-																// If we do that, though, recovery code won't be initialised.
-																TrapEndpointImpl.this.logger.warn("Forcibly removing transport {} from available due to infinite loop protection. This code should not occur with a well-behaved transport.", first.getTransportName());
-																TrapEndpointImpl.this.logger.warn("Caused by {}", e.getMessage(), e);
+										first.forceError();
+									}
+									else
+									{
+										// Transport is no longer unavailable, loop should be broken.
+									}
+								}
 
-																first.forceError();
-															}
-															else
-															{
-																// Transport is no longer unavailable, loop should be broken.
-															}
-												}
-											}
+							first.flushTransport();
 
-											first.flushTransport();
-
-											if (!first.isAvailable())
-											{
-												synchronized (TrapEndpointImpl.this)
-												{
-													if (!first.isAvailable())
-														TrapEndpointImpl.this.availableTransports.remove(first);
-												}
-											}
+							if (!first.isAvailable())
+							{
+								synchronized (TrapEndpointImpl.this)
+								{
+									if (!first.isAvailable())
+										TrapEndpointImpl.this.availableTransports.remove(first);
+								}
+							}
 							}
 							else
 								break;

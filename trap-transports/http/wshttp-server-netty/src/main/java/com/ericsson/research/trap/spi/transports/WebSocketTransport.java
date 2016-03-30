@@ -135,9 +135,7 @@ public class WebSocketTransport extends AbstractTransport
             synchronized (ctx)
             {
                 this.performSend(raw);
-                
-                if (!expectMore)
-                    this.flushTransport();
+                this.flushTransport();
             }
         }
         catch (IOException | TrapTransportException e)
@@ -180,7 +178,7 @@ public class WebSocketTransport extends AbstractTransport
     }
     
     long    lastFlush      = 0;
-    long    flushInterval  = 2;
+    long    flushInterval  = 3;
     boolean flushScheduled = false;
                            
     @Override
