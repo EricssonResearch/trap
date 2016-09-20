@@ -93,7 +93,7 @@ class PackageScannerImpl extends PackageScanner
         Enumeration<URL> resources = c.getResources(relPath);
         
         while (resources.hasMoreElements())
-            this.scanPackage(classes, resources.nextElement(), packageName);
+            this.scanPackage(classes, resources.nextElement(), packageName, c);
         
         value = classes.toArray(new Class[0]);
         this.cache.put(key, value);
@@ -102,7 +102,7 @@ class PackageScannerImpl extends PackageScanner
         
     }
     
-    public void scanPackage(HashSet<Class<?>> outSet, URL packageUrl, String packageName) throws MalformedURLException
+    public void scanPackage(HashSet<Class<?>> outSet, URL packageUrl, String packageName, ClassLoader c) throws MalformedURLException
     {
         //System.err.println("Now scanning [" + packageUrl + "] [" + packageName + "]");
         File directory;
@@ -159,7 +159,7 @@ class PackageScannerImpl extends PackageScanner
                 else
                 {
                     // Recurse!
-                    this.scanPackage(outSet, new URL(directory.toURI().toURL().toString() + "/" + files[i]), packageName + "." + files[i]);
+                    this.scanPackage(outSet, new URL(directory.toURI().toURL().toString() + "/" + files[i]), packageName + "." + files[i], c);
                 }
             }
         }
@@ -188,7 +188,7 @@ class PackageScannerImpl extends PackageScanner
                                 className = className.substring(0, className.length() - 6);
                             try
                             {
-                                outSet.add(Class.forName(className));
+                                outSet.add(c.loadClass(className));
                             }
                             catch (ClassNotFoundException e)
                             {
